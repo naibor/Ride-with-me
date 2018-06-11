@@ -1,0 +1,27 @@
+body{
+    margin:0;
+    background-color: brown;
+}
+nav{
+    background-color: chartreuse;
+    color:black;
+    display:flex;
+    margin:0;
+}
+.section{
+    background-color: blueviolet;
+    height:100%;
+    margin:0;
+    
+}
+p{
+    margin:0;
+}
+
+footer{
+    border-color: black;
+    position: absolute;
+    bottom: 0;
+    width: 100%; 
+
+}
