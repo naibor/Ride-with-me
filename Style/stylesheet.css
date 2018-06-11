@@ -10,9 +10,10 @@ nav{
 }
 .section{
     background-color: blueviolet;
+    align-content: center;
     height:100%;
     margin:0;
-    padding-bottom: 46.9%;
+    /* padding-bottom: 46.9%; */
     
 }
 p{
@@ -45,4 +46,10 @@ a#ride{
     animation: carride 10s;
     position:absolute;
     -webkit-animation: carride 10s;
+}
+#emoji{
+    border-radius: 50%;
+    width:10%;
+    height:10%;
+
 }
