@@ -1,6 +1,6 @@
 body{
     margin:0;
-    background-color: brown;
+    /* background-color: brown; */
 }
 nav{
     background-color: chartreuse;
@@ -23,5 +23,25 @@ footer{
     position: absolute;
     bottom: 0;
     width: 100%; 
-
+}
+@-webkit-keyframes carride{
+    from{
+        left:0;
+    }
+    to{
+        left:100%;
+    }
+}
+@keyframes carride{
+    from{
+        left:0;
+    }
+    to{
+        left:100%;
+    }
+}
+a#ride{
+    animation: carride 10s;
+    position:absolute;
+    -webkit-animation: carride 10s;
 }
