@@ -1,8 +1,22 @@
 body{
     background-color: blueviolet;
+    margin: 0;
+}
+nav{
+    background-color: black;
+}
+div.form{
+    position: relative;
+    border-radius: 2%;
+    width: 50%;
+    height: 100%;
+    padding:5% 25% 5% 25%;
+    top:100%;
+    /* background-color: aquamarine; */
+    align-content: center;
 }
 input [type=text]{
-    width:50%;
+    /* width:50%; */
     padding:2% 4%;
     margin: 1% 0%;
     display: inline-block;
@@ -12,7 +26,7 @@ input [type=text]{
 }
 
 input [type=submit]{
-    width:50%;
+    /* width:50%; */
     background-color: orangered;
     color: black;
     padding: 5% 2%;
@@ -24,12 +38,17 @@ input[type=submit]:hover{
     background-color: oldlace;
 
 }
-div.form{
-    position: relative;
+fieldset{
     border-radius: 2%;
-    background-color: aquamarine;
-    align-content: center;
 }
 h3{
     align-content: center;
+}
+footer{
+    background-color: black;
+    color:white;
+    position: absolute;
+    width:100%;
+    top:100%;
+
 }
