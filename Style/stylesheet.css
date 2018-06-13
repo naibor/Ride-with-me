@@ -13,7 +13,6 @@ div.form{
     padding:5% 25% 5% 25%;
     top:100%;
     /* background-color: aquamarine; */
-    align-content: center;
 }
 input [type=text]{
     /* width:50%; */
@@ -27,19 +26,20 @@ input [type=text]{
 
 input [type=submit]{
     /* width:50%; */
-    background-color: orangered;
+    /* background-color: orangered; */
     color: black;
     padding: 5% 2%;
     cursor: pointer;
-
-     
+    
+    
 }
 input[type=submit]:hover{
     background-color: oldlace;
-
+    
 }
 fieldset{
     border-radius: 2%;
+    padding-left:33%;
 }
 h3{
     align-content: center;
