@@ -1,0 +1,35 @@
+body{
+    background-color: blueviolet;
+}
+input [type=text]{
+    width:50%;
+    padding:2% 4%;
+    margin: 1% 0%;
+    display: inline-block;
+    border: 2% solid black;
+    border-radius: 2%;
+    box-sizing: border-box;
+}
+
+input [type=submit]{
+    width:50%;
+    background-color: orangered;
+    color: black;
+    padding: 5% 2%;
+    cursor: pointer;
+
+     
+}
+input[type=submit]:hover{
+    background-color: oldlace;
+
+}
+div.form{
+    position: relative;
+    border-radius: 2%;
+    background-color: aquamarine;
+    align-content: center;
+}
+h3{
+    align-content: center;
+}
