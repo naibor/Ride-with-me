@@ -146,13 +146,13 @@ transform: translateX(200%, 0%);
 #SignUpModal{
     display:none;
     position:absolute;
-    top:42%;
-    left:36.9%;
+    top:60%;
+    left:50%;
     transform: translate(-50%, -50%);
     background-color: rgb(228, 235, 235);
     color:black;
-    padding:1rem 1.5rem;
-    width: 24rem;
+    padding:4% 5%;
+    width: 33%;
     border-radius: 0.5rem;
 }
 
