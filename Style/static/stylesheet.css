@@ -160,13 +160,13 @@ transform: translateX(200%, 0%);
 #LogInModal{
     display:none;
     position:absolute;   
-    top:50%;
-    right:25%;
+    top:54%;
+    right:37%;
     transform:translate(15%, -50%);
-    background-color: blueviolet;
-    padding:1rem 1.5rem;
-    width:24em;
-    border-radius:0.5rem; 
+    background-color:rgb(228, 235, 235);
+    padding:4% 4%;
+    width:30%;
+    border-radius:5%; 
 }
 
 /* close icon */
@@ -184,7 +184,11 @@ transform: translateX(200%, 0%);
 .SubmitButton {
     width:50%;
 }
-
+#fieldlogin{
+    width:80%;
+    height:80%;
+    margin:0;
+}
 /* footer */
 footer{
     position:absolute;
