@@ -1,0 +1,116 @@
+  <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>RideWithMe</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Bungee Shade' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Andika' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" media="screen" href="Style/static/stylesheet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!-- brand icon image -->
+    <div class="logo">
+        <img class="car" id="move" src = "Style/static/Images/ride.jpg" alt="white car">
+        <!-- signup and login div -->
+            <!-- first row of flex -->
+            <div class="row-1">
+                <div class="smallbox">
+                    <button  class ="Buttons" id = "SignUp">Sign Up</button>
+                </div>
+                <div class="smallbox" >
+                    <button class = "Buttons" id = "LogIn"> Log In</button>
+                </div>
+            </div>
+        <!-- /signup and login div -->
+    </div>
+    <h2>RIDE WITH ME.</h2>
+    <!-- sliding text -->
+    <div class="midsection">
+        <div class="info">
+            <div class="middle">
+                <p class="info-0">
+                Welcome,.<br/>
+                You need a ride?
+            </p>
+            </div>       
+            <div class="middle">
+                <p class="info-1">
+                    Sign up with Ride With Me below.
+                    And get a ride a click away.
+                </p>
+            </div> 
+            <div class="middle">
+                <p class="info-2">
+                    Simply;
+                    Pick your destination.
+                    Request a ride.
+                    Get a driver.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+            <!-- driver registration prompt -->
+        <div>
+            <p>get<a href="register.html">REGISTERED</a>as a driver.</p>
+        </div>
+
+        <!-- social media icons --> 
+        <ul>
+            <li class="icon"><i class="icons fa fa-facebook"></i></li>
+            <li class="icon"><i class="icons fa fa-twitter"></i></li>
+            <li class="icon"><i class="icons fa fa-google"></i></li>
+        </ul>
+    </div>
+    <!-- footer -->
+    <footer>
+        @Naibor.
+    </footer>
+    <!-- /footer -->
+
+    <!-- MODALS -->
+    
+    <!-- sign up modal form -->
+    <div id="SignUpModal">
+        <!-- close signup icon -->
+        <span  class="Close">&times;</span>
+        <!-- signup form -->
+        <form>
+            <fieldset>
+                <h3>Sign up below.</h3>
+                Firstname<br/>
+                <input type="text" name="Firstname" required> <br/>
+                Lastname<br/>
+                <input type="text" name="Lastname" required> <br/>
+                Usesrname<br/>
+                <input type="text" name="username" required><br/>
+                Password<br>
+                <input type="password" name="pwd" required><br/>
+                confirm password<br/>
+                <input type="password" name="pwd" required><br/><br/>
+                <button class="SubmitButton" type="submit" value="submit">Submit</button>
+            </fieldset>
+        </form>
+        <!-- /signup form -->
+    </div>
+    <!-- /sign up modal form -->
+    
+    <!-- login modal form -->
+    <div id="LogInModal">
+        <span class="Close">&times;</span>
+            <form id="formlogin">
+                <h3>Log In</h3>
+                Username<br/>
+                <input type="text" name="username" required><br/>
+                Password<br/>
+                <input type="password" name="pwd" required></fieldset></br><br/>
+                <button class="SubmitButton" type="submit" value="submit">Submit</button>
+            </form>
+    </div>
+    <!-- /login modal form -->
+    <script src="Style/static/myjs.js"></script>
+</body>
+</html>
