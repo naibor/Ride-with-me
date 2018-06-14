@@ -1,22 +1,25 @@
 <!Doctype html>
 <html>
 <head>
-    <title></title>
-    <link rel="stylesheet" href="Style/stylesheet.css">
-    <meta name="viewpoint" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <title>RideWithMe</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Bungee Shade' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Andika' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" media="screen" href="Style/static/stylesheet.css" />
 </head>
 <body>
     <nav>
-        <div></div><img src = "" alt="white car logo"></div>
-        <div></div>
+        <div></div><img class="car" src = "Style/static/Images/ride.jpg" alt="white car logo"></div>
     </nav>
+    <h2>RIDE WITH ME</h2>
         <div class="form">
-            <h3>Register below.</h3>
+            <h3>Register as a driver below.</h3>
             <hr/>
             <form action="#">
             <fieldset>
                 <legend>Personal Information:</legend>
-               <div> <img src="" alt="driver's picture"> </div>
                 First Name:<br/>
                 <input type="text" name="first name" required><br/>
                 Last Name:<br/>
@@ -35,6 +38,8 @@
                 <input type="password" name="password" required><br/>
                 Confirm password:<br/>
                 <input type="password" name="confirmpassword" required><br/>
+                Upload picture:<br/>
+               <input type="file" name="picture" required><br/><br/>
                 <legend>Business</legend>
                 Type of car:<br/>
                 <select name="Cartype" size="1" multiple required>
@@ -45,11 +50,10 @@
             </fieldset>
         </form>
     </div>
-    <div>
-        <footer>
-            @Naibor
-        </footer>
-    </div>
+    <footer id="foot">
+        @Naibor
+    </footer>
+
 
 </body>
 </html>

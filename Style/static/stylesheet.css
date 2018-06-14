@@ -163,7 +163,7 @@ transform: translateX(200%, 0%);
     top:50%;
     right:25%;
     transform:translate(15%, -50%);
-    background-color: blueviolet;
+    background-color:  rgb(228, 235, 235);
     padding:1rem 1.5rem;
     width:24em;
     border-radius:0.5rem; 
@@ -186,52 +186,64 @@ transform: translateX(200%, 0%);
 }
 
 /* footer */
-footer{
+/* footer{
     position:absolute;
     text-align: center;
     background-color:green;
     color:white;
     top:100%;
     width:100%;
-}
-
-  /* tooltip */
-/* .tooltip {
+} */
+/* REGISTER */
+div.form{
     position: relative;
+    border-radius: 2%;
+    width: 50%;
+    /* height: 100%; */
+    background-color:  rgb(228, 235, 235);
+    padding:1% 4% 4% 4%;
+    left:21%;
+    margin:0;
+    top:100%;
+}
+input [type=text]{
+    /* width:50%; */
+    padding:2% 4%;
+    margin: 1% 0%;
     display: inline-block;
-} */
-
-/* .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 100%;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 10px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 155%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.3s;
+    border: 2% solid black;
+    border-radius: 2%;
+    box-sizing: border-box;
 }
-
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
+input [type=submit]{
+    /* width:50%; */
+    /* background-color: orangered; */
+    color: black;
+    padding: 5% 2%;
+    cursor: pointer;
+    
+    
 }
+input[type=submit]:hover{
+    background-color: oldlace;
+    
+}
+fieldset{
+    border-radius: 2%;
+    padding-left:33%;
+}
+h3{
+    align-content: center;
+}
+footer{
+    background-color: black;
+    color:white;
+    position: absolute;
+    width:100%;
+    top:100%;
+    
+}
+#foot{
+    top:105%;
 
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-} */
-
-/* footer image animation */
+}
