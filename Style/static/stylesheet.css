@@ -1,0 +1,320 @@
+
+/* body */
+body{
+    margin:0;
+    background-color: black;
+    stroke-opacity: inherit;
+}
+/* logo animation slide right and shake */
+.logo{
+    left:0%;
+}
+
+.logo a img.move{
+    transform: translate(350px,0);
+    -webkit-transform: translate(350px,0);
+    -moz-transform: translate(350px,0);
+    -o-transform: translate(350px,0);
+
+}
+.logo a img.move{
+    position:relative;
+    transition:all 2s ease-in-out;
+    -webkit-transition:all 2s ease-in-out;
+    -moz-transition:all 2s ease-in-out;
+    -o-transition:all 2s ease-in-out;
+}
+
+.info{
+    height:80%;
+    position:relative;
+    background-color:olivedrab;
+}
+.info-1,
+.info-2,
+.info-3{
+    /* position:absolute; */
+    display: block;
+    top:6em;
+    width: 50%;
+    font-size:2em;
+    animation-duration:20s;
+    animation-timing-function:ease-in-out;
+    animation-iteration-count: infinite;
+    
+}
+.info-1{
+    animation-name: anim-1;
+}
+.info-2{
+    animation-name: anim-2;
+}
+.info-3{
+    animation-name:anim-3;
+}
+p{
+    margin:0;
+    padding:0;
+}
+
+@keyframes anim-1{
+    0%, 8.3% {left: -100%; opacity:0;}
+    8.3%, 25% {left:25%; opacity:1;}
+    33.33%, 100% {left:110%; opacity:0%;}
+}
+@keyframes anim-2{
+    0%, 33.33% {left: -100%; opacity:0;}
+    41.63%, 58.29% {left:25%; opacity:1;}
+    66.66%, 100% {left:110%; opacity:0%;}
+}
+
+@keyframes anim-3{
+    0%, 66.66% {left: -100%; opacity:0;}
+    74.96%, 91.62% {left:25%; opacity:1;}
+    100% {left:110%; opacity:0%;}
+}
+
+/* box with driver registration link option */
+/* .section{} */
+    
+    
+.section{
+    width:100%;
+    display:flex;
+    height:80%;
+    position: fixed;
+    top:55%;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color:  black;
+    color:white;
+
+}
+
+/* box with social media icons and links */
+ .sectionbox{
+     position:relative;
+     height:55%;
+     border-radius: 5%;
+     
+     width:30%;
+     border-width:3%;
+     background-color: rgb(48, 103, 105);
+
+ }
+
+ /* box containing sign up and login modals and buttons */
+ .box {
+    width: 38%;
+    height: 55%;
+    position: sticky;
+    display:flex;
+    flex-direction: column;
+    border-radius: 5%;
+    margin:0;
+    background-color: rgb(48, 103, 105);
+}
+/* row-1 containing box buttons */
+.row-1{
+    height:15%;
+    display:flex;
+    flex-direction: row;
+    position:relative;
+    border-radius: 5%;
+    padding: 2px 6px 0px 6px;
+
+}
+
+/* div containing the buttons */
+
+.smallbox{
+    width:100%;
+    background-color: rgb(65, 75, 75);
+}
+
+/* the sign up and login buttons */
+.Buttons{
+    width:100%;
+    height:100%;
+    border-width: 3%;
+    border-bottom-color: black;
+    background-color:  rgb(5, 59, 61);
+    border-radius: 15%;
+    /* flex-shrink: 1; */
+    margin: 0;
+
+}
+/* introduction to sign up just below sign up &login buttons */
+.Intro{
+    height:83%;
+    position:absolute;
+    top:17%;
+    /* border-radius: 5%; */
+    background-color: rgb(48, 103, 105);
+
+}
+
+/* signup modal id=SignUpModal */
+#SignUpModal{
+    display:none;
+    position:absolute;
+    top:42%;
+    left:36.9%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(228, 235, 235);
+    padding:1rem 1.5rem;
+    width: 24rem;
+    border-radius: 0.5rem;
+}
+
+/* login id-=LogInModal*/
+#LogInModal{
+    display:none;
+    position:absolute;   top:50%;
+    right:25%;
+    transform:translate(15%, -50%);
+    background-color: blueviolet;
+    padding:1rem 1.5rem;
+    width:24em;
+    border-radius:0.5rem; 
+}
+
+/* close icon */
+.Close{
+    cursor: pointer;
+    border-radius:100%;
+    background-color: white;
+}
+/* closing icon modal on hover */
+.Close:hover{
+    background-color: black;
+}
+
+
+
+
+
+
+ .icon{
+     background-color: green;
+}
+ 
+@keyframes ride {
+    0%{
+        right:0;
+    }
+    10%{
+        right:50%;
+    }
+    100%{
+        right:10%;
+    }
+}
+
+
+footer{
+    position:absolute;
+    background-color:black;
+    color: bisque;
+    top:100%;
+    width:100%;
+}
+
+  /* tooltip */
+/* .tooltip {
+    position: relative;
+    display: inline-block;
+} */
+
+/* .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 100%;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 155%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+} */
+
+/* heading */
+/* h2{
+margin:0%;
+text-align: center;
+} */
+/* information section */
+/* .infosection{
+    background-color:greenyellow;
+    color:white;
+    align-content: center;
+    display:flex;
+    height:100%;
+    margin:0%;
+    padding: 0%;
+    justify-content: space-between;
+    overflow:hidden;
+    
+}  */
+/* map image */
+/* #map{
+    width:50%;
+    height:50%;
+} */
+  
+/* footer */
+/* footer{
+    border-color:black;
+    border-width: 1%;
+    display:flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height:20%; 
+    justify-content: space-between;
+} */
+
+/* .social{ */
+    /* justif;  */
+/* } */
+/* #emoji{
+    border-radius: 100%;
+    width:50%;
+    height:50%;
+} */
+/* footer image animation */
+/* img.car{
+position:absolute;
+transition: all 2s ease-in-out;
+-webkit-transition: all 2s ease-in-out;/**chrome and safari**/
+/* -moz-transition: all 2s ease-in-out;  *firefox* */
+/* -o-transition : all 2s ease-in-out;  *opera* */
+
+/* move on hover */
+/* img.ride:hover { 
+    transform:translate(200%,0);
+    -webkit-transform: translateX(200%);
+    -o-transform: translate(200%,0);
+    -moz-transform: translate(200%,0);
+} */
