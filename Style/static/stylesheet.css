@@ -80,9 +80,7 @@ img.car{
 .midsection{
    padding:9% 0% 0% 0%
 }
-.middle{
-    position: inherit;
-}
+
 
 .info{
     position:relative;
@@ -118,7 +116,7 @@ img.car{
  }
  i.icons:hover{
      transform:translate(30%,2%) scale(1.1);
-     color:white;
+     color:black;
  }
 
 
