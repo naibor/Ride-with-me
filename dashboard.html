@@ -2,65 +2,75 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <title>Dashboard</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Driver dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"  media="screen" href="static/stylesheet.css" />
+    <link href='https://fonts.googleapis.com/css?family=Bungee Shade' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Andika' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" media="screen" href="static/stylesheet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body id = "bodySection">
-    <!-- navigation bar -->
-    <nav >
-        <!-- nav items -->
-        <!--logo  -->
-        <div class = "navitems">
-            <img class= "car" src="static/Images/ride.jpg" alt="white car">               
-        </div>
+<body >
+         <!--top bar -->
+        <div class="logo">
+            <img id="move" src="static/Images/ride.jpg" alt="white car">               
+        <div class="navitems">
         <!-- side nav button -->
-        <div  class = "navitems">
-            <button class="Buttons" id="menu">Menu</button>
+        <!-- request ride/offer ride -->
+            <div class= "request">
+                <button onclick="Open()" type="button" class="Buttons">OFFER RIDE </button>
+            </div>
+            <div>
+                <button onclick="OpenMenu()" type="button" class="Buttons" id="menu">MENU</button>
+            </div>
+            <!-- Request ride/offer  -->
+            <!-- logout button -->
+            <div>
+                <button class="Buttons">Log out</button>
+            </div>
+        </div> 
         </div>
-        <!-- Request ride -->
-        <div class= "navitems request">
-            <button class="Buttons">REQUEST RIDE</button>
-        </div>
-        <!-- logout button -->
-        <div>
-            <button class="navitems Buttons">Log out</button>
-        </div>  
-    </nav>
     <!-- /nav -->
     <!-- map region -->
-        <div class="midsection">
+        <div id="map">
             <!-- add google map -->
-            <div id="map">
-            </div>
+            <img id="googlemap" src="static/Images/map7.jpg"alt="google map" >
+            
+        </div>
         </div>
         
         <!-- ride details modal -->
-        <div class="requestDetails">
-            <input type="text" name="destination" >
-            <input type="text" name="location">
-            <button type="submit">Submit</button>
-            <button type="reset">Reset</button>
+        <div id="requestDetails">
+            <span onclick="Close()" class="ClosesColumn">&times;</span><br>
+            <input type="text" name="destination" placeholder="Enter Destination" ><br>
+            <input type="text" name="location" placeholder="Enter Location"><br><br>
+            <button class="SubmitButton" type="submit">Submit</button><br>
+            <button class="SubmitButton" type="reset">Reset</button>
         </div>
         <!-- side nav modal -->
         <div id="sidemodal">
             <!-- closing side nav -->
-            <span id="sideclose" class="Close">&times;</span>
+            <span onclick="CloseMenu()" class="ClosesColumn">&times;</span>
             <!-- number of rides given -->
             <div class="sidenav"><p>History</p></div> 
             <!--geo location  -->
             <div class="sidenav"> <p>My location</p></div>
             <!-- table of available rides and details -->
-            <div class="sidenav"><p>Rides requests</p></div>
+            <div class="sidenav">
+                <button id="RequestButton" class="Buttons" onclick="Open()" type="button"> Requests</button>
+            </div>
             
             <div class="sidenav"><p>settings</p></div>
         </div>
-        <!-- table of requests -->
-        <div>
+        <footer class= "footerSection">
+            @Naibor
+        </footer>
+        <!-- table of requests modal -->
+        <div class="Table">
+            <span onclick="Close()" class="Closes">&times;</span>
             <table id="requestTable">
                 <tr>
-                    <p id="requests"> RIDE REQUESTS</p>
+                <p id="request~s"> OFFER RIDE</p>
                 </tr>
                 <tr>
                     <th>request ID</th>
@@ -272,25 +282,22 @@
                     
                 </table>
         <!-- footer -->
-        <footer class= "footerSection">
-            @Naibor
-        </footer>
         <!-- scripts -->
+        <script src="static/myjs.js"></script>
+
          <!-- Google map function -->
-         <script>
+         <!-- <script>
         function myMap(){
             var mapOptions = {
             center: new google.maps.LatLng(36.8219,1.2921),
-            zoom:10,
-            // mapTypeId: google.maps.mapTypeId.HYBRID
-        }
+            zoom:10, -->
+            <!-- // mapTypeId: google.maps.mapTypeId.HYBRID -->
+        <!-- }
             var map = new google.maps.Map(document.getElementById("map"),mapOptions);
-        }
-        </script>
+        } -->
+        <!-- </script> -->
 
-        <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBzHTc1S18dD3_eYLXMyh5DE2BqIwYcCo&callback=myMap"></script> -->
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfFbGGCCjP7TjGwhUIkzMWlkYoLctf2P8&callback=myMap"
-        type="text/javascript"></script>
-        <!-- <script src="static/myjs.js"></script> -->
+        <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcKKPh7JmsfJcMfuZ24i_cLT9M-gGHUao&callback=myMap" -->
+        <!-- type="text/javascript"></script> -->
     </body>
     </html>

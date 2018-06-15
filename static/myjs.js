@@ -2,11 +2,13 @@ var signupmodal = document.getElementById("SignUpModal");
 var loginmodal = document.getElementById("LogInModal");
 var signup = document.getElementById("SignUp");
 var login = document.getElementById("LogIn");
-var closesignup = document.getElementsByClassName("Close")[0];
-var closelogin =document.getElementsByClassName("Close")[1];
-// var menu =document.getElementById("menu");
-// var sidenav = document.getElementById("sidemodal");
-// var closesidenav = document.getElementsByClassName("Close");
+var closesignup = document.getElementById("CloseSignUp");
+var closelogin =document.getElementById("CloseLogIn");
+var menu =document.getElementById("menu");
+var sidenav = document.getElementById("sidemodal");
+// var closesidenav = document.getElementsByClassName("Closes")[2];
+var details = document.getElementById("requestDetails")
+// var closedetails = document.getElementsByClassName("Closes")[3];
 // signing up 
 signup.onclick = function(){
     signupmodal.style.display="block";
@@ -34,16 +36,21 @@ closelogin.onclick=function(){
     loginmodal.style.display="none";
 }
 
-// menu button
-// menu.onclick=function(){
-//     sidenav.style.display="block";
-
-
-
-// }
-// closing side nav
-// closesidenav.onclick=function(){
-//     sidenav.style.display="none";
-// }
-
-
+// menu button open side modal
+function OpenMenu(){
+    sidenav.style.display="block";
+    details.style.display="none";
+}
+// request details
+function Open(){
+    details.style.display="block";
+    sidenav.style.display="none";
+    }
+    // close request ride details
+function Close(){
+    details.style.display="none";
+    
+}   
+function CloseMenu(){
+    sidenav.style.display="none";
+}
