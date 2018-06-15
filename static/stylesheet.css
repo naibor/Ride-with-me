@@ -1,14 +1,11 @@
 
+
+/* landing page */
 /* body */
 body{
     margin:0;
-    /* background-color:black; */
-    /* stroke-opacity: inherit; */
-}
-/* nav */
-nav{
-    display:flex;
-    justify-content: space-between;
+    background-color:black;
+    background: linear-gradient(to right, grey, black );
 }
 /* h2 */
 h2{
@@ -40,39 +37,63 @@ img.car{
 }
 
 #move{
-    transform:translateX(100%,0%);
-    -webkit-transform: translateX(200%,0%);
-    -o-transform: translateX(200%,0%);
-    -moz-transform: translateX(200%,0%);
-}
-img.move:hover{
-    transform:translateX(100%,0%);
+    width:5%;
+    height:5%;
+    position:relative;
+    -webkit-animation-name:car;
+    -webkit-animation-duration: 5s;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: car;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
 }
 
-div.logo:hover{
-transform: translateX(200%, 0%);
-} 
-.middle{
-    position: inherit;
+
+
+@-webkit-keyframes car{
+    0%{left:0%;
+        right:0%;
+    }
+    100%{
+        left: 65%;
+        top:0%;
+    }
+}
+@keyframes car{
+    0%{left:0%;
+        right:0%;
+    }
+    100%{
+        left:65%;
+        right: 0%;
+    }
+}
+#Registered{
+    position: relative;
+    width: 30%;
+    height: 25%;
+    background-color:  rgb(228, 235, 235);
+    left:0.5%;
+    border-radius: 4%;
+}
+#Registered p{
+    color:black;
 }
 
 .info{
     position:relative;
     display: flex;
     flex-direction: column;
-    background-color:black;
 }
 .section{
     width:100%;
     display:flex;
-    height:8%;
     position: absolute;
     top:92%;
     flex-direction: row;
     justify-content: space-between;
-    background-color: black;
     color:white;
-    
+
 }
 
 /* box with social media icons and links */
@@ -98,7 +119,6 @@ transform: translateX(200%, 0%);
 
  /* row-1 containing box sign up and login modals and buttons*/
 .row-1{
-    /* height:30%; */
     width:30%;
     display:flex;
     flex-direction: row;
@@ -155,15 +175,17 @@ transform: translateX(200%, 0%);
 /* login id-=LogInModal*/
 #LogInModal{
     display:none;
-    position:absolute;   
-    top:35%;
-    right:33%;
-    transform:translate(15%, -50%);
-    background-color:  rgb(228, 235, 235);
-    padding:1rem 1.5rem;
-    width:24em;
-    border-radius:0.5rem; 
+    position:absolute;
+    top:60%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(228, 235, 235);
+    color:black;
+    padding:4% 5%;
+    width: 33%;
+    border-radius: 0.5rem;
 }
+
 
 /* close icon */
 .Close{
@@ -178,23 +200,15 @@ transform: translateX(200%, 0%);
 
 /* login signup submit button */
 .SubmitButton {
-    width:50%;
+    width:40%;
 }
 
-/* footer */
-/* footer{
-    position:absolute;
-    text-align: center;
-    background-color:green;
-    color:white;
-    top:100%;
-    width:100%;
-} */
+
 /* REGISTER */
 div.form{
     position: relative;
     border-radius: 2%;
-    width: 40%;
+    width: 50%;
     background-color:  rgb(228, 235, 235);
     padding:1% 4% 4% 4%;
     left:21%;
