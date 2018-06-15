@@ -131,7 +131,7 @@ p, h2{
 
 /* the sign up and login buttons */
 .Buttons{
-    width:100%;
+    width:139%;
     height:100%;
     cursor: pointer;
     border-bottom-color: black;
@@ -182,7 +182,7 @@ p, h2{
 /* close icon */
 .Closes{
     cursor: pointer;
-    border-radius:100%;
+    border-radius:90%;
     background-color:black;
 }
 /* closing icon modal on hover */
@@ -192,9 +192,19 @@ p, h2{
 
 /* login signup submit button */
 .SubmitButton {
-    width:40%;
+    width:68%;
+    padding-bottom: 6%;
+
 }
 
+.ClosesColumn{
+    width:100%;
+    background-color:black;
+
+}
+.ClosesColumn:hover{
+    background-color:rgb(34, 31, 31);
+}
 
 /* REGISTER */
 .form{
@@ -207,20 +217,20 @@ p, h2{
     margin:0;
     top:90%;
 }
-input [type=text]{
+input[type=text]{
     /* width:50%; */
-    padding:2% 4%;
-    margin: 1% 0%;
+    padding:8% 9% 1% 26%;
+    margin: 4% 0%;
     display: inline-block;
     border: 2% solid black;
     border-radius: 2%;
     box-sizing: border-box;
 }
-input [type=submit]{
+input[type=submit]{
     /* width:50%; */
     /* background-color: orangered; */
     color: black;
-    padding: 5% 2%;
+    padding: 5% 2% 0% 0%;
     cursor: pointer;
     
     
@@ -249,6 +259,11 @@ footer{
 }
 /* DASHBOARD */
 
+#googlemap{
+    background-size: cover;
+
+}
+
 #bodysection{
     background-color: blanchedalmond !;
 }
@@ -261,12 +276,20 @@ footer{
 /* #fit{
     width:5%;
 } */
+div#requestDetails{
+    background-color: #ddd;
+    z-index: 3;
+}
 #requestDetails{
     display:none;
     flex-direction: column;
-    width:30%;
-    height:30%;
+    width:20%;
+    /* height:30%; */
+    position: relative;
+    left:50%;
     border-radius:3%;
+    margin:0%;
+
 }
 
 #sidemodal{
@@ -274,9 +297,13 @@ footer{
     display:none;
     flex-direction: column;
     background-color:rgb(228, 235, 235); 
-    width:50%;
-    height:50%;
+    width:18%;
+    /* height:50%; */
     color: black;
+}
+#RequestButton{
+    width:100%;
+
 }
 .sidenav{
     width:100%;

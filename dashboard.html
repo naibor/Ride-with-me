@@ -33,29 +33,30 @@
     <!-- map region -->
         <div id="map">
             <!-- add google map -->
+            <img id="googlemap" src="static/Images/map7.jpg"alt="google map" >
             
         </div>
         </div>
         
         <!-- ride details modal -->
         <div id="requestDetails">
-            <span onclick="Close()" class="Closes">&times;</span><br>
+            <span onclick="Close()" class="ClosesColumn">&times;</span><br>
             <input type="text" name="destination" placeholder="Enter Destination" ><br>
-            <input type="text" name="location" placeholder="Enter Location"><br>
-            <button class="Buttons" type="submit">Submit</button>
-            <button class="Buttons" type="reset">Reset</button>
+            <input type="text" name="location" placeholder="Enter Location"><br><br>
+            <button class="SubmitButton" type="submit">Submit</button><br>
+            <button class="SubmitButton" type="reset">Reset</button>
         </div>
         <!-- side nav modal -->
         <div id="sidemodal">
             <!-- closing side nav -->
-            <span onclick="CloseMenu()" class="Closes">&times;</span>
+            <span onclick="CloseMenu()" class="ClosesColumn">&times;</span>
             <!-- number of rides given -->
             <div class="sidenav"><p>History</p></div> 
             <!--geo location  -->
             <div class="sidenav"> <p>My location</p></div>
             <!-- table of available rides and details -->
             <div class="sidenav">
-                <button onclick="Open()" type="button"> Requests</button>
+                <button id="RequestButton" class="Buttons" onclick="Open()" type="button"> Requests</button>
             </div>
             
             <div class="sidenav"><p>settings</p></div>
