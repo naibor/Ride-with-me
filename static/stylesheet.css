@@ -1,0 +1,406 @@
+
+/* body */
+body{
+    margin:0;
+    /* background-color:black; */
+    /* stroke-opacity: inherit; */
+}
+/* nav */
+nav{
+    display:flex;
+    justify-content: space-between;
+}
+/* h2 */
+h2{
+    text-decoration-line: underline;
+    font-family:'Bungee Shade';
+    font-size:30px;
+}
+/* p and h2 */
+p, h2{
+    color:white;
+    text-align: center;
+    font-family:'Andika';
+    font-size: 22px;
+    overflow: hidden;
+    margin:0;
+}
+
+
+.logo{
+    background-color: black;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+ 
+} 
+img.car{
+    width:5%;
+    height:5%;
+}
+
+#move{
+    transform:translateX(100%,0%);
+    -webkit-transform: translateX(200%,0%);
+    -o-transform: translateX(200%,0%);
+    -moz-transform: translateX(200%,0%);
+}
+img.move:hover{
+    transform:translateX(100%,0%);
+}
+
+div.logo:hover{
+transform: translateX(200%, 0%);
+} 
+.middle{
+    position: inherit;
+}
+
+.info{
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    background-color:black;
+}
+.section{
+    width:100%;
+    display:flex;
+    height:8%;
+    position: absolute;
+    top:92%;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: black;
+    color:white;
+    
+}
+
+/* box with social media icons and links */
+ .icon{
+     position:relative;
+     list-style-type: none;
+     color:white;
+
+ }
+ ul{
+     display:flex;
+     justify-content: space-around;
+     position:relative;
+     width:21%;
+     margin:0%;
+     padding-top: 2%;
+
+ }
+ i.icons:hover{
+     transform:translate(30%,2%) scale(1.1);
+     color:white;
+ }
+
+ /* row-1 containing box sign up and login modals and buttons*/
+.row-1{
+    /* height:30%; */
+    width:30%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position:relative;
+    border-radius: 7%;
+    padding: 10px 4px 0px 6px;
+
+}
+
+/* div containing the buttons */
+
+.smallbox{
+    width:30%;
+    background-color: white;
+}
+
+/* the sign up and login buttons */
+.Buttons{
+    width:100%;
+    height:100%;
+    /* border-width: 3%; */
+    border-bottom-color: black;
+    background-color:  lightgrey;
+    border-radius: 10%;
+    /* flex-shrink: 1; */
+    margin: 0;
+    
+}
+/* introduction to sign up just below sign up &login buttons */
+.Intro{
+    height:83%;
+    position:absolute;
+    top:17%;
+    /* border-radius: 5%; */
+    background-color: rgb(48, 103, 105);
+    
+}
+
+/* signup modal id=SignUpModal */
+#SignUpModal{
+    display:none;
+    position:absolute;
+    top:60%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(228, 235, 235);
+    color:black;
+    padding:4% 5%;
+    width: 33%;
+    border-radius: 0.5rem;
+}
+
+/* login id-=LogInModal*/
+#LogInModal{
+    display:none;
+    position:absolute;   
+    top:35%;
+    right:33%;
+    transform:translate(15%, -50%);
+    background-color:  rgb(228, 235, 235);
+    padding:1rem 1.5rem;
+    width:24em;
+    border-radius:0.5rem; 
+}
+
+/* close icon */
+.Close{
+    cursor: pointer;
+    border-radius:100%;
+    background-color: white;
+}
+/* closing icon modal on hover */
+.Close:hover{
+    background-color: black;
+}
+
+/* login signup submit button */
+.SubmitButton {
+    width:50%;
+}
+
+/* footer */
+/* footer{
+    position:absolute;
+    text-align: center;
+    background-color:green;
+    color:white;
+    top:100%;
+    width:100%;
+} */
+/* REGISTER */
+div.form{
+    position: relative;
+    border-radius: 2%;
+    width: 50%;
+    /* height: 100%; */
+    background-color:  rgb(228, 235, 235);
+    padding:1% 4% 4% 4%;
+    left:21%;
+    margin:0;
+    top:100%;
+}
+input [type=text]{
+    /* width:50%; */
+    padding:2% 4%;
+    margin: 1% 0%;
+    display: inline-block;
+    border: 2% solid black;
+    border-radius: 2%;
+    box-sizing: border-box;
+}
+input [type=submit]{
+    /* width:50%; */
+    /* background-color: orangered; */
+    color: black;
+    padding: 5% 2%;
+    cursor: pointer;
+    
+    
+}
+input[type=submit]:hover{
+    background-color: oldlace;
+    
+}
+fieldset{
+    border-radius: 2%;
+    padding-left:33%;
+}
+h3{
+    align-content: center;
+}
+footer{
+    background-color: black;
+    color:white;
+    position: absolute;
+    width:100%;
+    top:100%;
+    
+}
+#foot{
+    top:105%;
+}
+/* DASHBOARD */
+
+#bodysection{
+    background-color: blanchedalmond !;
+}
+
+
+
+#sidemodal{
+    display:flex;
+    /* visibility:hidden; */
+    flex-direction: column;
+    background-color:rgb(228, 235, 235); 
+    width:50%;
+    height:50%;
+    color: black;
+}
+.sidenav{
+    width:100%;
+    height:10%;
+    background-color:rgba(0, 0, 0, 0.37);
+}
+.sidenav:hover{
+    background-color: #ddd;
+}
+#sideclose{
+    background-color: black;
+    color:white;
+    width:50%;
+    border-radius: 4%;
+    align-content: center;
+    padding-left: 50%;
+}
+/* request tables */
+p#requests{
+    color:black;
+}
+#requestTable {
+    /* font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; */
+    border-collapse: collapse;
+    width: 100%;}
+
+#requestTable td, #requestTable th {
+    border: 1px solid #ddd;
+    padding: 11px;
+}
+#requestTable tr:nth-child(even){background-color: #f2f2f2;}
+#requestTable tr:hover {background-color: #ddd;}
+
+#requestTable{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.37);
+    color:black;
+}
+/* acceptance/rejection button */
+td label.accept{
+    padding: 0%;
+}
+.accept{
+    position: relative;
+    border-radius: 2%;
+    width: 50%;
+    /* height: 100%; */
+    background-color:  rgb(228, 235, 235);
+    padding:1% 4% 4% 4%;
+    left:21%;
+    margin:0;
+    top:100%;
+}
+input [type=text]{
+    /* width:50%; */
+    padding:2% 4%;
+    margin: 1% 0%;
+    display: inline-block;
+    border: 2% solid black;
+    border-radius: 2%;
+    box-sizing: border-box;
+}
+input [type=submit]{
+    /* width:50%; */
+    /* background-color: orangered; */
+    color: black;
+    padding: 5% 2%;
+    cursor: pointer;
+    
+    
+}
+input[type=submit]:hover{
+    background-color: oldlace;
+    
+}
+fieldset{
+    border-radius: 2%;
+    padding-left:33%;
+}
+h3{
+    align-content: center;
+}
+footer{
+    background-color: black;
+    color:white;
+    position: absolute;
+    width:100%;
+    top:100%;
+    
+}
+#foot{
+    top:105%;
+}
+
+.slide{
+    position: absolute;
+    cursor: pointer;
+    border-radius: 34%;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: rgba(51, 45, 38, 0.37);
+    -webkit-transition: .5s;
+    transition: .5s;
+
+}
+.slide:before{
+    position:absolute;
+    content: "";
+    height:24px;
+    border-radius: 50%;
+    width:24px;
+    left:74px;
+    bottom:-4px;
+    background-color:black;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+input:checked + .slide{
+    background-color: rgb(88, 79, 79);
+}
+input:focus +.slide{
+    box-shadow: 0 0 1px rgb(100, 104, 107);
+}
+input:checked + .slide{
+    -webkit-transform: translateX(60px);
+    -ms-transform: translateX(60px);
+    transform: translateX(60px);
+}
+.midsection{
+    background-color:white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding:9% 0% 0% 0%
+}
+/* google map */
+#map{
+    height:90%;
+    width:90%;
+    background-color: cadetblue;
+}
