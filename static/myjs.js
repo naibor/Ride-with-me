@@ -1,16 +1,20 @@
-// var menu =document.getElementById("menu");
-// var closesidenav = document.getElementsByClassName("Close");
-
-
-// signing up 
-var signup = document.getElementById("SignUp");
 var signupmodal = document.getElementById("SignUpModal");
+var loginmodal = document.getElementById("LogInModal");
+var signup = document.getElementById("SignUp");
+var login = document.getElementById("LogIn");
+var closesignup = document.getElementsByClassName("Close")[0];
+var closelogin =document.getElementsByClassName("Close")[1];
+var menu =document.getElementById("menu");
+var sidenav = document.getElementById("sidemodal");
+var closesidenav = document.getElementsByClassName("Closes")[2];
+var details = document.getElementById("requestDetails")
+var closedetails = document.getElementsByClassName("Closes")[3];
+// signing up 
 signup.onclick = function(){
     signupmodal.style.display="block";
     loginmodal.style.display="none";
 }
 // closing signup form modal
-var closesignup = document.getElementsByClassName("Close")[0];
 closesignup.onclick = function(){
     signupmodal.style.display="none";
 }
@@ -23,50 +27,28 @@ window.onclick = function(event){
 }
 
 // login modal form
-var login = document.getElementById("LogIn");
-var loginmodal = document.getElementById("LogInModal");
 login.onclick=function(){
     loginmodal.style.display="block";
     signupmodal.style.display="none";
 }
 // closing login form modal
-var closelogin =document.getElementsByClassName("Close")[1];
 closelogin.onclick=function(){
     loginmodal.style.display="none";
 }
 
-// menu button for side nav
-var sidenav = document.getElementById("sidemodal");
-function Open(){
+// menu button open side modal
+function OpenMenu(){
     sidenav.style.display="block";
-    request.style.display="none"
+    details.style.display="none";
 }
+// request details
+function Open(){
+    details.style.display="block";
+    sidenav.style.display="none";
+    }
+    
 
-// close side nav
-function Close(){
+// closing side nav
+closesidenav.onclick=function(){
     sidenav.style.display="none";
 }
-
-// request details
-var request = document.getElementById("requestDetails");
-function Open(){
-    request.style.display="flex";
-    sidenav.style.display="none"
-}
-// close request details
-function Close(){
-    request.style.display="none";
-}
-
-//driver ride request table
-var table = document.getElementsByClassName("Table");
-function Open(){
-    table.style.display="block";
-}
-
-// close table
-function Close(){
-    table.style.display="none"
-}
-
-

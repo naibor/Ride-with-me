@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <meta charset="utf-8" />
-        <title>Dashboard</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href='https://fonts.googleapis.com/css?family=Bungee Shade' rel='stylesheet'>
-        <link href='https://fonts.googleapis.com/css?family=Andika' rel='stylesheet'>
-        <link rel="stylesheet" type="text/css" media="screen" href="static/stylesheet.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8" />
+    <title>Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Bungee Shade' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Andika' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" media="screen" href="static/stylesheet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body id = "bodySection">
     <!-- navigation bar -->
@@ -20,7 +20,7 @@
                 <button onclick="Open()" type="button" class="Buttons">REQUEST RIDE</button>
             </div>
             <div>
-                <button onclick="Open()" type="button" class="Buttons" id="menu">Menu</button>
+                <button onclick="OpenMenu()" type="button" class="Buttons" id="menu">MENU</button>
             </div>
             <!-- Request ride -->
             <!-- logout button -->
@@ -60,12 +60,15 @@
             
             <div class="sidenav"><p>settings</p></div>
         </div>
-        <!-- table of requests -->
+        <footer class= "footerSection">
+            @Naibor
+        </footer>
+        <!-- table of requests modal -->
         <div class="Table">
             <span onclick="Close()" class="Closes">&times;</span>
             <table id="requestTable">
                 <tr>
-                    <p id="requests"> RIDE REQUESTS</p>
+                <p id="requests"> RIDE REQUESTS</p>
                 </tr>
                 <tr>
                     <th>request ID</th>
@@ -187,9 +190,6 @@
             </table>
         </div>
         <!-- footer -->
-        <footer class= "footerSection">
-            @Naibor
-        </footer>
         <!-- scripts -->
         <script src="static/myjs.js"></script>
 
