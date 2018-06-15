@@ -50,7 +50,7 @@ function Close(){
 // request details
 var request = document.getElementById("requestDetails");
 function Open(){
-    request.style.display="block";
+    request.style.display="flex";
     sidenav.style.display="none"
 }
 // close request details

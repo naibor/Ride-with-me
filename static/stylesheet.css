@@ -31,25 +31,8 @@ p, h2{
     flex-direction: row;
     justify-content: space-between;
  
-} 
-img.car{
-    width:5%;
-    height:5%;
 }
 
-#move{
-    transform:translateX(100%,0%);
-    -webkit-transform: translateX(200%,0%);
-    -o-transform: translateX(200%,0%);
-    -moz-transform: translateX(200%,0%);
-}
-img.move:hover{
-    transform:translateX(100%,0%);
-}
-
-div.logo:hover{
-transform: translateX(200%, 0%);
-} 
 .middle{
     position: inherit;
 }
@@ -258,7 +241,6 @@ footer{
 } */
 #requestDetails{
     display:none;
-    display:flex;
     flex-direction: column;
     width:20%;
     /* height:30%; */
