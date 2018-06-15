@@ -194,13 +194,12 @@ transform: translateX(200%, 0%);
 div.form{
     position: relative;
     border-radius: 2%;
-    width: 50%;
-    /* height: 100%; */
+    width: 40%;
     background-color:  rgb(228, 235, 235);
     padding:1% 4% 4% 4%;
     left:21%;
     margin:0;
-    top:100%;
+    top:90%;
 }
 input [type=text]{
     /* width:50%; */
@@ -240,7 +239,7 @@ footer{
     
 }
 #foot{
-    top:105%;
+    top:113%;
 }
 /* DASHBOARD */
 
