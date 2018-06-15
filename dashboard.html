@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Driver dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"  media="screen" href="Style/static/stylesheet.css" />
+</head>
+<body id = "bodySection">
+    <!-- navigation bar -->
+    <nav >
+        <!-- nav items -->
+        <!--logo  -->
+        <div class = "navitems">
+            <img class= "car" src="Style/static/Images/ride.jpg" alt="white car">               
+        </div>
+        <!-- side nav button -->
+        <div  class = "navitems">
+            <button class="Buttons" id="menu">Menu</button>
+        </div>
+        <!-- Request ride -->
+        <div class= "navitems request">
+            <button class="Buttons">REQUEST RIDE</button>
+        </div>
+        <!-- logout button -->
+        <div>
+            <button class="navitems Buttons">Log out</button>
+        </div>  
+    </nav>
+    <!-- /nav -->
+    <!-- map region -->
+        <div class="midsection">
+            <!-- add google map -->
+            <div id="map">
+            </div>
+        </div>
+        
+        <!-- ride details modal -->
+        <div class="requestDetails">
+            <input type="text" name="destination" >
+            <input type="text" name="location">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+        <!-- side nav modal -->
+        <div id="sidemodal">
+            <!-- closing side nav -->
+            <span id="sideclose" class="Close">&times;</span>
+            <!-- number of rides given -->
+            <div class="sidenav"><p>History</p></div> 
+            <!--geo location  -->
+            <div class="sidenav"> <p>My location</p></div>
+            <!-- table of available rides and details -->
+            <div class="sidenav"><p>Rides requests</p></div>
+            
+            <div class="sidenav"><p>settings</p></div>
+        </div>
+        <!-- table of requests -->
+        <div>
+            <table id="requestTable">
+                <tr>
+                    <p id="requests"> RIDE REQUESTS</p>
+                </tr>
+                <tr>
+                    <th>request ID</th>
+                    <th>request location</th>
+                    <th>request destination</th>
+                    <th>Accept / Reject</th>
+          
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Nairobi</td>
+                    <td>Mwiki</td>
+                    <td>
+                        <label class="accept">
+                            <input type="checkbox" checked>
+                            <span class="slide"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>kisumu</td>
+                    <td>Sweden</td>
+                    <td>
+                        <label class="accept">
+                            <input type="checkbox">
+                            <span class="slide"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>limuru</td>
+                    <td>thika</td>
+                    <td>
+                        <label class="accept">
+                            <input type="checkbox" checked>
+                            <span class="slide"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>kariobangi</td>
+                    <td>Jogoo road</td>
+                    <td>
+                        <label class="accept">
+                            <input type="checkbox" checked>
+                            <span class="slide"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>river road</td>
+                    <td>ukamabni</td>
+                    <td>
+                        <label class="accept">
+                            <input type="checkbox">
+                            <span class="slide"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>kajiado</td>
+                    <td>yemen</td>
+                    <td>
+                        <label class="accept">
+                            <input type="checkbox">
+                            <span class="slide"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>south soudan</td>
+                    <td>kiambu</td>
+                    <td>
+                        <label class="accept">
+                            <input type="checkbox">
+                            <span class="slide"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Kikuyu</td>
+                    <td>mombasa</td>
+                    <td>
+                        <label class="accept">
+                            <input type="checkbox">
+                            <span class="slide"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>roysa</td>
+                    <td>Maralal</td>
+                    <td>
+                        <label class="accept">
+                            <input type="checkbox">
+                            <span class="slide"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Marie Bertrand</td>
+                    <td>juja</td>
+                    <td>
+                        <label class="accept">
+                            <input type="checkbox">
+                            <span class="slide"></span>
+                        </label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- footer -->
+        <footer class= "footerSection">
+            @Naibor
+        </footer>
+        <!-- scripts -->
+         <!-- Google map function -->
+         <script>
+        function myMap(){
+            var mapOptions = {
+            center: new google.maps.LatLng(36.8219,1.2921),
+            zoom:10,
+            // mapTypeId: google.maps.mapTypeId.HYBRID
+        }
+            var map = new google.maps.Map(document.getElementById("map"),mapOptions);
+        }
+        </script>
+
+        <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBzHTc1S18dD3_eYLXMyh5DE2BqIwYcCo&callback=myMap"></script> -->
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfFbGGCCjP7TjGwhUIkzMWlkYoLctf2P8&callback=myMap"
+        type="text/javascript"></script>
+        <!-- <script src="Style/static/myjs.js"></script> -->
+    </body>
+    </html>
