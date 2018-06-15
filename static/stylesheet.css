@@ -170,7 +170,7 @@ transform: translateX(200%, 0%);
 /* close icon */
 .Close{
     cursor: pointer;
-    border-radius:100%;
+    border-radius:50%;
     background-color: white;
 }
 /* closing icon modal on hover */
@@ -250,11 +250,19 @@ footer{
     background-color: blanchedalmond !;
 }
 
+.requestDetails{
+    /* display:none; */
+    display:flex;
+    flex-direction: column;
+    width:30%;
+    height:30%;
 
+
+}
 
 #sidemodal{
     display:flex;
-    /* visibility:hidden; */
+    /* display:none; */
     flex-direction: column;
     background-color:rgb(228, 235, 235); 
     width:50%;
@@ -269,7 +277,7 @@ footer{
 .sidenav:hover{
     background-color: #ddd;
 }
-#sideclose{
+.Closes{
     background-color: black;
     color:white;
     width:50%;
@@ -282,10 +290,12 @@ p#requests{
     color:black;
 }
 #requestTable {
-    /* font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; */
+    width: 100%;
     border-collapse: collapse;
-    width: 100%;}
-
+}
+.Table{
+    display:none;
+}
 #requestTable td, #requestTable th {
     border: 1px solid #ddd;
     padding: 11px;
