@@ -35,10 +35,11 @@ closelogin.onclick=function(){
     loginmodal.style.display="none";
 }
 
-// menu button
+// menu button for side nav
 var sidenav = document.getElementById("sidemodal");
 function Open(){
     sidenav.style.display="block";
+    request.style.display="none"
 }
 
 // close side nav
@@ -50,16 +51,22 @@ function Close(){
 var request = document.getElementById("requestDetails");
 function Open(){
     request.style.display="block";
+    sidenav.style.display="none"
 }
 // close request details
 function Close(){
     request.style.display="none";
 }
 
-// request table
-var table =document.getElementsByClassName("requestTable");
+//driver ride request table
+var table = document.getElementsByClassName("Table");
 function Open(){
     table.style.display="block";
 }
 
 // close table
+function Close(){
+    table.style.display="none"
+}
+
+

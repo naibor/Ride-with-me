@@ -5,11 +5,9 @@ body{
     /* background-color:black; */
     /* stroke-opacity: inherit; */
 }
-/* nav */
-nav{
-    display:flex;
-    justify-content: space-between;
-}
+
+
+
 /* h2 */
 h2{
     text-decoration-line: underline;
@@ -250,19 +248,25 @@ footer{
     background-color: blanchedalmond !;
 }
 
-.requestDetails{
-    /* display:none; */
+.navitems{
+    display: flex;
+    justify-content: space-between;
+    width:50%;
+}
+/* #fit{
+    width:5%;
+} */
+#requestDetails{
+    display:none;
     display:flex;
     flex-direction: column;
-    width:30%;
-    height:30%;
-
-
+    width:20%;
+    /* height:30%; */
 }
 
 #sidemodal{
     display:flex;
-    /* display:none; */
+    display:none;
     flex-direction: column;
     background-color:rgb(228, 235, 235); 
     width:50%;
@@ -283,7 +287,8 @@ footer{
     width:50%;
     border-radius: 4%;
     align-content: center;
-    padding-left: 50%;
+    left:50%;
+    /* padding-left: 50%; */
 }
 /* request tables */
 p#requests{

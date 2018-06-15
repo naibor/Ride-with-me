@@ -9,25 +9,23 @@
 </head>
 <body id = "bodySection">
     <!-- navigation bar -->
-    <nav >
-        <!-- nav items -->
-        <!--logo  -->
-        <div class = "navitems">
-            <img class= "car" src="static/Images/ride.jpg" alt="white car">               
-        </div>
+    <div class=" logo">
+        <img class= "car" id="car"src="static/Images/ride.jpg" alt="white car">               
+        <div class="navitems">
         <!-- side nav button -->
-        <div  class = "navitems">
-            <button onclick="Open()" type="button" class="Buttons" id="menu">Menu</button>
-        </div>
-        <!-- Request ride -->
-        <div class= "navitems request">
-            <button onclick="Open()" type="button" class="Buttons">REQUEST RIDE</button>
-        </div>
-        <!-- logout button -->
-        <div>
-            <button class="navitems Buttons">Log out</button>
-        </div>  
-    </nav>
+            <div class= "request">
+                <button onclick="Open()" type="button" class="Buttons">REQUEST RIDE</button>
+            </div>
+            <div>
+                <button onclick="Open()" type="button" class="Buttons" id="menu">Menu</button>
+            </div>
+            <!-- Request ride -->
+            <!-- logout button -->
+            <div>
+                <button class="Buttons">Log out</button>
+            </div> 
+    </div> 
+    </div>
     <!-- /nav -->
     <!-- map region -->
         <div class="midsection">
@@ -39,8 +37,8 @@
         <!-- ride details modal -->
         <div id="requestDetails">
             <span onclick="Close()" class="Closes">&times;</span>
-            <input type="text" name="destination" >
-            <input type="text" name="location">
+            <input type="text" name="destination" placeholder="Enter Destination" >
+            <input type="text" name="location" placeholder="Enter Location">
             <button type="submit">Submit</button>
             <button type="reset">Reset</button>
         </div>
