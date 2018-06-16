@@ -208,10 +208,10 @@ img.car{
 .form{
     position: relative;
     border-radius: 2%;
-    width: 50%;
+    width: 40%;
     background-color:  rgb(228, 235, 235);
     padding:1% 4% 4% 4%;
-    left:21%;
+    left:26%;
     margin:0;
     top:90%;
 }
