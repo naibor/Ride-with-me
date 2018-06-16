@@ -173,7 +173,7 @@ p, h2{
     transform: translate(-50%, -50%);
     background-color: rgb(228, 235, 235);
     color:black;
-    padding:4% 5%;
+    padding:4% 3%;
     width: 33%;
     border-radius: 0.5rem;
 }
