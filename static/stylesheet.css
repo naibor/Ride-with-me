@@ -115,7 +115,7 @@ p, h2{
     width:30%;
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     position:relative;
     border-radius: 7%;
     padding: 10px 4px 0px 6px;
@@ -219,29 +219,30 @@ p, h2{
 }
 input[type=text]{
     /* width:50%; */
-    padding:8% 9% 1% 26%;
-    margin: 4% 0%;
+    padding:3% 3% 1% 18%;
+    margin: 3% 0%;
     display: inline-block;
     border: 2% solid black;
     border-radius: 2%;
     box-sizing: border-box;
 }
 input[type=submit]{
-    /* width:50%; */
-    /* background-color: orangered; */
     color: black;
-    padding: 5% 2% 0% 0%;
+    padding: 2% 8% 4% 26%;
     cursor: pointer;
     
-    
 }
+input[type=password]{
+    padding: 3% 3% 1% 18%;
+}
+
 input[type=submit]:hover{
     background-color: oldlace;
     
 }
-fieldset{
+fieldset#signingup{
     border-radius: 2%;
-    padding-left:33%;
+    padding-left:15%;
 }
 h3{
     align-content: center;
