@@ -36,15 +36,13 @@
             <!-- add google map -->
             <img id="googlemap" src="static/Images/map7.jpg"alt="google map" >
             
-        </div>
-        </div>
-        
+        </div>        
         <!-- ride details modal -->
         <div id="requestDetails">
-            <span onclick="Close()" class="ClosesColumn">&times;</span><br>
-            <input type="text" name="destination" placeholder="Enter Destination" ><br>
-            <input type="text" name="location" placeholder="Enter Location"><br><br>
-            <button class="SubmitButton" type="submit">Submit</button><br>
+            <span id="cancel" onclick="Close()" class="ClosesColumn">&times;</span><br>
+            <input id="ride" type="text" name="destination" placeholder="Enter Destination" ><br>
+            <input id="ride"type="text" name="location" placeholder="Enter Location"><br><br>
+            <button  class="SubmitButton" type="submit">Submit</button><br>
             <button class="SubmitButton" type="reset">Reset</button>
         </div>
         <!-- side nav modal -->
@@ -57,7 +55,7 @@
             <div class="sidenav"> <p>My location</p></div>
             <!-- table of available rides and details -->
             <div class="sidenav">
-                <button id="RequestButton" class="Buttons" onclick="Open()" type="button"> Requests</button>
+                <button id="RequestButton" class="Buttons" onclick="Openrequests()" type="button"> Requests</button>
             </div>
             
             <div class="sidenav"><p>settings</p></div>
@@ -66,11 +64,12 @@
             @Naibor
         </footer>
         <!-- table of requests modal -->
-        <div class="Table">
-            <span onclick="Close()" class="Closes">&times;</span>
-            <table id="requestTable">
-                <tr>
-                <p id="request~s"> OFFER RIDE</p>
+        <div id="requestTable" >
+            <span onclick="Closetable()" class="ClosesColumn">&times;</span>
+            <table id="Table">
+                <tr>    
+                    <p id="requests">RIDE REQUESTS </p>
+                    <span onclick="Closetable()" class="ClosesColumn">&times;</span>
                 </tr>
                 <tr>
                     <th>request ID</th>
@@ -190,8 +189,10 @@
                     </td>
                 </tr>
             </table>
-        </div>
-        <!-- footer -->
+        </div>    
+            <!-- user table -->
+
+        
         <!-- scripts -->
         <script src="static/myjs.js"></script>
 
