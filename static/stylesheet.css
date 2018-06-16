@@ -204,17 +204,18 @@ p, h2{
     padding-top:3%;
     text-align:center;
 }
+/* close icon request details */
 #cancel.ClosesColumn{
     width:100%;
     position:absolute;
 }
 #requestTable .ClosesColumn{
-    width: 22.6%;
+    width: 19.6%;
     position: absolute;
-    left:92%;
-    top:1%;
+    left:95.5%;
+    top:45%;
     padding:2%;
-
+    
 }
 .ClosesColumn:hover{
     background-color:rgb(34, 31, 31);
@@ -278,192 +279,189 @@ footer{
     background-size: cover;
     position: absolute;
     z-index: 0;
-
+    
 }
 
 /* #bodysection{ */
     /* background-image:url("static/Images/map7.jpg"); */
-/* } */
-
-.navitems{
-    display: flex;
-    justify-content: space-around;
-    width:56.7%;
-}
-/* #fit{
-    width:5%;
-} */
-div#requestDetails{
-    background-color: #ddd;
-    z-index: 3;
-}
-#requestDetails{
-    display:none;
-    flex-direction: column;
-    width:20%;
-    position: relative;
-    left:50%;
-    border-radius:3%;
-    margin:0%;
-
-}
-
-#sidemodal{
-    position: absolute;
-    display:none;
-    flex-direction: column;
-    background-color:rgb(228, 235, 235); 
-    width:18%;
-    /* color: black; */
-    z-index: 4;
-    top:8%;
-}
-#RequestButton{
-    width:100%;
-<<<<<<< HEAD
-    padding: -1% 2% 6% 2%;
-=======
-    /* padding: -1% 2% 6% 2%; */
->>>>>>> ft-view-requests-158239763
-    font-family: Andika;
-    font-size: 136%;
-
-}
-.CloseRequest{
-    width:20%;
-}
-.sidenav{
-    width:100%;
-    height:10%;
-    background-color:rgba(0, 0, 0, 0.37);
-}
-.sidenav:hover{
-    background-color: #ddd;
-}
-#sideclose{
-    background-color: black;
-    color:white;
-    width:50%;
-    border-radius: 4%;
-    align-content: center;
-    left:50%;
-    /* padding-left: 50%; */
-}
-/* request tables */
-
-/* .Table{
-    display:none;
-} */
-#requestTable{
-    display:none;
-    width:535px;
-    position: absolute;
-    /* bottom:61%; */
-    top:16%;
-    left:20%;
-    /* background-color: grey; */
-}
-/* styling table heading */
-p#requests{
-    color:black;
-    width:30%;
-    margin:0;
-    margin-left:23%;
-}
-
-/* #Table {
-    border-collapse: collapse;
-    width: 100%;} */
-
-#Table td, #requestTable th {
-    border: 1px solid #ddd;
-    padding: 7px;
-    width: 13%;
-}
-#Table tr:nth-child(even){background-color: #f2f2f2;}
-#Table tr:nth-child(odd){background-color: aqua;}
-#Table tr:hover {background-color: rgb(129, 118, 118);}
-
-#Table{
-    padding-top: 2px;
-    /* display:none; */
-    padding-bottom: 12px;
-    text-align: left;
-    position: absolute;
-    left: 19%;
-
-    background-color: rgba(0, 0, 0, 0.37);
-    color:black;
-    width:inherit;
-}
-/* acceptance/rejection button */
-td label.accept{
-    padding: 0%;
-}
-.accept{
-    position: relative;
-    border-radius: 2%;
-    /* width: 50%; */
-    /* height: 100%; */
-    background-color:  rgb(228, 235, 235);
-    /* padding:1% 4% 4% 4%; */
-    left:8%;
-    margin:0;
-    top:100%;
-}
-input [type=text]{
-    /* width:50%; */
-    padding:2% 4%;
-    margin: 1% 0%;
-    display: inline-block;
-    border: 2% solid black;
-    border-radius: 2%;
-    box-sizing: border-box;
-}
-input [type=submit]{
-    /* width:50%; */
-    /* background-color: orangered; */
-    color: black;
-    padding: 5% 2%;
-    cursor: pointer;
+    /* } */
     
+    .navitems{
+        display: flex;
+        justify-content: space-around;
+        width:56.7%;
+    }
+    /* #fit{
+        width:5%;
+    } */
+    div#requestDetails{
+        background-color: #ddd;
+        z-index: 3;
+    }
+    #requestDetails{
+        display:none;
+        flex-direction: column;
+        width:20%;
+        position: relative;
+        left:50%;
+        border-radius:3%;
+        margin:0%;
+        
+    }
     
-}
-input[type=submit]:hover{
-    background-color: oldlace;
+    #sidemodal{
+        position: absolute;
+        display:none;
+        flex-direction: column;
+        background-color:rgb(228, 235, 235); 
+        width:18%;
+        /* color: black; */
+        z-index: 4;
+        top:6%;
+    }
+    #RequestButton{
+        width:100%;
+        padding: -1% 2% 6% 2%;
+        font-family: Andika;
+        font-size: 136%;
+        
+    }
+    .CloseRequest{
+        width:20%;
+    }
+    .sidenav{
+        width:100%;
+        height:10%;
+        background-color:rgba(0, 0, 0, 0.37);
+    }
+    .sidenav:hover{
+        background-color: #ddd;
+    }
+    #sideclose{
+        background-color: black;
+        color:white;
+        width:50%;
+        border-radius: 4%;
+        align-content: center;
+        left:50%;
+        /* padding-left: 50%; */
+    }
+    /* request tables */
     
-}
-fieldset{
-    border-radius: 2%;
-    padding-left:33%;
-}
-h3{
-    align-content: center;
-}
-footer{
-    background-color: black;
-    color:white;
-    position: absolute;
-    width:100%;
-    top:100%;
+    /* .Table{
+        display:none;
+    } */
+    #requestTable{
+        display:none;
+        width:535px;
+        position: absolute;
+        /* bottom:61%; */
+        top:16%;
+        left:20%;
+        /* background-color: grey; */
+    }
+    /* styling table heading */
+    p#requests{
+        color:black;
+        text-decoration: underline;
+        width:30%;
+        margin:0;
+        margin-left:23%;
+    }
     
-}
-#foot{
-    top:105%;
-}
-
-.slide{
-    position: absolute;
-    cursor: pointer;
-    border-radius: 34%;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    background-color: rgba(51, 45, 38, 0.37);
-    -webkit-transition: .5s;
+    /* #Table {
+        border-collapse: collapse;
+        width: 100%;} */
+        
+        #Table td, #requestTable th {
+            border: 1px solid #ddd;
+            padding: 7px;
+            width: 13%;
+        }
+        #Table tr:nth-child(even){background-color: #f2f2f2;}
+        #Table tr:nth-child(odd){background-color: aqua;}
+        #Table tr:hover {background-color: rgb(129, 118, 118);}
+        
+        #Table{
+            padding-top: 1px;
+            /* display:none; */
+            padding-bottom: 12px;
+            text-align: left;
+            position: absolute;
+            left: 10%;
+            
+            background-color: rgba(0, 0, 0, 0.37);
+            color:black;
+            width:inherit;
+        }
+        /* acceptance/rejection button */
+        td label.accept{
+            padding: 0%;
+        }
+        .accept{
+            position: relative;
+            border-radius: 2%;
+            /* width: 50%; */
+            /* height: 100%; */
+            background-color:  rgb(228, 235, 235);
+            /* padding:1% 4% 4% 4%; */
+            left:8%;
+            margin:0;
+            top:100%;
+        }
+        input [type=text]{
+            /* width:50%; */
+            padding:2% 4%;
+            margin: 1% 0%;
+            display: inline-block;
+            border: 2% solid black;
+            border-radius: 2%;
+            box-sizing: border-box;
+        }
+        input [type=submit]{
+            /* width:50%; */
+            /* background-color: orangered; */
+            color: black;
+            padding: 5% 2%;
+            cursor: pointer;
+            
+            
+        }
+        input[type=submit]:hover{
+            background-color: oldlace;
+            
+        }
+        fieldset{
+            border-radius: 2%;
+            padding-left:33%;
+        }
+        h3{
+            align-content: center;
+        }
+        footer{
+            background-color: black;
+            color:white;
+            position: absolute;
+            width:100%;
+            top:100%;
+            
+        }
+        #foot{
+            top:105%;
+        }
+        
+        .slide{
+            position: absolute;
+            cursor: pointer;
+            border-radius: 34%;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            background-color: rgba(51, 45, 38, 0.37);
+            -webkit-transition: .5s;
     transition: .5s;
-
+    
 }
 .slide:before{
     position:absolute;
@@ -516,26 +514,31 @@ div#requestRide{
     left:50%;
     border-radius:3%;
     margin:0%;
-
+    
 }
 
 #UsersideModal{
     display:none;
     flex-direction: column;
     background-color:rgb(228, 235, 235); 
-    width:18%;
+    width:20%;
     position: relative;
-    left:1%;
+    /* left:1%; */
     color: black;
-    padding-top:1%;
+    /* padding-top:1%; */
 }
 #UsersideModal .ClosesColumn{
     width:100%;
     text-align: center;
 }
-#requestRide .ClosesColumn{
+/* #requestRide .ClosesColumn{
     width:100%;
     text-align: center;
+} */
+/* close icon user view ride details */
+#cancel1.ClosesColumn{
+    width: 100%;
+    position: absolute;
 }
 /* ride tables */
 /* .Ridetable{ */
@@ -551,9 +554,17 @@ div#requestRide{
 /* available ride table */
 #RidesTable{
     display: none;
-    width:72%;
+    width:769px;
     position: absolute;
-    bottom:-2%;
-    padding: 0% 1% 2% 0%;
-    left:19%;
+    top:16%;
+    /* padding: 0% 1% 2% 0%; */
+    left: 20%;
+}
+.CloseColumn{
+    /* width: 100%; */
+    position: absolute;
+    /* text-align: center; */
+    padding: 1% 9.5% 2% 9%;
+    left: 89.9%;
+    background-color: grey;
 }

@@ -34,14 +34,14 @@
     <!-- map region -->
         <div id="map">
             <!-- add google map -->
-            <!-- <img id="googlemap" src="static/Images/map7.jpg"alt="google map" > -->
+            <img id="googlemap" src="static/Images/map7.jpg"alt="google map" >
             
         </div>
         </div>
         
         <!-- ride details modal -->
         <div id="requestRide">
-            <span onclick="Closeride()" class="ClosesColumn">&times;</span><br>
+            <span id= "cancel1" onclick="Closeride()" class="ClosesColumn">&times;</span><br>
             <input type="text" name="destination" placeholder="Enter Destination" ><br>
             <input type="text" name="location" placeholder="Enter Location"><br><br>
             <button class="SubmitButton" type="submit">Submit</button><br><br>
@@ -61,12 +61,13 @@
             </div>
             <div class="sidenav"><p>settings</p></div>
         </div>
-        <footer class= "footerSection">
+        <!-- footer -->
+        <footer>
             @Naibor
         </footer>
-        <!-- user table -->
+        <!-- user table modal -->
         <div id ="RidesTable" >
-            <span onclick="closeRides()" class="ClosesColumn">&times;</span>
+            <span onclick="closeRides()" class="CloseColumn">&times;</span>
                 <table id="Table">
                     <tr>
                         <p id="requests"> AVAILABLE RIDES</p>
@@ -153,10 +154,7 @@
                     </tr>
                     
                 </table>
-        <!-- footer -->
-        <footer>
-            @Naibor
-        </footer>
+        
         <!-- scripts -->
         <script src="static/myjs.js"></script>
         
