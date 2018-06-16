@@ -209,11 +209,11 @@ p, h2{
     position:absolute;
 }
 #requestTable .ClosesColumn{
-    width: 13.6%;
+    width: 22.6%;
     position: absolute;
-    left:65%;
-    top:-23%;
-    padding: 1%;
+    left:92%;
+    top:1%;
+    padding:2%;
 
 }
 .ClosesColumn:hover{
@@ -352,17 +352,18 @@ div#requestDetails{
 } */
 #requestTable{
     display:none;
-    width:62%;
+    width:535px;
     position: absolute;
     /* bottom:61%; */
     top:16%;
-    left:17%;
+    left:20%;
+    /* background-color: grey; */
 }
 p#requests{
     color:black;
-    width:20%;
+    width:30%;
     margin:0;
-    margin-left:20%;
+    margin-left:23%;
 }
 
 /* #Table {
@@ -375,7 +376,8 @@ p#requests{
     width: 13%;
 }
 #Table tr:nth-child(even){background-color: #f2f2f2;}
-#Table tr:hover {background-color: #ddd;}
+#Table tr:nth-child(odd){background-color: aqua;}
+#Table tr:hover {background-color: rgb(129, 118, 118);}
 
 #Table{
     padding-top: 2px;
