@@ -455,3 +455,35 @@ input:checked + .slide{
     position:absolute;
     z-index: 0;
 } */
+
+/* USER DASHBOARD */
+div#requestRide{
+    background-color: #ddd;
+    z-index: 3;
+}
+#requestRide{
+    display:none;
+    flex-direction: column;
+    width:20%;
+    /* height:30%; */
+    position: relative;
+    left:50%;
+    border-radius:3%;
+    margin:0%;
+
+}
+
+#UsersideModal{
+    /* display:flex; */
+    display:none;
+    flex-direction: column;
+    background-color:rgb(228, 235, 235); 
+    width:18%;
+    /* height:50%; */
+    color: black;
+}
+/* ride tables */
+.Ridetable{
+    display:none;
+    width:40%;
+}

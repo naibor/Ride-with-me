@@ -6,9 +6,10 @@ var closesignup = document.getElementById("CloseSignUp");
 var closelogin =document.getElementById("CloseLogIn");
 var menu =document.getElementById("menu");
 var sidenav = document.getElementById("sidemodal");
-// var closesidenav = document.getElementsByClassName("Closes")[2];
-var details = document.getElementById("requestDetails")
-// var closedetails = document.getElementsByClassName("Closes")[3];
+var details = document.getElementById("requestDetails");
+var UserSideNav =document.getElementById("UsersideModal");
+var ridedetails = document.getElementById("requestRide");
+
 // signing up 
 signup.onclick = function(){
     signupmodal.style.display="block";
@@ -50,7 +51,30 @@ function Open(){
 function Close(){
     details.style.display="none";
     
-}   
+} 
+// close side nav driver  
 function CloseMenu(){
     sidenav.style.display="none";
 }
+
+// user sidenav
+// open side nav 
+function Openside(){
+    UserSideNav.style.display="flex";
+    ridedetails.style.display="none";
+}
+// close user side nav
+function Closeside(){
+    UserSideNav.style.display="none";
+}
+
+// open ride request
+function Openride(){
+    ridedetails.style.display="block";
+    UserSideNav.style.display="none";
+}
+// closing ride request
+function Closeride(){
+    ridedetails.style.display="none";
+}
+
