@@ -41,7 +41,7 @@
         
         <!-- ride details modal -->
         <div id="requestDetails">
-            <span onclick="Close()" class="ClosesColumn">&times;</span><br>
+            <span id="cancel" onclick="Close()" class="ClosesColumn">&times;</span><br>
             <input id="ride" type="text" name="destination" placeholder="Enter Destination" ><br>
             <input id="ride"type="text" name="location" placeholder="Enter Location"><br><br>
             <button  class="SubmitButton" type="submit">Submit</button><br>
@@ -67,10 +67,11 @@
         </footer>
         <!-- table of requests modal -->
         <div id="requestTable" class="Table">
-            <span onclick="Closetable()" class="ClosesColumn">&times;</span>
+            
             <table id="Table">
-                <tr>
-                <p id="requests"> OFFER RIDE</p>
+                <tr>    
+                    <p id="requests">OFFER RIDE </p>
+                    <span onclick="Closetable()" class="ClosesColumn">&times;</span>
                 </tr>
                 <tr>
                     <th>request ID</th>

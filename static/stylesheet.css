@@ -198,10 +198,22 @@ p, h2{
 }
 
 .ClosesColumn{
-    width:18%;
+    width:100%;
     background-color:grey;
+    position: relative;
+    padding-top:3%;
+    text-align:center;
+}
+#cancel.ClosesColumn{
+    width:100%;
+    position:absolute;
+}
+#requestTable .ClosesColumn{
+    width: 13.6%;
     position: absolute;
-    top:1%;
+    left:65%;
+    top:-23%;
+    padding: 1%;
 
 }
 .ClosesColumn:hover{
@@ -297,20 +309,24 @@ div#requestDetails{
 }
 
 #sidemodal{
-    
+    position: absolute;
     display:none;
     flex-direction: column;
     background-color:rgb(228, 235, 235); 
     width:18%;
-    color: black;
+    /* color: black; */
     z-index: 4;
+    top:8%;
 }
 #RequestButton{
     width:100%;
-    padding: 3% 2% 6% 2%;
+    /* padding: -1% 2% 6% 2%; */
     font-family: Andika;
     font-size: 136%;
 
+}
+.CloseRequest{
+    width:20%;
 }
 .sidenav{
     width:100%;
@@ -336,17 +352,22 @@ div#requestDetails{
 } */
 #requestTable{
     display:none;
-    width:80%;
+    width:62%;
     position: absolute;
-    bottom:18%;
-    left:19%;
+    /* bottom:61%; */
+    top:16%;
+    left:17%;
 }
 p#requests{
     color:black;
+    width:20%;
+    margin:0;
+    margin-left:20%;
 }
-#Table {
+
+/* #Table {
     border-collapse: collapse;
-    width: 100%;}
+    width: 100%;} */
 
 #Table td, #requestTable th {
     border: 1px solid #ddd;
@@ -357,12 +378,16 @@ p#requests{
 #Table tr:hover {background-color: #ddd;}
 
 #Table{
-    padding-top: 12px;
+    padding-top: 2px;
     /* display:none; */
     padding-bottom: 12px;
     text-align: left;
+    position: absolute;
+    left: 19%;
+
     background-color: rgba(0, 0, 0, 0.37);
     color:black;
+    width:inherit;
 }
 /* acceptance/rejection button */
 td label.accept{
