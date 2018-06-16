@@ -10,8 +10,8 @@ var details = document.getElementById("requestDetails");
 var UserSideNav =document.getElementById("UsersideModal");
 var ridedetails = document.getElementById("requestRide");
 // tables
-var tablerequests = document.getElementById("requestTable")
-
+var tablerequests = document.getElementById("requestTable");
+var availablerides = document.getElementById("RidesTable")
 // signing up 
 // signup.onclick = function(){
 //     signupmodal.style.display="block";
@@ -93,4 +93,15 @@ function Openrequests(){
 function Closetable(){
     tablerequests.style.display="none";
     ridedetails.style.display="none";
+}
+// open available rides
+function OpenRides(){
+    availablerides.style.display="block";
+    ridedetails.style.display="none";  
+
+}
+// close available rides
+function CloseRides(){
+    availablerides.style.display="none"
+    
 }
