@@ -198,10 +198,22 @@ p, h2{
 }
 
 .ClosesColumn{
-    width:18%;
+    width:100%;
     background-color:grey;
+    position: relative;
+    padding-top:3%;
+    text-align:center;
+}
+#cancel.ClosesColumn{
+    width:100%;
+    position:absolute;
+}
+#requestTable .ClosesColumn{
+    width: 22.6%;
     position: absolute;
+    left:92%;
     top:1%;
+    padding:2%;
 
 }
 .ClosesColumn:hover{
@@ -297,20 +309,28 @@ div#requestDetails{
 }
 
 #sidemodal{
-    
+    position: absolute;
     display:none;
     flex-direction: column;
     background-color:rgb(228, 235, 235); 
     width:18%;
-    color: black;
+    /* color: black; */
     z-index: 4;
+    top:8%;
 }
 #RequestButton{
     width:100%;
+<<<<<<< HEAD
     padding: -1% 2% 6% 2%;
+=======
+    /* padding: -1% 2% 6% 2%; */
+>>>>>>> ft-view-requests-158239763
     font-family: Andika;
     font-size: 136%;
 
+}
+.CloseRequest{
+    width:20%;
 }
 .sidenav{
     width:100%;
@@ -336,18 +356,24 @@ div#requestDetails{
 } */
 #requestTable{
     display:none;
-    width:80%;
+    width:535px;
     position: absolute;
-    bottom:18%;
-    left:19%;
+    /* bottom:61%; */
+    top:16%;
+    left:20%;
+    /* background-color: grey; */
 }
 /* styling table heading */
 p#requests{
     color:black;
+    width:30%;
+    margin:0;
+    margin-left:23%;
 }
-#Table {
+
+/* #Table {
     border-collapse: collapse;
-    width: 100%;}
+    width: 100%;} */
 
 #Table td, #requestTable th {
     border: 1px solid #ddd;
@@ -355,15 +381,20 @@ p#requests{
     width: 13%;
 }
 #Table tr:nth-child(even){background-color: #f2f2f2;}
-#Table tr:hover {background-color: #ddd;}
+#Table tr:nth-child(odd){background-color: aqua;}
+#Table tr:hover {background-color: rgb(129, 118, 118);}
 
 #Table{
-    padding-top: 12px;
+    padding-top: 2px;
     /* display:none; */
     padding-bottom: 12px;
     text-align: left;
+    position: absolute;
+    left: 19%;
+
     background-color: rgba(0, 0, 0, 0.37);
     color:black;
+    width:inherit;
 }
 /* acceptance/rejection button */
 td label.accept{
