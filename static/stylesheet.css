@@ -422,8 +422,8 @@ div#requestDetails{
         display:none;
         width:535px;
         position: absolute;
-        top:16%;
-        left:20%;
+        top:5%;
+        left:24%;
     }
 
     /* styling table heading */
@@ -638,9 +638,9 @@ div#requestRide{
     display: none;
     width:769px;
     position: absolute;
-    top:16%;
+    top:7%;
     /* padding: 0% 1% 2% 0%; */
-    left: 20%;
+    left: 24%;
 }
 .CloseColumn{
     /* width: 100%; */
