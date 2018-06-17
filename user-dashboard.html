@@ -39,8 +39,8 @@
         <!-- ride details modal -->
         <div id="requestRide">
             <span id= "cancel1" onclick="Closeride()" class="ClosesColumn">&times;</span><br>
-            <input type="text" name="destination" placeholder="Enter Destination" ><br>
-            <input type="text" name="location" placeholder="Enter Location"><br><br>
+            <input id="location" type="text" name="destination" placeholder="Enter Destination" ><br>
+            <input id="location" type="text" name="location" placeholder="Enter Location"><br><br>
             <button class="SubmitButton" type="submit">Submit</button><br><br>
             <button class="SubmitButton" type="reset">Reset</button>
         </div>
@@ -64,10 +64,10 @@
         </footer>
         <!-- user table modal -->
         <div id ="RidesTable" >
-            <span onclick="closeRides()" class="CloseColumn">&times;</span>
+            <span id = "col" onclick="CloseRides()" class="CloseColumn">&times;</span>
                 <table id="Table">
                     <tr>
-                        <p id="requests"> AVAILABLE RIDES</p>
+                        <p id="available"> AVAILABLE RIDES</p>
                     </tr>
                     <tr>
                         <th>ride ID</th>
