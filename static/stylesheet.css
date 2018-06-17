@@ -24,7 +24,6 @@ h2{
 }
 #heading{
     width:100px;
-    background-color:red;
 }
 /* p and h2 */
 p,{
@@ -363,209 +362,202 @@ div#requestDetails{
         
     }
     
-    #sidemodal{
-        position: absolute;
-        display:none;
-        flex-direction: column;
-        background-color:rgb(228, 235, 235); 
-        width:18%;
-        /* color: black; */
-        z-index: 4;
-        top:6%;
-    }
-    #RequestButton{
-        width:100%;
-        padding: -1% 2% 6% 2%;
-        font-family: 'Droid Serif', Georgia, Times, serif;
-        font-size: 136%;
-        
-    }
-    .CloseRequest{
-        width:20%;
-    }
-    .sidenav{
-        width:100%;
-        height:10%;
-        border-radius: 2%;
-        background-color:rgba(0, 0, 0, 0.37);
-    }
-    .sidenav p{
-        border-radius: 2%;
-        text-align: center;
-        background-color: #ddd;
-        font-family: 'Droid Serif', Georgia, Times, serif;
-        padding:10px;
-        font-size: 134%;
-        cursor: pointer;
-        margin: 0;
+#sidemodal{
+    position: absolute;
+    display:none;
+    flex-direction: column;
+    background-color:rgb(228, 235, 235); 
+    width:18%;
+    /* color: black; */
+    z-index: 4;
+    top:6%;
+}
+#RequestButton{
+    width:100%;
+    padding: -1% 2% 6% 2%;
+    font-family: 'Droid Serif', Georgia, Times, serif;
+    font-size: 136%;
+    
+}
+.CloseRequest{
+    width:20%;
+}
+.sidenav{
+    width:100%;
+    height:10%;
+    border-radius: 2%;
+    background-color:rgba(0, 0, 0, 0.37);
+}
+.sidenav p{
+    border-radius: 2%;
+    text-align: center;
+    background-color: #ddd;
+    font-family: 'Droid Serif', Georgia, Times, serif;
+    padding:10px;
+    font-size: 134%;
+    cursor: pointer;
+    margin: 0;
 
-    }
+}
 
-    .sidenav:hover{
-        background-color: #ddd;
-    }
-    #sideclose{
-        background-color: black;
-        color:white;
-        width:50%;
-        border-radius: 4%;
-        align-content: center;
-        left:50%;
-        /* padding-left: 50%; */
-    }
+.sidenav:hover{
+    background-color: #ddd;
+}
+#sideclose{
+    background-color: black;
+    color:white;
+    width:50%;
+    border-radius: 4%;
+    align-content: center;
+    left:50%;
+}
     /* request tables */
     
-    /* .Table{
-        display:none;
-    } */
-    #requestTable{
-        display:none;
-        width:535px;
-        position: absolute;
-        top:5%;
-        left:24%;
-    }
+#requestTable{
+    display:none;
+    width:535px;
+    position: absolute;
+    top:5%;
+    left:24%;
+}
 
-    /* styling table heading */
-    p#requests{
-        color:black;
-        text-decoration: underline;
-        background-color:grey;
-        width:77%;
-        padding:2%;
-        margin:0%;
+/* styling table heading */
+p#requests{
+    color:black;
+    text-decoration: underline;
+    background-color:grey;
+    width:77%;
+    padding:2%;
+    margin:0%;
+}
+p#available{
+    color:black;
+    text-decoration: underline;
+    background-color:grey;
+    width:77%;
+    padding:2%;
+    margin:0%;
+}
+
+#col.CloseColumn{
+    left:80%;
+    padding-bottom: 3%;
+}
+
+    
+#Table td, #requestTable th {
+    border: 1px solid #ddd;
+    padding: 7px;
+    width: 13%;
+}
+#Table tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+#Table tr:nth-child(odd){
+    background-color: grey;
+}
+#Table tr:hover {
+    background-color: rgb(129, 118, 118);
+}
+
+#Table{
+    padding-bottom: 12px;
+    text-align: left;
+    position: absolute;
+    left: 0%;
+    
+    background-color: rgba(0, 0, 0, 0.37);
+    color:black;
+    width:inherit;
+}
+/* acceptance/rejection button */
+td label.accept{
+    padding: 0%;
+}
+
+input [type=text]{
+    padding:2% 4%;
+    margin: 1% 0%;
+    display: inline-block;
+    border: 2% solid black;
+    border-radius: 2%;
+    box-sizing: border-box;
+}
+    input [type=submit]{
+        color: black;
+        padding: 5% 2%;
+        cursor: pointer;
+         
     }
- p#available{
-        color:black;
-        text-decoration: underline;
-        background-color:grey;
-        width:77%;
-        padding:2%;
-        margin:0%;
+    input[type=submit]:hover{
+        background-color: oldlace;
+        
+    }
+    fieldset{
+        border-radius: 2%;
+        padding-left:18%;
+        position: unset;
+        margin-top: 3%;
+
+    }
+~    h3{
+        align-content: center;
+        padding: 0;
+        margin:0;
+    }
+    footer{
+        background-color: black;
+        color:white;
+        position: absolute;
+        width:100%;
+        top:100%;
+        
+    }
+    #foot{
+        top:105%;
     }
     
-    #col.CloseColumn{
-        left:80%;
-        padding-bottom: 3%;
+td input[type=checkbox]{
+        height: 0;
+        width: 0;
+        visibility: hidden;
     }
-    /* #Table {
-        border-collapse: collapse;
-        width: 100%;} */
-        
-        #Table td, #requestTable th {
-            border: 1px solid #ddd;
-            padding: 7px;
-            width: 13%;
-        }
-        #Table tr:nth-child(even){background-color: #f2f2f2;}
-        #Table tr:nth-child(odd){background-color: grey;}
-        #Table tr:hover {background-color: rgb(129, 118, 118);}
-        
-        #Table{
-            /* padding-top: 1px; */
-            /* display:none; */
-            padding-bottom: 12px;
-            text-align: left;
-            position: absolute;
-            left: 0%;
-            
-            background-color: rgba(0, 0, 0, 0.37);
-            color:black;
-            width:inherit;
-        }
-        /* acceptance/rejection button */
-        td label.accept{
-            padding: 0%;
-        }
+    
+td label {
+        cursor: pointer;
+        text-indent: -9999px;
+        width: 90%;
+        height: 85%;
+        background: grey;
+        display: block;
+        border-radius: 100px;
+        position: relative;
+    }
+    
+td label:after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 4px;
+    width: 34%;
+    height: 80%;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.1s;
+}
 
+td input:checked + label {
+    background: black;
+}
 
-        input [type=text]{
-            /* width:50%; */
-            padding:2% 4%;
-            margin: 1% 0%;
-            display: inline-block;
-            border: 2% solid black;
-            border-radius: 2%;
-            box-sizing: border-box;
-        }
-        input [type=submit]{
-            /* width:50%; */
-            /* background-color: orangered; */
-            color: black;
-            padding: 5% 2%;
-            cursor: pointer;
-            
-            
-        }
-        input[type=submit]:hover{
-            background-color: oldlace;
-            
-        }
-        fieldset{
-            border-radius: 2%;
-            padding-left:18%;
-            position: unset;
-            margin-top: 3%;
-
-        }
-        h3{
-            align-content: center;
-            padding: 0;
-            margin:0;
-        }
-        footer{
-            background-color: black;
-            color:white;
-            position: absolute;
-            width:100%;
-            top:100%;
-            
-        }
-        #foot{
-            top:105%;
-        }
-        
-        input[type=checkbox]{
-            height: 0;
-            width: 0;
-            visibility: hidden;
-        }
-        
-        label {
-            cursor: pointer;
-            text-indent: -9999px;
-            width: 90%;
-            height: 85%;
-            background: grey;
-            display: block;
-            border-radius: 100px;
-            position: relative;
-        }
-        
-        label:after {
-            content: '';
-            position: absolute;
-            top: 1px;
-            left: 4px;
-            width: 34%;
-            height: 80%;
-            background: #fff;
-            border-radius: 90px;
-            transition: 0.1s;
-        }
-        
-        input:checked + label {
-            background: black;
-        }
-        
-        input:checked + label:after {
-            left: calc(100% - 5px);
-            transform: translateX(-90%);
-        }
-        
-        label:active:after {
-            width: 100px;
-        }
+td input:checked + label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-90%);
+}
+    
+td label:active:after {
+    width: 100px;
+}
 
 .midsection{
     background-color:white;
@@ -590,7 +582,6 @@ div#requestRide{
     display:none;
     flex-direction: column;
     width:20%;
-    /* height:30%; */
     position: relative;
     left:50%;
     border-radius:3%;
@@ -604,32 +595,23 @@ div#requestRide{
     background-color:rgb(228, 235, 235); 
     width:20%;
     position: relative;
-    /* left:1%; */
     color: black;
-    /* padding-top:1%; */
+ 
 }
 #UsersideModal .ClosesColumn{
     width:100%;
     text-align: center;
 }
-/* #requestRide .ClosesColumn{
-    width:100%;
-    text-align: center;
-} */
+
 /* close icon user view ride details */
 #cancel1.ClosesColumn{
     width: 100%;
     position: absolute;
 }
-/* ride tables */
-/* .Ridetable{ */
-    /* display:none; */
-    /* width:40%; */
-/* } */
+
 /* request/offer ride input */
- input#ride[type=text]{
-    /* width:100%; */
-    padding:7% 35% 4% 1%;
+input#ride[type=text]{
+padding:7% 35% 4% 1%;
 
 }
 
