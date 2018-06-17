@@ -39,8 +39,8 @@
         <!-- ride details modal -->
         <div id="requestRide">
             <span id= "cancel1" onclick="Closeride()" class="ClosesColumn">&times;</span><br>
-            <input type="text" name="destination" placeholder="Enter Destination" ><br>
-            <input type="text" name="location" placeholder="Enter Location"><br><br>
+            <input id="location" type="text" name="destination" placeholder="Enter Destination" ><br>
+            <input id="location" type="text" name="location" placeholder="Enter Location"><br><br>
             <button class="SubmitButton" type="submit">Submit</button><br><br>
             <button class="SubmitButton" type="reset">Reset</button>
         </div>
@@ -59,15 +59,15 @@
             <div class="sidenav"><p>settings</p></div>
         </div>
         <!-- footer -->
-        <footer>
+        <footer id="foo">
             @Naibor
         </footer>
         <!-- user table modal -->
         <div id ="RidesTable" >
-            <span onclick="closeRides()" class="CloseColumn">&times;</span>
+            <span id = "col" onclick="CloseRides()" class="CloseColumn">&times;</span>
                 <table id="Table">
                     <tr>
-                        <p id="requests"> AVAILABLE RIDES</p>
+                        <p id="available"> AVAILABLE RIDES</p>
                     </tr>
                     <tr>
                         <th>ride ID</th>
@@ -83,10 +83,11 @@
                         <td>Mwiki</td>
                         <td>Kamau</td>
                         <td>
-                            <label class="accept">
+                            <!-- <label class="accept">
                                 <input type="checkbox" checked>
                                 <span class="slide"></span>
-                            </label>
+                            </label> -->
+                            <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
                         </td>
                     </tr>
                     <tr>
@@ -95,10 +96,7 @@
                         <td>Sweden</td>
                         <td>Kamau</td>
                         <td>
-                            <label class="accept">
-                                <input type="checkbox">
-                                <span class="slide"></span>
-                            </label>
+                            <input type="checkbox" id="switch1" /><label for="switch1">Toggle</label>
                         </td>
                     </tr>
                     <tr>
@@ -107,10 +105,7 @@
                         <td>thika</td>
                         <td>Kamau</td>
                         <td>
-                            <label class="accept">
-                                <input type="checkbox" checked>
-                                <span class="slide"></span>
-                            </label>
+                            <input type="checkbox" id="switch2" /><label for="switch2">Toggle</label>
                         </td>
                     </tr>
                     <tr>
@@ -119,10 +114,7 @@
                         <td>Jogoo road</td>
                         <td>Kamau</td>
                         <td>
-                            <label class="accept">
-                                <input type="checkbox" checked>
-                                <span class="slide"></span>
-                            </label>
+                            <input type="checkbox" id="switch3" /><label for="switch3">Toggle</label>
                         </td>
                     </tr>
                     <tr>
@@ -131,11 +123,7 @@
                         <td>ukamabni</td>
                         <td>Kamau</td>
                         <td>
-                            <label class="accept">
-                                <input type="checkbox">
-                                <span class="slide"></span>
-                            </label>
-                        </td>
+                            <input type="checkbox"id="switch4" /><label for="switch4">Toggle</label>
                     </tr>
                     <tr>
                         <td>6</td>
@@ -143,10 +131,7 @@
                         <td>yemen</td>
                         <td>Kamau</td>
                         <td>
-                            <label class="accept">
-                                <input type="checkbox">
-                                <span class="slide"></span>
-                            </label>
+                            <input type="checkbox" id="switch5" /><label for="switch5">Toggle</label>
                         </td>
                     </tr>
                     
