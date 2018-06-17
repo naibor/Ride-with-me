@@ -483,39 +483,39 @@ input [type=text]{
     border-radius: 2%;
     box-sizing: border-box;
 }
-    input [type=submit]{
-        color: black;
-        padding: 5% 2%;
-        cursor: pointer;
-         
-    }
-    input[type=submit]:hover{
-        background-color: oldlace;
+input [type=submit]{
+    color: black;
+    padding: 5% 2%;
+    cursor: pointer;
         
-    }
-    fieldset{
-        border-radius: 2%;
-        padding-left:18%;
-        position: unset;
-        margin-top: 3%;
+}
+input[type=submit]:hover{
+    background-color: oldlace;
+    
+}
+fieldset{
+    border-radius: 2%;
+    padding-left:18%;
+    position: unset;
+    margin-top: 3%;
 
-    }
-~    h3{
-        align-content: center;
-        padding: 0;
-        margin:0;
-    }
-    footer{
-        background-color: black;
-        color:white;
-        position: absolute;
-        width:100%;
-        top:100%;
-        
-    }
-    #foot{
-        top:105%;
-    }
+}
+h3{ 
+    align-content: center;
+    padding: 0;
+    margin:0;
+}
+footer{
+    background-color: black;
+    color:white;
+    position: absolute;
+    width:100%;
+    top:100%;
+    
+}
+#foot{
+    top:105%;
+}
     
 td input[type=checkbox]{
         height: 0;
