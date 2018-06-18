@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Bungee Shade' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Andika' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" media="screen" href="static/stylesheet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body >
+         <!--top bar -->
+        <div class="logo">
+            <img id="move" src="static/Images/ride.jpg" alt="white car">               
+        <div class="navitems">
+        <!-- side nav button -->
+        <!-- request ride/offer ride -->
+            <div class= "request">
+                <button onclick="Open()" type="button" class="Buttons">OFFER RIDE </button>
+            </div>
+            <div>
+                <button onclick="OpenMenu()" type="button" class="Buttons" id="menu">MENU</button>
+            </div>
+            <!-- Request ride/offer  -->
+            <!-- logout button -->
+            <div>
+                <button class="Buttons"><a href="index.html">Log out</a></button>
+            </div>
+        </div> 
+        </div>
+    <!-- /nav -->
+    <!-- map region -->
+        <div id="map">
+            <!-- add google map -->
+            <img class="image" src="static/Images/map7.jpg"alt="google map" >
+            
+        </div>        
+        <!-- ride details modal -->
+        <div id="requestDetails">
+            <span id="cancel" onclick="Close()" class="ClosesColumn">&times;</span><br>
+            <input id="ride" type="text" name="destination" placeholder="Enter Destination" ><br>
+            <input id="ride"type="text" name="location" placeholder="Enter Location"><br><br>
+            <button  class="SubmitButton" type="submit">Submit</button><br><br>
+            <button class="SubmitButton" type="reset">Reset</button>
+        </div>
+        <!-- side nav modal -->
+        <div id="sidemodal">
+            <!-- closing side nav -->
+            <span onclick="CloseMenu()" class="ClosesColumn">&times;</span>
+            <!-- number of rides given -->
+            <div class="sidenav"><p>History</p></div> 
+            <!--geo location  -->
+            <div class="sidenav"> <p>My location</p></div>
+            <!-- table of available rides and details -->
+            <div class="sidenav">
+                <button id="RequestButton" class="Buttons" onclick="Openrequests()" type="button"> Requests</button>
+            </div>
+            
+            <div class="sidenav"><p>settings</p></div>
+        </div>
+        <footer id="foo" class= "footerSection">
+            @Naibor
+        </footer>
+        <!-- table of requests modal -->
+        <div id="requestTable" >
+            <span onclick="Closetable()" class="ClosesColumn">&times;</span>
+            <table id="Table">
+                <tr>    
+                    <p id="requests">RIDE REQUESTS </p>
+                    <span onclick="Closetable()" class="ClosesColumn">&times;</span>
+                </tr>
+                <tr>
+                    <th>request ID</th>
+                    <th>request location</th>
+                    <th>request destination</th>
+                    <th>Accept / Reject</th>
+          
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Nairobi</td>
+                    <td>Mwiki</td>
+                    <td>
+                        <input type="checkbox" id="switch1" /><label for="switch1">Toggle</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>kisumu</td>
+                    <td>Sweden</td>
+                    <td>
+                        <input type="checkbox" id="switch2" /><label for="switch2">Toggle</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>limuru</td>
+                    <td>thika</td>
+                    <td>
+                        <input type="checkbox" id="switch3" /><label for="switch3">Toggle</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>kariobangi</td>
+                    <td>Jogoo road</td>
+                    <td>
+                        <input type="checkbox" id="switch4" /><label for="switch4">Toggle</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>river road</td>
+                    <td>ukamabni</td>
+                    <td>
+                        <input type="checkbox" id="switch5" /><label for="switch5">Toggle</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>kajiado</td>
+                    <td>yemen</td>
+                    <td>
+                        <input type="checkbox" id="switch6" /><label for="switch6">Toggle</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>south soudan</td>
+                    <td>kiambu</td>
+                    <td>
+                        <input type="checkbox" id="switch7" /><label for="switch7">Toggle</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Kikuyu</td>
+                    <td>mombasa</td>
+                    <td>
+                        <input type="checkbox" id="switch8" /><label for="switch8">Toggle</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>roysa</td>
+                    <td>Maralal</td>
+                    <td>
+                        <input type="checkbox" id="switch9" /><label for="switch9">Toggle</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Marie Bertrand</td>
+                    <td>juja</td>
+                    <td>
+                        <input type="checkbox" id="switch10" /><label for="switch10">Toggle</label>
+                    </td>
+                </tr>
+            </table>
+        </div>    
+            <!-- user table -->
+
+        
+        <!-- scripts -->
+        <script src="static/myjs.js"></script>
+
+         <!-- Google map function -->
+         <!-- <script>
+        function myMap(){
+            var mapOptions = {
+            center: new google.maps.LatLng(36.8219,1.2921),
+            zoom:10, -->
+            <!-- // mapTypeId: google.maps.mapTypeId.HYBRID -->
+        <!-- }
+            var map = new google.maps.Map(document.getElementById("map"),mapOptions);
+        } -->
+        <!-- </script> -->
+
+        <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcKKPh7JmsfJcMfuZ24i_cLT9M-gGHUao&callback=myMap" -->
+        <!-- type="text/javascript"></script> -->
+    </body>
+    </html>
