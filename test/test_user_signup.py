@@ -4,7 +4,7 @@ import json
 
 from Api import app
 from Api.resource import create_app
-from models import user_model
+# from Api import models
 
 class UserSignUpTestCases(unittest.TestCase):
     """class for user sign up test case"""
@@ -32,7 +32,7 @@ class UserSignUpTestCases(unittest.TestCase):
         response = self.sign_up
         # assert response code is 201
         self.assertEqual(response.status_code,201)
-        deserialize response data
+        # deserialize response data
         response_data = json.loads(response.data)
         self.assertIn("Lisa",user_info, msg="user does not exist")
         self.assertIn("Welcome, you have successfully signed up",(response.data))

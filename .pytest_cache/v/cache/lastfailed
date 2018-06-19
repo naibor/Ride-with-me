@@ -1,5 +1,5 @@
 {
-  "test/test_user_signup.py": true,
+  "test/test_user_signup.py::UserSignUpTestCases": true,
   "test/test_user_signup.py::UserSignUpTestCases::test_user_not_already_signed_up": true,
   "test/test_user_signup.py::UserSignUpTestCases::test_user_reset_password": true,
   "test/test_user_signup.py::UserSignUpTestCases::test_user_sign_in_info_saved": true,
