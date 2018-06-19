@@ -1,11 +1,9 @@
-from flask import Flask
-from flask_restful import Api
+from flask_api import FlaskAPI
 
-app = Flask('Api',instance_relative_config=True)
+app = FlaskAPI('Api',instance_relative_config=True)
 
-api=Api()
+# api=Api()
 # add resource function 
 
-api.init_app(app)
-
+# api.init_app(app)
 

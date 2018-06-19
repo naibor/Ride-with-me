@@ -1,0 +1,13 @@
+{
+  "test/test_user_signup.py::UserSignUpTestCases": true,
+  "test/test_user_signup.py::UserSignUpTestCases::test_user_not_already_signed_up": true,
+  "test/test_user_signup.py::UserSignUpTestCases::test_user_reset_password": true,
+  "test/test_user_signup.py::UserSignUpTestCases::test_user_sign_in_info_saved": true,
+  "test/test_user_signup.py::UserSignUpTestCases::test_user_sign_up": true,
+  "test/test_user_signup.py::UserSignUpTestCases::test_user_sign_up_confirm_password_is_password": true,
+  "test/test_user_signup.py::UserSignUpTestCases::test_user_sign_up_empty_confirm_password": true,
+  "test/test_user_signup.py::UserSignUpTestCases::test_user_sign_up_empty_first_name": true,
+  "test/test_user_signup.py::UserSignUpTestCases::test_user_sign_up_empty_last_name": true,
+  "test/test_user_signup.py::UserSignUpTestCases::test_user_sign_up_empty_password": true,
+  "test/test_user_signup.py::UserSignUpTestCases::test_user_sign_up_empty_user_name": true
+}
