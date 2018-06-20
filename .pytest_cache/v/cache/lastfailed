@@ -1,0 +1,4 @@
+{
+  "test/test_ride_offers.py": true,
+  "test/test_user_signup.py": true
+}

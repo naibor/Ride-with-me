@@ -79,7 +79,8 @@ class UserSignUp(Resource):
 class DriverReg(Resource):
     #class driver registration  resource
 
-    def post(self):regData = request.get_json()
+    def post(self):
+        regData = request.get_json()
         hashed_password = generate_password_hash(regData.get("password"), method="sha256")
         # check empty field
         if not regData.get("firstname"):
@@ -136,34 +137,4 @@ class DriverReg(Resource):
                             "driver_detail":driver_details
                             })
         return{"message":"Welcome you have successfully registered as a driver"},201  
-
-
-<<<<<<< HEAD
-=======
-class UserLogIn(Resource):
-    # userlogin resource
-    def post(self):
-        # username and password requied
-        data = request.get_json()
-        for dictionary in signup_info:
-            if data.get("username") == dictionary["username"]:
-                # compares given and stored hash passwords
-                if check_password_hash(dictionary["password"], data.get("password")):
-                    access_token =jwt.encode({"username":username, "exp":datetime.utcnow() + datetime.timedelta(hour = 1)},"this is my secret key to encode the token")
-                    return {"token":token.decode("UTF -8"),"message":"successfully logged in"},200
-
-                return{"message":"wrong password"}
-            return{"message":"signup first"}
-
->>>>>>> ft-login-api-158430273
-
-            
-
-
-# api.add_resource(UserSignUp,'api/v1/user/signup')
-# api.add_resource(UserLogIn,'api/v1/user/auth')
-# api.add_resource(DriverReg,'api/v1/user/register')
-
-
-    
- 
+        
