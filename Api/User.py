@@ -125,7 +125,7 @@ class DriverReg(Resource):
                             hashed_password
                             )
         # save driver_details to driver_detail{} will be see by passangers
-        driver_details[new_driver.firstname] = {"type_of_car":new_driver.car}
+        driver_details[new_driver.username] = {"type_of_car":new_driver.car}
 
                         
         # save new drive to driver info[]
