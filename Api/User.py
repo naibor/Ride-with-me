@@ -1,12 +1,12 @@
 from flask_restful import Resource, Api
-from flask import Flask
+# from flask import Flask
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 # hashes passwords
 
-app = Flask('Api') 
+# app = Flask('Api') 
 # flask instance
-api = Api(app)
+# api = Api(app)
 signup_info = []
 
 class UserSignUp(Resource):
@@ -31,7 +31,7 @@ class UserSignUp(Resource):
         if not signup_data.get("lastname"):
             return{'message':"enter last name"},401
         if not signup_data.get("username"):
-            return{'message':"enter user name"}.401
+            return{'message':"enter user name"},401
         if not signup_data.get("password"):
             return{'message':"enter password"},401
         if not signup_data.get("confirmpassword"):
@@ -87,8 +87,8 @@ class UserLogIn(Resource):
             
 
 
-api.add_resource(UserSignUp,'api/v1/user/signup')
-api.add_resource(USerSIgnUp,'api/v1/user/auth')
+# api.add_resource(UserSignUp,'api/v1/user/signup')
+# api.add_resource(UserLogIn,'api/v1/user/auth')
 
 
     

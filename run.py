@@ -1,11 +1,10 @@
 
-from Api import app
-
+from Api import create_app
+import os
+config_name = os.getenv("APP_SETTING")
 # flask instance
+app = create_app(config_name)
 
-# from Instance.config import app_config
-# enviroment configuration settings
 
 if __name__=="__main__":
-    # app.config.from_object(app_config['development'])
     app.run()
