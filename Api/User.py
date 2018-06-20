@@ -71,7 +71,9 @@ class UserSignUp(Resource):
 
 
 class UserLogIn(Resource):
+    # userlogin resource
     def post(self):
+        # username and password requied
         data = request.get_json()
         for dictionary in signup_info:
             if data.get("username") == dictionary["username"]:
