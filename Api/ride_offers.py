@@ -36,7 +36,8 @@ class RideRequest(Resource):
         # save the new request to ride_request[]
         ride_Request.append(ride_details)
 
-        return {"message":"Ride is being processed"},200
+        return {"message":"Ride is being processed",
+                "url":"/api/v1/user/offer/ride_request.get("location")"},200
     
     class RideOffer(Resource):
         def post(self):
@@ -70,9 +71,11 @@ class RideRequest(Resource):
                                }
             return{"message":"you have created a ride offer"}
 
-        def get(self):
-            # passenger can get all ride offers
-            return ride_Offers
+        def get(self,location):
+            # passenger can get all ride offers within a particular location
+            for offer in ride_Offers:
+                if offer["location"] == location:
+                    return offer
 
         def get(self,id):
             # passanger can get specific ride offer
