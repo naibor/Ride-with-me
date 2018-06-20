@@ -3,10 +3,15 @@ from datetime import datetime, timedelta
 request_ride={
     "location":"nakuru",
     "destination":"kakamega",
+<<<<<<< HEAD
 }
 
 ride_offers = []
 
+=======
+
+}
+>>>>>>> ft-get-ride-offers-api-158423117
 driver_info={}
 driver_detail={
     "name":"kamau",

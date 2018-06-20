@@ -14,6 +14,10 @@ driver_details = {}
 class UserSignUp(Resource):
     # inherits from resource
 
+    def get(self):
+        return {"okay":"this works"}
+
+
     def post(self):
         # user post signup data
         signup_data = request.get_json()
