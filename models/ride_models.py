@@ -1,6 +1,10 @@
 from datetime import datetime, timedelta
 
-user_info={}
+request_ride={
+    "location":"nakuru",
+    "destination":"kakamega",
+
+}
 driver_info={}
 driver_detail={
     "name":"kamau",
@@ -14,4 +18,6 @@ ride_detail = {"location":"Nairobi",
                "departure": DTime.time(),
                "driver_details":driver_detail
 }
+
+class 
 
