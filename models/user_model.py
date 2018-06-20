@@ -8,5 +8,11 @@ class User:
         self.username = username
         self.password = password
 
-class DriverInfo:
-    def __init__(self, firstname, lastname, username, phone_number,)
+class Driver:
+    def __init__(self, firstname, lastname, username, phone_number,car):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.username = username
+        self.phone_number = phone_number
+        self.car = car
+
