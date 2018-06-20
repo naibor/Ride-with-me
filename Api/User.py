@@ -70,19 +70,6 @@ class UserSignUp(Resource):
         return{"message":"Welcome you have successfully signed up"},201            
 
 
-class UserLogIn(Resource):
-    def post(self):
-        data = request.get_json()
-        for dictionary in signup_info:
-            if data.get("username") == dictionary["username"]:
-                # compares given and stored hash passwords
-                if check_password_hash(dictionary["password"], data.get("password")):
-                    access_token =jwt.encode({"username":username, "exp":datetime.utcnow() + datetime.timedelta(hour = 1)},"this is my secret key to encode the token")
-                    return {"token":token.decode("UTF -8"),"message":"successfully logged in"},200
-
-                return{"message":"wrong password"}
-            return{"message":"signup first"}
-
 
             
 
