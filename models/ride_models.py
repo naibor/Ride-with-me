@@ -74,3 +74,22 @@ class RideRequest:
 
 
 
+class RideOffer:
+    """Driver offers ride"""
+    def __init__(self,location,destination,):
+        self.location = location
+        self.destination = destination
+        departure = DTime.time()
+        ride_id = len(ride_offers)
+        driver_details = driver_detail
+
+
+class RideRequest:
+    """User request a ride"""
+    def __init__(self,location,destination):
+        self.location = location
+        self.destination = destination
+
+
+
+
