@@ -137,9 +137,6 @@ class DriverReg(Resource):
                             })
         return{"message":"Welcome you have successfully registered as a driver"},201  
 
-
-<<<<<<< HEAD
-=======
 class UserLogIn(Resource):
     # userlogin resource
     def post(self):
@@ -154,10 +151,6 @@ class UserLogIn(Resource):
 
                 return{"message":"wrong password"}
             return{"message":"signup first"}
-
->>>>>>> ft-login-api-158430273
-
-            
 
 
 # api.add_resource(UserSignUp,'api/v1/user/signup')
