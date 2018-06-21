@@ -1,9 +1,7 @@
 import unittest  
 import os
 import json
-from flask import Flask
-
-# from Api.resource import create_app
+# from flask import Flask
 from Api import User
 from Api import create_app
 
@@ -22,7 +20,7 @@ class TestUserSignUp(unittest.TestCase):
         # sign up a user
     def test_user_sign_up(self):
         """test user can successfuly sign up"""
-        response =self.sign_up =self.client.post(
+        response =self.client.post(
             "api/v1/user/signup",
             data=json.dumps(dict(
                 firstname="Naibor",

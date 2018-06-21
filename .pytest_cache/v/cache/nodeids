@@ -1,4 +1,5 @@
 [
+  "test/test_driver_reg.py::TestDriverReg::test_driver_reg",
   "test/test_user.py::TestUserSignUp::test_user_login",
   "test/test_user.py::TestUserSignUp::test_user_sign_up"
 ]

@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # hashes passwords
 from datetime import datetime, timedelta
 # to get departure time
-from models.user_model import User
+from models.user_model import User,Driver
 import jwt
 
 signup_info = []
@@ -26,7 +26,7 @@ class UserSignUp(Resource):
         signup_data = request.get_json()        
         # returns data in json format
         hashed_password = generate_password_hash(signup_data.get("password"), method="sha256")
-
+        hashed_confirmpassword= generate_password_hash(signup_data.get("confirmpassword"), method="sha256")
         # validation starts
 
         # checks if data field is empty
@@ -61,7 +61,7 @@ class UserSignUp(Resource):
         # confirms confirm password == password is the same
         if signup_data.get("password") != signup_data.get("confirmpassword"):
             return{"message":"password and confirm password not the same"}
-
+        # checks for an existing ussesr.avoid multiple signups
         for user in signup_info:
             if signup_data.get("username") == user["username"]:
                 return {"message":"username already exist"},400
@@ -69,7 +69,8 @@ class UserSignUp(Resource):
         new_user = User(signup_data.get("firstname"),
                         signup_data.get("lastname"),
                         signup_data.get("username"),
-                        hashed_password
+                        hashed_password,
+                        hashed_confirmpassword
                         )            
         # save new user as a {}, to signup info[]
         signup_info.append({"firstname":new_user.firstname,
@@ -88,6 +89,7 @@ class DriverReg(Resource):
     def post(self):
         regData = request.get_json()
         hashed_password = generate_password_hash(regData.get("password"), method="sha256")
+        hashed_confirmpassword = generate_password_hash(regData.get("confirmpassword"), method="sha256")
         # check empty field
         if not regData.get("firstname"):
             return{'message':"enter first name"},400
@@ -97,10 +99,10 @@ class DriverReg(Resource):
             return{'message':"enter user name"},400
         if not regData.get("phone_number"):
             return{'message':"enter phone number"},400
-        if not regData.get("password"):
-            return{'message':"enter password"},400
         if not regData.get("car"):
             return{'message':"enter your type of car"},400
+        if not regData.get("password"):
+            return{'message':"enter password"},400
         if not regData.get("confirmpassword"):
             return{'message':"enter confirm password"},400
 
@@ -114,7 +116,7 @@ class DriverReg(Resource):
         if " " in regData.get("phone_number"):
             return{'message':"enter visible character"},400
         if " " in regData.get("car"):
-            return{'message':"enter visible character"},400    
+            return{'message':"enter visible character"},400
         if " " in regData.get("password"):
             return{'message':"enter visible character"},400
         if " " in regData.get("confirmpassword"):
@@ -129,17 +131,24 @@ class DriverReg(Resource):
                             regData.get("lastname"),
                             regData.get("username"),
                             regData.get("car"),
-                            hashed_password
+                            regData.get("phone_number"),
+                            hashed_password,
+                            hashed_confirmpassword
                             )
         # save driver_details to driver_detail{} will be see by passangers
-        driver_details[new_driver.username] = {"type_of_car":new_driver.car}
+        driver_details[new_driver.username] = {"type_of_car":new_driver.car,
+                                                "phone_number":new_driver.phone_number
+                                                }
         print("driver_details")
-
+        
+        for driver in driver_info:
+            if regData.get("username") == driver["username"]:
+                return {"message":"This is an existing driver"},400
                         
         # save new drive to driver info[]
-        driver_info.append({"firstname":new_user.firstname,
-                            "lastname":new_user.lastname,
-                            "username":new_user.username,
+        driver_info.append({"firstname":new_driver.firstname,
+                            "lastname":new_driver.lastname,
+                            "username":new_driver.username,
                             "password":hashed_password,
                             "driver_detail":driver_details
                             })
