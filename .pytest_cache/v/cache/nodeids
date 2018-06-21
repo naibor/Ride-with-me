@@ -1,4 +1,8 @@
 [
-  "test/test_user_signup.py::UserSignUpTestCases::test_user_login",
-  "test/test_user_signup.py::UserSignUpTestCases::test_user_sign_up"
+  "test/test_driver_reg.py::TestDriverReg::test_driver_reg",
+  "test/test_driver_ride_offers.py::TestDriverRideOffer::test_create_ride_offers",
+  "test/test_ride_offer.py::TestRideOffer::test_get_ride_offers",
+  "test/test_ride_request.py::TestRideRequest::test_post_ride_request",
+  "test/test_user.py::TestUserSignUp::test_user_login",
+  "test/test_user.py::TestUserSignUp::test_user_sign_up"
 ]
