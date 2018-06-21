@@ -42,7 +42,7 @@ class RideRequest(Resource):
         ride_Requests.append(request_details)
 
         return {"message":"Ride is being processed",
-                "url":"/api/v1/user/offer/"+postRequest.get("location")},200
+                "url":"/api/v1/user/offer/"+postRequest.get("location")},201
     
 class DriverRideOffer(Resource):  
     def post(self):
@@ -72,7 +72,7 @@ class DriverRideOffer(Resource):
                             "destination":new_offer.destination,
                             "departure":new_offer.departure
         })
-        return{"message":"you have created a ride offer"}
+        return{"message":"you have created a ride offer"},201
 class RideOffer(Resource):
     def get(self,id):
         # passanger can get specific ride offer
@@ -91,4 +91,4 @@ class RideOffer(Resource):
         for offer in ride_Offers:
             if offer["location"] == location:
                 list_of_offers.append(offer)
-        return list_of_offers
+        return {"list of offers":list_of_offers},200

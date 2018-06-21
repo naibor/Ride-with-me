@@ -3,7 +3,7 @@ from flask_restful import Resource, Api
 from models import user_model
 from Instance.config import app_config
 from Api.User import UserSignUp, UserLogIn, DriverReg
-from Api.ride_offers import RideRequest, RideOffer, DriverRideOffer 
+from Api.ride import RideRequest, RideOffer, DriverRideOffer 
 # flask instance 
 
 

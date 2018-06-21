@@ -11,18 +11,19 @@ class TestRideRequest(unittest.TestCase):
         self.app = create_app(config_name="testing")
         self.app.config["TESTING"]=True
         self.client = self.app.test_client()
-        self.request  = self.client.post(
-            "api/v1/user/signup",
-            data=json.dumps(dict(
-                "Nairobi"(dict(location="Nairobi",
-                           destination="Kisumu"
-                        ))
-                    )),content_type = "application/json"
-                    )
+        
 
     def test_post_ride_request(self):
         """test usesr can create ride request """
-        self.assertEqual(response.status_code,200)
+        response = self.client.post(
+            "api/v1/user/request",
+            data=json.dumps(dict
+                    (location="Nairobi",
+                    destination="Kisumu"
+                    )),
+                    content_type = "application/json"
+                    )
+        self.assertEqual(response.status_code,201)
     
     def tearDown(self):
         pass
