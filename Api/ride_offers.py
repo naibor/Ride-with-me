@@ -37,39 +37,39 @@ class RideRequest(Resource):
         ride_Request.append(ride_details)
 
         return {"message":"Ride is being processed",
-                "url":"/api/v1/user/offer/ride_request.get("location")"},200
+                "url":"/api/v1/user/offer/"+ride_request.get("location")},200
     
-    class RideOffer(Resource):
-        def post(self):
-            #driver post ride offer data
-            ride_offer = request.get_json()
-            # validate it
-            # empty field 
-            if not ride_offer.get("location"):
-                return{"message":"enter your location please"},400
-            if not ride_offer.get("destination"):
-                return{"message":"enter ride destination please"},400
-            
-            # space in input
-            if ride_offer.get("location")==" ":
-                return {"message":"spaces not allowed"},400
-            if ride_offer.get("destination") == " ":
-                return {"message":"spaces not allowed"},400
-            
-            #create an instance of class RideOffer
-            new_offer = RideOffer(new_offer.location,
-                                  new_offer.destination,
-                                  new_offer.departure,
-                                  new_0ffer.ride_id
-                                 )
+class RideOffer(Resource):
+    def post(self):
+        #driver post ride offer data
+        ride_offer = request.get_json()
+        # validate it
+        # empty field 
+        if not ride_offer.get("location"):
+            return{"message":"enter your location please"},400
+        if not ride_offer.get("destination"):
+            return{"message":"enter ride destination please"},400
+        
+        # space in input
+        if ride_offer.get("location")==" ":
+            return {"message":"spaces not allowed"},400
+        if ride_offer.get("destination") == " ":
+            return {"message":"spaces not allowed"},400
+        
+        #create an instance of class RideOffer
+        new_offer = RideOffer(new_offer.location,
+                                new_offer.destination,
+                                new_offer.departure,
+                                new_0ffer.ride_id
+                                )
 
-            # save the new_offer to ride_offers[]
-            ride_Offers.append{"id":new_0ffer.ride_id,
-                               "location":new_offer.location,
-                               "destination":new_offer.destination,
-                               "departure":new_offer.departure
-                               }
-            return{"message":"you have created a ride offer"}
+        # save the new_offer to ride_offers[]
+        ride_Offers.append({"id":new_0ffer.ride_id,
+                            "location":new_offer.location,
+                            "destination":new_offer.destination,
+                            "departure":new_offer.departure
+        })
+        return{"message":"you have created a ride offer"}
 
         def get(self,location):
             # passenger can get all ride offers within a particular location

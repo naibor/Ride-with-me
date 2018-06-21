@@ -1,10 +1,14 @@
+
 from flask_restful import Resource, Api
-# from flask import Flask
+
+from flask import request
+
 from werkzeug.security import generate_password_hash, check_password_hash
 # hashes passwords
-from datetime import datetime
+from datetime import datetime, timedelta
 # to get departure time
-
+from models.user_model import User
+import jwt
 
 signup_info = []
 # where user signup information is stored
@@ -16,12 +20,10 @@ driver_details = {}
 class UserSignUp(Resource):
     # inherits from resource
 
-    def get(self):
-        pass
 
     def post(self):
         # user post signup data
-        signup_data = request.get_json()
+        signup_data = request.get_json()        
         # returns data in json format
         hashed_password = generate_password_hash(signup_data.get("password"), method="sha256")
 
@@ -45,29 +47,30 @@ class UserSignUp(Resource):
             return{'message':"enter confirm password"},400
 
         # checks if data is space filled 
-        if signup_data.get("firstname") == " ":
+        if " " in signup_data.get("firstname"):
             return{'message':"enter visible character"},400
-        if signup_data.get("lastname") == " ":
+        if " " in signup_data.get("lastname"):
             return{'message':"enter visible character"},400
-        if signup_data.get("username") == " ":
+        if " " in signup_data.get("username"):
             return{'message':"enter visible character"},400
-        if signup_data.get("password") == " ":
+        if " " in signup_data.get("password"):
             return{'message':"enter visible character"},400
-        if signup_data.get("confirmpassword") == " ":
+        if " " in signup_data.get("confirmpassword"):
             return{'message':"enter visible character"},400
 
         # confirms confirm password == password is the same
         if signup_data.get("password") != signup_data.get("confirmpassword"):
             return{"message":"password and confirm password not the same"}
-        
+
+        for user in signup_info:
+            if signup_data.get("username") == user["username"]:
+                return {"message":"username already exist"},400
         # an instance of User in models containing user data
         new_user = User(signup_data.get("firstname"),
                         signup_data.get("lastname"),
                         signup_data.get("username"),
                         hashed_password
-                        )
-
-                        
+                        )            
         # save new user as a {}, to signup info[]
         signup_info.append({"firstname":new_user.firstname,
                       "lastname":new_user.lastname,
@@ -76,6 +79,9 @@ class UserSignUp(Resource):
                        })
         return{"message":"Welcome you have successfully signed up"},201            
  
+    def get(self):
+        pass
+
 class DriverReg(Resource):
     #class driver registration  resource
 
@@ -99,19 +105,19 @@ class DriverReg(Resource):
             return{'message':"enter confirm password"},400
 
         # checks for spaces only field
-        if regData.get("firstname") == " ":
+        if " " in regData.get("firstname"):
             return{'message':"enter visible character"},400
-        if regData.get("lastname") == " ":
+        if " " in regData.get("lastname"):
             return{'message':"enter visible character"},400
-        if regData.get("username") == " ":
+        if " " in regData.get("username"):
             return{'message':"enter visible character"},400
-        if regData.get("phone_number") == " ":
+        if " " in regData.get("phone_number"):
             return{'message':"enter visible character"},400
-        if regData.get("car") == " ":
+        if " " in regData.get("car"):
             return{'message':"enter visible character"},400    
-        if regData.get("password") == " ":
+        if " " in regData.get("password"):
             return{'message':"enter visible character"},400
-        if regData.get("confirmpassword") == " ":
+        if " " in regData.get("confirmpassword"):
             return{'message':"enter visible character"},400
 
         #confirms confirmpassword == password is the same
@@ -127,6 +133,7 @@ class DriverReg(Resource):
                             )
         # save driver_details to driver_detail{} will be see by passangers
         driver_details[new_driver.username] = {"type_of_car":new_driver.car}
+        print("driver_details")
 
                         
         # save new drive to driver info[]
@@ -136,4 +143,24 @@ class DriverReg(Resource):
                             "password":hashed_password,
                             "driver_detail":driver_details
                             })
+        print("driver_info")
         return{"message":"Welcome you have successfully registered as a driver"},201  
+
+class UserLogIn(Resource):
+    # userlogin resource
+    def post(self):
+        
+        # username and password requied
+        data = request.get_json()
+        for dictionary in signup_info:
+            if data.get("username") == dictionary["username"]:
+                # compares given and stored hash passwords
+                if check_password_hash(dictionary["password"], data.get("password")):
+                    access_token =jwt.encode({"username":dictionary["username"],
+                                            "exp":datetime.utcnow() + timedelta(minutes=60)},
+                                             "this is my secret key to encode the token")
+                    # import pdb;pdb.set_trace()
+                    return {"token":access_token.decode("UTF -8"),"message":"successfully logged in"},200
+
+                return{"message":"wrong password"}
+        return{"message":"signup first"}
