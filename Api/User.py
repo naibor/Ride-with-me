@@ -16,6 +16,11 @@ driver_info = []
 # where driver information is stored after registration
 driver_details = {}
 # the driver details a passanger user sees while viewing ride_offers[].
+#  user_field ={'firstname':fields.string,
+#               'lastname':fields.string,
+#               'username':field.string,
+#               'password':field.password
+#             }
 
 class UserSignUp(Resource):
     # inherits from resource
