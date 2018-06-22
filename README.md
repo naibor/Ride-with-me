@@ -1,7 +1,7 @@
 
 [![Build Status](https://travis-ci.org/naibor/Ride-with-me.svg?branch=Develop)](https://travis-ci.org/naibor/Ride-with-me)
 <!-- travis badge -->
-[![Coverage Status](https://coveralls.io/repos/github/naibor/Ride-with-me/badge.svg?branch=Develop)](https://coveralls.io/github/naibor/Ride-with-me?branch=Develop)
+[![Coverage Status](https://coveralls.io/repos/github/naibor/Ride-with-me/badge.svg)](https://coveralls.io/github/naibor/Ride-with-me)
 <!-- coverall badge -->
 
 # Ride-with-me
