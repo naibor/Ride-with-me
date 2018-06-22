@@ -1,6 +1,8 @@
 
 [![Build Status](https://travis-ci.org/naibor/Ride-with-me.svg?branch=master)](https://travis-ci.org/naibor/Ride-with-me)
 
+[![Coverage Status](https://coveralls.io/repos/github/naibor/Ride-with-me/badge.svg?branch=master)](https://coveralls.io/github/naibor/Ride-with-me?branch=master)
+
 # Ride-with-me
 A carpooling application that provides drivers with the ability to create ride offers and passengers to join available ride offers.
 ## The project contains designs for
