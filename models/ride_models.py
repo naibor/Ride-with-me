@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from Api.User import driver_details
 # import from user model
 driver_info=[]
 driver_detail={}
@@ -20,8 +21,11 @@ class DriverOffer:
     def __init__(self,location,destination):
         self.location = location
         self.destination = destination
-        self.departure = DTime.time()
-        self.ride_id = len(ride_Offers) + 1,
-        # driver_details = driver_detail
+        self.departure =DTime.time()
+        self.ride_id = len(ride_Offers) + 1
+        self.driver_detail = driver_details
 
-
+def dateserializer(o):
+    if isinstance (o, datetime):
+        return o__str__()
+        

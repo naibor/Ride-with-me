@@ -19,7 +19,7 @@ def create_app(config_name):
     api.add_resource(DriverReg,'/api/v1/user/register')
     api.add_resource(RideRequest,'/api/v1/user/request')
     api.add_resource(DriverRideOffer,'/api/v1/user/create')
-    api.add_resource(RideOffer,'/api/v1/user/offer/<location>', endpoint='location' )
-    # api.add_resource(RideOffer,'/api/v1/user/offer/<int:id>', endpoint='arideoffer')
+    api.add_resource(RideRequest,'/api/v1/user/offer/<location>', endpoint='location' )
+    api.add_resource(RideOffer,'/api/v1/user/offer/<int:id>', endpoint='arideoffer')
 
     return app

@@ -1,7 +1,9 @@
 from flask_restful import Resource, Api
 from flask import request
-from models.ride_models import RRequest,DriverOffer
+import json
 
+from models.ride_models import RRequest,DriverOffer, dateserializer
+# from User import driver_details
 
 ride_Offers = []
 # where offers made by driver are stored
@@ -43,6 +45,16 @@ class RideRequest(Resource):
 
         return {"message":"Ride is being processed",
                 "url":"/api/v1/user/offer/"+postRequest.get("location")},201
+
+    def get(self,location):
+        # passenger can get all ride offers within a particular location
+        list_of_offers=[]
+        if len(ride_Offers)<1:
+            return {"message":"no offers made yet"}
+        for offer in ride_Offers:
+            if offer["location"] == location:
+                list_of_offers.append(offer)
+        return {"list of offers":list_of_offers},200
     
 class DriverRideOffer(Resource):  
     def post(self):
@@ -66,13 +78,22 @@ class DriverRideOffer(Resource):
                                 postoffer.get("destination")
                                 )
 
+        DT=json.dumps(new_offer.departure, default = dateserializer)         
+
         # save the new_offer to ride_offers[]
         ride_Offers.append({"id":new_offer.ride_id,
                             "location":new_offer.location,
                             "destination":new_offer.destination,
-                            "departure":new_offer.departure
+                            "departure":DT,
+                            "driver details":new_offer.driver_detail
         })
         return{"message":"you have created a ride offer"},201
+
+    def get(self):
+        # driver gets a list of ride requests made
+        return{"ride requests":ride_Requests},200
+
+        
 class RideOffer(Resource):
     def get(self,id):
         # passanger can get specific ride offer
@@ -82,13 +103,3 @@ class RideOffer(Resource):
                 # if the id is a key in the dictionary
                 return offer
         return{"message":"ride does not exist"}
-
-    def get(self,location):
-        # passenger can get all ride offers within a particular location
-        list_of_offers=[]
-        if len(ride_Offers)<1:
-            return {"message":"no offers made yet"}
-        for offer in ride_Offers:
-            if offer["location"] == location:
-                list_of_offers.append(offer)
-        return {"list of offers":list_of_offers},200

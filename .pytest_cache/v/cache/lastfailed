@@ -1,5 +1,0 @@
-{
-  "test/test_driver_ride_offers.py::TestDriverRideOffer::test_get_ride_offers": true,
-  "test/test_ride_offers.py::TestRideOffers::test_create_ride_offers": true,
-  "test/test_ride_offers.py::TestRideOffers::test_get_ride_offers": true
-}
