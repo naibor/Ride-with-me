@@ -1,4 +1,3 @@
-       
 import unittest
 import os
 import json
@@ -36,6 +35,7 @@ class TestRideOffer(unittest.TestCase):
         self.assertEqual(response.status_code,201) 
         response = self.client.get('/api/v1/user/offer/<location>',content_type = "application/json")
         self.assertEqual(response.status_code,200 )
+
     def test_empty_offers(self):
         """tests user inputs location and destination"""
         pass

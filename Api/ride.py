@@ -6,6 +6,7 @@ from models.ride_models import RRequest, DriverOffer
 # from User import driver_details
 from Api.schema_v import rideschema
 
+
 ride_Offers = []
 # where offers made by driver are stored
 request_details = {}
@@ -13,11 +14,11 @@ request_details = {}
 ride_Requests =[]
 # where passanger ride requests details is stored
 
-
 class RideRequest(Resource):
     # passanger posts a ride request
     def post(self):
         postRequest = request.get_json()
+
         # validate using schema
         data,errors =rideschema.load(postRequest)
         if errors:
@@ -32,6 +33,7 @@ class RideRequest(Resource):
         request_details[request_data.get("location")]={
                                 "location":request_data.get("location"),
                                 "destination":request_data.get("destination")
+
                               }
         # save the new request to ride_request[]
         ride_Requests.append(request_details)
@@ -54,14 +56,17 @@ class DriverRideOffer(Resource):
         #driver post ride offer data
         postoffer = request.get_json()
         # validate it
+
         data,errors = rideschema.load(postoffer)
         if errors:
             return{'error':errors}
            
+
         #create an instance of class RideOffer
         new_offer = DriverOffer(postoffer.get("location"),
                                 postoffer.get("destination")
                                 )
+
 
         DT=json.dumps(new_offer.departure)         
 
@@ -72,7 +77,9 @@ class DriverRideOffer(Resource):
                             "departure":DT,
                             "driver details":new_offer.driver_detail
         })
+
         # import pdb;pdb.set_trace()
+
         return{"message":"you have created a ride offer"},201
 
     def get(self):

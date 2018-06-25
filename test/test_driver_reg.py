@@ -1,3 +1,4 @@
+
 # import unittest
 # import json
 # from Api import User
@@ -28,4 +29,7 @@
 #         self.assertEqual(registration.status_code,201)
 #         response_data = json.loads(registration.data.decode())
 #         self.assertEqual(response_data["message"],"Welcome you have successfully registered as a driver")
+    # def tearDown(self):
+    #     pass
          
+
