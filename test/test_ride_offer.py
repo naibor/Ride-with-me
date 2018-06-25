@@ -29,11 +29,11 @@ class TestRideOffer(unittest.TestCase):
                     car = "toyoya"
                 ))
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         )  
 
         self.assertEqual(response.status_code,201) 
-        response = self.client.get('/api/v1/user/offer/<location>',content_type = "application/json")
+        response = self.client.get('/api/v1/user/offer/<location>',headers={"content-type": "application/json"})
         self.assertEqual(response.status_code,200 )
 
     def test_empty_offer_location(self):
@@ -50,7 +50,7 @@ class TestRideOffer(unittest.TestCase):
                     car = "toyoya"
                 ))
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         ) 
         self.assertEqual(response.status_code,400)  
         
@@ -68,7 +68,7 @@ class TestRideOffer(unittest.TestCase):
                     car = "toyoya"
                 ))
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         )  
 
         self.assertEqual(response.status_code,400) 
@@ -87,7 +87,7 @@ class TestRideOffer(unittest.TestCase):
                     car = "toyoya"
                 ))
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         ) 
         self.assertEqual(response.status_code,400)  
     
@@ -105,7 +105,7 @@ class TestRideOffer(unittest.TestCase):
                     car = "toyoya"
                 ))
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         )  
 
         self.assertEqual(response.status_code,201) 

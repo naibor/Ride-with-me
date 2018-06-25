@@ -1,6 +1,0 @@
-{
-  "test/test_driver_reg.py::TestDriverReg::test_driver_reg": true,
-  "test/test_driver_ride_offers.py::TestDriverRideOffer::test_create_ride_offers": true,
-  "test/test_ride_offer.py::TestRideOffer::test_get_ride_offers": true,
-  "test/test_ride_request.py::TestRideRequest::test_request_no_space": true
-}

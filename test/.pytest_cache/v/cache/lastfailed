@@ -1,4 +1,0 @@
-{
-  "test_driver_reg.py::TestDriverReg::test_driver_confirmpassword_invalid_character": true,
-  "test_driver_reg.py::TestDriverReg::test_driver_password_invalid_character": true
-}
