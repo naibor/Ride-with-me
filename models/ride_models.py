@@ -8,7 +8,6 @@ ride_Offers = []
 
 DTime = datetime.now() + timedelta(minutes=20)
 
-
 class RRequest:
     """User make request a ride"""
     def __init__ (self,location,destination):
@@ -24,9 +23,6 @@ class RideRequest:
     def __init__(self,location,destination):
         self.location = location
         self.destination = destination
-
         self.departure =str(DTime.time())
         self.ride_id = len(ride_Offers) + 1
         self.driver_detail = driver_details
-
-
