@@ -54,7 +54,7 @@ class UserSignUp(Resource):
                             "username":new_user.username,
                             "password":hashed_password
                           })
-        import pdb;pdb.set_trace()
+        # import pdb;pdb.set_trace()
         return{"message":"Welcome you have successfully signed up"},201            
  
     def get(self):
@@ -75,12 +75,14 @@ class DriverReg(Resource):
         data,errors =driverschema.load(regData)
         if errors:
             return{"error":errors},400 
-
-
-        # save driver_details to driver_detail{} will be see by passangers
-        driver_details[new_driver.username] = {"type_of_car":new_driver.car,
-                                                "phone_number":new_driver.phone_number
-                                                }
+            # instance of driver
+        new_driver = Driver(regData.get("name"),
+                        regData.get("username"),
+                        regData.get("phone_number"),
+                        regData.get("car"),
+                        hashed_password,
+                        hashed_confirmpassword 
+                            )
 
         # check if the driver is an exisiting driver
         for driver in driver_info:
@@ -107,13 +109,12 @@ class UserLogIn(Resource):
             if data.get("username") == dictionary["username"]:
                 # compares given and stored hash passwords
                 if check_password_hash(dictionary["password"], data.get("password")):
-
-
-                    access_token =jwt.encode({"username":dictionary["username"],
-                                              "exp":datetime.utcnow() + timedelta(minutes=60)},
-                                              "this is my secret key to encode the token")
+                    # access_token =jwt.encode({"username":dictionary["username"],
+                    #                           "exp":datetime.utcnow() + timedelta(minutes=60)},
+                    #                           "this is my secret key to encode the token")
                     # import pdb;pdb.set_trace()
-                    return {"token":access_token.decode("UTF -8"),"message":"successfully logged in"},200
+                    # "token":access_token.decode("UTF -8"),
+                    return {"message":"successfully logged in"},200
 
-                return{"message":"wrong password"}
-        return{"message":"signup first"}
+                return{"message":"wrong password"},401
+        return{"message":"signup first"},400

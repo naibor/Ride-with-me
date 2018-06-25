@@ -24,16 +24,16 @@ class RideRequest(Resource):
         data,errors =rideschema.load(postRequest)
         if errors:
             return{"error":errors} 
-        location = request_data.get("location")
-        destination = request_data.get("destination")
+        location = postRequest.get("location")
+        destination = postRequest.get("destination")
         
         #an instance of class RideRequest
-        new_request = RRequest(location,destination)
+        new_request = Rrequest(location,destination)
         
         #request_details{} containing the ride requests of a user  
-        request_details[request_data.get("location")]={
-                                "location":request_data.get("location"),
-                                "destination":request_data.get("destination")
+        request_details[postRequest.get("location")]={
+                                "location":postRequest.get("location"),
+                                "destination":postRequest.get("destination")
 
                               }
         # save the new request to ride_request[]
@@ -50,22 +50,22 @@ class RideRequest(Resource):
         for offer in ride_Offers:
             if offer["location"] == location:
                 list_of_offers.append(offer)
-        return {"list of offers":list_of_offers},200
+            return {"list of offers":list_of_offers},200
     
 class DriverRideOffer(Resource):  
     def post(self):
         #driver post ride offer data
-        postoffer = request.get_json()
+        postRequest = request.get_json()
         # validate it
-
-        data,errors = rideschema.load(postoffer)
+        # import pdb;pdb.set_trace()
+        data,errors = rideschema.load(postRequest)
         if errors:
             return{'error':errors}
            
-
         #create an instance of class RideOffer
-        new_offer = DriverOffer(postoffer.get("location"),
-                                postoffer.get("destination")
+        new_offer = DriverOffer(postRequest.get("location"),
+                                postRequest.get("destination"),
+                                postRequest.get("driver_details")
                                 )
         DT=json.dumps(new_offer.departure)         
 
@@ -74,10 +74,9 @@ class DriverRideOffer(Resource):
                             "location":new_offer.location,
                             "destination":new_offer.destination,
                             "departure":DT,
-                            "driver details":new_offer.driver_detail
+                            "driver details":new_offer.driver_details
         })
 
-        # import pdb;pdb.set_trace()
 
         return{"message":"you have created a ride offer"},201
 

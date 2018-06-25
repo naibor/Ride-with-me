@@ -20,7 +20,7 @@ class Rrequest:
 
 class DriverOffer:
     """Driver offers ride"""
-    def __init__(self,location,destination):
+    def __init__(self,location,destination,driver_details):
         self.location = location
         self.destination = destination
         self.departure =str(DTime.time())
