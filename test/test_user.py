@@ -26,8 +26,8 @@
 #             data=json.dumps(dict(
 #                 name="Naibor",
 #                 username="Lisa",
-#                 password="12345",
-#                 confirmpassword="12345"
+#                 password="A123456789a#",
+#                 confirmpassword="A123456789a#"
 #             )),
 #             content_type=("application/json")
 #         )
@@ -45,8 +45,8 @@
 #             data=json.dumps(dict(
 #                 name='Naib',
 #                 username='Lis',
-#                 password='12345',
-#                 confirmpassword='12345'
+#                 password='A123456789a#',
+#                 confirmpassword='A123456789a#'
 #             )),
 #             content_type=("application/json")
 #         )
@@ -55,7 +55,7 @@
 #             "api/v1/user/auth",
 #             data = json.dumps(dict(
 #                 username = "Lis",
-#                 password = "12345"
+#                 password = "A123456789a#"
 #             )),
 #             content_type = "application/json"
 #         )
@@ -64,5 +64,5 @@
 #         response = json.loads(login.data.decode())
 #         self.assertEqual(response["message"],"successfully logged in")
         
-    # def tearDown(self):
-    #     pass
+#     def tearDown(self):
+#         pass
