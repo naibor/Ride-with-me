@@ -7,7 +7,7 @@ install:
   - pip install coveralls
 
 script:
-  - pytest
+  - pytest--with-coverage--cover-package=Api
   
 after_success : 
   - coveralls

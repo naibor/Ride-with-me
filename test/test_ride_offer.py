@@ -36,11 +36,77 @@ class TestRideOffer(unittest.TestCase):
         response = self.client.get('/api/v1/user/offer/<location>',content_type = "application/json")
         self.assertEqual(response.status_code,200 )
 
-    def test_empty_offers(self):
+    def test_empty_offer_location(self):
         """tests user inputs location and destination"""
+        response =self.client.post(
+            "api/v1/user/create",
+            data=json.dumps(dict(
+                RideId= "1",
+                location = "",
+                destination = "kisumu",
+                departure = str(self.DTime.time()),
+                driver_details = (dict(
+                    name = "kamau",
+                    car = "toyoya"
+                ))
+            )),
+            content_type = "application/json"
+        ) 
+        self.assertEqual(response.status_code,400)  
         pass
-    def tests_spaces_only_offer(self):
+    def test_empty_offers_destination(self):
+        """test user can view all ride offers"""
+        response =self.client.post(
+            "api/v1/user/create",
+            data=json.dumps(dict(
+                RideId= "1",
+                location = "Nanyuki",
+                destination = "",
+                departure = str(self.DTime.time()),
+                driver_details = (dict(
+                    name = "kamau",
+                    car = "toyoya"
+                ))
+            )),
+            content_type = "application/json"
+        )  
+
+        self.assertEqual(response.status_code,400) 
+    def tests_spaces_only_offer_location(self):
         """tests user inputs valid characters only"""
+        response =self.client.post(
+            "api/v1/user/create",
+            data=json.dumps(dict(
+                RideId= "    ",
+                location = "     ",
+                destination = "kisumu",
+                departure = str(self.DTime.time()),
+                driver_details = (dict(
+                    name = "kamau",
+                    car = "toyoya"
+                ))
+            )),
+            content_type = "application/json"
+        ) 
+        self.assertEqual(response.status_code,400)  
         pass
+    def test_get_ride_offers(self):
+            """test user can view all ride offers"""
+        response =self.client.post(
+            "api/v1/user/create",
+            data=json.dumps(dict(
+                RideId= "1",
+                location = "Nanyuki",
+                destination = "kisumu",
+                departure = str(self.DTime.time()),
+                driver_details = (dict(
+                    name = "kamau",
+                    car = "toyoya"
+                ))
+            )),
+            content_type = "application/json"
+        )  
+
+        self.assertEqual(response.status_code,201) 
     def tearDown(self):
         pass

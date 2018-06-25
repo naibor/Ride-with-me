@@ -2,7 +2,7 @@ from flask_restful import Resource, Api
 from flask import request
 import json
 from marshmallow import Schema, fields
-from models.ride_models import RRequest, DriverOffer
+from models.ride_models import Rrequest, DriverOffer
 # from User import driver_details
 from Api.schema_v import rideschema
 
