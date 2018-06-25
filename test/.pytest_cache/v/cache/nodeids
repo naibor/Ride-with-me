@@ -1,0 +1,10 @@
+[
+  "test_ride_offer.py::TestRideOffer::test_get_ride_offers",
+  "test_ride_offer.py::TestRideOffer::test_request_no_space",
+  "test_ride_offer.py::TestRideOffer::test_request_not_empty",
+  "test_ride_request.py::TestRideRequest::test_location_not_empty",
+  "test_ride_request.py::TestRideRequest::test_post_ride_request",
+  "test_ride_request.py::TestRideRequest::test_request_no_space",
+  "test_user.py::TestUserSignUp::test_user_login",
+  "test_user.py::TestUserSignUp::test_user_sign_up"
+]

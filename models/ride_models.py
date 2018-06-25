@@ -1,10 +1,10 @@
 from datetime import datetime, timedelta
-from Api.User import driver_details
+from models.user_model import driver_detail
 # import from user model
 driver_info=[]
-driver_detail={}
-# driver's information displayed to passanger in ride offer details
 
+# driver's information displayed to passanger in ride offer details
+# import pdb;pdb.set_trace()
 ride_Offers = []
 
 # departure time for the ride offer.
@@ -23,7 +23,8 @@ class DriverOffer:
         self.destination = destination
         self.departure =DTime.time()
         self.ride_id = len(ride_Offers) + 1
-        self.driver_detail = driver_details
+        self.driver_details = driver_detail
+
 
 def dateserializer(o):
     if isinstance (o, datetime):

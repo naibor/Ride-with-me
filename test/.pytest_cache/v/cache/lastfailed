@@ -1,0 +1,12 @@
+{
+  "test_driver_reg.py": true,
+  "test_driver_ride_offers.py": true,
+  "test_ride_offer.py::TestRideOffer::test_get_ride_offers": true,
+  "test_ride_offer.py::TestRideOffer::test_request_no_space": true,
+  "test_ride_offer.py::TestRideOffer::test_request_not_empty": true,
+  "test_ride_request.py::TestRideRequest::test_location_not_empty": true,
+  "test_ride_request.py::TestRideRequest::test_post_ride_request": true,
+  "test_ride_request.py::TestRideRequest::test_request_no_space": true,
+  "test_user.py::TestUserSignUp::test_user_login": true,
+  "test_user.py::TestUserSignUp::test_user_sign_up": true
+}

@@ -140,12 +140,7 @@ class DriverReg(Resource):
                             hashed_password,
                             hashed_confirmpassword
                             )
-        # save driver_details to driver_detail{} will be see by passangers
-        driver_details[new_driver.username] = {"type_of_car":new_driver.car,
-                                                "phone_number":new_driver.phone_number
-                                                }
-        print("driver_details")
-        
+              
         for driver in driver_info:
             if regData.get("username") == driver["username"]:
                 return {"message":"This is an existing driver"},400

@@ -2,7 +2,7 @@ from flask_restful import Resource, Api
 from flask import request
 import json
 
-from models.ride_models import RRequest,DriverOffer, dateserializer
+from models.ride_models import RRequest,DriverOffer
 # from User import driver_details
 
 ride_Offers = []
@@ -78,7 +78,7 @@ class DriverRideOffer(Resource):
                                 postoffer.get("destination")
                                 )
 
-        DT=json.dumps(new_offer.departure, default = dateserializer)         
+        DT=json.dumps(new_offer.departure)         
 
         # save the new_offer to ride_offers[]
         ride_Offers.append({"id":new_offer.ride_id,

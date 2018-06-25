@@ -28,8 +28,8 @@ class TestDriverReg(unittest.TestCase):
         self.assertEqual(registration.status_code,201)
         response_data = json.loads(registration.data.decode())
         self.assertEqual(response_data["message"],"Welcome you have successfully registered as a driver")
-     def test_request_not_empty(self):
-            pass
+    def test_request_not_empty(self):
+        pass
 
     def test_request_no_space(self):
         pass
