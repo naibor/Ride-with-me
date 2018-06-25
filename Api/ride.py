@@ -1,7 +1,6 @@
+import json
 from flask_restful import Resource, Api
 from flask import request
-import json
-
 from marshmallow import Schema, fields
 from models.ride_models import RRequest, DriverOffer
 # from User import driver_details
@@ -18,7 +17,6 @@ class RideRequest(Resource):
     # passanger posts a ride request
     def post(self):
         postRequest = request.get_json()
-
         # validate using schema
         data,errors =rideschema.load(postRequest)
         if errors:
@@ -54,9 +52,7 @@ class DriverRideOffer(Resource):
     def post(self):
         #driver post ride offer data
         postoffer = request.get_json()
-        # validate it
-
-        data,errors = rideschema.load(postoffer)
+             data,errors = rideschema.load(postoffer)
         if errors:
             return{'error':errors}
         #create an instance of class RideOffer
@@ -64,8 +60,8 @@ class DriverRideOffer(Resource):
                                 postoffer.get("destination")
                                 )
 
-        DT=json.dumps(new_offer.departure)         
-        # save the new_offer to ride_offers[]
+        DT=json.dumps(new_offer.departure)        
+                # save the new_offer to ride_offers[]
         ride_Offers.append({"id":new_offer.ride_id,
                             "location":new_offer.location,
                             "destination":new_offer.destination,
