@@ -34,7 +34,11 @@ class TestDriverRideOffer(unittest.TestCase):
         )  
 
         self.assertEqual(response.status_code,201) 
-        
+    def test_request_not_empty(self):
+        pass
+
+    def test_request_no_space(self):
+        pass    
     
     def tearDown(self):
         pass

@@ -36,6 +36,11 @@ class TestRideOffer(unittest.TestCase):
         self.assertEqual(response.status_code,201) 
         response = self.client.get('/api/v1/user/offer/<location>',content_type = "application/json")
         self.assertEqual(response.status_code,200 )
-    # def test
+
+    def test_request_not_empty(self):
+        pass
+
+    def test_request_no_space(self):
+        pass
     def tearDown(self):
         pass
