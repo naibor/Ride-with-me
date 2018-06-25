@@ -12,7 +12,6 @@ request_details = {}
 # where passenger request details is stored
 ride_Requests =[]
 # where passanger ride requests details is stored
-
 class RideRequest(Resource):
     # passanger posts a ride request
     def post(self):
@@ -52,16 +51,17 @@ class DriverRideOffer(Resource):
     def post(self):
         #driver post ride offer data
         postoffer = request.get_json()
-             data,errors = rideschema.load(postoffer)
+        data,errors = rideschema.load(postoffer)
         if errors:
             return{'error':errors}
         #create an instance of class RideOffer
+
         new_offer = DriverOffer(postoffer.get("location"),
                                 postoffer.get("destination")
                                 )
-
         DT=json.dumps(new_offer.departure)        
                 # save the new_offer to ride_offers[]
+
         ride_Offers.append({"id":new_offer.ride_id,
                             "location":new_offer.location,
                             "destination":new_offer.destination,

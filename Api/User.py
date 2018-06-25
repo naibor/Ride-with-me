@@ -2,6 +2,7 @@
 from flask_restful import Resource, Api
 from flask import request
 from Api.schema_v import Userschema, driverschema
+
 from werkzeug.security import generate_password_hash, check_password_hash
 # hashes passwords
 from datetime import datetime, timedelta
@@ -15,14 +16,12 @@ driver_info = []
 # where driver information is stored after registration
 driver_details = {}
 # the driver details a passanger user sees while viewing ride_offers[].
-
 class UserSignUp(Resource):
     # inherits from resource
     def post(self):
         # user post signup data
         signup_data = request.get_json()        
         # returns data in json format
-
         # validation starts
         data, errors =Userschema.load(signup_data)
         if errors:

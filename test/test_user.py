@@ -1,12 +1,4 @@
-<<<<<<< Updated upstream
 
-# import unittest  
-# import os
-# import json
-# # from flask import Flask
-# from Api import User
-# from Api import create_app
-=======
 # import unittest  
 # import os
 # import json
@@ -24,7 +16,7 @@
 #         self.app.config["TESTING"]=True
 #         # a flask environmnet variable 
 #         self.client = self.app.test_client()
->>>>>>> Stashed changes
+
 
 # class TestUserSignUp(unittest.TestCase):
 #     """class for user sign up test case"""
@@ -37,7 +29,17 @@
 #         # a flask environmnet variable 
 #         self.client = self.app.test_client()
 
-<<<<<<< Updated upstream
+# class TestUserSignUp(unittest.TestCase):
+#     """class for user sign up test case"""
+#     def setUp(self):
+#         """initialize app and define variables"""
+#         self.app = create_app(config_name = "testing")
+#         # self.app = Flask(__name__)
+#         # or the below whenyou are not using create_app funtion
+#         self.app.config["TESTING"]=True
+#         # a flask environmnet variable 
+#         self.client = self.app.test_client()
+
 
 #         # sign up a user
 #     def test_user_sign_up(self):
@@ -57,7 +59,7 @@
 #         # deserialize response data
 #         response_data = json.loads(response.data.decode())
 
-=======
+
 #         # sign up a user
 #     def test_user_sign_up(self):
 #         """test user can successfuly sign up"""
@@ -76,7 +78,7 @@
 #         # deserialize response data
 #         response_data = json.loads(response.data.decode())
 
->>>>>>> Stashed changes
+
 #         self.assertEqual(response_data["message"],"Welcome you have successfully signed up")
     
 #     def test_user_login(self):
@@ -109,8 +111,3 @@
 #     def tearDown(self):
 #         pass
 
-<<<<<<< Updated upstream
-=======
-#     def tearDown(self):
-#         pass
->>>>>>> Stashed changes
