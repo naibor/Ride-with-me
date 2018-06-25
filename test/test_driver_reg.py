@@ -1,4 +1,3 @@
-
 import unittest
 import json
 from Api import User
@@ -25,7 +24,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,201)
         response_data = json.loads(registration.data.decode())
@@ -43,7 +42,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -59,7 +58,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -75,7 +74,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -91,7 +90,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -107,7 +106,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "",
                 confirmpassword = "A123456789a#"
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -123,7 +122,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = ""
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -139,7 +138,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -155,7 +154,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -171,7 +170,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -187,7 +186,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -203,7 +202,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A9a#",
                 confirmpassword = "A123456789a#"
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -220,7 +219,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A39a#"
             )),
-            content_type = "application/json"
+            headers={"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
     def tearDown(self):

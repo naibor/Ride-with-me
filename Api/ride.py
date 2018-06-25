@@ -1,5 +1,5 @@
 from flask_restful import Resource, Api
-from flask import request
+from flask import request, make_response, jsonify
 import json
 
 from marshmallow import Schema, fields
@@ -23,7 +23,7 @@ class RideRequest(Resource):
         # validate using schema
         data,errors =rideschema.load(postRequest)
         if errors:
-            return{"error":errors} 
+            return make_response(jsonify(errors), 400)
         location = postRequest.get("location")
         destination = postRequest.get("destination")
         
@@ -55,17 +55,17 @@ class RideRequest(Resource):
 class DriverRideOffer(Resource):  
     def post(self):
         #driver post ride offer data
-        postRequest = request.get_json()
+        postoffer = request.get_json()
         # validate it
         # import pdb;pdb.set_trace()
-        data,errors = rideschema.load(postRequest)
+        data, errors = rideschema.load(postoffer)
         if errors:
-            return{'error':errors}
+            return make_response(jsonify(errors), 400)
            
         #create an instance of class RideOffer
-        new_offer = DriverOffer(postRequest.get("location"),
-                                postRequest.get("destination"),
-                                postRequest.get("driver_details")
+        new_offer = DriverOffer(postoffer.get("location"),
+                                postoffer.get("destination"),
+                                postoffer.get("driver_details")
                                 )
         DT=json.dumps(new_offer.departure)         
 

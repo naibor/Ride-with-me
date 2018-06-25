@@ -5,7 +5,7 @@ def validate_name(data):
     name_re = re.fullmatch(re.compile(r"^\w+$"),data)
     if not name_re:
         raise ValidationError("Visisble charecters only", status_code=400)
-    elif len(data) < 2:
+    elif len(data) <= 2:
         raise ValidationError("name too short")
     
 
