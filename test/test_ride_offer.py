@@ -36,6 +36,15 @@ class TestRideOffer(unittest.TestCase):
         self.assertEqual(response.status_code,201) 
         response = self.client.get('/api/v1/user/offer/<location>',content_type = "application/json")
         self.assertEqual(response.status_code,200 )
+<<<<<<< HEAD
     # def test
+=======
+    def test_empty_offers(self):
+        """tests user inputs location and destination"""
+        pass
+    def tests_spaces_only_offer(self):
+        """tests user inputs valid characters only"""
+        pass
+>>>>>>> ft-driver-registration-api-158430305
     def tearDown(self):
         pass

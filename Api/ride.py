@@ -2,8 +2,10 @@ from flask_restful import Resource, Api
 from flask import request
 import json
 
-from models.ride_models import RRequest,DriverOffer, dateserializer
+from marshmallow import Schema, fields
+from models.ride_models import RRequest, DriverOffer
 # from User import driver_details
+from Api.schema_v import rideschema
 
 ride_Offers = []
 # where offers made by driver are stored
@@ -11,34 +13,26 @@ request_details = {}
 # where passenger request details is stored
 ride_Requests =[]
 # where passanger ride requests details is stored
+
 class RideRequest(Resource):
     # passanger posts a ride request
     def post(self):
         postRequest = request.get_json()
-        # validate
-        # empty field
-        if not postRequest.get("location"):
-            return {"message":"enter your location"},400
-        if not postRequest.get("destination"):
-            return{"message":"enter your destination"},400
 
-        # empty string
-        if  postRequest.get("location") == "  ":
-            return {"message":"location can not be spaces"},400
-        if postRequest.get("destination") == "  ":
-            return{"message":"destination can not be spaces"},400
-
-        location = postRequest.get("location")
-        destination = postRequest.get("destination")
+        # validate using schema
+        data,errors =rideschema.load(postRequest)
+        if errors:
+            return{"error":errors} 
+        location = request_data.get("location")
+        destination = request_data.get("destination")
         
         #an instance of class RideRequest
         new_request = RRequest(location,destination)
-        # import pdb;pdb.set_trace()
         
         #request_details{} containing the ride requests of a user  
-        request_details[postRequest.get("location")]={
-                                "location":postRequest.get("location"),
-                                "destination":postRequest.get("destination")
+        request_details[request_data.get("location")]={
+                                "location":request_data.get("location"),
+                                "destination":request_data.get("destination")
                               }
         # save the new request to ride_request[]
         ride_Requests.append(request_details)
@@ -61,25 +55,16 @@ class DriverRideOffer(Resource):
         #driver post ride offer data
         postoffer = request.get_json()
         # validate it
-        # empty field 
-        if not postoffer.get("location"):
-            return{"message":"enter your location please"},400
-        if not postoffer.get("destination"):
-            return{"message":"enter ride destination please"},400
-        
-        # space in input
-        if postoffer.get("location")==" ":
-            return {"message":"spaces not allowed"},400
-        if postoffer.get("destination") == " ":
-            return {"message":"spaces not allowed"},400
-        
+
+        data,errors = rideschema.load(postoffer)
+        if errors:
+            return{'error':errors}
         #create an instance of class RideOffer
         new_offer = DriverOffer(postoffer.get("location"),
                                 postoffer.get("destination")
                                 )
 
-        DT=json.dumps(new_offer.departure, default = dateserializer)         
-
+        DT=json.dumps(new_offer.departure)         
         # save the new_offer to ride_offers[]
         ride_Offers.append({"id":new_offer.ride_id,
                             "location":new_offer.location,
@@ -87,6 +72,7 @@ class DriverRideOffer(Resource):
                             "departure":DT,
                             "driver details":new_offer.driver_detail
         })
+        # import pdb;pdb.set_trace()
         return{"message":"you have created a ride offer"},201
 
     def get(self):
@@ -103,3 +89,4 @@ class RideOffer(Resource):
                 # if the id is a key in the dictionary
                 return offer
         return{"message":"ride does not exist"}
+
