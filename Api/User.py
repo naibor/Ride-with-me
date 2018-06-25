@@ -65,19 +65,21 @@ class DriverReg(Resource):
 
 
         # validation required
-        data,errors =driverschema.load(regData)
+        data,errors =  driverschema.load(regData)
         if errors:
             return{"error":errors},400 
             # instance of driver
-        new_driver = Driver(regData.get("name"),
-                        regData.get("username"),
-                        regData.get("phone_number"),
-                        regData.get("car"),
-                        hashed_password,
-                        hashed_confirmpassword 
+        new_driver = Driver(
+            regData.get("name"),
+            regData.get("username"),
+            regData.get("phone_number"),
+            regData.get("car"),
+            hashed_password,
+            hashed_confirmpassword
+        )
         #confirms confirmpassword == password is the same
         if regData.get("password") != regData.get("confirmpassword"):
-            return{"message":"password and confirm password not the same"},400
+            return {"message":"password and confirm password not the same"},400
         
 
         # check if the driver is an exisiting driver
