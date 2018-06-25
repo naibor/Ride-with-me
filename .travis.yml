@@ -3,3 +3,7 @@ python:
   - "3.6"
 script:
   - pytest
+  - pytest --with-coverage --cover-package=Api
+  
+after_success : 
+  - coveralls

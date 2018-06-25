@@ -12,7 +12,6 @@ def create_app(config_name):
     api=Api(app)
 
     # api.init_app(app)
-    
     api.add_resource(UserSignUp,'/api/v1/user/signup')
     api.add_resource(UserLogIn,'/api/v1/user/auth')
     api.add_resource(DriverReg,'api/v1/user/register')
