@@ -2,9 +2,9 @@ import json
 from flask_restful import Resource, Api
 from flask import request
 from marshmallow import Schema, fields
-from models.ride_models import RRequest, DriverOffer
 # from User import driver_details
 from Api.schema_v import rideschema
+from models.ride_models import Rrequest, DriverOffer
 
 ride_Offers = []
 # where offers made by driver are stored
@@ -24,7 +24,7 @@ class RideRequest(Resource):
         destination = request_data.get("destination")
         
         #an instance of class RideRequest
-        new_request = RRequest(location,destination)
+        new_request = Rrequest(location,destination)
         
         #request_details{} containing the ride requests of a user  
         request_details[request_data.get("location")]={
