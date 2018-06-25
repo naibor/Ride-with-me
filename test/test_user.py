@@ -1,8 +1,6 @@
-
 import unittest  
 import os
 import json
-# from flask import Flask
 from Api import User
 from Api import create_app
 
@@ -16,7 +14,6 @@ class TestUserSignUp(unittest.TestCase):
         self.app.config["TESTING"]=True
         # a flask environmnet variable 
         self.client = self.app.test_client()
-
 
         # sign up a user
     def test_user_sign_up(self):
@@ -50,7 +47,6 @@ class TestUserSignUp(unittest.TestCase):
             )),
             content_type=("application/json")
         )
-
         login = self.client.post(
             "api/v1/user/auth",
             data = json.dumps(dict(
@@ -63,4 +59,3 @@ class TestUserSignUp(unittest.TestCase):
         self.assertEqual(login.status_code,200)
         response = json.loads(login.data.decode())
         self.assertEqual(response["message"],"successfully logged in")
-        

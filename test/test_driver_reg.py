@@ -222,5 +222,3 @@ class TestDriverReg(unittest.TestCase):
             headers={"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
-
-

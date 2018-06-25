@@ -30,7 +30,6 @@ def validate_phone(phone_number):
     if phone_re:
         raise ValidationError("enter numbers")
 
-
 # Class user schema
 class UserSchema(Schema):
     name = fields.Str(validate=validate_name, required=True)
