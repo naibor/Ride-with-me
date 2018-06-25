@@ -2,7 +2,7 @@ import unittest
 import os
 import json
 from datetime import datetime, timedelta 
-from models import ride_models
+from models.ride_models import Rrequest, DriverOffer
 
 from Api import create_app
  
@@ -109,5 +109,3 @@ class TestRideOffer(unittest.TestCase):
         )  
 
         self.assertEqual(response.status_code,201) 
-    def tearDown(self):
-        pass

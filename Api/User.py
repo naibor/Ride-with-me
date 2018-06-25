@@ -1,8 +1,5 @@
-
 from flask_restful import Resource, Api
-
 from flask import request
-
 from Api.schema_v import Userschema, driverschema
 
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -18,10 +15,6 @@ driver_info = []
 # where driver information is stored after registration
 driver_details = {}
 # the driver details a passanger user sees while viewing ride_offers[].
-
-# the driver details a passanger user sees while viewing ride_offers[].
-
-
 class UserSignUp(Resource):
     # inherits from resource
     def post(self):
@@ -82,7 +75,10 @@ class DriverReg(Resource):
                         regData.get("car"),
                         hashed_password,
                         hashed_confirmpassword 
-                            )
+        #confirms confirmpassword == password is the same
+        if regData.get("password") != regData.get("confirmpassword"):
+            return{"message":"password and confirm password not the same"},400
+        
 
         # check if the driver is an exisiting driver
         for driver in driver_info:
@@ -96,25 +92,20 @@ class DriverReg(Resource):
                             "password":hashed_password,
                             "driver_detail":driver_details
                             })
-        print("driver_info")
         return{"message":"Welcome you have successfully registered as a driver"},201  
 
 class UserLogIn(Resource):
     # userlogin resource
     def post(self):
-        
         # username and password requied
         data = request.get_json()
         for dictionary in signup_info:
             if data.get("username") == dictionary["username"]:
                 # compares given and stored hash passwords
                 if check_password_hash(dictionary["password"], data.get("password")):
-                    # access_token =jwt.encode({"username":dictionary["username"],
-                    #                           "exp":datetime.utcnow() + timedelta(minutes=60)},
-                    #                           "this is my secret key to encode the token")
-                    # import pdb;pdb.set_trace()
-                    # "token":access_token.decode("UTF -8"),
+          
                     return {"message":"successfully logged in"},200
 
                 return{"message":"wrong password"},401
         return{"message":"signup first"},400
+

@@ -1,11 +1,10 @@
+import json
 from flask_restful import Resource, Api
 from flask import request, make_response, jsonify
-import json
-
 from marshmallow import Schema, fields
 from models.ride_models import Rrequest, DriverOffer
-# from User import driver_details
 from Api.schema_v import rideschema
+from models.ride_models import Rrequest, DriverOffer
 
 
 ride_Offers = []
@@ -57,12 +56,12 @@ class DriverRideOffer(Resource):
         #driver post ride offer data
         postoffer = request.get_json()
         # validate it
-        # import pdb;pdb.set_trace()
         data, errors = rideschema.load(postoffer)
         if errors:
             return make_response(jsonify(errors), 400)
            
         #create an instance of class RideOffer
+
         new_offer = DriverOffer(postoffer.get("location"),
                                 postoffer.get("destination"),
                                 postoffer.get("driver_details")
@@ -70,6 +69,7 @@ class DriverRideOffer(Resource):
         DT=json.dumps(new_offer.departure)         
 
         # save the new_offer to ride_offers[]
+
         ride_Offers.append({"id":new_offer.ride_id,
                             "location":new_offer.location,
                             "destination":new_offer.destination,
@@ -94,3 +94,4 @@ class RideOffer(Resource):
                 # if the id is a key in the dictionary
                 return offer
         return{"message":"ride does not exist"}
+

@@ -26,5 +26,3 @@ class DriverOffer:
         self.departure =str(DTime.time())
         self.ride_id = len(ride_Offers) + 1
         self.driver_details = driver_detail
-
-

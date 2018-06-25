@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 from models import ride_models
 
 from Api import create_app
- 
+
 class TestDriverRideOffer(unittest.TestCase):
     def setUp(self):
         """inititalize app and define variables"""
@@ -54,8 +54,6 @@ class TestDriverRideOffer(unittest.TestCase):
 
         self.assertEqual(response.status_code,400)
         
-
-
     def test_destination_field_empty(self):
         response = self.client.post(
             "api/v1/user/create",
@@ -73,9 +71,7 @@ class TestDriverRideOffer(unittest.TestCase):
         )
         
         self.assertEqual(response.status_code,400)
-        print("tyhjjkgv", response)
-
-    
+         
     def test_location_field_string(self):
         """test input fields are strings"""
         response = self.client.post(
@@ -183,6 +179,3 @@ class TestDriverRideOffer(unittest.TestCase):
             headers={"content-type": "application/json"}
         )
         self.assertEqual(response.status_code, 400)
-    
-    def tearDown(self):
-        pass
