@@ -19,7 +19,7 @@ def validate_password(data):
     elif not re.search('\W+',data):
         raise ValidationError("Have atleast one special character")
     else:
-        password_re =re.fullmatch(re.compile('^\S$'),data)
+        password_re =re.fullmatch(re.compile(r"^\S+$"),data)
         if not password_re:
             raise ValidationError('no spaces allowed in password')
 
