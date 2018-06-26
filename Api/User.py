@@ -1,13 +1,11 @@
 from flask_restful import Resource, Api
 from flask import request
 from Api.schema_v import Userschema, driverschema
-
 from werkzeug.security import generate_password_hash, check_password_hash
 # hashes passwords
 from datetime import datetime, timedelta
 # to get departure time
 from models.user_model import User,Driver
-import jwt
 
 signup_info = []
 # where user signup information is stored
@@ -22,7 +20,7 @@ class UserSignUp(Resource):
         signup_data = request.get_json()        
         # returns data in json format
         # validation starts
-        data, errors =Userschema.load(signup_data)
+        data, errors = Userschema.load(signup_data)
         if errors:
            return{"error":errors},400 
 
@@ -47,7 +45,6 @@ class UserSignUp(Resource):
                             "username":new_user.username,
                             "password":hashed_password
                           })
-        # import pdb;pdb.set_trace()
         return{"message":"Welcome you have successfully signed up"},201            
  
     def get(self):
@@ -62,8 +59,6 @@ class DriverReg(Resource):
         regData = request.get_json()
         hashed_password = generate_password_hash(regData.get("password"), method="sha256")
         hashed_confirmpassword = generate_password_hash(regData.get("confirmpassword"), method="sha256")
-
-
         # validation required
         data,errors =  driverschema.load(regData)
         if errors:
@@ -81,7 +76,6 @@ class DriverReg(Resource):
         if regData.get("password") != regData.get("confirmpassword"):
             return {"message":"password and confirm password not the same"},400
         
-
         # check if the driver is an exisiting driver
         for driver in driver_info:
             if regData.get("username") == driver["username"]:
@@ -105,9 +99,7 @@ class UserLogIn(Resource):
             if data.get("username") == dictionary["username"]:
                 # compares given and stored hash passwords
                 if check_password_hash(dictionary["password"], data.get("password")):
-          
                     return {"message":"successfully logged in"},200
-
                 return{"message":"wrong password"},401
         return{"message":"signup first"},400
 
