@@ -1,3 +1,4 @@
+"""tests for driver registration"""
 import unittest
 import json
 from Api import User
@@ -7,7 +8,7 @@ class TestDriverReg(unittest.TestCase):
     """class for driver registration test cases"""
     def setUp(self):
         """initialize app and define variables"""
-        self.app = create_app(config_name= "testing")
+        self.app = create_app(config_name="testing")
         self.app.config["TESTING"]=True
         self.client = self.app.test_client()
 
@@ -16,7 +17,7 @@ class TestDriverReg(unittest.TestCase):
         """test driver can successfuly register"""
         registration = self.client.post(
             "api/v1/user/register",
-            data=json.dumps(dict(
+            data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
                 phone_number = "4654378540",
@@ -24,7 +25,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,201)
         response_data = json.loads(registration.data.decode())
@@ -34,7 +35,7 @@ class TestDriverReg(unittest.TestCase):
         """test driver name not empty"""
         registration = self.client.post(
             "api/v1/user/register",
-            data=json.dumps(dict(
+            data = json.dumps(dict(
                 name = "",
                 username = "kanjo",
                 phone_number = "4654378540",
@@ -42,7 +43,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -50,7 +51,7 @@ class TestDriverReg(unittest.TestCase):
         """test driver username not empty"""
         registration = self.client.post(
             "api/v1/user/register",
-            data=json.dumps(dict(
+            data = json.dumps(dict(
                 name = "kamau",
                 username = "",
                 phone_number = "4654378540",
@@ -58,7 +59,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -66,7 +67,7 @@ class TestDriverReg(unittest.TestCase):
         """test driver phonenumber not empty"""
         registration = self.client.post(
             "api/v1/user/register",
-            data=json.dumps(dict(
+            data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
                 phone_number = "",
@@ -74,7 +75,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -82,7 +83,7 @@ class TestDriverReg(unittest.TestCase):
         """test driver car not empty"""
         registration = self.client.post(
             "api/v1/user/register",
-            data=json.dumps(dict(
+            data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
                 phone_number = "4654378540",
@@ -90,7 +91,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -98,7 +99,7 @@ class TestDriverReg(unittest.TestCase):
         """test driver password not empty"""
         registration = self.client.post(
             "api/v1/user/register",
-            data=json.dumps(dict(
+            data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
                 phone_number = "4654378540",
@@ -106,7 +107,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "",
                 confirmpassword = "A123456789a#"
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -114,7 +115,7 @@ class TestDriverReg(unittest.TestCase):
         """test driver confirmpassword not empty"""
         registration = self.client.post(
             "api/v1/user/register",
-            data=json.dumps(dict(
+            data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
                 phone_number = "4654378540",
@@ -122,7 +123,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = ""
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -130,7 +131,7 @@ class TestDriverReg(unittest.TestCase):
         """test driver name with spaces only"""
         registration = self.client.post(
             "api/v1/user/register",
-            data=json.dumps(dict(
+            data = json.dumps(dict(
                 name = "     ",
                 username = "kanjo",
                 phone_number = "4654378540",
@@ -138,7 +139,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -146,7 +147,7 @@ class TestDriverReg(unittest.TestCase):
         """test driver username with spaces only"""
         registration = self.client.post(
             "api/v1/user/register",
-            data=json.dumps(dict(
+            data = json.dumps(dict(
                 name = "kamau",
                 username = "     ",
                 phone_number = "4654378540",
@@ -154,7 +155,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -162,7 +163,7 @@ class TestDriverReg(unittest.TestCase):
         """test driver phonenumber with spaces only"""
         registration = self.client.post(
             "api/v1/user/register",
-            data=json.dumps(dict(
+            data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
                 phone_number = "       ",
@@ -170,7 +171,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -178,7 +179,7 @@ class TestDriverReg(unittest.TestCase):
         """test driver car with spaces"""
         registration = self.client.post(
             "api/v1/user/register",
-            data=json.dumps(dict(
+            data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
                 phone_number = "4654378540",
@@ -186,7 +187,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -194,7 +195,7 @@ class TestDriverReg(unittest.TestCase):
         """test driver password requied length"""
         registration = self.client.post(
             "api/v1/user/register",
-            data=json.dumps(dict(
+            data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
                 phone_number = "4654378540",
@@ -202,7 +203,7 @@ class TestDriverReg(unittest.TestCase):
                 password = "A9a#",
                 confirmpassword = "A123456789a#"
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
 
@@ -211,7 +212,7 @@ class TestDriverReg(unittest.TestCase):
         """test driver confirmpassword required length"""
         registration = self.client.post(
             "api/v1/user/register",
-            data=json.dumps(dict(
+            data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
                 phone_number = "4654378540",
@@ -219,6 +220,6 @@ class TestDriverReg(unittest.TestCase):
                 password = "A123456789a#",
                 confirmpassword = "A39a#"
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
