@@ -18,15 +18,15 @@
         <!-- side nav button -->
         <!-- request ride/offer ride -->
             <div class= "request">
-                <button onclick="Open()" type="button" class="Buttons">OFFER RIDE </button>
+                <button onclick="Open()" type="button" class="buttons">OFFER RIDE </button>
             </div>
             <div>
-                <button onclick="OpenMenu()" type="button" class="Buttons" id="menu">MENU</button>
+                <button onclick="OpenMenu()" type="button" class="buttons" id="menu">MENU</button>
             </div>
             <!-- Request ride/offer  -->
             <!-- logout button -->
             <div>
-                <button class="Buttons"><a href="index.html">Log out</a></button>
+                <button class="buttons"><a href="index.html">Log out</a></button>
             </div>
         </div> 
         </div>
@@ -38,24 +38,26 @@
             
         </div>        
         <!-- ride details modal -->
-        <div id="requestDetails">
-            <span id="cancel" onclick="Close()" class="ClosesColumn">&times;</span><br>
+        <div id="requestdetails">
+            <span id="cancel" onclick="Close()" class="closescolumn">&times;</span><br>
             <input id="ride" type="text" name="destination" placeholder="Enter Destination" ><br>
             <input id="ride"type="text" name="location" placeholder="Enter Location"><br><br>
-            <button  class="SubmitButton" type="submit">Submit</button><br><br>
-            <button class="SubmitButton" type="reset">Reset</button>
+            <button  class="submitbutton" type="submit">Submit</button><br><br>
+            <button class="submitbutton" type="reset">Reset</button>
         </div>
         <!-- side nav modal -->
         <div id="sidemodal">
             <!-- closing side nav -->
-            <span onclick="CloseMenu()" class="ClosesColumn">&times;</span>
+            <span onclick="closeMenu()" class="closescolumn">&times;</span>
             <!-- number of rides given -->
-            <div class="sidenav"><p>History</p></div> 
+            <div class="sidenav">
+                <button id = "requestbutton" class="buttons" onclick="openhistory()" type="button">History</button>
+            </div>
             <!--geo location  -->
             <div class="sidenav"> <p>My location</p></div>
             <!-- table of available rides and details -->
             <div class="sidenav">
-                <button id="RequestButton" class="Buttons" onclick="Openrequests()" type="button"> Requests</button>
+                <button id="requestbutton" class="buttons" onclick="Openrequests()" type="button"> Requests</button>
             </div>
             
             <div class="sidenav"><p>settings</p></div>
@@ -64,12 +66,12 @@
             @Naibor
         </footer>
         <!-- table of requests modal -->
-        <div id="requestTable" >
-            <span onclick="Closetable()" class="ClosesColumn">&times;</span>
-            <table id="Table">
+        <div id="requesttable" >
+            <span onclick="closetable()" class="closescolumn">&times;</span>
+            <table id="table">
                 <tr>    
                     <p id="requests">RIDE REQUESTS </p>
-                    <span onclick="Closetable()" class="ClosesColumn">&times;</span>
+                    <span onclick="closetable()" class="closescolumn">&times;</span>
                 </tr>
                 <tr>
                     <th>request ID</th>
@@ -161,8 +163,44 @@
             </table>
         </div>    
             <!-- user table -->
+            <!-- driver history table -->
+            <!-- driver history list table -->
+        <div id ="driverhistory">
+                <span id = "col" onclick="closehistory()" class="closecolumn">&times;</span>
+                    <table id="table">
+                        <tr>
+                            <p id="available"> HISTORY</p>
+                        </tr>
+                        <tr>
+                            <th>rides</th>
+                            <th>Date</th>
+                        </tr>
+                        <tr>
+                            <td>Nairobi - Mwiki</td>
+                            <td>5/6/2018</td>                            
+                        </tr>
+                        <tr>
+                            <td>kisumu - Sweden</td>
+                            <td>5/6/2018</td>                         
+                        </tr>
+                        <tr>
+                            <td>limuru-thika </td>
+                            <td>5/6/2018</td>
+                        </tr>
+                        <tr>
+                            <td>kariobangi - Jogoo road</td>
+                            <td>5/6/2018</td>
+                        </tr>
+                        <tr>
+                            <td>river road - ukamabni</td>
+                            <td>5/6/2018</td> 
+                        <tr>
+                            <td>TOTAL</td>
+                            <td>7</td>
+                        </tr>
+                    </table>
 
-        
+        </div>
         <!-- scripts -->
         <script src="static/myjs.js"></script>
 
