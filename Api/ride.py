@@ -1,10 +1,11 @@
 import json
 from flask_restful import Resource, Api
-from flask import request
+from flask import request, make_response, jsonify
 from marshmallow import Schema, fields
-# from User import driver_details
+from models.ride_models import Rrequest, DriverOffer
 from Api.schema_v import rideschema
 from models.ride_models import Rrequest, DriverOffer
+
 
 ride_Offers = []
 # where offers made by driver are stored
@@ -12,24 +13,27 @@ request_details = {}
 # where passenger request details is stored
 ride_Requests =[]
 # where passanger ride requests details is stored
+
 class RideRequest(Resource):
     # passanger posts a ride request
     def post(self):
         postRequest = request.get_json()
+
         # validate using schema
         data,errors =rideschema.load(postRequest)
         if errors:
-            return{"error":errors} 
-        location = request_data.get("location")
-        destination = request_data.get("destination")
+            return make_response(jsonify(errors), 400)
+        location = postRequest.get("location")
+        destination = postRequest.get("destination")
         
         #an instance of class RideRequest
         new_request = Rrequest(location,destination)
         
         #request_details{} containing the ride requests of a user  
-        request_details[request_data.get("location")]={
-                                "location":request_data.get("location"),
-                                "destination":request_data.get("destination")
+        request_details[postRequest.get("location")]={
+                                "location":postRequest.get("location"),
+                                "destination":postRequest.get("destination")
+
                               }
         # save the new request to ride_request[]
         ride_Requests.append(request_details)
@@ -45,30 +49,35 @@ class RideRequest(Resource):
         for offer in ride_Offers:
             if offer["location"] == location:
                 list_of_offers.append(offer)
-        return {"list of offers":list_of_offers},200
+            return {"list of offers":list_of_offers},200
     
 class DriverRideOffer(Resource):  
     def post(self):
         #driver post ride offer data
         postoffer = request.get_json()
-        data,errors = rideschema.load(postoffer)
+        # validate it
+        data, errors = rideschema.load(postoffer)
         if errors:
-            return{'error':errors}
+            return make_response(jsonify(errors), 400)
+           
         #create an instance of class RideOffer
 
         new_offer = DriverOffer(postoffer.get("location"),
-                                postoffer.get("destination")
+                                postoffer.get("destination"),
+                                postoffer.get("driver_details")
                                 )
-        DT=json.dumps(new_offer.departure)        
-                # save the new_offer to ride_offers[]
+        DT=json.dumps(new_offer.departure)         
+
+        # save the new_offer to ride_offers[]
 
         ride_Offers.append({"id":new_offer.ride_id,
                             "location":new_offer.location,
                             "destination":new_offer.destination,
                             "departure":DT,
-                            "driver details":new_offer.driver_detail
+                            "driver details":new_offer.driver_details
         })
-        # import pdb;pdb.set_trace()
+
+
         return{"message":"you have created a ride offer"},201
 
     def get(self):

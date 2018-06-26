@@ -5,10 +5,9 @@ python:
 install:
   - pip install  -r requirements.txt
   - pip install coveralls
-
-script:
-  - pytest
-  - pytest --with-coverage --cover-package=Api
   
+script: 
+  - pytest --cov=Api test/
+
 after_success : 
   - coveralls

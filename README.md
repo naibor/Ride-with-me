@@ -33,6 +33,13 @@ copy the link to a browser of your liking.
 
 ## Usage
 
+ The application is usefull for regular commuters who need a ride home or to work.
+ It offers a job opportunity to drivers, they can register as drivers and post offers.
+ Passangers can request rides and view available rides.
+ Drivers can post ride offers and view available requests.
+
+##Demo
+
 View demo: [click](https://naibor.github.io/Ride-with-me/)
 
 
