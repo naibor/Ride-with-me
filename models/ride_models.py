@@ -1,13 +1,11 @@
+"""ride models classes"""
 from datetime import datetime, timedelta
 from models.user_model import driver_detail
 # import from user model
-driver_info=[]
-
+driver_info = []
 # driver's information displayed to passanger in ride offer details
-# import pdb;pdb.set_trace()
-
 ride_Offers = []
-
+# A list of ride offers
 # departure time for the ride offer.
 DTime = datetime.now() + timedelta(minutes=20)
 
@@ -23,6 +21,6 @@ class DriverOffer:
     def __init__(self,location,destination,driver_details):
         self.location = location
         self.destination = destination
-        self.departure =str(DTime.time())
+        self.departure = str(DTime.time())
         self.ride_id = len(ride_Offers) + 1
         self.driver_details = driver_detail
