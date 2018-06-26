@@ -1,3 +1,4 @@
+"""test user signup and login"""
 import unittest  
 import os
 import json
@@ -9,7 +10,6 @@ class TestUserSignUp(unittest.TestCase):
     def setUp(self):
         """initialize app and define variables"""
         self.app = create_app(config_name = "testing")
-        # self.app = Flask(__name__)
         # or the below whenyou are not using create_app funtion
         self.app.config["TESTING"]=True
         # a flask environmnet variable 
@@ -18,15 +18,15 @@ class TestUserSignUp(unittest.TestCase):
         # sign up a user
     def test_user_sign_up(self):
         """test user can successfuly sign up"""
-        response =self.client.post(
+        response = self.client.post(
             "api/v1/user/signup",
-            data=json.dumps(dict(
-                name="Naibor",
-                username="Lisa",
-                password="A123456789a#",
-                confirmpassword="A123456789a#"
+            data = json.dumps(dict(
+                name = "Naibor",
+                username = "Lisa",
+                password = "A123456789a#",
+                confirmpassword = "A123456789a#"
             )),
-            content_type=("application/json")
+            content_type = ("application/json")
         )
         # assert response code is 201
         self.assertEqual(response.status_code,201)
@@ -37,15 +37,15 @@ class TestUserSignUp(unittest.TestCase):
     
     def test_user_login(self):
         """test user can successfuly login"""
-        signup =self.sign_up =self.client.post(
+        sign_up = self.client.post(
             "api/v1/user/signup",
-            data=json.dumps(dict(
-                name='Naib',
-                username='Lis',
-                password='A123456789a#',
-                confirmpassword='A123456789a#'
+            data = json.dumps(dict(
+                name = 'Naib',
+                username = 'Lis',
+                password = 'A123456789a#',
+                confirmpassword = 'A123456789a#'
             )),
-            content_type=("application/json")
+            content_type = ("application/json")
         )
         login = self.client.post(
             "api/v1/user/auth",
@@ -55,7 +55,6 @@ class TestUserSignUp(unittest.TestCase):
             )),
             content_type = "application/json"
         )
-        # self.assertEqual(response.)
         self.assertEqual(login.status_code,200)
         response = json.loads(login.data.decode())
         self.assertEqual(response["message"],"successfully logged in")

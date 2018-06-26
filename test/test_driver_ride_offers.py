@@ -1,12 +1,13 @@
+"""test for driver ride offer"""
 import unittest
 import os
 import json
 from datetime import datetime, timedelta 
 from models import ride_models
-
 from Api import create_app
 
 class TestDriverRideOffer(unittest.TestCase):
+    """test driver can offer rides"""
     def setUp(self):
         """inititalize app and define variables"""
         self.app = create_app(config_name = "testing")
@@ -18,10 +19,10 @@ class TestDriverRideOffer(unittest.TestCase):
     
     def test_create_ride_offers(self):
         """test driver can create ride offer"""
-        response =self.client.post(
+        response = self.client.post(
             "api/v1/user/create",
-            data=json.dumps(dict(
-                RideId= "1",
+            data = json.dumps(dict(
+                RideId = "1",
                 location = "Nanyuki",
                 destination = "kisumu",
                 departure = str(self.DTime.time()),
@@ -30,17 +31,17 @@ class TestDriverRideOffer(unittest.TestCase):
                     car = "toyoya"
                 ))
             )),
-            content_type = "application/json"
+            headers = {"content-type": "application/json"}
         )  
 
         self.assertEqual(response.status_code,201) 
 
     def test_location_field_empty(self):
         """test ride offer fields are not empty"""
-        response =self.client.post(
+        response = self.client.post(
             "api/v1/user/create",
-            data=json.dumps(dict(
-                RideId= "1",
+            data = json.dumps(dict(
+                RideId = "1",
                 location = "",
                 destination = "kisumu",
                 departure = str(self.DTime.time()),
@@ -49,16 +50,16 @@ class TestDriverRideOffer(unittest.TestCase):
                     car = "toyoya"
                 ))
             )),
-            content_type = "application/json"
+            headers = {"content-type": "application/json"}
         )  
-
         self.assertEqual(response.status_code,400)
         
     def test_destination_field_empty(self):
+        """test destination field not empty"""
         response = self.client.post(
             "api/v1/user/create",
             data = json.dumps(dict(
-                RideId= "1",
+                RideId = "1",
                 location = "Naibor",
                 destination = "",
                 departure = str(self.DTime.time()),
@@ -67,9 +68,8 @@ class TestDriverRideOffer(unittest.TestCase):
                     car = "toyoya"
             ))
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
-        
         self.assertEqual(response.status_code,400)
          
     def test_location_field_string(self):
@@ -77,7 +77,7 @@ class TestDriverRideOffer(unittest.TestCase):
         response = self.client.post(
             "api/v1/user/create",
             data = json.dumps(dict(
-                RideId= "1",
+                RideId = "1",
                 location = "5",
                 destination = "kisumu",
                 departure = str(self.DTime.time()),
@@ -86,7 +86,7 @@ class TestDriverRideOffer(unittest.TestCase):
                     car = "toyoya"
             ))
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(response.status_code, 400)
     
@@ -95,7 +95,7 @@ class TestDriverRideOffer(unittest.TestCase):
         response = self.client.post(
             "api/v1/user/create",
             data = json.dumps(dict(
-                RideId= "1",
+                RideId = "1",
                 location = "Nairobi",
                 destination = "10",
                 departure = str(self.DTime.time()),
@@ -104,7 +104,7 @@ class TestDriverRideOffer(unittest.TestCase):
                     car = "toyoya"
             ))
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(response.status_code, 400)
 
@@ -113,7 +113,7 @@ class TestDriverRideOffer(unittest.TestCase):
         response = self.client.post(
             "api/v1/user/create",
             data = json.dumps(dict(
-                RideId= "1",
+                RideId = "1",
                 location = "     ",
                 destination = "kisumu",
                 departure = str(self.DTime.time()),
@@ -122,7 +122,7 @@ class TestDriverRideOffer(unittest.TestCase):
                     car = "toyoya"
             ))
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(response.status_code, 400)
 
@@ -131,7 +131,7 @@ class TestDriverRideOffer(unittest.TestCase):
         response = self.client.post(
             "api/v1/user/create",
             data = json.dumps(dict(
-                RideId= "1",
+                RideId = "1",
                 location = "Nairobi",
                 destination = "     ",
                 departure = str(self.DTime.time()),
@@ -140,7 +140,7 @@ class TestDriverRideOffer(unittest.TestCase):
                     car = "toyoya"
             ))
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(response.status_code, 400)
 
@@ -149,7 +149,7 @@ class TestDriverRideOffer(unittest.TestCase):
         response = self.client.post(
             "api/v1/user/create",
             data = json.dumps(dict(
-                RideId= "1",
+                RideId = "1",
                 location = "Na",
                 destination = "kisumu",
                 departure = str(self.DTime.time()),
@@ -158,7 +158,7 @@ class TestDriverRideOffer(unittest.TestCase):
                     car = "toyoya"
             ))
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(response.status_code, 400)
 
@@ -167,7 +167,7 @@ class TestDriverRideOffer(unittest.TestCase):
         response = self.client.post(
             "api/v1/user/create",
             data = json.dumps(dict(
-                RideId= "1",
+                RideId = "1",
                 location = "Nairobi",
                 destination = "ka",
                 departure = str(self.DTime.time()),
@@ -176,6 +176,6 @@ class TestDriverRideOffer(unittest.TestCase):
                     car = "toyoya"
             ))
             )),
-            headers={"content-type": "application/json"}
+            headers = {"content-type": "application/json"}
         )
         self.assertEqual(response.status_code, 400)
