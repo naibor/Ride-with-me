@@ -1,3 +1,4 @@
+"""Validation functions and schemas for input fields"""
 from marshmallow import Schema, fields, validate, ValidationError
 import re
 
@@ -19,19 +20,20 @@ def validate_password(password):
     elif not re.search('\W+',password):
         raise ValidationError("Have atleast one special character")
     else:
-        password_re =re.fullmatch(re.compile(r"^\S+$"),password)
+        password_re = re.fullmatch(re.compile(r"^\S+$"),password)
         if not password_re:
             raise ValidationError('no spaces allowed in password')
 
 def validate_phone(phone_number):
     if len(phone_number) < 8:
         raise ValidationError("phonenumber must be more than 8 characters")
-    phone_re=re.fullmatch(re.compile('^\D$'),phone_number)
+    phone_re = re.fullmatch(re.compile('^\D$'),phone_number)
     if phone_re:
         raise ValidationError("enter numbers")
 
 # Class user schema
 class UserSchema(Schema):
+    """user input schema """
     name = fields.Str(validate=validate_name, required=True)
     username = fields.Str(validate=validate_name, required=True)
     password = fields.Str(validate=validate_password, required=True) 
@@ -39,6 +41,7 @@ class UserSchema(Schema):
 Userschema = UserSchema()
 
 class DriverSchema(Schema):
+    """driver input schema"""
     name = fields.Str(validate=validate_name, required=True)
     username = fields.Str(validate=validate_name, required=True)
     car = fields.Str(validate=validate_name, required=True)
@@ -49,6 +52,7 @@ driverschema = DriverSchema(Schema)
 
 
 class RideSchema(Schema):
+    "ride input schema"
     location = fields.Str(validate=validate_name, required=True)
     destination = fields.Str(validate=validate_name, required=True)
 
