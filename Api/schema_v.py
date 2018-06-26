@@ -9,7 +9,6 @@ def validate_name(data):
     elif len(data) <= 2:
         raise ValidationError("name too short")
     
-
 def validate_password(password):
     if len(password) < 6:
         raise ValidationError("password must be more than 6 characters")
@@ -49,7 +48,6 @@ class DriverSchema(Schema):
     password = fields.Str(validate=validate_password, required=True) 
     confirmpassword = fields.Str(validate=validate_password, required=True)
 driverschema = DriverSchema(Schema)
-
 
 class RideSchema(Schema):
     "ride input schema"
