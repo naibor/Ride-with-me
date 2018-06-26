@@ -1,51 +1,53 @@
 // signup modal
-var signupmodal = document.getElementById("SignUpModal");
+var signUpModal = document.getElementById("signupmodal");
 // login modal
-var loginmodal = document.getElementById("LogInModal");
+var logInModal = document.getElementById("loginmodal");
 // signup button
 var signup = document.getElementById("SignUp");
 // login button
 var login = document.getElementById("LogIn");
 // close signup icon
-var closesignup = document.getElementById("CloseSignUp");
+var closesignup = document.getElementById("closesignUp");
 // close login icon
-var closelogin =document.getElementById("CloseLogIn");
+var closelogin =document.getElementById("closeLogIn");
 var sidenav = document.getElementById("sidemodal");
-var details = document.getElementById("requestDetails");
+var details = document.getElementById("requestdetails");
 var UserSideNav =document.getElementById("UsersideModal");
-var ridedetails = document.getElementById("requestRide");
+var ridedetails = document.getElementById("requestride");
 // tables
-var tablerequests = document.getElementById("requestTable");
-var availablerides = document.getElementById("RidesTable")
+var tablerequests = document.getElementById("requesttable");
+var availablerides = document.getElementById("ridestable");
+var Historytable = document.getElementById("driverhistory");
+var Userhistory = document.getElementById("userhistory");
 // Index page
 // signing up 
 signup.onclick = function() {
-    signupmodal.style.display="block";
-    loginmodal.style.display="none";
+    signUpModal.style.display="block";
+    logInModal.style.display="none";
 }
 
 // closing signup form modal
 closesignup.onclick = function(){
-    signupmodal.style.display="none";
+    signUpModal.style.display="none";
 }
 
 // when user clicks anywhere outside modal
 window.onclick = function(event){
-    if(event.target == signupmodal){
-        signupmodal.style.display="none";
+    if(event.target == signUpModal){
+        signUpModal.style.display="none";
     }
 }
 
 // login modal form
 login.onclick=function(){
-    loginmodal.style.display="block";
-    signupmodal.style.display="none";
+    logInModal.style.display="block";
+    signUpModal.style.display="none";
 }
 
 
 // closing login form modal
 closelogin.onclick=function(){
-    loginmodal.style.display="none";
+    logInModal.style.display="none";
 }
 
 // menu button open side modal
@@ -59,12 +61,12 @@ function Open(){
     sidenav.style.display="none";
     }
     // close request ride details
-function Close(){
+function close(){
     details.style.display="none";
     
 } 
 // close side nav driver  
-function CloseMenu(){
+function closeMenu(){
     sidenav.style.display="none";
 }
 
@@ -75,7 +77,7 @@ function Openside(){
     ridedetails.style.display="none";
 }
 // close user side nav
-function Closeside(){
+function closeside(){
     UserSideNav.style.display="none";
 }
 
@@ -85,7 +87,7 @@ function Openride(){
     UserSideNav.style.display="none";
 }
 // closing ride request
-function Closeride(){
+function closeride(){
     ridedetails.style.display="none";
 }
 
@@ -95,7 +97,7 @@ function Openrequests(){
 }
 
 // close table requests
-function Closetable(){
+function closetable(){
     tablerequests.style.display="none";
     ridedetails.style.display="none";
 }
@@ -106,7 +108,27 @@ function OpenRides(){
 
 }
 // close available rides
-function CloseRides(){
-    availablerides.style.display="none"
+function closeRides(){
+    availablerides.style.display="none";
     
+}
+
+// open history driver
+function openhistory(){
+    Historytable.style.display = "block";
+}
+
+// close history driver
+function closehistory(){
+    Historytable.style.display = "none"; 
+}
+
+// open user history
+function openHistory(){
+    Userhistory.style.display = "block";
+}
+
+// close user history
+function closeHistory(){
+    Userhistory.style.display = "none";
 }
