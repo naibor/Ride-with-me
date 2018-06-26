@@ -1,3 +1,4 @@
+
 from flask_restful import Resource, Api
 from flask import request
 from Api.schema_v import Userschema, driverschema
@@ -25,7 +26,6 @@ class UserSignUp(Resource):
         data, errors =Userschema.load(signup_data)
         if errors:
            return{"error":errors},400 
-
         # confirms confirm password == password is the same
         if signup_data.get("password") != signup_data.get("confirmpassword"):
             return{"message":"password and confirm password not the same"}
@@ -34,7 +34,6 @@ class UserSignUp(Resource):
             if signup_data.get("username") == user["username"]:
                 return {"message":"username already exist"},400
         # an instance of User in models containing user data
-
         hashed_password = generate_password_hash(signup_data.get("password"), method="sha256")
         hashed_confirmpassword = generate_password_hash(signup_data.get("confirmpassword"), method="sha256")
         new_user = User(signup_data.get("name"),
@@ -47,7 +46,7 @@ class UserSignUp(Resource):
                             "username":new_user.username,
                             "password":hashed_password
                           })
-        # import pdb;pdb.set_trace()
+        import pdb;pdb.set_trace()
         return{"message":"Welcome you have successfully signed up"},201            
  
     def get(self):
@@ -62,33 +61,33 @@ class DriverReg(Resource):
         regData = request.get_json()
         hashed_password = generate_password_hash(regData.get("password"), method="sha256")
         hashed_confirmpassword = generate_password_hash(regData.get("confirmpassword"), method="sha256")
-
-
         # validation required
-        data,errors =  driverschema.load(regData)
+        data,errors =driverschema.load(regData)
         if errors:
             return{"error":errors},400 
-            # instance of driver
-        new_driver = Driver(
-            regData.get("name"),
-            regData.get("username"),
-            regData.get("phone_number"),
-            regData.get("car"),
-            hashed_password,
-            hashed_confirmpassword
-        )
         #confirms confirmpassword == password is the same
         if regData.get("password") != regData.get("confirmpassword"):
-            return {"message":"password and confirm password not the same"},400
+            return{"message":"password and confirm password not the same"},400
         
+        # an instance of class ser containing user data
+        new_driver = Driver(regData.get("name"),
+                            regData.get("username"),
+                            regData.get("car"),
+                            regData.get("phone_number"),
+                            hashed_password,
+                            hashed_confirmpassword
+                            )
 
+        # save driver_details to driver_detail{} will be see by passangers
+        driver_details[new_driver.username] = {"type_of_car":new_driver.car,
+                                                "phone_number":new_driver.phone_number
+                                                }
         # check if the driver is an exisiting driver
         for driver in driver_info:
             if regData.get("username") == driver["username"]:
                 return {"message":"This is an existing driver"},400
                         
         # save new drive to driver info[]
-
         driver_info.append({"name":new_driver.name,
                             "username":new_driver.username,
                             "password":hashed_password,
@@ -105,9 +104,12 @@ class UserLogIn(Resource):
             if data.get("username") == dictionary["username"]:
                 # compares given and stored hash passwords
                 if check_password_hash(dictionary["password"], data.get("password")):
-          
-                    return {"message":"successfully logged in"},200
 
-                return{"message":"wrong password"},401
-        return{"message":"signup first"},400
+                    access_token =jwt.encode({"username":dictionary["username"],
+                                              "exp":datetime.utcnow() + timedelta(minutes=60)},
+                                              "this is my secret key to encode the token")
+                    # import pdb;pdb.set_trace()
+                    return {"token":access_token.decode("UTF -8"),"message":"successfully logged in"},200
 
+                return{"message":"wrong password"}
+        return{"message":"signup first"}

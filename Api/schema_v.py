@@ -5,30 +5,31 @@ def validate_name(data):
     name_re = re.fullmatch(re.compile(r"^\w+$"),data)
     if not name_re:
         raise ValidationError("Visisble charecters only", status_code=400)
-    elif len(data) <= 2:
+    elif len(data) < 2:
         raise ValidationError("name too short")
     
 
-def validate_password(password):
-    if len(password) < 6:
+def validate_password(data):
+    if len(data) < 6:
         raise ValidationError("password must be more than 6 characters")
-    elif not re.search('[a-z]+',password):
+    elif not re.search('[a-z]+',data):
         raise ValidatioError("Have atleast one small letter")
-    elif not re.search ('[A-Z]+',password):
+    elif not re.search ('[A-Z]+',data):
         raise alidationError("Have atleast one capital letter")
-    elif not re.search('\W+',password):
+    elif not re.search('\W+',data):
         raise ValidationError("Have atleast one special character")
     else:
-        password_re =re.fullmatch(re.compile(r"^\S+$"),password)
+        password_re =re.fullmatch(re.compile('^\S$'),data)
         if not password_re:
             raise ValidationError('no spaces allowed in password')
 
 def validate_phone(phone_number):
     if len(phone_number) < 8:
         raise ValidationError("phonenumber must be more than 8 characters")
-    phone_re=re.fullmatch(re.compile('^\D$'),phone_number)
-    if phone_re:
+    phone_re=re.fullmatch(re.compile('^\d$'),data)
+    if not phone_re:
         raise ValidationError("enter numbers")
+    
 
 # Class user schema
 class UserSchema(Schema):
