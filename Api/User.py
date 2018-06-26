@@ -1,3 +1,4 @@
+"""user sign up, driver registration and login resource"""
 from flask_restful import Resource, Api
 from flask import request
 from Api.schema_v import Userschema, driverschema
@@ -14,6 +15,7 @@ driver_info = []
 driver_details = {}
 # the driver details a passanger user sees while viewing ride_offers[].
 class UserSignUp(Resource):
+    """user signup resource"""
     # inherits from resource
     def post(self):
         # user post signup data
@@ -23,7 +25,6 @@ class UserSignUp(Resource):
         data, errors = Userschema.load(signup_data)
         if errors:
            return{"error":errors},400 
-
         # confirms confirm password == password is the same
         if signup_data.get("password") != signup_data.get("confirmpassword"):
             return{"message":"password and confirm password not the same"}
@@ -32,7 +33,6 @@ class UserSignUp(Resource):
             if signup_data.get("username") == user["username"]:
                 return {"message":"username already exist"},400
         # an instance of User in models containing user data
-
         hashed_password = generate_password_hash(signup_data.get("password"), method="sha256")
         hashed_confirmpassword = generate_password_hash(signup_data.get("confirmpassword"), method="sha256")
         new_user = User(signup_data.get("name"),
@@ -47,14 +47,9 @@ class UserSignUp(Resource):
                           })
         return{"message":"Welcome you have successfully signed up"},201            
  
-    def get(self):
-        return {"message":"Welcome to Ride with me"}
-        pass
-
-
 class DriverReg(Resource):
+    """Driver registeration resource"""
     #class driver registration  resource
-
     def post(self):
         regData = request.get_json()
         hashed_password = generate_password_hash(regData.get("password"), method="sha256")
@@ -75,14 +70,11 @@ class DriverReg(Resource):
         #confirms confirmpassword == password is the same
         if regData.get("password") != regData.get("confirmpassword"):
             return {"message":"password and confirm password not the same"},400
-        
         # check if the driver is an exisiting driver
         for driver in driver_info:
             if regData.get("username") == driver["username"]:
-                return {"message":"This is an existing driver"},400
-                        
+                return {"message":"This is an existing driver"},400    
         # save new drive to driver info[]
-
         driver_info.append({"name":new_driver.name,
                             "username":new_driver.username,
                             "password":hashed_password,
@@ -91,7 +83,7 @@ class DriverReg(Resource):
         return{"message":"Welcome you have successfully registered as a driver"},201  
 
 class UserLogIn(Resource):
-    # userlogin resource
+    """userlogin resource"""
     def post(self):
         # username and password requied
         data = request.get_json()
