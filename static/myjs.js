@@ -12,13 +12,13 @@ var closesignup = document.getElementById("closesignUp");
 var closelogin =document.getElementById("closeLogIn");
 var sidenav = document.getElementById("sidemodal");
 var details = document.getElementById("requestdetails");
-var UserSideNav =document.getElementById("UsersideModal");
+var UserSideNav =document.getElementById("usersidemodal");
 var ridedetails = document.getElementById("requestride");
 // tables
 var tablerequests = document.getElementById("requesttable");
 var availablerides = document.getElementById("ridestable");
 var Historytable = document.getElementById("driverhistory");
-var Userhistory = document.getElementById("userhistory");
+var UserHistory = document.getElementById("userhistory");
 // Index page
 // signing up 
 signup.onclick = function() {
@@ -125,10 +125,10 @@ function closehistory(){
 
 // open user history
 function openHistory(){
-    Userhistory.style.display = "block";
+    UserHistory.style.display = "block";
 }
 
 // close user history
 function closeHistory(){
-    Userhistory.style.display = "none";
+    UserHistory.style.display = "none";
 }

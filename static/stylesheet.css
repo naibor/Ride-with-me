@@ -1,5 +1,3 @@
-
-
 /* landing page */
 /* body */
 body{
@@ -13,8 +11,6 @@ h2{
     font-family: 'Raleway', Helvetica, Arial, sans-serif;
     font-size: 50px;
     line-height: 70px;
-    /* font-size: 46px; */
-    /* line-height: 100px; */
     margin:0;
     position: absolute;
     top: 9%;
@@ -176,16 +172,6 @@ div#prompt{
     margin: 0;
     
 }
-/* introduction to sign up just below sign up &login buttons */
-/* .intro{
-    height:83%;
-    position:absolute;
-    top:17%; */
-    /* border-radius: 5%; */
-    /* background-color: rgb(48, 103, 105); */
-    
-/* } */
-
 /* signup modal id=signupmodal */
 #signupmodal{
     display:none;
@@ -258,11 +244,6 @@ div#prompt{
 }
 
 /* REGISTER */
-/* #head{
-    font-size: 20px;
-    line-height: 30px;
-} */
-
 
 .form{
     position: relative;
@@ -298,9 +279,6 @@ input[type=submit]{
     cursor: pointer;
     
 }
-/* input[type=password]{
-    padding: 3% 3% 1% 18%;
-} */
 input[type=password]{
     padding: 1% 5% 1% 16%;
     border-radius:2%;
@@ -334,7 +312,6 @@ footer{
 
 .image{
     background-size: cover;
-    /* position: fixed; */
     height: 100%;
     z-index: 0;
     
@@ -368,7 +345,6 @@ div#requestdetails{
     flex-direction: column;
     background-color:rgb(228, 235, 235); 
     width:18%;
-    /* color: black; */
     z-index: 4;
     top:6%;
 }
@@ -378,10 +354,7 @@ div#requestdetails{
     font-family: 'Droid Serif', Georgia, Times, serif;
     font-size: 136%;
 }
-/* }
-.closerequest{
-    width:20%;
-} */
+
 .sidenav{
     width:100%;
     height:10%;
@@ -621,23 +594,20 @@ padding:7% 35% 4% 1%;
     width:769px;
     position: absolute;
     top:7%;
-    /* padding: 0% 1% 2% 0%; */
     left: 24%;
 }
 .closecolumn{
-    /* width: 100%; */
     position: absolute;
-    /* text-align: center; */
     padding: 1% 9.5% 2% 9%;
     left: 89.9%;
     background-color: grey;
+    cursor:pointer;
 }
 #driverhistory{
     display: none;
     width:769px;
     position: absolute;
     top:7%;
-    /* padding: 0% 1% 2% 0%; */
     left: 24%;
 
 }
@@ -646,7 +616,6 @@ padding:7% 35% 4% 1%;
     width:769px;
     position: absolute;
     top:7%;
-    /* padding: 0% 1% 2% 0%; */
     left: 24%;
-
+    z-index: 7;
 }
