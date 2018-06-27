@@ -1,6 +1,6 @@
 """ride models classes"""
 from datetime import datetime, timedelta
-from models.user_model import driver_detail
+# from models.user_model import driver_detail
 # import from user model
 driver_info = []
 # driver's information displayed to passanger in ride offer details
