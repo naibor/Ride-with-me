@@ -30,7 +30,6 @@ class RideOffer(Resource):
                                 )
         # save the new_offer to ride_offers[]
         ride = new_offer.save_ride_offer()
-        # import pdb; pdb.set_trace()
         return ride, 201
 
     def get(self):
@@ -48,24 +47,23 @@ class RideRequest(Resource):
             if offer["ID"] == id:
                 return offer,200
     
-#     """passanger posts a ride request""" 
-#     def post(self):
-#         postRequest = request.get_json()
-#         # validate using schema
-#         data,errors = rideschema.load(postRequest)
-#         if errors:
-#             return {errors}
+    """passanger posts a ride request""" 
+    def post(self):
+        postRequest = request.get_json()
+        # validate using schema
+        data,errors = rideschema.load(postRequest)
+        if errors:
+            return {errors}
+        # import pdb; pdb.set_trace()
 
-#         new_request = Rrequest(
-#             data["location"],
-#             data["destination"],
-#             data["phone_number"]
-#         )
-#         A_request = new_request.save_request_ride()
+        new_request = Rrequest(
+            data["location"],
+            data["destination"],
+            data["phone_number"]
+        )
+        A_request = new_request.save_request_ride()
 
-#         # return A_request.update({
-#         #     "url":"/api/v1/user/offer/"+postRequest.get("location")
-#         # }),201
+        return A_request,201
 
 #     def get(self,location):
 #         # passenger can get all ride offers within a particular location

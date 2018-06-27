@@ -20,7 +20,8 @@ def create_app(config_name):
     # api.add_resource(RideRequest,'/api/v1/user/request')
     api.add_resource(RideOffer,'/api/v1/users/rides')
     api.add_resource(RideRequest, '/api/v1/users/rides/<int:id>')
-    # api.add_resource(RideRequest,'/api/v1/user/offer/<location>', endpoint='location' )
+    api.add_resource(RideRequest,'/api/v1/users/rides/rideid/requests',endpoint='join_ride_request')
+    # api.add_resource(RideRequest,'/api/v1/user/offer/<location>', ' )
     # api.add_resource(RideOffer,'/api/v1/user/offer/<int:id>', endpoint='arideoffer')
 
     return app

@@ -54,6 +54,4 @@ class Rrequest:
             "phone_number":self.phone_number
         }
         request_details.append(new_request)
-        return {"message":"Ride is being processed",
-        "View":"Rides within your location below"
-        }
+        return {"message":"Request to join ride is being processed"}
