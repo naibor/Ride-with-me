@@ -16,7 +16,7 @@
 #     def test_post_ride_request(self):
 #         """test user can create ride request """
 #         response = self.client.post(
-#             "api/v1/user/request",
+#             "api/v1/users/rides/id/requests",
 #             data = json.dumps(dict
 #                     (location = "Nairobi",
 #                     destination = "Kisumu"
@@ -28,7 +28,7 @@
 #     def test_location_not_empty(self):
 #         """Test field location not empty"""
 #         response = self.client.post(
-#             "api/v1/user/request",
+#             "api/v1/users/rides/id/requests",
 #             data = json.dumps(dict
 #                     (location = "",
 #                     destination = "Kisumu"
@@ -36,38 +36,39 @@
 #                     headers = {"content-type": "application/json"}
 #                     )
 #         self.assertEqual(response.status_code,400)
-#     def test_destination_not_empty(self):
-#         """Test field destination not empty"""
-#         response = self.client.post(
-#             "api/v1/user/request",
-#             data=json.dumps(dict
-#                     (location ="Nairobi",
-#                     destination =""
-#                     )),
-#                     headers = {"content-type": "application/json"}
-#                     )
-#         self.assertEqual(response.status_code,400)
 
-#     def test_request_location_no_space_only(self):
-#         """test user enters no spaces in place of location"""
-#         response = self.client.post(
-#             "api/v1/user/request",
-#             data = json.dumps(dict
-#                     (location = "      ",
-#                     destination = "Kisumu"
-#                     )),
-#                     headers = {"content-type": "application/json"}
-#                     )
-#         self.assertEqual(response.status_code,400)
+    # def test_destination_not_empty(self):
+    #     """Test field destination not empty"""
+    #     response = self.client.post(
+    #         "/api/v1/users/rides/id/requests",
+    #         data=json.dumps(dict
+    #                 (location ="Nairobi",
+    #                 destination =""
+    #                 )),
+    #                 headers = {"content-type": "application/json"}
+    #                 )
+    #     self.assertEqual(response.status_code,400)
+
+    # def test_request_location_no_space_only(self):
+    #     """test user enters no spaces in place of location"""
+    #     response = self.client.post(
+    #         "/api/v1/users/rides/id/requests",
+    #         data = json.dumps(dict
+    #                 (location = "      ",
+    #                 destination = "Kisumu"
+    #                 )),
+    #                 headers = {"content-type": "application/json"}
+    #                 )
+    #     self.assertEqual(response.status_code,400)
         
-#     def test_request_destination_no_space_only(self):
-#         """test user enters no spaces in place of destination"""
-#         response = self.client.post(
-#             "api/v1/user/request",
-#             data = json.dumps(dict
-#                     (location = "Nairobi",
-#                     destination = "      "
-#                     )),
-#                     headers = {"content-type": "application/json"}
-#                     )
-#         self.assertEqual(response.status_code,400)
+    # def test_request_destination_no_space_only(self):
+    #     """test user enters no spaces in place of destination"""
+    #     response = self.client.post(
+    #         "/api/v1/users/rides/id/requests",
+    #         data = json.dumps(dict
+    #                 (location = "Nairobi",
+    #                 destination = "      "
+    #                 )),
+    #                 headers = {"content-type": "application/json"}
+    #                 )
+    #     self.assertEqual(response.status_code,400)

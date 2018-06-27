@@ -21,9 +21,9 @@ class UserSignUp(Resource):
         # user post signup data
         signup_data = request.get_json()   
         # validation starts
-        data, errors = userschema.load(signup_data)
+        data, errors = Userschema.load(signup_data)
         if errors:
-           return{errors},400 
+           return(errors),400 
         else:
             new_user = User(
                 data["name"],
@@ -49,7 +49,7 @@ class DriverReg(Resource):
         # validation required
         data,errors =  driverschema.load(regData)
         if errors:
-            return{errors},400 
+            return(errors),400 
         else:
             new_driver = Driver(
                 data["name"],
@@ -81,5 +81,5 @@ class UserLogIn(Resource):
                 if check_password_hash(dictionary["password"], data["password"]):
                     return {"message":"successfully logged in"},200
                 return{"message":"wrong password"},401
-        return{"message":"signup first"},400
+            return{"message":"signup first"},400
 

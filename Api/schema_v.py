@@ -5,7 +5,7 @@ import re
 def validate_name(data):
     name_re = re.fullmatch(re.compile(r"^\w+$"),data)
     if not name_re:
-        raise ValidationError("Visisble charecters only", status_code=400)
+        raise ValidationError("Visisble charecters only")
     elif len(data) <= 2:
         raise ValidationError("name too short")
     
@@ -55,9 +55,9 @@ class RideSchema(Schema):
     destination = fields.Str(validate=validate_name, required=True)
 
 rideschema = RideSchema()
-class RideSchema(Schema):
+class RequestSchema(Schema):
     "ride input schema"
     location = fields.Str(validate=validate_name, required=True)
     destination = fields.Str(validate=validate_name, required=True)
     phone_number = fields.Str(validate=validate_phone, required=True)
-rideschema = RideSchema()
+requestschema = RequestSchema()
