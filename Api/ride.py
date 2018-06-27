@@ -19,7 +19,7 @@ class RideOffer(Resource):
         # validate it
         data, errors = rideschema.load(postoffer)
         if errors:
-            return {errors}
+            return (errors)
         #create an instance of class RideOffer
         new_offer = DriverOffer(data["location"],
                                 data["destination"],
