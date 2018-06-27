@@ -3,11 +3,11 @@ import json
 from flask_restful import Resource, Api
 from flask import request
 from marshmallow import Schema, fields
-from models.ride_models import Rrequest, DriverOffer
+from models.ride_models import Rrequest, DriverOffer, ride_offers
 from Api.schema_v import rideschema
 
 
-ride_Offers = []
+# ride_offers = []
 # where offers made by driver are stored
 request_details = {}
 # where passenger request details is stored
@@ -30,7 +30,13 @@ class RideOffer(Resource):
                                 )
         # save the new_offer to ride_offers[]
         ride = new_offer.save_ride_offer()
+        # import pdb; pdb.set_trace()
         return ride, 201
+
+    def get(self):
+        """get ride by id"""
+        return ride_offers, 200
+
                 
 #     def get(self, ID):
 #         """get ride by id"""
