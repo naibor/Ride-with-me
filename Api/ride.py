@@ -6,9 +6,6 @@ from marshmallow import Schema, fields
 from models.ride_models import Rrequest, DriverOffer, ride_offers
 from Api.schema_v import rideschema
 
-
-# ride_offers = []
-# where offers made by driver are stored
 request_details = {}
 # where passenger request details is stored
 ride_Requests = []
@@ -36,19 +33,17 @@ class RideOffer(Resource):
         """get ride by id"""
         return ride_offers, 200
 
-                
-
-
-
+    
 class RideRequest(Resource):
+    """get ride requests by id"""
     def get(self, id):
         """get ride by id"""
         for offer in ride_offers:
             if offer["ID"] == id:
                 return offer,200
     
-    """passanger posts a ride request""" 
     def post(self):
+        """passanger posts a ride request""" 
         postRequest = request.get_json()
         # validate using schema
         data,errors = rideschema.load(postRequest)
@@ -65,16 +60,3 @@ class RideRequest(Resource):
 
         return A_request,201
 
-#     def get(self,location):
-#         # passenger can get all ride offers within a particular location
-#         list_of_offers = []
-#         if len(ride_Offers)<1:
-#             return {"message":"no offers made yet"}
-#         for offer in ride_Offers:
-#             if offer["location"] == location:
-#                 list_of_offers.append(offer)
-#             return {"list of offers":list_of_offers},200
-    
-# class MakeRequest(Resource):
-#     def post (self):
-#         make_request_post = request.get_json()

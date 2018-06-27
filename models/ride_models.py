@@ -21,6 +21,7 @@ class DriverOffer:
     
   
     def save_ride_offer(self):
+        """save ride offer"""
         new_ride = {
             "ID":self.ride_id,
             "location":self.location,
@@ -28,12 +29,12 @@ class DriverOffer:
             "departure":self.departure,
             # "driver_details":self.driver_details
         }
-        # import pdb; pdb.set_trace()
         ride_offers.append(new_ride)
         return{"message":"ride offer successfully created "}
 
     def ride_by_id(self):
-        for offer in ride_Offers:
+        """check if ride exists"""
+        for offer in ride_offers:
             if offer["ID"] == self.ride_id:
                 return offer
             else:
@@ -48,6 +49,7 @@ class Rrequest:
         self.phone_number = phone_number
 
     def save_request_ride(self):
+        """user can save ride requests"""
         new_request = {
             "location":self.location,
             "destination":self.destination,
