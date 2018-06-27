@@ -38,13 +38,16 @@ class RideOffer(Resource):
         return ride_offers, 200
 
                 
-#     def get(self, ID):
-#         """get ride by id"""
-#         A_ride = new_offer.ride_by_id()
-#         return A_ride, 200
 
 
-# class RideRequest(Resource):
+
+class RideRequest(Resource):
+    def get(self, id):
+        """get ride by id"""
+        for offer in ride_offers:
+            if offer["ID"] == id:
+                return offer,200
+    
 #     """passanger posts a ride request""" 
 #     def post(self):
 #         postRequest = request.get_json()

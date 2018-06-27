@@ -4,7 +4,7 @@ from flask_restful import Resource, Api
 from models import user_model
 from Instance.config import app_config
 from Api.User import UserSignUp, UserLogIn, DriverReg
-from Api.ride import RideOffer
+from Api.ride import RideOffer,RideRequest
 # flask instance 
 
 
@@ -19,6 +19,7 @@ def create_app(config_name):
     api.add_resource(DriverReg,'/api/v1/user/register')
     # api.add_resource(RideRequest,'/api/v1/user/request')
     api.add_resource(RideOffer,'/api/v1/users/rides')
+    api.add_resource(RideRequest, '/api/v1/users/rides/<int:id>')
     # api.add_resource(RideRequest,'/api/v1/user/offer/<location>', endpoint='location' )
     # api.add_resource(RideOffer,'/api/v1/user/offer/<int:id>', endpoint='arideoffer')
 
