@@ -19,78 +19,66 @@ class UserSignUp(Resource):
     # inherits from resource
     def post(self):
         # user post signup data
-        signup_data = request.get_json()        
-        # returns data in json format
+        signup_data = request.get_json()   
         # validation starts
-        data, errors = Userschema.load(signup_data)
+        data, errors = userschema.load(signup_data)
         if errors:
-           return{"error":errors},400 
-        # confirms confirm password == password is the same
-        if signup_data.get("password") != signup_data.get("confirmpassword"):
-            return{"message":"password and confirm password not the same"}
-        # checks for an existing ussesr.avoid multiple signups
-        for user in signup_info:
-            if signup_data.get("username") == user["username"]:
-                return {"message":"username already exist"},400
-        # an instance of User in models containing user data
-        hashed_password = generate_password_hash(signup_data.get("password"), method="sha256")
-        hashed_confirmpassword = generate_password_hash(signup_data.get("confirmpassword"), method="sha256")
-        new_user = User(signup_data.get("name"),
-                        signup_data.get("username"),
-                        hashed_password,
-                        hashed_confirmpassword
-                        )           
-        # save new user as a {}, to signup info[]
-        signup_info.append({"name":new_user.name,
-                            "username":new_user.username,
-                            "password":hashed_password
-                          })
-        return{"message":"Welcome you have successfully signed up"},201            
- 
+           return{errors},400 
+        else:
+            new_user = User(
+                data["name"],
+                data["username"],
+                data["password"],
+                data["confirmpassword"]
+            )
+            Exist = new_user.User_exist()
+            if Exist:
+                return Exist, 400
+            invalid_password = new_user.confirm_password()
+            if invalid_password:
+                return invalid_password, 400
+            else:
+                A_user = new_user.save_user()
+                return A_user, 201 
+
 class DriverReg(Resource):
     """Driver registeration resource"""
     #class driver registration  resource
     def post(self):
         regData = request.get_json()
-        hashed_password = generate_password_hash(regData.get("password"), method="sha256")
-        hashed_confirmpassword = generate_password_hash(regData.get("confirmpassword"), method="sha256")
         # validation required
         data,errors =  driverschema.load(regData)
         if errors:
-            return{"error":errors},400 
-            # instance of driver
-        new_driver = Driver(
-            regData.get("name"),
-            regData.get("username"),
-            regData.get("phone_number"),
-            regData.get("car"),
-            hashed_password,
-            hashed_confirmpassword
-        )
-        #confirms confirmpassword == password is the same
-        if regData.get("password") != regData.get("confirmpassword"):
-            return {"message":"password and confirm password not the same"},400
-        # check if the driver is an exisiting driver
-        for driver in driver_info:
-            if regData.get("username") == driver["username"]:
-                return {"message":"This is an existing driver"},400    
-        # save new drive to driver info[]
-        driver_info.append({"name":new_driver.name,
-                            "username":new_driver.username,
-                            "password":hashed_password,
-                            "driver_detail":driver_details
-                            })
-        return{"message":"Welcome you have successfully registered as a driver"},201  
+            return{errors},400 
+        else:
+            new_driver = Driver(
+                data["name"],
+                data["username"],
+                data["phone_number"],
+                data["car"],
+                data["password"],
+                data["confirmpassword"]
+            )
+            exist = new_driver.driver_exist()
+            if exist:
+                return exist, 400
+            invalid_password = new_driver.confirm_password()
+            if invalid_password:
+                return invalid_password, 400
+            else:
+                A_driver = new_driver.save_driver()
+                return A_driver, 201 
 
+        
 class UserLogIn(Resource):
     """userlogin resource"""
     def post(self):
         # username and password requied
         data = request.get_json()
         for dictionary in signup_info:
-            if data.get("username") == dictionary["username"]:
+            if data["username"] == dictionary["username"]:
                 # compares given and stored hash passwords
-                if check_password_hash(dictionary["password"], data.get("password")):
+                if check_password_hash(dictionary["password"], data["password"]):
                     return {"message":"successfully logged in"},200
                 return{"message":"wrong password"},401
         return{"message":"signup first"},400

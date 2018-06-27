@@ -13,9 +13,9 @@ def validate_password(password):
     if len(password) < 6:
         raise ValidationError("password must be more than 6 characters")
     elif not re.search('[a-z]+',password):
-        raise ValidatioError("Have atleast one small letter")
+        raise ValidationError("Have atleast one small letter")
     elif not re.search ('[A-Z]+',password):
-        raise alidationError("Have atleast one capital letter")
+        raise ValidationError("Have atleast one capital letter")
     elif not re.search('\W+',password):
         raise ValidationError("Have atleast one special character")
     else:
