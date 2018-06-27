@@ -12,12 +12,12 @@ DTime = datetime.now() + timedelta(minutes=45) #departure time after 45min
 
 class DriverOffer:
     """Driver offers ride"""
-    def __init__(self,location,destination,driver_detail):
+    def __init__(self,location,destination ):
         self.location = location
         self.destination = destination
         self.departure = str(DTime.time())
         self.ride_id = len(ride_Offers) + 1
-        self.driver_details = driver_detail
+        # self.driver_details = driver_detail
     
   
     def save_ride_offer(self):
@@ -26,7 +26,7 @@ class DriverOffer:
             "location":self.location,
             "destination":self.destination,
             "departure":self.departure,
-            "driver_details":self.driver_details
+            # "driver_details":self.driver_details
         }
         ride_Offers.append(new_ride)
         return{"message":"ride offer successfully created "}

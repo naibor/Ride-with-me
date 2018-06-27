@@ -26,47 +26,48 @@ class RideOffer(Resource):
         #create an instance of class RideOffer
         new_offer = DriverOffer(data["location"],
                                 data["destination"],
-                                data["driver_details"]
+                                # data["driver_details"]
                                 )
         # save the new_offer to ride_offers[]
         ride = new_offer.save_ride_offer()
         return ride, 201
                 
-    def get(self, ID):
-        """get ride by id"""
-        A_ride = new_offer.ride_by_id()
-        return A_ride, 200
+#     def get(self, ID):
+#         """get ride by id"""
+#         A_ride = new_offer.ride_by_id()
+#         return A_ride, 200
 
 
-class RideRequest(Resource):
-    """passanger posts a ride request""" 
-    def post(self):
-        postRequest = request.get_json()
-        # validate using schema
-        data,errors = rideschema.load(postRequest)
-        if errors:
-            return {errors}
+# class RideRequest(Resource):
+#     """passanger posts a ride request""" 
+#     def post(self):
+#         postRequest = request.get_json()
+#         # validate using schema
+#         data,errors = rideschema.load(postRequest)
+#         if errors:
+#             return {errors}
 
-        new_request = Rrequest(
-            data["location"],
-            data["destination"],
-            data["phone_number"]
-        )
-        A_request = new_request.save_request_ride()
-        return A_request.update({
-            "url":"/api/v1/user/offer/"+postRequest.get("location")
-        }),201
+#         new_request = Rrequest(
+#             data["location"],
+#             data["destination"],
+#             data["phone_number"]
+#         )
+#         A_request = new_request.save_request_ride()
 
-    def get(self,location):
-        # passenger can get all ride offers within a particular location
-        list_of_offers = []
-        if len(ride_Offers)<1:
-            return {"message":"no offers made yet"}
-        for offer in ride_Offers:
-            if offer["location"] == location:
-                list_of_offers.append(offer)
-            return {"list of offers":list_of_offers},200
+#         # return A_request.update({
+#         #     "url":"/api/v1/user/offer/"+postRequest.get("location")
+#         # }),201
+
+#     def get(self,location):
+#         # passenger can get all ride offers within a particular location
+#         list_of_offers = []
+#         if len(ride_Offers)<1:
+#             return {"message":"no offers made yet"}
+#         for offer in ride_Offers:
+#             if offer["location"] == location:
+#                 list_of_offers.append(offer)
+#             return {"list of offers":list_of_offers},200
     
-class MakeRequest(Resource):
-    def post (self):
-        make_request_post = request.get_json()
+# class MakeRequest(Resource):
+#     def post (self):
+#         make_request_post = request.get_json()
