@@ -40,23 +40,27 @@ class RideRequest(Resource):
         """get ride by id"""
         for offer in ride_offers:
             if offer["ID"] == id:
-                return (offer),200
+                return (offer,
+                # {"url":"/api/v1/users/rides/<ride_id>/requests"}
+                ),200
+
 class SpecificRequest(Resource):
     """Post a request to a specific ride id"""
-    def post(self, ride_id):
+    def post(self,id):
         """passanger posts a ride request""" 
         postRequest = request.get_json()
-        # validate using schema
         data,errors = requestschema.load(postRequest)
+        # import pdb; pdb.set_trace()
         if errors:
             return (errors),400
-        import pdb; pdb.set_trace()
-        new_request = Rrequest(
-            data["location"],
-            data["destination"],
-            data["phone_number"]
-        )
-        A_request = new_request.save_request_ride()
-
-        return (A_request),201
+        for ride in ride_offers:
+            if ride["ID"] == id:
+                new_request = Rrequest(
+                    data["location"],
+                    data["destination"],
+                    data["phone_number"]
+                    )
+                A_request = new_request.save_request_ride()
+                return {"message":"You have successfully requested to join. Driver will call"}
+        return{"message":"Requested ride does not exist"}, 401
 
