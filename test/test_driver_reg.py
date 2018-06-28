@@ -12,23 +12,23 @@ class TestDriverReg(unittest.TestCase):
         self.app.config["TESTING"]=True
         self.client = self.app.test_client()
 
-    # def test_driver_reg(self):
-    #     """test driver can successfuly register"""
-    #     registration = self.client.post(
-    #         "api/v1/user/register",
-    #         data = json.dumps(dict(
-    #             name = "kamau",
-    #             username = "kanjo",
-    #             phone_number = "4654378540",
-    #             car = "toyota",
-    #             password = "A123456789a#",
-    #             confirmpassword = "A123456789a#"
-    #         )),
-    #         headers = {"content-type": "application/json"}
-    #     )
-    #     self.assertEqual(registration.status_code,201)
-    #     response_data = json.loads(registration.data.decode())
-    #     self.assertEqual(response_data["message"],"Welcome you have successfully registered as a driver")
+    def test_driver_reg(self):
+        """test driver can successfuly register"""
+        registration = self.client.post(
+            "api/v1/user/register",
+            data = json.dumps(dict(
+                name = "kamau",
+                username = "kanjoo",
+                phone_number = "0707981133",
+                car = "toyota",
+                password = "A123456789a#",
+                confirmpassword = "A123456789a#",
+            )),
+            headers = {"content-type": "application/json"}
+        )
+        self.assertEqual(registration.status_code,201)
+        response_data = json.loads(registration.data.decode())
+        self.assertEqual(response_data["message"],"successfully registered as a driver")
 
     def test_driver_name_empty(self):
         """test driver name not empty"""

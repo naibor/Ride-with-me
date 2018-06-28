@@ -2,6 +2,7 @@
 from marshmallow import Schema, fields, validate, ValidationError
 import re
 
+
 def validate_name(data):
     """validate name method"""
     name_re = re.fullmatch(re.compile(r"^\w+$"),data)
@@ -9,16 +10,16 @@ def validate_name(data):
         raise ValidationError("Visisble charecters only")
     elif len(data) <= 2:
         raise ValidationError("name too short")
-    
+
 def validate_password(password):
     """validate password method"""
     if len(password) < 6:
         raise ValidationError("password must be more than 6 characters")
-    elif not re.search('[a-z]+',password):
+    elif not re.search(r'[a-z]+',password):
         raise ValidationError("Have atleast one small letter")
-    elif not re.search ('[A-Z]+',password):
+    elif not re.search (r'[A-Z]+',password):
         raise ValidationError("Have atleast one capital letter")
-    elif not re.search('\W+',password):
+    elif not re.search(r'\W+',password):
         raise ValidationError("Have atleast one special character")
     else:
         password_re = re.fullmatch(re.compile(r"^\S+$"),password)
@@ -29,10 +30,9 @@ def validate_phone(phone_number):
     """validate phone_number method"""
     if len(phone_number) < 8:
         raise ValidationError("phonenumber must be more than 8 characters")
-    phone_re = re.fullmatch(re.compile('^\D$'),phone_number)
+    phone_re = re.fullmatch(re.compile(r'^\D$'),phone_number)
     if phone_re:
         raise ValidationError("enter numbers")
-
 
 class UserSchema(Schema):
     """user input schema """

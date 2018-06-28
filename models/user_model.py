@@ -36,7 +36,7 @@ class User:
             
 class Driver(User):
     """Driver model class"""
-    def __init__(self, name, username, password, confirmpassword, phone_number,car):
+    def __init__(self, name, username, phone_number, car, password, confirmpassword):
         User.__init__(self, name, username, password, confirmpassword)
         self.phone_number = phone_number
         self.car = car
@@ -45,7 +45,7 @@ class Driver(User):
         for driver in driver_info:
             if driver["username"] == self.username:
                 return {"message":"driver already exists"}
-   
+
     def save_driver(self):
         new_driver = {"name":self.name,
                     "username":self.username,

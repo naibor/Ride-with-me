@@ -52,13 +52,13 @@ class DriverReg(Resource):
             )
             exist = new_driver.driver_exist()
             if exist:
-                return exist, 400
+                return (exist), 400
             invalid_password = new_driver.confirm_password()
             if invalid_password:
-                return invalid_password, 400
+                return (invalid_password), 400
             else:
                 A_driver = new_driver.save_driver()
-                return A_driver, 201 
+                return A_driver
 
         
 class UserLogIn(Resource):
