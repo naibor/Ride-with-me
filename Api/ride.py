@@ -61,6 +61,6 @@ class SpecificRequest(Resource):
                     data["phone_number"]
                     )
                 A_request = new_request.save_request_ride()
-                return {"message":"You have successfully requested to join. Driver will call"}
+                return {"message":"You have successfully requested to join. Driver will call"}, 201
         return{"message":"Requested ride does not exist"}, 401
 
