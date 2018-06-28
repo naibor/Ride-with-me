@@ -3,7 +3,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 user_info = []
 driver_info = []
-driver_detail = {}
 
 class User:
     """User model class"""
@@ -41,13 +40,6 @@ class Driver(User):
         User.__init__(self,name,username,password,confirmpassword)
         self.phone_number = phone_number
         self.car = car
-
-    def save_driver_details(self):
-        driver_detail = [self.username] = {
-            "type_of_car":self.car,
-            "phone_number":self.phone_number
-        }
-        return driver_detail
 
     def driver_exist(self):
         for driver in driver_info:

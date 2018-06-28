@@ -12,7 +12,6 @@ class TestRideOffer(unittest.TestCase):
     def setUp(self):
         """inititalize app and define variables"""
         self.app = create_app(config_name = "testing")
-        # allows our test to mimic actual clients
         self.app.config["TESTING"]=True
         self.client = self.app.test_client()
         self.DTime = datetime.now() + timedelta(minutes=20)

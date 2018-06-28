@@ -12,7 +12,6 @@ class TestDriverReg(unittest.TestCase):
         self.app.config["TESTING"]=True
         self.client = self.app.test_client()
 
-
     # def test_driver_reg(self):
     #     """test driver can successfuly register"""
     #     registration = self.client.post(

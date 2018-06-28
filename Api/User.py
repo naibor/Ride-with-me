@@ -3,24 +3,17 @@ from flask_restful import Resource, Api
 from flask import request
 from Api.schema_v import Userschema, driverschema
 from werkzeug.security import generate_password_hash, check_password_hash
-# hashes passwords
 from datetime import datetime, timedelta
-# to get departure time
 from models.user_model import User,Driver
 
 signup_info = []
-# where user signup information is stored
+#  signup information stored
 driver_info = []
-# where driver information is stored after registration
-driver_details = {}
-# the driver details a passanger user sees while viewing ride_offers[].
+# driver information stored 
 class UserSignUp(Resource):
     """user signup resource"""
-    # inherits from resource
     def post(self):
-        # user post signup data
         signup_data = request.get_json()   
-        # validation starts
         data, errors = Userschema.load(signup_data)
         if errors:
            return(errors),400 
@@ -43,10 +36,8 @@ class UserSignUp(Resource):
 
 class DriverReg(Resource):
     """Driver registeration resource"""
-    #class driver registration  resource
     def post(self):
         regData = request.get_json()
-        # validation required
         data,errors =  driverschema.load(regData)
         if errors:
             return(errors),400 
@@ -73,11 +64,9 @@ class DriverReg(Resource):
 class UserLogIn(Resource):
     """userlogin resource"""
     def post(self):
-        # username and password requied
         data = request.get_json()
         for dictionary in signup_info:
             if data["username"] == dictionary["username"]:
-                # compares given and stored hash passwords
                 if check_password_hash(dictionary["password"], data["password"]):
                     return {"message":"successfully logged in"},200
                 return{"message":"wrong password"},401

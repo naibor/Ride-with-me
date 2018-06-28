@@ -5,7 +5,7 @@ from Instance.config import app_config
 from models import user_model
 from Api.User import UserSignUp, UserLogIn, DriverReg
 from Api.ride import RideOffer,RideRequest, SpecificRequest
-# flask instance 
+
 
 
 def create_app(config_name):
