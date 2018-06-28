@@ -1,7 +1,7 @@
 """Validation functions and schemas for input fields"""
 from marshmallow import Schema, fields, validate, ValidationError
 import re
-# class MyValidation:
+
 def validate_name(data):
     """validate name method"""
     name_re = re.fullmatch(re.compile(r"^\w+$"),data)

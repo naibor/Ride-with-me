@@ -36,8 +36,8 @@ class User:
             
 class Driver(User):
     """Driver model class"""
-    def __init__(self, phone_number,car):
-        User.__init__(self,name,username,password,confirmpassword)
+    def __init__(self, name, username, password, confirmpassword, phone_number,car):
+        User.__init__(self, name, username, password, confirmpassword)
         self.phone_number = phone_number
         self.car = car
 
@@ -49,8 +49,7 @@ class Driver(User):
     def save_driver(self):
         new_driver = {"name":self.name,
                     "username":self.username,
-                    "password":self.password,
-                    "driver_details":driver_detail
+                    "password":self.password
                      }
         driver_info.append(new_driver)
         return{"message":"successfully registered as a driver"},201 

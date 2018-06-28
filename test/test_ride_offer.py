@@ -4,7 +4,6 @@ import os
 import json
 from datetime import datetime, timedelta 
 from models.ride_models import Rrequest, DriverOffer
-
 from Api import create_app
  
 class TestRideOffer(unittest.TestCase):
