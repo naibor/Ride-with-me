@@ -16,7 +16,7 @@ def create_app(config_name):
  
     api.add_resource(UserSignUp,'/api/v1/auth/signup')
     api.add_resource(UserLogIn,'/api/v1/auth/login')
-    api.add_resource(DriverReg,'/api/v1/user/register')
+    api.add_resource(DriverReg,'/api/v1/auth/register')
     api.add_resource(RideOffer,'/api/v1/users/rides')
     api.add_resource(RideRequest, '/api/v1/users/rides/<int:id>')
     api.add_resource(SpecificRequest,'/api/v1/users/rides/<int:id>/requests',endpoint='join_ride_request')
