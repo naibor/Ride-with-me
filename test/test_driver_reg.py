@@ -1,8 +1,8 @@
 """tests for driver registration"""
 import unittest
 import json
-from Api import User
 from Api import create_app
+from Api import User
 
 class TestDriverReg(unittest.TestCase):
     """class for driver registration test cases"""
@@ -206,7 +206,6 @@ class TestDriverReg(unittest.TestCase):
             headers = {"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
-
 
     def test_driver_confirmpassword_short(self):
         """test driver confirmpassword required length"""
