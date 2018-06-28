@@ -57,3 +57,12 @@ class Rrequest:
         }
         request_details.append(new_request)
         return {"message":"Request to join ride is being processed"}
+
+    def location_checker(self):
+        """checks if user request location matches offer location"""
+        for request in request_details:
+            locale1 = request[location]
+        for offer in ride_offers: 
+            locale2 = offer[location]
+        if locale1 == locale2:
+            return offer[id]

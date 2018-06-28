@@ -41,8 +41,9 @@ class RideRequest(Resource):
         for offer in ride_offers:
             if offer["ID"] == id:
                 return (offer),200
-    
-    def post(self, id):
+class SpecificRequest(Resource):
+    """Post a request to a specific ride id"""
+    def post(self, ride_id):
         """passanger posts a ride request""" 
         postRequest = request.get_json()
         # validate using schema
