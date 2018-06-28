@@ -38,7 +38,7 @@ copy the link to a browser of your liking.
  Passangers can request rides and view available rides.
  Drivers can post ride offers and view available requests.
 
-##Demo
+## Demo
 
 View demo: [click](https://naibor.github.io/Ride-with-me/)
 

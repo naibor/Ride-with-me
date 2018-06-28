@@ -1,8 +1,8 @@
 """tests for driver registration"""
 import unittest
 import json
-from Api import User
 from Api import create_app
+from Api import User
 
 class TestDriverReg(unittest.TestCase):
     """class for driver registration test cases"""
@@ -12,24 +12,23 @@ class TestDriverReg(unittest.TestCase):
         self.app.config["TESTING"]=True
         self.client = self.app.test_client()
 
-
     def test_driver_reg(self):
         """test driver can successfuly register"""
         registration = self.client.post(
             "api/v1/user/register",
             data = json.dumps(dict(
                 name = "kamau",
-                username = "kanjo",
-                phone_number = "4654378540",
+                username = "kanjoo",
+                phone_number = "0707981133",
                 car = "toyota",
                 password = "A123456789a#",
-                confirmpassword = "A123456789a#"
+                confirmpassword = "A123456789a#",
             )),
             headers = {"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,201)
         response_data = json.loads(registration.data.decode())
-        self.assertEqual(response_data["message"],"Welcome you have successfully registered as a driver")
+        self.assertEqual(response_data["message"],"successfully registered as a driver")
 
     def test_driver_name_empty(self):
         """test driver name not empty"""
@@ -206,7 +205,6 @@ class TestDriverReg(unittest.TestCase):
             headers = {"content-type": "application/json"}
         )
         self.assertEqual(registration.status_code,400)
-
 
     def test_driver_confirmpassword_short(self):
         """test driver confirmpassword required length"""

@@ -10,51 +10,44 @@ class TestUserSignUp(unittest.TestCase):
     def setUp(self):
         """initialize app and define variables"""
         self.app = create_app(config_name = "testing")
-        # or the below whenyou are not using create_app funtion
         self.app.config["TESTING"]=True
-        # a flask environmnet variable 
         self.client = self.app.test_client()
 
-        # sign up a user
     def test_user_sign_up(self):
         """test user can successfuly sign up"""
         response = self.client.post(
-            "api/v1/user/signup",
+            "/api/v1/auth/signup",
             data = json.dumps(dict(
                 name = "Naibor",
                 username = "Lisa",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
-            content_type = ("application/json")
+            headers = {"content-type": "application/json"}
         )
-        # assert response code is 201
         self.assertEqual(response.status_code,201)
-        # deserialize response data
         response_data = json.loads(response.data.decode())
-
-        self.assertEqual(response_data["message"],"Welcome you have successfully signed up")
+        self.assertEqual(response_data["message"],"successfully signed up")
     
     def test_user_login(self):
         """test user can successfuly login"""
         sign_up = self.client.post(
-            "api/v1/user/signup",
+            "api/v1/auth/signup",
             data = json.dumps(dict(
-                name = 'Naib',
-                username = 'Lis',
+                name = 'Melvin',
+                username = 'Atis',
                 password = 'A123456789a#',
                 confirmpassword = 'A123456789a#'
             )),
-            content_type = ("application/json")
+            headers = {"content-type": "application/json"}
         )
         login = self.client.post(
-            "api/v1/user/auth",
+            "/api/v1/auth/login",
             data = json.dumps(dict(
-                username = "Lis",
+                username = "Atis",
                 password = "A123456789a#"
             )),
-            content_type = "application/json"
+            headers = {"content-type": "application/json"}
         )
-        self.assertEqual(login.status_code,200)
+        self.assertEqual(sign_up.status_code,201)
         response = json.loads(login.data.decode())
-        self.assertEqual(response["message"],"successfully logged in")
