@@ -85,3 +85,7 @@ to use it:
 ```$ workon virtualenv-name```
 
 run ```$pip install -r requirements.txt``` to install libraries in requirements.txt
+
+## Acknowledge
+
+Leona Naibor
