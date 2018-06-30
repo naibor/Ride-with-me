@@ -1,9 +1,10 @@
 # Ride-with-me
 
-[![Build Status](https://travis-ci.org/naibor/Ride-with-me.svg?branch=Develop)](https://travis-ci.org/naibor/Ride-with-me)
-[![Coverage Status](https://coveralls.io/repos/github/naibor/Ride-with-me/badge.svg)](https://coveralls.io/github/naibor/Ride-with-me)
-[![Maintainability](https://api.codeclimate.com/v1/badges/5beba7a60b1a3daf11e3/maintainability)](https://codeclimate.com/github/naibor/Ride-with-me/maintainability)
-
+<p>
+<a>[![Build Status](https://travis-ci.org/naibor/Ride-with-me.svg?branch=Develop)](https://travis-ci.org/naibor/Ride-with-me)</a>
+<a>[![Coverage Status](https://coveralls.io/repos/github/naibor/Ride-with-me/badge.svg)](https://coveralls.io/github/naibor/Ride-with-me)</a>
+<a>[![Maintainability](https://api.codeclimate.com/v1/badges/5beba7a60b1a3daf11e3/maintainability)](https://codeclimate.com/github/naibor/Ride-with-me/maintainability)</a>
+</p>
 A carpooling application that provides drivers with the ability to create ride offers and passengers to join available ride offers.
 
 ## The project contains designs for
@@ -19,11 +20,9 @@ A carpooling application that provides drivers with the ability to create ride o
 
  ####To get the application:
 
-clone the repo:
+- clone the repo
 
-```$https://github.com/naibor/Ride-with-me.git```
-
-cd into the repo:
+- cd into the repo
 
 ```$ /Ride-with-me/```
 
@@ -58,13 +57,11 @@ View demo: [click](https://naibor.github.io/Ride-with-me/)
 
 ## Technologies and languages
 
-1. [*Project management (Agile)*](https://www.pivotaltracker.com/n/projects/2177618)
+1. python
 
-2. python
+2. flask framework
 
-3. flask framework
-
-4. flask restful
+3. flask restful
 
 ### Run locally
 
