@@ -1,9 +1,9 @@
 # Ride-with-me
 
-<p>
-<a>[![Build Status](https://travis-ci.org/naibor/Ride-with-me.svg?branch=Develop)](https://travis-ci.org/naibor/Ride-with-me)</a>
-<a>[![Coverage Status](https://coveralls.io/repos/github/naibor/Ride-with-me/badge.svg)](https://coveralls.io/github/naibor/Ride-with-me)</a>
-<a>[![Maintainability](https://api.codeclimate.com/v1/badges/5beba7a60b1a3daf11e3/maintainability)](https://codeclimate.com/github/naibor/Ride-with-me/maintainability)</a>
+<p align="center">
+<a href="https://travis-ci.org/naibor/Ride-with-me"><img src="https://travis-ci.org/naibor/Ride-with-me.svg?branch=Develop" alt ="Build status"></a>
+
+<a href='https://coveralls.io/github/naibor/Ride-with-me?branch=Develop'><img src='https://coveralls.io/repos/github/naibor/Ride-with-me/badge.svg?branch=Develop' alt='Coverage Status' /></a>
 </p>
 A carpooling application that provides drivers with the ability to create ride offers and passengers to join available ride offers.
 
