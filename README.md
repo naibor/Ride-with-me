@@ -15,7 +15,7 @@ A carpooling application that provides drivers with the ability to create ride o
 
 ### Installation
 
- ####To get the application:
+ #### To get the application:
 
 - clone the repo
 
