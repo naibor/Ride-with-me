@@ -43,7 +43,7 @@ View demo: [click](https://naibor.github.io/Ride-with-me/)
 ## ENDPOINTS
 
  **METHOD**| **Endpoints**                       |**Functionality**            |
-- ---------|-------------------------------------|-----------------------------|
+ ----------|-------------------------------------|-----------------------------|
  GET       |/api/v1/users/rides/<int:id>/requests| Fetch all offer             |
  GET       |/api/v1/users/rides/<int:id>         | Fetch a single offer        |
  POST      |/api/v1/users/rides                  | create a ride offer         |
@@ -51,6 +51,7 @@ View demo: [click](https://naibor.github.io/Ride-with-me/)
  POST      |/api/v1/auth/signup                  | Handles user signup         |
  POST      |/api/v1/auth/login                   | Handles users login         |
  POST      |/api/v1/auth/register                | Handles driver registration |
+
 
 ## Technologies and languages
 
