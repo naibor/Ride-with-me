@@ -36,11 +36,10 @@ class DriverOffer:
             else:
                 return{"message":"ride does not exist"}
 
-class Rrequest:
+class Rrequest(DriverOffer):
     """User make request a ride"""
     def __init__ (self,location,destination,phone_number):
-        self.location = location
-        self.destination = destination
+        DriverOffer.__init__(self,location,destination)
         self.phone_number = phone_number
 
     def save_request_ride(self):

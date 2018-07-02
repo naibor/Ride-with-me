@@ -15,7 +15,7 @@ class TestDriverReg(unittest.TestCase):
     def test_driver_reg(self):
         """test driver can successfuly register"""
         registration = self.client.post(
-            "api/v1/user/register",
+            "/api/v1/auth/register",
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjoo",
@@ -33,7 +33,7 @@ class TestDriverReg(unittest.TestCase):
     def test_driver_name_empty(self):
         """test driver name not empty"""
         registration = self.client.post(
-            "api/v1/user/register",
+            "/api/v1/auth/register",
             data = json.dumps(dict(
                 name = "",
                 username = "kanjo",
@@ -49,7 +49,7 @@ class TestDriverReg(unittest.TestCase):
     def test_driver_username_empty(self):
         """test driver username not empty"""
         registration = self.client.post(
-            "api/v1/user/register",
+            "/api/v1/auth/register",
             data = json.dumps(dict(
                 name = "kamau",
                 username = "",
@@ -65,7 +65,7 @@ class TestDriverReg(unittest.TestCase):
     def test_driver_phonenumber_empty(self):
         """test driver phonenumber not empty"""
         registration = self.client.post(
-            "api/v1/user/register",
+            "/api/v1/auth/register",
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
@@ -81,7 +81,7 @@ class TestDriverReg(unittest.TestCase):
     def test_driver_car_empty(self):
         """test driver car not empty"""
         registration = self.client.post(
-            "api/v1/user/register",
+            "/api/v1/auth/register",
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
@@ -97,7 +97,7 @@ class TestDriverReg(unittest.TestCase):
     def test_driver_password_empty(self):
         """test driver password not empty"""
         registration = self.client.post(
-            "api/v1/user/register",
+            "/api/v1/auth/register",
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
@@ -113,7 +113,7 @@ class TestDriverReg(unittest.TestCase):
     def test_driver_confirmpassword_empty(self):
         """test driver confirmpassword not empty"""
         registration = self.client.post(
-            "api/v1/user/register",
+            "/api/v1/auth/register",
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
@@ -129,7 +129,7 @@ class TestDriverReg(unittest.TestCase):
     def test_driver_name_with_space(self):
         """test driver name with spaces only"""
         registration = self.client.post(
-            "api/v1/user/register",
+            "/api/v1/auth/register",
             data = json.dumps(dict(
                 name = "     ",
                 username = "kanjo",
@@ -145,7 +145,7 @@ class TestDriverReg(unittest.TestCase):
     def test_driver_username_with_space(self):
         """test driver username with spaces only"""
         registration = self.client.post(
-            "api/v1/user/register",
+            "/api/v1/auth/register",
             data = json.dumps(dict(
                 name = "kamau",
                 username = "     ",
@@ -161,7 +161,7 @@ class TestDriverReg(unittest.TestCase):
     def test_driver_phone_number_with_space(self):
         """test driver phonenumber with spaces only"""
         registration = self.client.post(
-            "api/v1/user/register",
+            "/api/v1/auth/register",
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
@@ -177,7 +177,7 @@ class TestDriverReg(unittest.TestCase):
     def test_driver_car_with_space(self):
         """test driver car with spaces"""
         registration = self.client.post(
-            "api/v1/user/register",
+            "/api/v1/auth/register",
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
@@ -193,7 +193,7 @@ class TestDriverReg(unittest.TestCase):
     def test_driver_password_short(self):
         """test driver password requied length"""
         registration = self.client.post(
-            "api/v1/user/register",
+            "/api/v1/auth/register",
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
@@ -209,7 +209,7 @@ class TestDriverReg(unittest.TestCase):
     def test_driver_confirmpassword_short(self):
         """test driver confirmpassword required length"""
         registration = self.client.post(
-            "api/v1/user/register",
+            "/api/v1/auth/register",
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
