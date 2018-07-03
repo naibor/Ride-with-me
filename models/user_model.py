@@ -1,5 +1,6 @@
 """User and driver models"""
 from werkzeug.security import generate_password_hash, check_password_hash
+from models.db import Database
 
 user_info = []
 driver_info = []
@@ -9,7 +10,7 @@ driver_info = []
     # pass
     
 
-class User:
+class User():
     """User model class"""
     def __init__(self,name,username,password,confirmpassword):
         self.name = name
