@@ -1,6 +1,6 @@
 """ride models classes"""
 from datetime import datetime, timedelta
-from models.db import Database
+from models.db import db
 
 driver_info = []
 # driver's information displayed to passanger in ride offer details
@@ -29,6 +29,21 @@ class DriverOffer:
                 }
         ride_offers.append(new_ride)
         return{"message":"ride offer successfully created "}
+    # insert a ride offer
+        # INSERT INTO ride_offers(location, destination )
+        # VALUE (Nairobi, Kisumu)
+    @staticmethod
+    def get_all():
+        """get all ride offers"""
+    # getting all rides
+    #    
+        sql_query = "SELECT * FROM ride_offers;"
+        db.query_db(sql_query)
+        ride_offers = db.cursor.fetchall()
+        return ride_offers
+        
+
+
 
     def ride_by_id(self):
         """check if ride exists"""
@@ -37,7 +52,9 @@ class DriverOffer:
                 return offer
             else:
                 return{"message":"ride does not exist"}
-
+    # getting a specific id
+        #SELECT FROM ride_offer
+        # WHERE offer_id = id
 class Rrequest(DriverOffer):
     """User make request a ride"""
     def __init__ (self,location,destination,phone_number):
@@ -53,3 +70,13 @@ class Rrequest(DriverOffer):
         }
         request_details.append(new_request)
         return {"message":"Request to join ride is being processed"}
+
+# create a ride request
+    # INSERT INTO ride_requests(location,destination,phone_number)
+    # VALUE(Naibori,Kisumu,0878579805)
+
+    def get_requests_for_offer(self):
+        """get all requests to a specific offer"""
+# all requests to a specific ride offer
+    # SELECT *FROM ride_requests
+    # WHERE offer_id = id

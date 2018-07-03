@@ -20,7 +20,6 @@ def create_tables():
             offer_location VARCHAR(255) NOT NULL,
             offer_departure_time VARCHAR(255) NOT NULL,
             offer_destination VARCHAR(255)NOT NULL,
-            offer_phone_number INT NOT NULL,
             FOREIGN KEY (user_id)
             REFERENCES users (user_id)
             ON UPDATE CASCADE ON DELETE CASCADE

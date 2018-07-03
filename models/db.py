@@ -17,6 +17,10 @@ class Database:
 
     def commit(self):
       self.connection.commit()
+
+    def query_db(self, query_string):
+       self.cursor.execute(query_string)
+
     
     def create_tables(self,table):
         self.cursor.execute(table)
@@ -28,3 +32,5 @@ class Database:
     def close(self):
         self.cursor.close()
         self.connection.close()
+
+db = Database()
