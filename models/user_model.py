@@ -38,6 +38,10 @@ class User():
         user_info.append(new_user)
         return{"message":"successfully signed up"}
 
+# saving a user
+    # INSERT INTO users(name, username, password)
+    # VALUE(Lolo, lili, 12345678)
+
    
             
 class Driver(User):
@@ -59,4 +63,6 @@ class Driver(User):
                      }
         driver_info.append(new_driver)
         return{"message":"successfully registered as a driver"},201 
-        
+#saving a driver
+    #INSERT INTO users(name, username,phone_number, car, password)
+    # VALUE(Naish, Bauij, 0989898677, toyoya, 34rt54)

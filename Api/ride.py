@@ -23,12 +23,14 @@ class RideOffer(Resource):
                                 data["destination"]
                                 )
         
-        ride = new_offer.save_ride_offer()
-        return (ride), 201
+        # ride = new_offer.save_ride_offer()
+        # return (ride), 201
+        return new_offer.save_ride_offer()
 
     def get(self):
         """get all rides"""
-        return (ride_offers), 200
+        # SELECT * FROM ride_offer
+        return DriverOffer.get_all(), 200
 
     
 class RideRequest(Resource):

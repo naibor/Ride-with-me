@@ -17,21 +17,29 @@ class DriverOffer:
         self.location = location
         self.destination = destination
         self.departure = str(DTime.time())
-        self.ride_id = len(ride_offers) + 1
  
     def save_ride_offer(self):
         """save ride offer"""
         new_ride = {
-            "ID":self.ride_id,
             "location":self.location,
             "destination":self.destination,
             "departure":self.departure
                 }
-        ride_offers.append(new_ride)
-        return{"message":"ride offer successfully created "}
+        # ride_offers.append(new_ride)
+        # return{"message":"ride offer successfully created "}
     # insert a ride offer
-        # INSERT INTO ride_offers(location, destination )
-        # VALUE (Nairobi, Kisumu)
+        # sql_query= "INSERT INTO ride_offers (offer_location, offer_destination ) VALUES (%s, %s);", (self.location, self.destination)
+        # print(sql_query)
+        # db.query_db(sql_query)
+        db.cursor.execute(
+            """
+            INSERT INTO ride_offers (user_id, offer_location, offer_destination)
+            VALUES (%d, %s, %s)
+            """,
+            (1, self.location, self.destination)
+        )
+        offer = db.cursor.fetchall()
+        return offer
     @staticmethod
     def get_all():
         """get all ride offers"""
