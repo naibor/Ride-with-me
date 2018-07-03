@@ -4,6 +4,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 user_info = []
 driver_info = []
 
+# Create tables
+# def create_tables:
+    # pass
+    
+
 class User:
     """User model class"""
     def __init__(self,name,username,password,confirmpassword):

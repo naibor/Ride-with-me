@@ -9,6 +9,7 @@ request_details = []
 # requests saved
 DTime = datetime.now() + timedelta(minutes=45) #departure time after 45min
 
+
 class DriverOffer:
     """Driver offers ride"""
     def __init__(self,location,destination ):
