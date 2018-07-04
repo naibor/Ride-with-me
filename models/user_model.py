@@ -4,7 +4,6 @@ import jwt
 from flask import request
 from functools import wraps
 from models.db import db  
-from datetime import timedelta 
 
 class User():
     """User model class"""
@@ -53,8 +52,17 @@ class User():
         password = p_user[-1]
       
         if check_password_hash(password, self.password):
+            db.cursor.execute(
+                """
+                SELECT * FROM users
+                WHERE user_username = %s
+                """,
+                (self.username, )
+
+            )
+            user_details = db.cursor.fetchone()
             access_token = jwt.encode(
-            {"username":self.username},
+            {"id":user_details[0]},
             "this is a secret"
             )
             return {"access_token": access_token.decode("UTF-8"),"message":"successfully logged in"}
@@ -85,21 +93,27 @@ def login_required(func):
     def decorated(*args, **kwargs):
         # empty access_token
         access_token = None
-
-        if "x-access-token" in request.headers:
-            access_token = request.headers["x-access-token"]
-
+        if "Authorization" in request.headers:
+            access_token = request.headers["Authorization"]
         if not access_token:
-            return{"message" : "Please Login is "},401
+            return {"message" : "Please Log in or provide access token"},401
         
         try:
             data = jwt.decode(access_token, "this is a secret")
             # get the user to whom the token belongs to
-            data.user_exist()
         except:
-            return{"message":"invalid token"}, 401
+            return {"message": "invalid token"}, 401
 
-        return func(this_user,*args,**kwargs)
+        print(data)
+        db.cursor.execute(
+            """
+            SELECT * FROM users
+            WHERE user_id=%s
+            """,
+            (str(data["id"]), )
+        )
+        this_user = db.cursor.fetchone()
+        return func(this_user, *args, **kwargs)
     return decorated 
 
 

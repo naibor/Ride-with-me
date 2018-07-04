@@ -7,27 +7,33 @@ DTime = datetime.now() + timedelta(minutes=45)
 
 class DriverOffer:
     """Driver offers ride"""
-    def __init__(self,location,destination ):
+    def __init__(self, user_id, location, destination ):
+        self.user_id = user_id
         self.location = location
         self.destination = destination
         self.departure = str(DTime.time())
+      
  
     def save_ride_offer(self):
         """save ride offer"""
-        new_ride = {
-            "location":self.location,
-            "destination":self.destination,
-            "departure":self.departure
-                }
+        # create an offer
         db.cursor.execute(
             """
-            INSERT INTO ride_offers (user_id, offer_location, offer_destination)
-            VALUES (%d, %s, %s)
+            INSERT INTO ride_offers (user_offer_id, offer_location, offer_destination, offer_departure_time)
+            VALUES (%s, %s, %s, %s)
             """,
-            (1, self.location, self.destination)
+            (self.user_id, self.location, self.destination, self.departure)
         )
-        offer = db.cursor.fetchall()
-        return offer
+        db.commit()
+        db.cursor.execute(
+            """
+            SELECT * FROM ride_offers
+            WHERE user_offer_id = %s
+            """,
+            (self.user_id, )
+        )
+        offers = db.cursor.fetchall()
+        return offers
     @staticmethod
     def get_all():
         """get all ride offers"""
@@ -36,6 +42,7 @@ class DriverOffer:
             "SELECT * FROM ride_offers;"
         )
         ride_offers = db.cursor.fetchall()
+        print(ride_offers)
         return ride_offers
         
 

@@ -16,11 +16,11 @@ def create_tables():
         """
         CREATE TABLE ride_offers(
             offer_id SERIAL PRIMARY KEY,
-            user_id INTEGER NOT NULL,
+            user_offer_id INTEGER NOT NULL,
             offer_location VARCHAR(255) NOT NULL,
             offer_departure_time VARCHAR(255) NOT NULL,
             offer_destination VARCHAR(255)NOT NULL,
-            FOREIGN KEY (user_id)
+            FOREIGN KEY (user_offer_id)
             REFERENCES users (user_id)
             ON UPDATE CASCADE ON DELETE CASCADE
         )
