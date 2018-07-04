@@ -25,12 +25,6 @@ class DriverOffer:
             "destination":self.destination,
             "departure":self.departure
                 }
-        # ride_offers.append(new_ride)
-        # return{"message":"ride offer successfully created "}
-    # insert a ride offer
-        # sql_query= "INSERT INTO ride_offers (offer_location, offer_destination ) VALUES (%s, %s);", (self.location, self.destination)
-        # print(sql_query)
-        # db.query_db(sql_query)
         db.cursor.execute(
             """
             INSERT INTO ride_offers (user_id, offer_location, offer_destination)
@@ -43,8 +37,7 @@ class DriverOffer:
     @staticmethod
     def get_all():
         """get all ride offers"""
-    # getting all rides
-    #    
+    # getting all rides  
         sql_query = "SELECT * FROM ride_offers;"
         db.query_db(sql_query)
         ride_offers = db.cursor.fetchall()
@@ -61,6 +54,23 @@ class DriverOffer:
             else:
                 return{"message":"ride does not exist"}
     # getting a specific id
+        db.cursor.execute(
+        """
+        SELECT ride_offers.offer_id,
+        ride_offers.offer_location,
+        ride_offers.offer_destination,
+        ride_offers.offer_departure_time,
+        users.user_username,
+        users.user_car,
+        users.user_phone_number
+        FROM ride_offers, users
+        WHERE ride_offers.user_id = users.user_id
+        AND ride_offers.offer_id =%d
+        """
+        (id,)
+        )
+        a_ride = db.cursor.fetchall()
+        return a_ride
         #SELECT FROM ride_offer
         # WHERE offer_id = id
 class Rrequest(DriverOffer):
