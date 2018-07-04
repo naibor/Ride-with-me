@@ -38,8 +38,9 @@ class DriverOffer:
     def get_all():
         """get all ride offers"""
     # getting all rides  
-        sql_query = "SELECT * FROM ride_offers;"
-        db.query_db(sql_query)
+        db.query_db(
+            "SELECT * FROM ride_offers;"
+        )
         ride_offers = db.cursor.fetchall()
         return ride_offers
         
@@ -86,15 +87,21 @@ class Rrequest(DriverOffer):
             "destination":self.destination,
             "phone_number":self.phone_number
         }
-        request_details.append(new_request)
-        return {"message":"Request to join ride is being processed"}
+        # request_details.append(new_request)
+        # return {"message":"Request to join ride is being processed"}
 
 # create a ride request
-    # INSERT INTO ride_requests(location,destination,phone_number)
-    # VALUE(Naibori,Kisumu,0878579805)
+    db.cursor.execute(
+        """
+        INSERT INTO ride_requests(request_location,request_destination,request_phone_number)
+        VALUE(%s, %s, %d)
+        """
+        (self.location, self.destination, self.phone_number)
+    )
 
     def get_requests_for_offer(self):
         """get all requests to a specific offer"""
+
 # all requests to a specific ride offer
     # SELECT *FROM ride_requests
     # WHERE offer_id = id
