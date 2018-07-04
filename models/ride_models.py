@@ -80,8 +80,7 @@ class Rrequest(DriverOffer):
             "destination":self.destination,
             "phone_number":self.phone_number
         }
-        # request_details.append(new_request)
-        # return {"message":"Request to join ride is being processed"}
+
 
 # create a ride request
         db.cursor.execute(
@@ -92,7 +91,7 @@ class Rrequest(DriverOffer):
             (self.location, self.destination, self.phone_number)
         )
         made_request = db.cursor.fetchall()
-        return made_request
+        return {"message":"Request to join ride is being processed"}
 
     def get_requests_for_offer(self):
         """get all requests to a specific offer"""

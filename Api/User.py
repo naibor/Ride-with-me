@@ -51,7 +51,7 @@ class DriverReg(Resource):
             )
             exist = new_driver.user_exist()
             if exist:
-                return (exist), 400
+                return {"message":"user already exists"}, 400
             invalid_password = new_driver.confirm_password()
             if invalid_password:
                 return (invalid_password), 400
@@ -72,11 +72,9 @@ class UserLogIn(Resource):
             data["password"],
             data["confirmpassword"]
         )
-        # check if user exist
         fetched = user_login.user_exist()
         if not fetched:
             return  {"message": "signup first"}
-        # check if password in db and provided are same
         response = user_login.checks_password()
         return response
        
