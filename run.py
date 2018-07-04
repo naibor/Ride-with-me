@@ -1,6 +1,6 @@
-
 from Api import create_app
 import os
+
 config_name = os.getenv("APP_SETTINGS")
 # flask instance
 

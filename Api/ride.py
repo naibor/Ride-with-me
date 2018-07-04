@@ -2,38 +2,41 @@
 import json
 from flask_restful import Resource, Api
 from flask import request
+from Api.User import login_required
 from marshmallow import Schema, fields
-from models.ride_models import Rrequest, DriverOffer, ride_offers
+from models.ride_models import Rrequest, DriverOffer
 from Api.schema_v import rideschema, requestschema
 
-request_details = {}
-# passenger request details stored
-ride_Requests = []
-# passanger ride requests details stored
 
 class RideOffer(Resource):  
     """Drivers resource class"""
-    def post(self):
+    @login_required
+    def post(this_user, self):
+        print(this_user)
         postoffer = request.get_json()
         data, errors = rideschema.load(postoffer)
         if errors:
             return (errors),400
 
-        new_offer = DriverOffer(data["location"],
-                                data["destination"]
-                                )
+        new_offer = DriverOffer(
+            this_user[0],
+            data["location"],
+            data["destination"]
+        )
         
-        ride = new_offer.save_ride_offer()
-        return (ride), 201
+        rides = new_offer.save_ride_offer()
+        return (rides), 201
+
 
     def get(self):
         """get all rides"""
-        return (ride_offers), 200
+        return DriverOffer.get_all(), 200
 
     
 class RideRequest(Resource):
     """get ride requests by id"""
-    def get(self, id):
+    @login_required
+    def get(this_user, self, id):
         """get ride by id"""
         for offer in ride_offers:
             if offer["ID"] == id:
@@ -41,6 +44,7 @@ class RideRequest(Resource):
 
 class SpecificRequest(Resource):
     """Post a request to a specific ride id"""
+    @login_required
     def post(self,id):
         postRequest = request.get_json()
         data,errors = requestschema.load(postRequest)

@@ -1,15 +1,13 @@
 """user sign up, driver registration and login resource"""
 from flask_restful import Resource, Api
 from flask import request
+
 from Api.schema_v import Userschema, driverschema
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timedelta
-from models.user_model import User,Driver
+from models.user_model import User, Driver, login_required
 
-signup_info = []
-#  signup information stored
-driver_info = []
-# driver information stored 
+
 class UserSignUp(Resource):
     """user signup resource"""
     def post(self):
@@ -21,12 +19,13 @@ class UserSignUp(Resource):
             new_user = User(
                 data["name"],
                 data["username"],
+                data["phone_number"],
                 data["password"],
                 data["confirmpassword"]
             )
-            Exist = new_user.User_exist()
-            if Exist:
-                return Exist, 400
+            exist = new_user.user_exist()
+            if exist:
+                return {"message":"user already exists"}, 400
             invalid_password = new_user.confirm_password()
             if invalid_password:
                 return invalid_password, 400
@@ -50,9 +49,9 @@ class DriverReg(Resource):
                 data["password"],
                 data["confirmpassword"]
             )
-            exist = new_driver.driver_exist()
+            exist = new_driver.user_exist()
             if exist:
-                return (exist), 400
+                return {"message":"user already exists"}, 400
             invalid_password = new_driver.confirm_password()
             if invalid_password:
                 return (invalid_password), 400
@@ -63,12 +62,19 @@ class DriverReg(Resource):
         
 class UserLogIn(Resource):
     """userlogin resource"""
+    
     def post(self):
         data = request.get_json()
-        for dictionary in signup_info:
-            if data["username"] == dictionary["username"]:
-                if check_password_hash(dictionary["password"], data["password"]):
-                    return {"message":"successfully logged in"},200
-                return{"message":"wrong password"},401
-            return{"message":"signup first"},400
-
+        user_login = User(
+            data["name"],
+            data["username"],
+            data["phone_number"],
+            data["password"],
+            data["confirmpassword"]
+        )
+        fetched = user_login.user_exist()
+        if not fetched:
+            return  {"message": "signup first"}
+        response = user_login.checks_password()
+        return response
+       
