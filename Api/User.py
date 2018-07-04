@@ -4,7 +4,7 @@ from flask import request
 from Api.schema_v import Userschema, driverschema
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timedelta
-from models.user_model import User,Driver
+from models.user_model import User, Driver
 
 signup_info = []
 #  signup information stored
@@ -21,12 +21,13 @@ class UserSignUp(Resource):
             new_user = User(
                 data["name"],
                 data["username"],
+                data["phone_number"],
                 data["password"],
                 data["confirmpassword"]
             )
-            Exist = new_user.User_exist()
-            if Exist:
-                return Exist, 400
+            exist = new_user.user_exist()
+            if exist:
+                return exist, 400
             invalid_password = new_user.confirm_password()
             if invalid_password:
                 return invalid_password, 400
@@ -50,7 +51,7 @@ class DriverReg(Resource):
                 data["password"],
                 data["confirmpassword"]
             )
-            exist = new_driver.driver_exist()
+            exist = new_driver.user_exist()
             if exist:
                 return (exist), 400
             invalid_password = new_driver.confirm_password()

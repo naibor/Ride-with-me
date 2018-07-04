@@ -38,6 +38,7 @@ class UserSchema(Schema):
     """user input schema """
     name = fields.Str(validate=validate_name, required=True)
     username = fields.Str(validate=validate_name, required=True)
+    phone_number = fields.Str(validate=validate_phone, required=True)
     password = fields.Str(validate=validate_password, required=True) 
     confirmpassword = fields.Str(validate=validate_password, required=True)
 Userschema = UserSchema()
