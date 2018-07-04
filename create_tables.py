@@ -9,7 +9,7 @@ def create_tables():
             user_name VARCHAR(255) NOT NULL,
             user_username VARCHAR(255) NOT NULL,
             user_car VARCHAR(255),
-            user_phone_number INT NOT NULL,
+            user_phone_number VARCHAR(255) NOT NULL,
             user_password VARCHAR(450) NOT NULL
         )
         """,
@@ -32,7 +32,7 @@ def create_tables():
             PRIMARY KEY (offer_id, user_id),
             request_location VARCHAR(255) NOT NULL,
             request_destination VARCHAR(255)NOT NULL,
-            request_phone_number INT NOT NULL,
+            request_phone_number VARCHAR(255) NOT NULL,
             FOREIGN KEY (user_id)
                 REFERENCES users (user_id)
                 ON UPDATE CASCADE ON DELETE CASCADE,

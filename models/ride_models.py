@@ -2,13 +2,7 @@
 from datetime import datetime, timedelta
 from models.db import db
 
-driver_info = []
-# driver's information displayed to passanger in ride offer details
-ride_offers = []
-# A list of ride offers
-request_details = []
-# requests saved
-DTime = datetime.now() + timedelta(minutes=45) #departure time after 45min
+DTime = datetime.now() + timedelta(minutes=45) 
 
 
 class DriverOffer:
@@ -46,7 +40,7 @@ class DriverOffer:
         
 
 
-
+    
     def ride_by_id(self):
         """check if ride exists"""
         for offer in ride_offers:

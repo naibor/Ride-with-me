@@ -2,8 +2,9 @@
 import json
 from flask_restful import Resource, Api
 from flask import request
+from Api.User import login_required
 from marshmallow import Schema, fields
-from models.ride_models import Rrequest, DriverOffer, ride_offers
+from models.ride_models import Rrequest, DriverOffer
 from Api.schema_v import rideschema, requestschema
 
 request_details = {}
@@ -27,6 +28,7 @@ class RideOffer(Resource):
         return (ride), 201
         # return new_offer.save_ride_offer()
 
+    @login_required
     def get(self):
         """get all rides"""
         # SELECT * FROM ride_offer
@@ -35,6 +37,7 @@ class RideOffer(Resource):
     
 class RideRequest(Resource):
     """get ride requests by id"""
+    @login_required
     def get(self, id):
         """get ride by id"""
         for offer in ride_offers:
@@ -43,6 +46,7 @@ class RideRequest(Resource):
 
 class SpecificRequest(Resource):
     """Post a request to a specific ride id"""
+    @login_required
     def post(self,id):
         postRequest = request.get_json()
         data,errors = requestschema.load(postRequest)
