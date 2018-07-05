@@ -7,8 +7,9 @@ DTime = datetime.now() + timedelta(minutes=45)
 
 class DriverOffer:
     """Driver offers ride"""
-    def __init__(self, user_id, location, destination ):
-        self.user_id = user_id
+    def __init__(self, offer_id, user_offer_id, location, destination ):
+        self.offer_id = offer_id
+        self.user_offer_id = user_offer_id
         self.location = location
         self.destination = destination
         self.departure = str(DTime.time())
@@ -17,12 +18,21 @@ class DriverOffer:
     def save_ride_offer(self):
         """save ride offer"""
         # create an offer
+        # db.cursor.execute(
+        #     """
+        #     INSERT INTO ride_offers (offer_id, user_offer_id, offer_location, offer_destination, offer_departure_time)
+        #     VALUES ({0}, {1}, {3}, {4},{5})
+        #     """\
+        #     .format(self.offer_id, self.user_offer_id, self.location, self.destination, self.departure)
+        # )
+        # db.commit()
+
         db.cursor.execute(
             """
-            INSERT INTO ride_offers (user_offer_id, offer_location, offer_destination, offer_departure_time)
-            VALUES (%s, %s, %s, %s)
+            INSERT INTO ride_offers (offer_id, user_offer_id, offer_location, offer_destination, offer_departure_time)
+            VALUES (%s, %s, %s, %s, %s)
             """,
-            (self.user_id, self.location, self.destination, self.departure)
+            (self.offer_id, self.user_offer_id, self.location, self.destination, self.departure)
         )
         db.commit()
         db.cursor.execute(
@@ -30,9 +40,10 @@ class DriverOffer:
             SELECT * FROM ride_offers
             WHERE user_offer_id = %s
             """,
-            (self.user_id, )
+            (self.user_offer_id, )
         )
         offers = db.cursor.fetchall()
+        print("@@@@@@@@@@@@@@@@@", offers)
         return offers
     @staticmethod
     def get_all():
@@ -42,62 +53,42 @@ class DriverOffer:
             "SELECT * FROM ride_offers;"
         )
         ride_offers = db.cursor.fetchall()
-        print(ride_offers)
         return ride_offers
         
 
 
     
     def ride_by_id(self):
-        """check if ride exists"""
-        for offer in ride_offers:
-            if offer["ID"] == self.ride_id:
-                return offer
-            else:
-                return{"message":"ride does not exist"}
+        """gets ride by id"""           
     # getting a specific id
         db.cursor.execute(
-        """
-        SELECT ride_offers.offer_id,
-        ride_offers.offer_location,
-        ride_offers.offer_destination,
-        ride_offers.offer_departure_time,
-        users.user_username,
-        users.user_car,
-        users.user_phone_number
-        FROM ride_offers, users
-        WHERE ride_offers.user_id = users.user_id
-        AND ride_offers.offer_id =%d
-        """
-        (id,)
+            """
+            SELECT * FROM ride_offers
+            where offer_id = %s
+            """,
+            (self.offer_id)
         )
-        a_ride = db.cursor.fetchall()
-        return a_ride
+        offer = db.cursor.fetchall()
+        return (offer)
+ 
        
 class Rrequest(DriverOffer):
     """User make request a ride"""
-    def __init__ (self,location,destination,phone_number):
-        DriverOffer.__init__(self,location,destination)
+    def __init__ (self, user_id, location, destination, phone_number):
+        super().__init__(offer_id, user_offer_id, location, destination, departure_time)
         self.phone_number = phone_number
+        self.user_id = user_id
 
     def save_request_ride(self):
         """user can save ride requests"""
-        new_request = {
-            "location":self.location,
-            "destination":self.destination,
-            "phone_number":self.phone_number
-        }
-
-
 # create a ride request
         db.cursor.execute(
             """
-            INSERT INTO ride_requests(request_location,request_destination,request_phone_number)
-            VALUE(%s, %s, %d)
+            INSERT INTO ride_requests(offer_id, user_id, request_location, request_destination, request_phone_number)
+            VALUE(%s, %s, %s, %s, %s)
             """
-            (self.location, self.destination, self.phone_number)
+            (self.offer_id, self.user_id, self.location, self.destination, self.phone_number)
         )
-        made_request = db.cursor.fetchall()
         return {"message":"Request to join ride is being processed"}
 
     def get_requests_for_offer(self):
@@ -106,9 +97,9 @@ class Rrequest(DriverOffer):
         db.cursor.execute(
             """
             SELECT *FROM ride_requests
-            WHERE offer_id = %d
+            WHERE offer_id = (%s),
             """
-            (id,)
+            (self.offer_id,)
         )
         the_requests = db.cursor.fetchall()
         return the_requests

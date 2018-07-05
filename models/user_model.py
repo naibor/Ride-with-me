@@ -22,7 +22,6 @@ class User():
             """,
             (self.username, )
         )
-        
         users_info_fetched = db.cursor.fetchone()
         return users_info_fetched
        
@@ -104,7 +103,6 @@ def login_required(func):
         except:
             return {"message": "invalid token"}, 401
 
-        print(data)
         db.cursor.execute(
             """
             SELECT * FROM users
