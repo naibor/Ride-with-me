@@ -24,17 +24,12 @@ class DriverOffer:
             (self.user_offer_id, self.location, self.destination, self.departure)
         )
         db.commit()
-        db.cursor.execute(
-            """
-            SELECT * FROM ride_offers
-            WHERE user_offer_id = %s
-            """,
-            (self.user_offer_id, )
-        )
-        offers = db.cursor.fetchone()
-        return offers
+        
+        return {"message":"Successfully created a ride offer"}
+
     @staticmethod
     def get_all():
+        
         """get all ride offers"""
     # getting all rides  
         db.query_db(
@@ -60,26 +55,31 @@ class DriverOffer:
        
 class Rrequest(DriverOffer):
     """User make request a ride"""
-    def __init__ (self, user_id, phone_number, offer_id, user_offer_id, location, destination, departure_time):
-        DriverOffer.__init__(self, offer_id, user_offer_id, location, destination, departure_time)
+    def __init__ (self, user_id, phone_number, user_offer_id, location, destination, offer_id):
+        self.location = location
+        self.user_offer_id =user_offer_id
         self.phone_number = phone_number
         self.user_id = user_id
+        self.offer_id = offer_id
+        self.destination = destination
+
 
     def save_request_ride(self):
         """user can save ride requests"""
 # create a ride request
         db.cursor.execute(
             """
-            INSERT INTO ride_requests(offer_id, user_id, request_location, request_destination, request_phone_number)
-            VALUE(%s, %s, %s, %s, %s)
-            """
-            (self.offer_id, self.user_id, self.location, self.destination, self.phone_number)
+            INSERT INTO ride_requests(user_id, offer_id, request_location, request_destination, request_phone_number)
+            VALUES(%s, %s, %s, %s, %s)
+            """,
+            (self.user_id, self.offer_id, self.location, self.destination, self.phone_number)
         )
-        return {"message":"Request to join ride is being processed"}
+        db.commit()
+        return
 
-    def get_requests_for_offer(self):
+    @staticmethod   
+    def get_requests_for_offer():
         """get all requests to a specific offer"""
-# all requests to a specific ride offer
         db.cursor.execute(
             """
             SELECT *FROM ride_requests

@@ -20,5 +20,9 @@ def create_app(config_name):
     api.add_resource(RideOffer,'/api/v1/users/rides')
     api.add_resource(RideRequest, '/api/v1/users/rides/<int:id>')
     api.add_resource(SpecificRequest,'/api/v1/users/rides/<int:id>/requests',endpoint='join_ride_request')
-
+# status<put>
+# delete
+# logout
+# tests
+# Api documentation
     return app

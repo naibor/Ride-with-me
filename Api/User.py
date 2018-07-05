@@ -77,4 +77,8 @@ class UserLogIn(Resource):
             return  {"message": "signup first"}
         response = user_login.checks_password()
         return response
+
+
+        # catch errors
+        # 
        

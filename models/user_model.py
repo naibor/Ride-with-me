@@ -61,7 +61,8 @@ class User():
             )
             user_details = db.cursor.fetchone()
             access_token = jwt.encode(
-            {"id":user_details[0]},
+            {"id":user_details[0],
+            "driver": user_details[3]},
             "this is a secret"
             )
             return {"access_token": access_token.decode("UTF-8"),"message":"successfully logged in"}
@@ -76,7 +77,7 @@ class Driver(User):
 
     def save_driver(self):
         self.save_user()
-        db.cursor(
+        db.cursor.execute(
             """
             UPDATE users
             SET user_car = %s

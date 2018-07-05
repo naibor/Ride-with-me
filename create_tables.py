@@ -8,7 +8,7 @@ def create_tables():
             user_id SERIAL PRIMARY KEY,
             user_name VARCHAR(255) NOT NULL,
             user_username VARCHAR(255) NOT NULL,
-            user_car VARCHAR(255),
+            user_car BOOLEAN,
             user_phone_number VARCHAR(255) NOT NULL,
             user_password VARCHAR(450) NOT NULL
         )
@@ -29,7 +29,7 @@ def create_tables():
         CREATE TABLE ride_requests(
             offer_id INTEGER NOT NULL,
             user_id INTEGER NOT NULL,
-            PRIMARY KEY (offer_id, user_id),
+            PRIMARY KEY (user_id),
             request_location VARCHAR(255) NOT NULL,
             request_destination VARCHAR(255)NOT NULL,
             request_phone_number VARCHAR(255) NOT NULL,
