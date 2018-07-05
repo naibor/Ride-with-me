@@ -61,7 +61,5 @@ class RideSchema(Schema):
 rideschema = RideSchema()
 class RequestSchema(Schema):
     "ride input schema"
-    location = fields.Str(validate=validate_name, required=True)
-    destination = fields.Str(validate=validate_name, required=True)
     phone_number = fields.Str(validate=validate_phone, required=True)
 requestschema = RequestSchema()
