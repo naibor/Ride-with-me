@@ -30,8 +30,7 @@ class DriverOffer:
     @staticmethod
     def get_all():
         
-        """get all ride offers"""
-    # getting all rides  
+        """get all ride offers"""  
         db.query_db(
             "SELECT * FROM ride_offers;"
         )

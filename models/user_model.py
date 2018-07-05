@@ -24,8 +24,6 @@ class User():
         )
         users_info_fetched = db.cursor.fetchone()
         return users_info_fetched
-       
-        #     return {"message":"user already exists"}
 
     def confirm_password(self):
         """ensures user password and confirm password are same"""
@@ -57,8 +55,8 @@ class User():
                 WHERE user_username = %s
                 """,
                 (self.username, )
-
             )
+
             user_details = db.cursor.fetchone()
             access_token = jwt.encode(
             {"id":user_details[0],
@@ -115,5 +113,3 @@ def login_required(func):
         this_user = db.cursor.fetchone()
         return func(this_user, *args, **kwargs)
     return decorated 
-
-

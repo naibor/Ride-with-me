@@ -24,5 +24,5 @@ def create_app(config_name):
 # delete
 # logout
 # tests
-# Api documentation
+# Api doc
     return app

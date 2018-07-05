@@ -12,7 +12,6 @@ class RideOffer(Resource):
     """Drivers resource class"""
     @login_required
     def post(this_user,self):
-        print("@@@@@@@@@@@", this_user)
         if not this_user[3]:
             return {"message": "Regular users cannot offer rides"}, 403
         postoffer = request.get_json()	
@@ -36,8 +35,7 @@ class RideOffer(Resource):
 class RideRequest(Resource):
     """get ride requests by id"""
     @login_required
-    def get(self,id):
-        import pdb; pdb.set_trace()
+    def get(this_user, self,id):
         """get ride by id"""
         return DriverOffer.ride_by_id(id)
         
@@ -67,6 +65,7 @@ class SpecificRequest(Resource):
         """user can get all requests"""
         response = Rrequest.get_requests_for_offer()
         return response
+        import pdb; pdb.set_trace()
 
 
 
