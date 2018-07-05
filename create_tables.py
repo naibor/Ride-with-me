@@ -30,8 +30,6 @@ def create_tables():
             offer_id INTEGER NOT NULL,
             user_id INTEGER NOT NULL,
             PRIMARY KEY (user_id),
-            request_location VARCHAR(255) NOT NULL,
-            request_destination VARCHAR(255)NOT NULL,
             request_phone_number VARCHAR(255) NOT NULL,
             FOREIGN KEY (user_id)
                 REFERENCES users (user_id)

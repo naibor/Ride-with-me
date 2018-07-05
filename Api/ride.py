@@ -50,12 +50,8 @@ class SpecificRequest(Resource):
         if errors:
             return (errors),400
         new_request = Rrequest(
-            # offer_id
             this_user[0],
-            data["phone_number"],
-            this_user[0],
-            data["location"],
-            data["destination"], id
+            data["phone_number"],id
             )
         
         user_request = new_request.save_request_ride()

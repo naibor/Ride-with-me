@@ -22,7 +22,7 @@ def create_app(config_name):
     api.add_resource(SpecificRequest,'/api/v1/users/rides/<int:id>/requests',endpoint='join_ride_request')
 # status<put>
 # delete
-# logout
 # tests
+# logout
 # Api doc
     return app
