@@ -57,7 +57,7 @@ class DriverReg(Resource):
                 return (invalid_password), 400
             else:
                 A_driver = new_driver.save_driver()
-                return A_driver
+                return A_driver, 201
 
         
 class UserLogIn(Resource):

@@ -86,6 +86,7 @@ class Driver(User):
             (self.car, self.username)
         )
         db.commit()
+        return {"message":"successfully signup as a driver"}
 
 
 def login_required(func):

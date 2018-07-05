@@ -41,6 +41,7 @@ class DriverOffer:
     @staticmethod
     def ride_by_id(offer_id):
         """gets ride by id"""          
+        # import pdb; pdb.set_trace()
     # getting a specific id
         db.cursor.execute(
             """
@@ -49,8 +50,8 @@ class DriverOffer:
             """,
             (offer_id,)
         )
-        offer = db.cursor.fetchall()
-        return (offer)
+        offer = db.cursor.fetchone()
+        return offer
  
        
 class Rrequest(DriverOffer):
