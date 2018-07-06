@@ -14,13 +14,14 @@ class User():
         self.password = password
         self.confirmpassword = confirmpassword
 
-    def user_exist(self):
+    @staticmethod
+    def user_exist(username):
         db.cursor.execute(
             """
             SELECT * FROM users
             WHERE user_username = %s
             """,
-            (self.username, )
+            (username, )
         )
         users_info_fetched = db.cursor.fetchone()
         return users_info_fetched
@@ -44,20 +45,22 @@ class User():
         db.commit()
         return {"message":"successfully signed up"}
 
-    def checks_password(self):
-        p_user = self.user_exist()
-        password = p_user[-1]
-      
-        if check_password_hash(password, self.password):
-            db.cursor.execute(
-                """
-                SELECT * FROM users
-                WHERE user_username = %s
-                """,
-                (self.username, )
-            )
+    @staticmethod
+    def checks_password(username, password):
+        
+        db.cursor.execute(
+            """
+            SELECT * FROM users
+            WHERE user_username = %s
+            """,
+            (username, )
+        )
 
-            user_details = db.cursor.fetchone()
+        user_details = db.cursor.fetchone()
+        if user_details and check_password_hash(
+            user_details[-1],
+            password
+        ):
             access_token = jwt.encode(
             {"id":user_details[0],
             "driver": user_details[3]},
@@ -90,7 +93,6 @@ class Driver(User):
 def login_required(func):
     @wraps(func)
     def decorated(*args, **kwargs):
-        # empty access_token
         access_token = None
         if "Authorization" in request.headers:
             access_token = request.headers["Authorization"]

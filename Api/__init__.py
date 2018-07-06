@@ -10,7 +10,7 @@ from Api.ride import RideOffer,RideRequest, SpecificRequest
 
 def create_app(config_name):
     app = Flask('Api')
-    app.config.from_object(app_config['development'])
+    app.config.from_object(app_config[config_name])
     api = Api(app)
 
  
@@ -20,9 +20,4 @@ def create_app(config_name):
     api.add_resource(RideOffer,'/api/v1/users/rides')
     api.add_resource(RideRequest, '/api/v1/users/rides/<int:id>')
     api.add_resource(SpecificRequest,'/api/v1/users/rides/<int:id>/request',endpoint='join_ride_request')
-# status<put>
-# delete
-# tests
-# logout
-# Api doc
-    return app
+        return app

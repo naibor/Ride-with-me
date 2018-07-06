@@ -51,6 +51,21 @@ class DriverOffer:
         )
         offer = db.cursor.fetchone()
         return offer
+
+    @staticmethod
+    def delete_ride_offer(offer_id):
+        """gets ride by id"""          
+        # import pdb; pdb.set_trace()
+    # getting a specific id
+        db.cursor.execute(
+            """
+            DELETE FROM ride_offers
+            where offer_id = (%s)
+            """,
+            (offer_id,)
+        )
+        db.commit()
+        return {"message": "ride delete"}
  
        
 class Rrequest(DriverOffer):

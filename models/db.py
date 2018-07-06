@@ -21,7 +21,7 @@ class Database:
        self.cursor.execute(query_string)
 
     
-    def create_tables(self,table):
+    def create_tables(self, table):
         self.cursor.execute(table)
         self.commit()
 

@@ -32,13 +32,19 @@ class RideOffer(Resource):
         return DriverOffer.get_all(), 200
 
     
+
+    
 class RideRequest(Resource):
     """get ride requests by id"""
     @login_required
-    def get(this_user, self,id):
+    def get(this_user, self, id):
         """get ride by id"""
         return DriverOffer.ride_by_id(id)
         
+    @login_required
+    def delete(this_user, self, id):
+        """deletes ride offer"""
+        return DriverOffer.delete_ride_offer(id), 200
 
        
 class SpecificRequest(Resource):
@@ -60,6 +66,3 @@ class SpecificRequest(Resource):
         """user can get all requests"""
         response = Rrequest.get_requests_for_offer()
         return response
-
-
-

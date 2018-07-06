@@ -1,8 +1,8 @@
 from models.db import Database
 
 db = Database()
-def create_tables():
-    commands = (
+
+TABLES_SCHEMA = (
         """
         CREATE TABLE users(
             user_id SERIAL PRIMARY KEY,
@@ -41,7 +41,9 @@ def create_tables():
         """
     )
 
-    for command in commands:
+def create_tables():
+
+    for command in TABLES_SCHEMA:
         db.create_tables(command)
 
 if __name__== '__main__':

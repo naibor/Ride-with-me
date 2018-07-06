@@ -23,7 +23,7 @@ class UserSignUp(Resource):
                 data["password"],
                 data["confirmpassword"]
             )
-            exist = new_user.user_exist()
+            exist = new_user.user_exist(data["username"])
             if exist:
                 return {"message":"user already exists"}, 400
             invalid_password = new_user.confirm_password()
@@ -49,7 +49,7 @@ class DriverReg(Resource):
                 data["password"],
                 data["confirmpassword"]
             )
-            exist = new_driver.user_exist()
+            exist = new_driver.user_exist(data["username"])
             if exist:
                 return {"message":"user already exists"}, 400
             invalid_password = new_driver.confirm_password()
@@ -65,20 +65,12 @@ class UserLogIn(Resource):
     
     def post(self):
         data = request.get_json()
-        user_login = User(
-            data["name"],
-            data["username"],
-            data["phone_number"],
-            data["password"],
-            data["confirmpassword"]
-        )
-        fetched = user_login.user_exist()
+        print(data)
+        fetched = User.user_exist(data["username"])
         if not fetched:
             return  {"message": "signup first"}
-        response = user_login.checks_password()
+        response = User.checks_password(data["username"], data["password"])
         return response
 
 
-        # catch errors
-        # 
-       
+
