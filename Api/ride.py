@@ -39,7 +39,10 @@ class RideRequest(Resource):
     @login_required
     def get(this_user, self, id):
         """get ride by id"""
-        return DriverOffer.ride_by_id(id)
+        response = DriverOffer.ride_by_id(id)
+        if isinstance(response, str):
+            return response, 400
+        return response
         
     @login_required
     def delete(this_user, self, id):

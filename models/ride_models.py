@@ -40,8 +40,7 @@ class DriverOffer:
     @staticmethod
     def ride_by_id(offer_id):
         """gets ride by id"""          
-        # import pdb; pdb.set_trace()
-    # getting a specific id
+        # getting a specific id
         db.cursor.execute(
             """
             SELECT * FROM ride_offers
@@ -50,13 +49,14 @@ class DriverOffer:
             (offer_id,)
         )
         offer = db.cursor.fetchone()
+        if not offer:
+            return {"message": "invalid offer id"}
         return offer
 
     @staticmethod
     def delete_ride_offer(offer_id):
         """gets ride by id"""          
-        # import pdb; pdb.set_trace()
-    # getting a specific id
+        # getting a specific id
         db.cursor.execute(
             """
             DELETE FROM ride_offers
