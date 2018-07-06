@@ -30,7 +30,7 @@ TABLES_SCHEMA = (
             request_id SERIAL PRIMARY KEY,
             offer_id INTEGER NOT NULL,
             user_id INTEGER NOT NULL,
-            request_phone_number VARCHAR(255) NOT NULL,
+            request_accepted_reject BOOLEAN,
             FOREIGN KEY (user_id)
                 REFERENCES users (user_id)
                 ON UPDATE CASCADE ON DELETE CASCADE,

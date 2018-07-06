@@ -70,8 +70,7 @@ class DriverOffer:
        
 class Rrequest(DriverOffer):
     """User make request a ride"""
-    def __init__ (self, user_id, phone_number, offer_id):
-        self.phone_number = phone_number
+    def __init__ (self, user_id, offer_id):
         self.user_id = user_id
         self.offer_id = offer_id
     
@@ -81,24 +80,49 @@ class Rrequest(DriverOffer):
         """user can save ride requests"""
         db.cursor.execute(
             """
-            INSERT INTO ride_requests(user_id, offer_id, request_phone_number)
-            VALUES(%s, %s, %s)
+            INSERT INTO ride_requests(user_id, offer_id)
+            VALUES(%s, %s)
             """,
-            (self.user_id, self.offer_id, self.phone_number)
+            (self.user_id, self.offer_id)
         )
         db.commit()
         return
 
     @staticmethod   
-    def get_requests_for_offer():
+    def get_requests_for_offer(id):
         """get all requests to a specific offer"""
         db.cursor.execute(
             """
-            SELECT *FROM ride_requests
+            SELECT * FROM ride_requests
             WHERE offer_id = (%s)
             """,
-            (self.offer_id,)
+            (id,)
         )
         the_requests = db.cursor.fetchall()
         return the_requests
+
+    def update_request_status(accepted, offer_id, request_id):
+        """updates request status"""
+        db.cursor.execute(
+            """
+            SELECT * FROM ride_requests
+            WHERE offer_id = %s
+            AND request_id = %s
+            """,
+            (offer_id, request_id)
+        )
+        request = db.cursor.fetchone()
+        if not request:
+            return {"message": "request does not exist"}
+        db.cursor.execute(
+            """
+            UPDATE ride_requests
+            SET request_accepted_reject = %s
+            WHERE offer_id = %s
+            AND request_id = %s
+            """,
+            (accepted, offer_id, request_id)
+        )
+        db.commit()
+        return {"message": "request updated successfully"}
     
