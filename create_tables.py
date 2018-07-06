@@ -27,9 +27,9 @@ def create_tables():
         """,
         """
         CREATE TABLE ride_requests(
+            request_id SERIAL PRIMARY KEY,
             offer_id INTEGER NOT NULL,
             user_id INTEGER NOT NULL,
-            PRIMARY KEY (user_id),
             request_phone_number VARCHAR(255) NOT NULL,
             FOREIGN KEY (user_id)
                 REFERENCES users (user_id)

@@ -44,7 +44,6 @@ class RideRequest(Resource):
 class SpecificRequest(Resource):
     """Post a request to a specific ride id"""
     @login_required
-    # import pdb; pdb.set_trace()
     def post(this_user, self, id):
         postRequest = request.get_json()
         data,errors = requestschema.load(postRequest)
@@ -54,15 +53,13 @@ class SpecificRequest(Resource):
             this_user[0],
             data["phone_number"],id
             )
-        
         user_request = new_request.save_request_ride()
         return {"message":"Request to join ride has been processed"}, 201
 
-    def get(self):
+    def get(this_user, self,id):
         """user can get all requests"""
         response = Rrequest.get_requests_for_offer()
         return response
-        import pdb; pdb.set_trace()
 
 
 

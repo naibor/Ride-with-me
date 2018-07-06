@@ -80,8 +80,8 @@ class Rrequest(DriverOffer):
         db.cursor.execute(
             """
             SELECT *FROM ride_requests
-            WHERE offer_id = (%s),
-            """
+            WHERE offer_id = (%s)
+            """,
             (self.offer_id,)
         )
         the_requests = db.cursor.fetchall()
