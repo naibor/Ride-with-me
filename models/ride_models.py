@@ -62,9 +62,21 @@ class DriverOffer:
             (offer_id,)
         )
         offer = db.cursor.fetchone()
+        the_offer = []
+        # import pdb; pdb.set_trace()
         if not offer:
             return {"message": "invalid offer id"}
-        return offer
+        else:
+                offer_dict = {
+                    "offer_number":offer[0],
+                    "location":offer[1],
+                    "departure_time":offer[2],
+                    "destination":offer[3]
+                }
+                the_offer.append(offer_dict)
+                import pdb; pdb.set_trace()
+        return the_offer
+        
 
     @staticmethod
     def delete_ride_offer(offer_id):
