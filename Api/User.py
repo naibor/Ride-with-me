@@ -1,15 +1,13 @@
 """user sign up, driver registration and login resource"""
 from flask_restful import Resource, Api
 from flask import request
+
 from Api.schema_v import Userschema, driverschema
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timedelta
-from models.user_model import User,Driver
+from models.user_model import User, Driver, login_required
 
-signup_info = []
-#  signup information stored
-driver_info = []
-# driver information stored 
+
 class UserSignUp(Resource):
     """user signup resource"""
     def post(self):
@@ -21,12 +19,13 @@ class UserSignUp(Resource):
             new_user = User(
                 data["name"],
                 data["username"],
+                data["phone_number"],
                 data["password"],
                 data["confirmpassword"]
             )
-            Exist = new_user.User_exist()
-            if Exist:
-                return Exist, 400
+            exist = new_user.user_exist(data["username"])
+            if exist:
+                return {"message":"user already exists"}, 400
             invalid_password = new_user.confirm_password()
             if invalid_password:
                 return invalid_password, 400
@@ -50,25 +49,28 @@ class DriverReg(Resource):
                 data["password"],
                 data["confirmpassword"]
             )
-            exist = new_driver.driver_exist()
+            exist = new_driver.user_exist(data["username"])
             if exist:
-                return (exist), 400
+                return {"message":"user already exists"}, 400
             invalid_password = new_driver.confirm_password()
             if invalid_password:
                 return (invalid_password), 400
             else:
                 A_driver = new_driver.save_driver()
-                return A_driver
+                return A_driver, 201
 
         
 class UserLogIn(Resource):
     """userlogin resource"""
+    
     def post(self):
         data = request.get_json()
-        for dictionary in signup_info:
-            if data["username"] == dictionary["username"]:
-                if check_password_hash(dictionary["password"], data["password"]):
-                    return {"message":"successfully logged in"},200
-                return{"message":"wrong password"},401
-            return{"message":"signup first"},400
+        print(data)
+        fetched = User.user_exist(data["username"])
+        if not fetched:
+            return  {"message": "signup first"}
+        response = User.checks_password(data["username"], data["password"])
+        return response
+
+
 

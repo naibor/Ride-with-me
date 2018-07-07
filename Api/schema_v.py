@@ -38,6 +38,7 @@ class UserSchema(Schema):
     """user input schema """
     name = fields.Str(validate=validate_name, required=True)
     username = fields.Str(validate=validate_name, required=True)
+    phone_number = fields.Str(validate=validate_phone, required=True)
     password = fields.Str(validate=validate_password, required=True) 
     confirmpassword = fields.Str(validate=validate_password, required=True)
 Userschema = UserSchema()
@@ -58,9 +59,9 @@ class RideSchema(Schema):
     destination = fields.Str(validate=validate_name, required=True)
 
 rideschema = RideSchema()
-class RequestSchema(Schema):
-    "ride input schema"
-    location = fields.Str(validate=validate_name, required=True)
-    destination = fields.Str(validate=validate_name, required=True)
-    phone_number = fields.Str(validate=validate_phone, required=True)
-requestschema = RequestSchema()
+
+class RequestStatus(Schema):
+    "request status schema"
+    status = fields.Bool(required=True)
+
+requeststatus = RequestStatus()
