@@ -52,8 +52,7 @@ class DriverOffer:
         
     @staticmethod
     def ride_by_id(offer_id):
-        """gets ride by id"""          
-        # getting a specific id
+        """gets ride by id""" 
         db.cursor.execute(
             """
             SELECT * FROM ride_offers
@@ -63,7 +62,6 @@ class DriverOffer:
         )
         offer = db.cursor.fetchone()
         the_offer = []
-        # import pdb; pdb.set_trace()
         if not offer:
             return {"message": "invalid offer id"}
         else:
@@ -74,14 +72,12 @@ class DriverOffer:
                     "destination":offer[3]
                 }
                 the_offer.append(offer_dict)
-                import pdb; pdb.set_trace()
         return the_offer
         
 
     @staticmethod
     def delete_ride_offer(offer_id):
         """gets ride by id"""          
-        # getting a specific id
         db.cursor.execute(
             """
             DELETE FROM ride_offers
@@ -124,10 +120,19 @@ class Rrequest(DriverOffer):
             (id,)
         )
         the_requests = db.cursor.fetchall()
-        return the_requests
+        request_list = []
+        for request in the_requests:
+            request_dict = {
+               "request_number":request[0],
+               "offer_number":request[1],
+               "user_number":request[2],
+               "status":request[3] 
+            }
+            request_list.append(request_dict)
+        return request_list
 
     def update_request_status(accepted, offer_id, request_id):
-        """updates request status"""
+        """updates request status for approval or rejection"""
         db.cursor.execute(
             """
             SELECT * FROM ride_requests
@@ -150,6 +155,4 @@ class Rrequest(DriverOffer):
         )
         db.commit()
         return {"message": "request updated successfully"}
-    
-    # @staticmethod
-    # def serializer():
+
