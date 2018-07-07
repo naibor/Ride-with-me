@@ -35,7 +35,20 @@ class DriverOffer:
             "SELECT * FROM ride_offers;"
         )
         ride_offers = db.cursor.fetchall()
-        return ride_offers
+        #convert data to dict
+        rides = []
+        for item in ride_offers:
+            ride_dict = {
+                "ride_id":item[0],
+                "driver_id":item[1],
+                "location":item[2],
+                "departure_time":item[3],
+                "destination":item[4]
+            }
+            rides.append(ride_dict)
+        return rides
+
+    
         
     @staticmethod
     def ride_by_id(offer_id):
@@ -126,3 +139,5 @@ class Rrequest(DriverOffer):
         db.commit()
         return {"message": "request updated successfully"}
     
+    # @staticmethod
+    # def serializer():

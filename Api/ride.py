@@ -28,6 +28,7 @@ class RideOffer(Resource):
 
     @login_required
     def get(this_user, self):
+        # import pdb; pdb.set_trace()
         """get all rides"""
         return DriverOffer.get_all(), 200
 
