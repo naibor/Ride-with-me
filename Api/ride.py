@@ -5,7 +5,7 @@ from flask import request
 from Api.User import login_required
 from marshmallow import Schema, fields
 from models.ride_models import Rrequest, DriverOffer
-from Api.schema_v import rideschema
+from Api.schema_v import rideschema, requeststatus
 
 
 class RideOffer(Resource):  
@@ -28,13 +28,10 @@ class RideOffer(Resource):
 
     @login_required
     def get(this_user, self):
-        # import pdb; pdb.set_trace()
         """get all rides"""
         return DriverOffer.get_all(), 200
 
-    
 
-    
 class RideRequest(Resource):
     """get ride requests by id"""
     @login_required
@@ -75,7 +72,10 @@ class AcceptRejectRequest(Resource):
         if not this_user[3]:
             return {"message": "Regular users cannot accept or reject ride requests"}, 403 
         update_request = request.get_json()
-        response = Rrequest.update_request_status(update_request.get("status"), offer_id, request_id)
+        data, errors = requeststatus.load(update_request)
+        if errors:
+            return (errors),400
+        response = Rrequest.update_request_status(data.get("status"), offer_id, request_id)
         if response["message"] == "request does not exist":
             return response, 400
         return response

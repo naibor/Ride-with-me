@@ -60,3 +60,8 @@ class RideSchema(Schema):
 
 rideschema = RideSchema()
 
+class RequestStatus(Schema):
+    "request status schema"
+    status = fields.Bool(required=True)
+
+requeststatus = RequestStatus()
