@@ -65,7 +65,6 @@ class UserLogIn(Resource):
     
     def post(self):
         data = request.get_json()
-        print(data)
         fetched = User.user_exist(data["username"])
         if not fetched:
             return  {"message": "signup first"}

@@ -7,24 +7,24 @@ from test.test_database import db
 from test.test_base import TestBaseTest
 
 class TestDriverReg(TestBaseTest):
-    # """test driver is registered"""
-    # def test_driver_reg(self):
-    #     """test driver can successfuly register"""
-    #     registration = self.client.post(
-    #         "/api/v1/auth/register",
-    #         data = json.dumps(dict(
-    #             name = "kamau",
-    #             username = "kazu",
-    #             phone_number = "0707981133",
-    #             car = "True",
-    #             password = "A123456789a#",
-    #             confirmpassword = "A123456789a#",
-    #         )),
-    #         headers = {"content-type": "application/json"}
-    #     )
-    #     self.assertEqual(registration.status_code,201)
-    #     response_data = json.loads(registration.data.decode())
-    #     self.assertEqual(response_data["message"],"successfully signup as a driver")
+    """test driver is registered"""
+    def test_driver_reg(self):
+        """test driver can successfuly register"""
+        registration = self.client.post(
+            "/api/v1/auth/register",
+            data = json.dumps(dict(
+                name = "kamau",
+                username = "kazu",
+                phone_number = "0707981133",
+                car = "True",
+                password = "A123456789a#",
+                confirmpassword = "A123456789a#",
+            )),
+            headers = {"content-type": "application/json"}
+        )
+        self.assertEqual(registration.status_code,201)
+        response_data = json.loads(registration.data.decode())
+        self.assertEqual(response_data["message"],"successfully signup as a driver")
    
     def test_driver_name_empty(self):
         """test driver name not empty"""
@@ -221,8 +221,8 @@ class TestDriverReg(TestBaseTest):
     def tearDown(self):
         """Tears down test context"""
         self.app = None
-        # db.cursor.execute("DROP TABLE IF EXISTS users;")
-        # db.cursor.execute("DROP TABLE IF EXISTS ride_offers;")
-        # db.cursor.execute("DROP TABLE IF EXISTS ride_requests;")
+        db.cursor.execute("DROP TABLE IF EXISTS users;")
+        db.cursor.execute("DROP TABLE IF EXISTS ride_offers;")
+        db.cursor.execute("DROP TABLE IF EXISTS ride_requests;")
 if __name__== '__main__':
     unittest.main()
