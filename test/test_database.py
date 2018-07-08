@@ -28,6 +28,7 @@ class Database:
 
     def drop_table(self,table_name):
         self.cursor.execute("DROP TABLE IF EXISTS " + table_name + ";") 
+        self.commit()
 
     def close(self):
         self.cursor.close()

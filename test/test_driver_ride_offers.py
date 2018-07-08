@@ -6,7 +6,7 @@
 # from models import ride_models
 # from Api import create_app
 
-# class TestDriverRideOffer(unittest.TestCase):
+# class TestDriverRideOffer(TestBaseTest):
 #     """test driver can offer rides"""
 #     def setUp(self):
 #         """inititalize app and define variables"""
