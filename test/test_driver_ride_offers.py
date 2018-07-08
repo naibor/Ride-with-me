@@ -36,7 +36,10 @@
 #             )),
 #             headers = {"content-type": "application/json"}
 #         )
-#         self.assertEqual(data.status_code,201)
+#         self.assertEqual(login.status_code,201)
+#         login_data = json.loads(login.data.decode())
+#         token = login_data["access_token"]
+
 #         # create offer
 #         create = self.client.post(
 #             "/api/v1/users/rides",
@@ -46,7 +49,8 @@
 #                 destination = "kisumu",
 #                 departure = str(DTime.time())
 #             )),
-#             headers = {"content-type": "application/json"}
+#             headers = {"content-type": "application/json",
+#                        "Authorization":"token"}
 #         )  
 #         self.assertEqual(data.status_code,201) 
 

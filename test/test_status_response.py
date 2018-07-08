@@ -38,6 +38,8 @@
 #             headers = {"content-type": "application/json"}
 #         )
 #         self.assertEqual(login.status_code,201)
+#         login_data = json.loads(login.data.decode())
+#         token = login_data["access_token"]
 
 #     # create offer
 #         create = self.client.post(
@@ -48,7 +50,8 @@
 #                 destination = "kisumu",
 #                 departure = str(DTime.time())
 #             )),
-#             headers = {"content-type": "application/json"}
+#             headers = {"content-type": "application/json",
+#                         "Authorization":"token"}
 #         )  
 #         self.assertEqual(response.status_code,201) 
 
@@ -61,18 +64,23 @@
 #             )),
 #             headers = {"content-type": "application/json"}
 #         )
+#        self.assertEqual(login.status_code,201)
+#        login_data = json.loads(login.data.decode())
+#        token = login_data["access_token"]
 
 #     # get one offer
 #         response = self.client.get(
 #             "api/v1/users/rides/1",
-#             headers = {"content-type": "application/json"}
+#             headers = {"content-type": "application/json"
+#                        "Authorization":"token" }
 #             ) 
 #         self.assertEqual(response.status_code,200) 
 
 #     # make request to an offer
 #         request = self.client.post(
 #             "/api/v1/users/rides/1/requests",
-#             headers = {"content-type": "application/json"}
+#             headers = {"content-type": "application/json",
+#                       "Authorization":"token"}
 #                     )
 #         self.assertEqual(request.status_code,201)
   
@@ -82,7 +90,8 @@
 #             data = json.dumps(dict(
 #                 status = "True"
 #             )),
-#             headers = {"content-type": "application/json"}
+#             headers = {"content-type": "application/json",
+#                           "Authorization":"token"}
 #         )
 #         self.assertEqual(request.status_code,201)
 #         self.assertEqual(create_data["message"],"Request updated successfully")
@@ -94,7 +103,8 @@
 #             data = json.dumps(dict(
 #                 status = "12345"
 #             )),
-#             headers = {"content-type": "application/json"}
+#             headers = {"content-type": "application/json",
+#                          "Authorization":"token"}
 #         )
 #         self.assertEqual(response.status_code,400)
                 

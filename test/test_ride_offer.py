@@ -37,6 +37,9 @@
 #             headers = {"content-type": "application/json"}
 #         )
 #         self.assertEqual(login.status_code,201)
+#         login_data = json.loads(login.data.decode())
+#         token = login_data["access_token"]
+
 #         # create offers
 #         create = self.client.post(
 #             "/api/v1/users/rides",
@@ -46,7 +49,8 @@
 #                 destination = "kisumu",
 #                 departure = str(DTime.time())
 #             )),
-#             headers = {"content-type": "application/json"}
+#             headers = {"content-type": "application/json",
+#                          "Authorization":"token"}
 #         )  
 #         self.assertEqual(create.status_code,201) 
 #         create_data = json.loads(create.data.decode())
@@ -62,7 +66,8 @@
 #                 password = "A123456789a#",
 #                 confirmpassword = "A123456789a#"
 #             )),
-#             headers = {"content-type": "application/json"}
+#             headers = {"content-type": "application/json",
+#                           "Authorization":"token"}
 #         )
 #         self.assertEqual(signup.data.status_code,201)
 
@@ -75,12 +80,15 @@
 #             )),
 #             headers = {"content-type": "application/json"}
 #         )
-#         self.assertEqual(login.data.status_code,201)
+#         self.assertEqual(login.status_code,201)
+#         login_data = json.loads(login.data.decode())
+#         token = login_data["access_token"]
 
 #     # get offers
 #         response = self.client.get(
 #             '/api/v1/users/rides',
-#             headers = {"content-type": "application/json"}
+#             headers = {"content-type": "application/json",
+#                        "Authorization":"token"}
 #         )
 #         self.assertEqual(response.status_code,200 )
 
@@ -89,7 +97,8 @@
 #         """tests user can get one ride offer"""
 #         response = self.client.get(
 #             "api/v1/users/rides/1",
-#             headers = {"content-type": "application/json"}
+#             headers = {"content-type": "application/json",
+#                        "Authorization":"token"}
 #             ) 
 #         self.assertEqual(response.status_code,200)  
 
@@ -97,7 +106,8 @@
 #     def test_request_to_join_offer(self):
 #         request = self.client.post(
 #             "/api/v1/users/rides/1/requests",
-#             headers = {"content-type": "application/json"}
+#             headers = {"content-type": "application/json"
+#                        "Authorization":"token"}
 #                     )
 #         self.assertEqual(request.status_code,201)
 #         self.assertEqual(create_data["message"],"Request to join ride has been processed")
