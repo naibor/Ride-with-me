@@ -1,24 +1,24 @@
-# """test ride offers as a user"""
-# """test user can make a request to join a ride"""
+# """test for driver ride offer"""
 # import unittest
 # import os
 # import json
 # from datetime import datetime, timedelta 
-# from models.ride_models import Rrequest, DriverOffer
+# from models import ride_models
+# from Api import create_app
 # from test.test_base import TestBaseTest
 # DTime = datetime.now() + timedelta(minutes=20)
 
-# class TestRideOffer(TestBaseTest):
-#     """test ride offers"""
-                
-#     def test_get_ride_offers(self):
-#         """test user can view all ride offers"""
-#         # register driver
+# class TestDriverResponse(TestBaseTest):
+#     """test driver can offer rides"""
+
+#     def test_driver_response_to_ride_request(self):
+#         """test driver can create ride offer"""
+#     # register driver
 #         register = self.client.post(
 #             "/api/v1/auth/register",
 #             data = json.dumps(dict(
 #                 name = "kamau",
-#                 username = "kanjoo",
+#                 username = "kanjo",
 #                 phone_number = "0707981133",
 #                 car = "True",
 #                 password = "A123456789a#",
@@ -27,7 +27,8 @@
 #             headers = {"content-type": "application/json"}
 #         )
 #         self.assertEqual(register.status_code,201)
-#         # login driver
+
+#     # login driver
 #         login = self.client.post(
 #             "/api/v1/auth/login",
 #             data = json.dumps(dict(
@@ -37,7 +38,8 @@
 #             headers = {"content-type": "application/json"}
 #         )
 #         self.assertEqual(login.status_code,201)
-#         # create offers
+
+#     # create offer
 #         create = self.client.post(
 #             "/api/v1/users/rides",
 #             data = json.dumps(dict(
@@ -48,25 +50,9 @@
 #             )),
 #             headers = {"content-type": "application/json"}
 #         )  
-#         self.assertEqual(create.status_code,201) 
-#         create_data = json.loads(create.data.decode())
-#         self.assertEqual(create_data["message"],"Successfully created a ride offer")
-       
-#         # signup a user
-#         signup = self.client.post(
-#             "/api/v1/auth/signup",
-#             data = json.dumps(dict(
-#                 name = "Naibor",
-#                 username = "Visa",
-#                 phone_number = "0707900000",
-#                 password = "A123456789a#",
-#                 confirmpassword = "A123456789a#"
-#             )),
-#             headers = {"content-type": "application/json"}
-#         )
-#         self.assertEqual(signup.data.status_code,201)
+#         self.assertEqual(response.status_code,201) 
 
-#         # login a user
+#     # user login
 #         login = self.client.post(
 #             "/api/v1/auth/login",
 #             data = json.dumps(dict(
@@ -75,34 +61,42 @@
 #             )),
 #             headers = {"content-type": "application/json"}
 #         )
-#         self.assertEqual(login.data.status_code,201)
-
-#     # get offers
-#         response = self.client.get(
-#             '/api/v1/users/rides',
-#             headers = {"content-type": "application/json"}
-#         )
-#         self.assertEqual(response.status_code,200 )
 
 #     # get one offer
-#     def test_get_one_offer(self):
-#         """tests user can get one ride offer"""
 #         response = self.client.get(
 #             "api/v1/users/rides/1",
 #             headers = {"content-type": "application/json"}
 #             ) 
-#         self.assertEqual(response.status_code,200)  
+#         self.assertEqual(response.status_code,200) 
 
-#     # make a request to join a ride offer
-#     def test_request_to_join_offer(self):
+#     # make request to an offer
 #         request = self.client.post(
 #             "/api/v1/users/rides/1/requests",
 #             headers = {"content-type": "application/json"}
 #                     )
 #         self.assertEqual(request.status_code,201)
-#         self.assertEqual(create_data["message"],"Request to join ride has been processed")
-
-        
   
-# if __name__== '__main__':
-#     unittest.main()
+#     # driver respond to ride request 
+#         response = self.client.put(
+#             "/api/v1/users/rides/1/requests/1",
+#             data = json.dumps(dict(
+#                 status = "True"
+#             )),
+#             headers = {"content-type": "application/json"}
+#         )
+#         self.assertEqual(request.status_code,201)
+#         self.assertEqual(create_data["message"],"Request updated successfully")
+
+#     #validate response made by drive
+#     def test_response_is_bool(self):
+#         response = self.client.put(
+#             "/api/v1/users/rides/1/requests/1",
+#             data = json.dumps(dict(
+#                 status = "12345"
+#             )),
+#             headers = {"content-type": "application/json"}
+#         )
+#         self.assertEqual(response.status_code,400)
+                
+
+
