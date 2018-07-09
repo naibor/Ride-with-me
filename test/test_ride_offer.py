@@ -6,6 +6,7 @@ import json
 from datetime import datetime, timedelta 
 from models.ride_models import Rrequest, DriverOffer
 from test.test_base import TestBaseTest
+from test.test_database import db
 DTime = datetime.now() + timedelta(minutes=20)
 
 class TestRideOffer(TestBaseTest):
@@ -104,6 +105,7 @@ class TestRideOffer(TestBaseTest):
 
     # make a request to join a ride offer
     def test_request_to_join_offer(self):
+        """test user can request to join ride offer"""
         request = self.client.post(
             "/api/v1/users/rides/1/requests",
             headers = {"content-type": "application/json",
@@ -112,6 +114,13 @@ class TestRideOffer(TestBaseTest):
         self.assertEqual(request.status_code,201)
         self.assertEqual(create_data["message"],"Request to join ride has been processed")
 
+    
+    def tearDown(self):
+        """Tears down test context"""
+        self.app = None
+        db.cursor.execute("DROP TABLE IF EXISTS ride_requests;")
+        db.cursor.execute("DROP TABLE IF EXISTS ride_offers;")
+        db.cursor.execute("DROP TABLE IF EXISTS users;")
         
   
 if __name__== '__main__':

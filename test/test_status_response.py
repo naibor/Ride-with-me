@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from models import ride_models
 from Api import create_app
 from test.test_base import TestBaseTest
+from test.test_database import db
 DTime = datetime.now() + timedelta(minutes=20)
 
 class TestDriverResponse(TestBaseTest):
@@ -98,6 +99,7 @@ class TestDriverResponse(TestBaseTest):
 
     #validate response made by drive
     def test_response_is_bool(self):
+        """test status response is boolean"""
         response = self.client.put(
             "/api/v1/users/rides/1/requests/1",
             data = json.dumps(dict(
@@ -107,6 +109,16 @@ class TestDriverResponse(TestBaseTest):
                          "Authorization":"driver_token"}
         )
         self.assertEqual(response.status_code,400)
-                
+
+    def tearDown(self):
+        """Tears down test context"""
+        self.app = None
+        db.cursor.execute("DROP TABLE IF EXISTS ride_requests;")
+        db.cursor.execute("DROP TABLE IF EXISTS ride_offers;")
+        db.cursor.execute("DROP TABLE IF EXISTS users;")
+
+if __name__== '__main__':
+    unittest.main()
+            
 
 

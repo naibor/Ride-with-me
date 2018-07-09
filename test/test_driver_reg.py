@@ -221,8 +221,9 @@ class TestDriverReg(TestBaseTest):
     def tearDown(self):
         """Tears down test context"""
         self.app = None
-        db.cursor.execute("DROP TABLE IF EXISTS users;")
-        db.cursor.execute("DROP TABLE IF EXISTS ride_offers;")
         db.cursor.execute("DROP TABLE IF EXISTS ride_requests;")
+        db.cursor.execute("DROP TABLE IF EXISTS ride_offers;")
+        db.cursor.execute("DROP TABLE IF EXISTS users;")
+        
 if __name__== '__main__':
     unittest.main()
