@@ -1,16 +1,20 @@
 import psycopg2
+import os
 
 class Database:
     def __init__(self):
-        self.host = "",
-        self.database = "Ride_with_me",
-        self.user = "naibor",
-        self.password = "lisanaibor",
+        # self.host = "",
+        # self.database = "Ride_with_me",
+        # self.user = "naibor",
+        # self.password = "lisanaibor",
         self.connection = psycopg2.connect(
             host="localhost",
-            user="naibor",
-            dbname="Ride_with_me",
-            password="lisanaibor"
+            user=os.getenv("DATABASE_USER","naibor"),
+            # user="naibor",
+            dbname=os.getenv("DATABASE_NAME","Ride_with_me"),
+            # dbname="Ride_with_me",
+            password=os.getenv("DATABASE_PASSWORD","lisanaibor"),
+            # password="lisanaibor"
         )
         self.cursor = self.connection.cursor()
 

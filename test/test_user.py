@@ -4,27 +4,30 @@ import os
 import json
 from Api import User
 from Api import create_app
-from test.test_base import TestBaseTest
-from test.test_database import db
+from test.test_base import BaseTestCase, create_tables, drop_tables
+from models.db import db
+
 
 # db.cursor.execute("DROP TABLE IF EXISTS users CASCADE ;")
 
-class TestUserSignUp(TestBaseTest):
+class TestUserSignUp(BaseTestCase):
     """class for user sign up test case"""
 
     def test_user_sign_up(self):
         """test user can successfuly sign up"""
+        create_tables()
         signup = self.client.post(
          "/api/v1/auth/signup",
             data = json.dumps(dict(
                 name = "Naibor",
-                username = "Tisa",
+                username = "Aisa",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
             )),
             headers = {"content-type": "application/json"}
     )
+        drop_tables()
         self.assertEqual(signup.status_code,201)
         signup_data = json.loads(signup.data.decode())
         self.assertEqual(signup_data["message"],"successfully signed up")
@@ -36,7 +39,7 @@ class TestUserSignUp(TestBaseTest):
             "/api/v1/auth/register",
             data = json.dumps(dict(
                 name = "",
-                username = "Tisa",
+                username = "Aisa",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
@@ -50,7 +53,7 @@ class TestUserSignUp(TestBaseTest):
         signup = self.client.post(
             "/api/v1/auth/register",
             data = json.dumps(dict(
-                name = "kamau",
+                name = "Naibor",
                 username = "",
                 phone_number = "0707900000",
                 password = "A123456789a#",
@@ -65,8 +68,8 @@ class TestUserSignUp(TestBaseTest):
         signup = self.client.post(
             "/api/v1/auth/register",
             data = json.dumps(dict(
-                name = "kamau",
-                username = "kanjo",
+                name = "Naibor",
+                username = "Aisa",
                 phone_number = "",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
@@ -81,8 +84,8 @@ class TestUserSignUp(TestBaseTest):
         signup = self.client.post(
             "/api/v1/auth/register",
             data = json.dumps(dict(
-                name = "kamau",
-                username = "kanjo",
+                name = "Naibor",
+                username = "Aisa",
                 phone_number = "0707900000",
                 password = "",
                 confirmpassword = "A123456789a#"
@@ -96,8 +99,8 @@ class TestUserSignUp(TestBaseTest):
         signup = self.client.post(
             "/api/v1/auth/register",
             data = json.dumps(dict(
-                name = "kamau",
-                username = "kanjo",
+                name = "Naibor",
+                username = "Aisa",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = ""
@@ -112,7 +115,7 @@ class TestUserSignUp(TestBaseTest):
             "/api/v1/auth/register",
             data = json.dumps(dict(
                 name = "     ",
-                username = "kanjo",
+                username = "Aisa",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
@@ -126,7 +129,7 @@ class TestUserSignUp(TestBaseTest):
         signup = self.client.post(
             "/api/v1/auth/register",
             data = json.dumps(dict(
-                name = "kamau",
+                name = "Naibor",
                 username = "     ",
                 phone_number = "0707900000",
                 password = "A123456789a#",
@@ -141,8 +144,8 @@ class TestUserSignUp(TestBaseTest):
         signup = self.client.post(
             "/api/v1/auth/register",
             data = json.dumps(dict(
-                name = "kamau",
-                username = "kanjo",
+                name = "Naibor",
+                username = "Aisa",
                 phone_number = "       ",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
@@ -157,8 +160,8 @@ class TestUserSignUp(TestBaseTest):
         signup = self.client.post(
             "/api/v1/auth/register",
             data = json.dumps(dict(
-                name = "kamau",
-                username = "kanjo",
+                name = "Naibor",
+                username = "Aisa",
                 phone_number = "0707900000",
                 password = "A9a#",
                 confirmpassword = "A123456789a#"
@@ -172,8 +175,8 @@ class TestUserSignUp(TestBaseTest):
         signup = self.client.post(
             "/api/v1/auth/register",
             data = json.dumps(dict(
-                name = "kamau",
-                username = "kanjo",
+                name = "Naibor",
+                username = "Aisa",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = "A39a#"
@@ -185,12 +188,13 @@ class TestUserSignUp(TestBaseTest):
     
     def test_user_login(self):
         """test user can successfuly login"""
+        create_tables()
         # sign up user
         sign_up = self.client.post(
             "api/v1/auth/signup",
             data = json.dumps(dict(
                 name = "Naibor",
-                username = "zisa",
+                username = "Bisa",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
@@ -202,23 +206,25 @@ class TestUserSignUp(TestBaseTest):
         login = self.client.post(
             "/api/v1/auth/login",
             data = json.dumps(dict(
-                username = "zisa",
+                username = "Bisa",
                 password = "A123456789a#"
             )),
             headers = {"content-type": "application/json"}
         )
+        drop_tables()
         self.assertEqual(login.status_code,200)
         login_data = json.loads(login.data.decode())
         self.assertEqual(login_data["message"],"successfully logged in")
 
     def test_driver_login(self):
         """test driver can successfuly login"""
+        create_tables()
         # register a driver
         register = self.client.post(
             "/api/v1/auth/register",
             data = json.dumps(dict(
-                name = "kamau",
-                username = "kaajko",
+                name = "Laban",
+                username = "Dennis",
                 phone_number = "0707981133",
                 car = "True",
                 password = "A123456789a#",
@@ -234,11 +240,12 @@ class TestUserSignUp(TestBaseTest):
         login = self.client.post(
             "/api/v1/auth/login",
             data = json.dumps(dict(
-                username = "kaajko",
+                username = "Dennis",
                 password = "A123456789a#"
             )),
             headers = {"content-type": "application/json"}
         )
+        drop_tables()
         self.assertEqual(login.status_code,200)
         login_data = json.loads(login.data.decode())
         self.assertEqual(login_data["message"],"successfully logged in")
@@ -246,9 +253,9 @@ class TestUserSignUp(TestBaseTest):
     def tearDown(self):
         """Tears down test context"""
         self.app = None
-        db.cursor.execute("DROP TABLE IF EXISTS ride_requests;")
-        db.cursor.execute("DROP TABLE IF EXISTS ride_offers;")
-        db.cursor.execute("DROP TABLE IF EXISTS users;")
+        # db.cursor.execute("DROP TABLE IF EXISTS ride_requests;")
+        # db.cursor.execute("DROP TABLE IF EXISTS ride_offers;")
+        # db.cursor.execute("DROP TABLE IF EXISTS users;")
     
 if __name__== '__main__':
     unittest.main()
