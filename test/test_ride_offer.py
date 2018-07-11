@@ -5,12 +5,13 @@
 # import json
 # from datetime import datetime, timedelta 
 # from models.ride_models import Rrequest, DriverOffer
-# from test.test_base import BaseTestCase
+# from test.test_base import BaseTestCase, create_tables,drop_tables
 # from models.db import db
 # DTime = datetime.now() + timedelta(minutes=20)
 
 # class TestRideOffer(BaseTestCase):
 #     """test ride offers"""
+#     create_tables()
                 
 #     def test_get_ride_offers(self):
 #         """test user can view all ride offers"""
@@ -37,9 +38,10 @@
 #             )),
 #             headers = {"content-type": "application/json"}
 #         )
-#         self.assertEqual(login.status_code,201)
+#         import pdb; pdb.set_trace()
+#         self.assertEqual(login.status_code,200)
 #         login_data = json.loads(login.data.decode())
-#         driver_token = login_data["access_token"]
+#         driver_token = login_data['access_token']
 
 #         # create offers
 #         create = self.client.post(
@@ -81,7 +83,7 @@
 #             )),
 #             headers = {"content-type": "application/json"}
 #         )
-#         self.assertEqual(login.status_code,201)
+#         self.assertEqual(login.status_code,200)
 #         login_data = json.loads(login.data.decode())
 #         user_token = login_data["access_token"]
 
@@ -93,35 +95,35 @@
 #         )
 #         self.assertEqual(response.status_code,200 )
 
-#     # get one offer
-#     def test_get_one_offer(self):
-#         """tests user can get one ride offer"""
-#         response = self.client.get(
-#             "api/v1/users/rides/1",
-#             headers = {"content-type": "application/json",
-#                        "Authorization":"user_token"}
-#             ) 
-#         self.assertEqual(response.status_code,200)  
+    # # get one offer
+    # def test_get_one_offer(self):
+    #     """tests user can get one ride offer"""
+    #     response = self.client.get(
+    #         "api/v1/users/rides/1",
+    #         headers = {"content-type": "application/json",
+    #                    "Authorization":"user_token"}
+    #         ) 
+    #     self.assertEqual(response.status_code,200)  
 
-#     # make a request to join a ride offer
-#     def test_request_to_join_offer(self):
-#         """test user can request to join ride offer"""
-#         request = self.client.post(
-#             "/api/v1/users/rides/1/requests",
-#             headers = {"content-type": "application/json",
-#                        "Authorization":"user_token"}
-#                     )
-#         self.assertEqual(request.status_code,201)
-#         self.assertEqual(create_data["message"],"Request to join ride has been processed")
-
+    # # make a request to join a ride offer
+    # def test_request_to_join_offer(self):
+    #     """test user can request to join ride offer"""
+    #     request = self.client.post(
+    #         "/api/v1/users/rides/1/requests",
+    #         headers = {"content-type": "application/json",
+    #                    "Authorization":"user_token"}
+    #                 )
+    #     drop_tables()
+    #     self.assertEqual(request.status_code,201)
+    #     self.assertEqual(create_data["message"],"Request to join ride has been processed")
     
-#     def tearDown(self):
-#         """Tears down test context"""
-#         self.app = None
-#         # db.cursor.execute("DROP TABLE IF EXISTS ride_requests;")
-#         # db.cursor.execute("DROP TABLE IF EXISTS ride_offers;")
-#         # db.cursor.execute("DROP TABLE IF EXISTS users;")
+    def tearDown(self):
+        """Tears down test context"""
+        self.app = None
+        # db.cursor.execute("DROP TABLE IF EXISTS ride_requests;")
+        # db.cursor.execute("DROP TABLE IF EXISTS ride_offers;")
+        # db.cursor.execute("DROP TABLE IF EXISTS users;")
         
   
-# if __name__== '__main__':
-#     unittest.main()
+if __name__== '__main__':
+    unittest.main()
