@@ -67,9 +67,9 @@ class UserLogIn(Resource):
         data = request.get_json()
         fetched = User.user_exist(data["username"])
         if not fetched:
-            return  {"message": "signup first"}
+            return  {"message": "signup first"}, 400
         response = User.checks_password(data["username"], data["password"])
-        return response
+        return response,200
 
 
 

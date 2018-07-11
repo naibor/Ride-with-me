@@ -12,9 +12,10 @@
 # class TestRideOffer(BaseTestCase):
 #     """test ride offers"""
                 
-#     def test_get_ride_offers(self):
+#  # get one offer
+#     def test_get_one_offer(self):
+#         """tests user can get one ride offer"""
 #         create_tables()
-#         """test user can view all ride offers"""
 #         # register driver
 #         register = self.client.post(
 #             "/api/v1/auth/register",
@@ -85,15 +86,14 @@
 #         user_login_data = json.loads(user_login.data.decode())
 #         token = user_login_data['access_token']
 
-#     # get offers
+#         # get one ride
 #         response = self.client.get(
-#             '/api/v1/users/rides',
+#             "api/v1/users/rides/1",
 #             headers = {"content-type": "application/json",
 #                        "Authorization":token}
-#         )
-#         self.assertEqual(response.status_code,200 )
+#             ) 
+#         self.assertEqual(response.status_code,200)  
 
-    
 #     def tearDown(self):
 #         """Tears down test context"""
 #         self.app = None
@@ -102,6 +102,3 @@
 #         # db.cursor.execute("DROP TABLE IF EXISTS users;")
 #         drop_tables()
         
-  
-# if __name__== '__main__':
-#     unittest.main()
