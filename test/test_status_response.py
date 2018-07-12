@@ -5,7 +5,7 @@
 # from datetime import datetime, timedelta 
 # from models import ride_models
 # from Api import create_app
-# from test.test_base import BaseTestCase
+# from test.test_base import BaseTestCase, create_tables, drop_tables
 # from models.db import db
 # DTime = datetime.now() + timedelta(minutes=20)
 
@@ -14,12 +14,13 @@
 
 #     def test_driver_response_to_ride_request(self):
 #         """test driver can create ride offer"""
+#         create_tables()
 #     # register driver
 #         register = self.client.post(
 #             "/api/v1/auth/register",
 #             data = json.dumps(dict(
 #                 name = "kamau",
-#                 username = "kagnjo",
+#                 username = "kajoo",
 #                 phone_number = "0707981133",
 #                 car = "True",
 #                 password = "A123456789a#",
@@ -33,7 +34,7 @@
 #         login = self.client.post(
 #             "/api/v1/auth/login",
 #             data = json.dumps(dict(
-#                 username = "kagnjo",
+#                 username = "kajoo",
 #                 password = "A123456789a#"
 #             )),
 #             headers = {"content-type": "application/json"}
@@ -52,15 +53,28 @@
 #                 departure = str(DTime.time())
 #             )),
 #             headers = {"content-type": "application/json",
-#                         "Authorization":"driver_token"}
+#                         "Authorization":driver_token}
 #         )  
-#         self.assertEqual(response.status_code,201) 
+#         self.assertEqual(create.status_code,201) 
 
+#     # signup user
+#         signup = self.client.post(
+#             "/api/v1/auth/signup",
+#                 data = json.dumps(dict(
+#                     name = "Naibor",
+#                     username = "Aisa",
+#                     phone_number = "0707900000",
+#                     password = "A123456789a#",
+#                     confirmpassword = "A123456789a#"
+#                 )),
+#                 headers = {"content-type": "application/json"}
+#         )
+#         self.assertEqual(signup.status_code,201)
 #     # user login
 #         login = self.client.post(
 #             "/api/v1/auth/login",
 #             data = json.dumps(dict(
-#                 username = "Visa",
+#                 username = "Aisa",
 #                 password = "A123456789a#"
 #             )),
 #             headers = {"content-type": "application/json"}
@@ -73,7 +87,7 @@
 #         response = self.client.get(
 #             "api/v1/users/rides/1",
 #             headers = {"content-type": "application/json",
-#                        "Authorization":"user_token" }
+#                        "Authorization":user_token}
 #             ) 
 #         self.assertEqual(response.status_code,200) 
 
@@ -81,8 +95,9 @@
 #         request = self.client.post(
 #             "/api/v1/users/rides/1/requests",
 #             headers = {"content-type": "application/json",
-#                       "Authorization":"user_token"}
+#                       "Authorization":user_token}
 #                     )
+#         import pdb; pdb.set_trace()
 #         self.assertEqual(request.status_code,201)
   
 #     # driver respond to ride request 
@@ -92,30 +107,27 @@
 #                 status = "True"
 #             )),
 #             headers = {"content-type": "application/json",
-#                           "Authorization":"driver_token"}
+#                           "Authorization":driver_token}
 #         )
 #         self.assertEqual(request.status_code,201)
 #         self.assertEqual(create_data["message"],"Request updated successfully")
-
-#     #validate response made by drive
-#     def test_response_is_bool(self):
-#         """test status response is boolean"""
-#         response = self.client.put(
-#             "/api/v1/users/rides/1/requests/1",
-#             data = json.dumps(dict(
-#                 status = "12345"
-#             )),
-#             headers = {"content-type": "application/json",
-#                          "Authorization":"driver_token"}
-#         )
-#         self.assertEqual(response.status_code,400)
+#         drop_tables()
+#     # #validate response made by drive
+#     # def test_response_is_bool(self):
+#     #     """test status response is boolean"""
+#     #     response = self.client.put(
+#     #         "/api/v1/users/rides/1/requests/1",
+#     #         data = json.dumps(dict(
+#     #             status = "12345"
+#     #         )),
+#     #         headers = {"content-type": "application/json",
+#     #                      "Authorization":driver_token}
+#     #     )
+#     #     self.assertEqual(response.status_code,400)
 
 #     def tearDown(self):
 #         """Tears down test context"""
 #         self.app = None
-#         # db.cursor.execute("DROP TABLE IF EXISTS ride_requests;")
-#         # db.cursor.execute("DROP TABLE IF EXISTS ride_offers;")
-#         # db.cursor.execute("DROP TABLE IF EXISTS users;")
 
 # if __name__== '__main__':
 #     unittest.main()

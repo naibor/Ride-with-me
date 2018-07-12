@@ -70,16 +70,13 @@ class BaseTestCase(unittest.TestCase):
         self.app_context = self.app.app_context()
         self.app_context.push()
         self.client = self.app.test_client()
+        # create_tables()
 
     
     def tearDown(self):
         """Tears down test context"""
         self.app = None
-        # db.cursor.execute("DROP TABLE IF EXISTS ride_requests;") 
-        # db.cursor.execute("DROP TABLE IF EXISTS ride_offers;")
-        # db.cursor.execute("DROP TABLE IF EXISTS users;")
-        
-
+        # drop_tables()
 
 if __name__== '__main__':
     unittest.main()
