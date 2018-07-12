@@ -9,7 +9,7 @@
 # DTime = datetime.now() + timedelta(minutes=20)
 
 # class TestValidateRideOffer(BaseTestCase):
-#     """test ride offers"""
+#     """test validate ride offers"""
 #     create_tables()
 #     def setUp(self):
 #         # register driver

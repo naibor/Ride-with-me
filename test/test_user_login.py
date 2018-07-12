@@ -4,7 +4,7 @@ import os
 import json
 from Api import User
 from Api import create_app
-from test.test_base import BaseTestCase, create_tables, drop_tables
+from test.test_base import BaseTestCase
 from models.db import db
 
 
@@ -13,7 +13,6 @@ class TestUserLogin(BaseTestCase):
     
     def test_user_login(self):
         """test user can successfuly login"""
-        create_tables()
         # sign up user
         sign_up = self.client.post(
             "api/v1/auth/signup",
@@ -40,12 +39,6 @@ class TestUserLogin(BaseTestCase):
         login_data = json.loads(login.data.decode())
         self.assertEqual(login_data["message"],"successfully logged in")
 
-
-
-    def tearDown(self):
-        """Tears down test context"""
-        self.app = None
-        drop_tables()
     
 if __name__== '__main__':
     unittest.main()

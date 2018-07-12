@@ -5,17 +5,16 @@ import os
 import json
 from datetime import datetime, timedelta 
 from models.ride_models import Rrequest, DriverOffer
-from test.test_base import BaseTestCase, create_tables,drop_tables
+from test.test_base import BaseTestCase
 from models.db import db
 DTime = datetime.now() + timedelta(minutes=20)
 
 class TestRideOffer(BaseTestCase):
     """test ride offers"""
                 
- # get one offer
+     # get one offer
     def test_get_one_offer(self):
         """tests user can get one ride offer"""
-        create_tables()
         # register driver
         register = self.client.post(
             "/api/v1/auth/register",
@@ -94,12 +93,6 @@ class TestRideOffer(BaseTestCase):
             ) 
         self.assertEqual(response.status_code,200)  
 
-    def tearDown(self):
-        """Tears down test context"""
-        self.app = None
-        
-        drop_tables()
-        
       
 if __name__== '__main__':
     unittest.main()

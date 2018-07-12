@@ -4,11 +4,10 @@ import json
 import psycopg2
 from Api import User
 from models.db import db
-from test.test_base import BaseTestCase, create_tables, drop_tables
+from test.test_base import BaseTestCase
 
 class TestDriverReg(BaseTestCase):
     """test driver is registered"""
-    create_tables()
     def test_driver_reg(self):
         """test driver can successfuly register"""
         registration = self.client.post(
@@ -22,8 +21,7 @@ class TestDriverReg(BaseTestCase):
                 confirmpassword = "A123456789a#",
             )),
             headers = {"content-type": "application/json"}
-        )
-        drop_tables()        
+        )      
         self.assertEqual(registration.status_code,201)
         response_data = json.loads(registration.data.decode())
         self.assertEqual(response_data["message"],"successfully signup as a driver")
@@ -220,9 +218,5 @@ class TestDriverReg(BaseTestCase):
         )
         self.assertEqual(registration.status_code,400)
 
-    def tearDown(self):
-        """Tears down test context"""
-        self.app = None
-       
 if __name__== '__main__':
     unittest.main()

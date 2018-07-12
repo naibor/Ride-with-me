@@ -31,7 +31,7 @@ TABLES_SCHEMA = (
     );
     """,
     """
-    DROP TABLE IF EXISTS ride_request CASCADE;
+    DROP TABLE IF EXISTS ride_requests;
     CREATE TABLE ride_requests(
         request_id SERIAL PRIMARY KEY,
         offer_id INTEGER NOT NULL,
@@ -51,7 +51,6 @@ def create_tables():
     """creates tables"""
     for command in TABLES_SCHEMA:
         db.create_tables(command)
-        # db.cursor.execute()
         db.commit()
 
 def drop_tables():
@@ -70,13 +69,13 @@ class BaseTestCase(unittest.TestCase):
         self.app_context = self.app.app_context()
         self.app_context.push()
         self.client = self.app.test_client()
-        # create_tables()
+        create_tables()
 
     
     def tearDown(self):
         """Tears down test context"""
         self.app = None
-        # drop_tables()
+        drop_tables()
 
 if __name__== '__main__':
     unittest.main()

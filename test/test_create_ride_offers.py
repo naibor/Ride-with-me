@@ -4,7 +4,7 @@ import os
 import json
 from datetime import datetime, timedelta 
 from models import ride_models
-from test.test_base import BaseTestCase, create_tables, drop_tables
+from test.test_base import BaseTestCase
 from models.db import db
 DTime = datetime.now() + timedelta(minutes=20)
 
@@ -13,7 +13,6 @@ class TestDriverRideOffer(BaseTestCase):
 
     def test_create_ride_offers(self):
         """test driver can create ride offer"""
-        create_tables()
          # register driver
         register = self.client.post(
             "/api/v1/auth/register",
@@ -55,11 +54,6 @@ class TestDriverRideOffer(BaseTestCase):
         )  
         self.assertEqual(create.status_code,201) 
 
-    def tearDown(self):
-        """Tears down test context"""
-        self.app = None
-        drop_tables()
-        
 if __name__== '__main__':
     unittest.main()
 
