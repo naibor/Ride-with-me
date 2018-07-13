@@ -42,7 +42,7 @@ class TestValidateRideOffer(BaseTestCase):
         )
         self.assertEqual(login.status_code,200)
         login_data = json.loads(login.data.decode())
-        token = login_data["access_token"]
+        self.token = login_data["access_token"]
 
         # create offer
         create = self.client.post(
@@ -54,7 +54,7 @@ class TestValidateRideOffer(BaseTestCase):
                 departure = str(DTime.time())
             )),
             headers = {"content-type": "application/json",
-                       "Authorization":token}
+                       "Authorization":self.token}
         )  
         self.assertEqual(create.status_code,201) 
      
@@ -71,7 +71,7 @@ class TestValidateRideOffer(BaseTestCase):
                 departure = str(DTime.time())
             )),
             headers = {"content-type": "application/json",
-                       "Authorization":token}
+                       "Authorization":self.token}
         )  
         self.assertEqual(response.status_code,400)
         
@@ -86,7 +86,7 @@ class TestValidateRideOffer(BaseTestCase):
                 departure = str(DTime.time())
             )),
             headers = {"content-type": "application/json",
-                       "Authorization":token}
+                       "Authorization":self.token}
         )
         self.assertEqual(response.status_code,400)
          
@@ -101,7 +101,7 @@ class TestValidateRideOffer(BaseTestCase):
                 departure = str(DTime.time())
             )),
             headers = {"content-type": "application/json",
-                       "Authorization":token}
+                       "Authorization":self.token}
         )
         self.assertEqual(response.status_code, 400)
     
@@ -116,7 +116,7 @@ class TestValidateRideOffer(BaseTestCase):
                 departure = str(DTime.time())
             )),
             headers = {"content-type": "application/json",
-                       "Authorization":token}
+                       "Authorization":self.token}
         )
         self.assertEqual(response.status_code, 400)
 
@@ -131,7 +131,7 @@ class TestValidateRideOffer(BaseTestCase):
                 departure = str(DTime.time())
             )),
             headers = {"content-type": "application/json",
-                       "Authorization":token}
+                       "Authorization":self.token}
         )
         self.assertEqual(response.status_code, 400)
 
@@ -146,7 +146,7 @@ class TestValidateRideOffer(BaseTestCase):
                 departure = str(DTime.time())
             )),
             headers = {"content-type": "application/json",
-                       "Authorization":token}
+                       "Authorization":self.token}
         )
         self.assertEqual(response.status_code, 400)
 
@@ -161,7 +161,7 @@ class TestValidateRideOffer(BaseTestCase):
                 departure = str(DTime.time())
             )),
             headers = {"content-type": "application/json",
-                       "Authorization":token}
+                       "Authorization":self.token}
         )
         self.assertEqual(response.status_code, 400)
 
