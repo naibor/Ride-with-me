@@ -5,9 +5,18 @@ python:
 install:
   - pip install  -r requirements.txt
   - pip install coveralls
+
+services:
+  - Postgresql
+
+before script:
+  - source /.travis.sh
+  - psql -c "create role naibor with superuser login password 'lisanaibor;'"
+  - psql -c 'create database testdb;' -U postgres
+  - psql -c 'alter database testdb owner to naibor' -U postgres
+
   
 script: 
-  - source /.travis.sh
   - pytest --cov=Api test/
 
 after_success : 
