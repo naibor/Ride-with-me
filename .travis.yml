@@ -7,7 +7,7 @@ install:
   - pip install coveralls
   
 script: 
-  - source .travis.sh
+  - source /.travis.sh
   - pytest --cov=Api test/
 
 after_success : 
