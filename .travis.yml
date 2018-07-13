@@ -11,7 +11,7 @@ services:
 
 before script:
   - source /.travis.sh
-  - psql -c "create role naibor with superuser login password 'lisanaibor;'"
+  - psql -c "create role naibor with superuser login password 'lisanaibor'; "
   - psql -c 'create database testdb;' -U postgres
   - psql -c 'alter database testdb owner to naibor' -U postgres
 
