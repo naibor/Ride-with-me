@@ -15,7 +15,6 @@ before script:
   - psql -c 'create database testdb;' -U postgres
   - psql -c 'alter database testdb owner to naibor' -U postgres
 
-  
 script: 
   - pytest --cov=Api test/
 
