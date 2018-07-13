@@ -10,9 +10,9 @@ services:
   - Postgresql
 
 before script:
+  - psql -c 'create database testdb;' -U postgres
 #   - source ./.travis.sh
 #   - psql -c "create role naibor with superuser login password 'lisanaibor';" -U postgres
-  - psql -c 'create database testdb;' -U postgres
 #   - psql -c 'alter database testdb owner to naibor' -U postgres
 
 script: 
