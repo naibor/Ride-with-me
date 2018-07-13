@@ -1,11 +1,20 @@
 language: python
 python:
-  - "3.5.2"
+  - "3.5"
 
 install:
   - pip install  -r requirements.txt
   - pip install coveralls
-  
+
+services:
+  - Postgresql
+
+before_script:
+  - psql -c 'create database "testdb";' -U postgres
+#   - source ./.travis.sh
+#   - psql -c "create role naibor with superuser login password 'lisanaibor';" -U postgres
+#   - psql -c 'alter database testdb owner to naibor' -U postgres
+
 script: 
   - pytest --cov=Api test/
 

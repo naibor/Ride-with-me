@@ -90,12 +90,11 @@ class DriverOffer:
  
        
 class Rrequest(DriverOffer):
-    """User make request a ride"""
+    """User make request to join a ride"""
     def __init__ (self, user_id, offer_id):
         self.user_id = user_id
         self.offer_id = offer_id
     
-
 
     def save_request_ride(self):
         """user can save ride requests"""
@@ -154,5 +153,5 @@ class Rrequest(DriverOffer):
             (accepted, offer_id, request_id)
         )
         db.commit()
-        return {"message": "request updated successfully"}
+        return {"message": "Request updated successfully"}
 

@@ -65,12 +65,11 @@ class UserLogIn(Resource):
     
     def post(self):
         data = request.get_json()
-        print(data)
         fetched = User.user_exist(data["username"])
         if not fetched:
-            return  {"message": "signup first"}
+            return  {"message": "signup first"}, 400
         response = User.checks_password(data["username"], data["password"])
-        return response
+        return response,200
 
 
 
