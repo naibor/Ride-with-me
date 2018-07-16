@@ -35,7 +35,9 @@ class DriverOffer:
             "SELECT * FROM ride_offers;"
         )
         ride_offers = db.cursor.fetchall()
-        #convert data to dict
+        if not ride_offers:
+            return{"message":"no ride offers yet, sorry"}, 404
+        # else convert data to dict
         rides = []
         for item in ride_offers:
             ride_dict = {
@@ -46,7 +48,7 @@ class DriverOffer:
                 "destination":item[4]
             }
             rides.append(ride_dict)
-        return rides
+        return rides, 200
 
     
         
@@ -86,7 +88,7 @@ class DriverOffer:
             (offer_id,)
         )
         db.commit()
-        return {"message": "ride delete"}
+        return {"message": "ride deleted"}
  
        
 class Rrequest(DriverOffer):
@@ -120,6 +122,8 @@ class Rrequest(DriverOffer):
         )
         the_requests = db.cursor.fetchall()
         request_list = []
+        if not request_list:
+            return{"message":"no ride requests to this offer"}, 400
         for request in the_requests:
             request_dict = {
                "request_number":request[0],

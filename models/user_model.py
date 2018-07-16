@@ -67,8 +67,8 @@ class User():
             "this is a secret"
             )
             return {"access_token": access_token.decode("UTF-8"),
-            "message":"successfully logged in"}
-        return{"message":"wrong password"}
+            "message":"successfully logged in"}, 200
+        return{"message":"wrong password"},404
 
     
 class Driver(User):
