@@ -4,6 +4,7 @@ from flask_restful import Resource, Api
 from flasgger import Swagger
 from Instance.config import app_config
 from models import user_model
+from create_tables import create_tables
 from Api.User import UserSignUp, UserLogIn, DriverReg
 from Api.templates import TEMPLATE
 from Api.ride import RideOffer,RideRequest, SpecificRequest, AcceptRejectRequest
@@ -11,9 +12,11 @@ from Api.ride import RideOffer,RideRequest, SpecificRequest, AcceptRejectRequest
 
 
 def create_app(config_name):
+    """Application factory"""
     app = Flask('Api')
     app.config.from_object(app_config[config_name])
     Swagger(app, template=TEMPLATE)
+    create_tables()
     api = Api(app)
 
 

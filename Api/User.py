@@ -14,20 +14,20 @@ class UserSignUp(Resource):
         """
         User signup
         ---
-        description:User signup
+        description: User signup
 
         parameters:
             - name: User
-              in: path
+              in: body
               type: string
               required: true
               schema:
                $ref: '#/definitions/Passenger_sign_up'
         responses:
-          201:successfully signed up
-            description: 
+          201:
+            description: successfully signed up
           400:
-            description:Bad request
+            description: Bad request
 
         """
         signup_data = request.get_json()   
@@ -55,24 +55,24 @@ class UserSignUp(Resource):
 class DriverReg(Resource):
     """Driver registeration resource"""
     def post(self):
-    #     """
-    #    Driver registration
-    #    ---
-    #    description:Driver register
-    #    parameters:
-    #      - in: body
-    #        name: Driver
-    #        type: string
-    #        required: true
-    #        schema:
-    #         $ref: '#/definitions/Driver_register'
-    #    responses:
-    #      201:successfully signup as a driver
-    #        description: 
-    #      400:
-    #         description:Bad request
+        """
+       Driver registration
+       ---
+       description: Driver register
+       parameters:
+         - name: Driver
+           in: body
+           type: string
+           required: true
+           schema:
+            $ref: '#/definitions/Driver_register'
+       responses:
+         201:
+           description: successfully signup as a driver
+         400:
+            description: Bad request
 
-    #     """
+        """
         regData = request.get_json()
         data,errors =  driverschema.load(regData)
         if errors:
@@ -101,24 +101,25 @@ class UserLogIn(Resource):
     """userlogin resource"""
     
     def post(self):
-        # """
-        # Login
-        # ---
-        # description: User login
+        """
+        Login
+        ---
+        description: User login
 
-        # parameters:
-        #     - in: body
-        #       name: Login 
-        #       schema:
-        #         $ref: '#/definitions/User_login'
-        # responses:
-        # 200:
-        #     description: successfully logged in
-        # 400:
-        #     description: Bad request
-        # 404:
-        #     description: Wrong password
-        # """
+        parameters:
+            - name: Login 
+              in: body
+              type: string
+              schema:
+                $ref: '#/definitions/User_login'
+        responses:
+            200:
+                description: successfully logged in
+            400:
+                description: Bad request
+            404:
+                description: Wrong password
+        """
 
 
         data = request.get_json()

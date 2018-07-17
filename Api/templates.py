@@ -82,9 +82,6 @@ TEMPLATE ={
                 "destination":{
                     "type":"string"
                 },
-                "departureTime":{
-                    "type":"string"
-                },
                 "status":{
                     "type":"string"
                 }
