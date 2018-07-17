@@ -17,7 +17,7 @@ TEMPLATE ={
 
         }
     },
-    "definations":{
+    "definitions":{
         "Passenger_sign_up":{
             "type":"object",
             "properties":{
@@ -59,7 +59,8 @@ TEMPLATE ={
                 "confirmpassword":{
                     "type":"string"  
                 }
-            },
+            }
+        },
         "User_login":{
             "type":"object",
             "properties":{
@@ -100,5 +101,4 @@ TEMPLATE ={
         }
     }
 
-}
 }

@@ -21,9 +21,9 @@ class RideOffer(Resource):
         security:
             - access_token: []
         parameters:
-            -name: Rides
-             in: body
-             schema:
+            - name: Ride Offer
+              in: body 
+              schema:
                 $ref: '#/definitions/Ride_Offer'
         responses:
             201:
@@ -58,10 +58,10 @@ class RideOffer(Resource):
         security:
             - access_token: []
         parameters:
-            -name: Rides
-             in: body
-             description: Ride offers available
-             schema:
+            - name: Ride offer
+              in: path
+              description: Ride offers available
+              schema:
                 $ref: '#/definitions/Ride_Offer'
         responses:
             200:
@@ -71,6 +71,7 @@ class RideOffer(Resource):
             404:
                 description: no ride offers yet, sorry
         """
+
         return DriverOffer.get_all()
 
 
@@ -87,10 +88,10 @@ class RideRequest(Resource):
         security:
             - access_token: []
         parameters:
-            -name: A Ride
-             in: path
-             type: int
-             description: ride offer id
+            - name: A Ride
+              in: path
+              type: int
+              description: ride offer id
         responses:
             200:
                 description: a single ride offers
@@ -116,10 +117,10 @@ class RideRequest(Resource):
         security:
             - Access_token: []
         parameters:
-            -name: ride_id
-            in: path
-            type: int
-            description: ride offer id
+            - name: ride_id
+              in: path
+              type: int
+              description: ride offer id
         schema:
             $ref: '#/definitions/Ride_Offer'
         responses:
@@ -138,13 +139,14 @@ class SpecificRequest(Resource):
         request to join a ride 
         ---
         tags:
-            - Requests
+            - Request
         security:
             - Access_token: []
         parameters:
-            -name: Rides_request
-             in: body
-             schema:
+            - name: Rides_request
+              in: path
+              description: ride offer id
+              schema:
                 $ref: '#/definitions/Ride_request'
         responses:
             201:
@@ -167,15 +169,15 @@ class SpecificRequest(Resource):
         View all requests for a ride offer
         ---
         tags:
-            - Ride request
+            - Ride requests
         description: ride requests to a ride offer
         security:
             - access_token: []
         parameters:
-            -name: ride offer_id
-             in: path
-             type: int
-             description: ride request to  ride offer id
+            - name: ride offer_id
+              in: path
+              type: int
+              description: ride request to  ride offer id
         responses:
             200:
                 description: ride requests for a particular offer
@@ -198,7 +200,7 @@ class AcceptRejectRequest(Resource):
         Update ride request
         ---
         tags:
-            - Request
+            - Accept/Reject request
         description: Update the status of a ride request
         security:
             - Access_token: []
