@@ -44,7 +44,7 @@ class TestRideOffer(BaseTestCase):
 
         # create offers
         create = self.client.post(
-            "/api/v1/users/rides",
+            "/api/v1/rides",
             data = json.dumps(dict(
                 RideId = "1",
                 location = "Nanyuki",
@@ -87,7 +87,7 @@ class TestRideOffer(BaseTestCase):
 
         # get one ride
         response = self.client.get(
-            "api/v1/users/rides/1",
+            "api/v1/rides/1",
             headers = {"content-type": "application/json",
                        "Authorization":token}
             ) 

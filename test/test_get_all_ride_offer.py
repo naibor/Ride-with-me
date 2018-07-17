@@ -44,7 +44,7 @@
 
 #         # create offers
 #         create = self.client.post(
-#             "/api/v1/users/rides",
+#             "/api/v1/rides",
 #             data = json.dumps(dict(
 #                 RideId = "1",
 #                 location = "Nanyuki",
@@ -87,7 +87,7 @@
 
 #     # get offers
 #         response = self.client.get(
-#             '/api/v1/users/rides',
+#             '/api/v1/rides',
 #             headers = {"content-type": "application/json",
 #                        "Authorization":token}
 #         )

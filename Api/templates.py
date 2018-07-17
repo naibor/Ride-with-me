@@ -6,12 +6,14 @@ TEMPLATE ={
     "swagger":"2.0",
     "info":{
         "title":"Ride_With_Me",
-        "description":"A carpooling application that provides drivers with the ability to create ride offers and passengers to join available ride offers."
+        "description":"A carpooling application \
+        that provides drivers with the ability to create ride offers \
+        and passengers to join available ride offers."
 
     },
-    "security_defination":{
-        "Access_token":{
-            "type":"JWT token",
+    "securityDefinitions":{
+        "Bearer":{
+            "type":"apiKey",
             "name":"Authorization",
             "in":"header",
 

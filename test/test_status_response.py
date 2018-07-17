@@ -44,7 +44,7 @@ class TestDriverResponse(BaseTestCase):
 
     # create offer
         create = self.client.post(
-            "/api/v1/users/rides",
+            "/api/v1/rides",
             data = json.dumps(dict(
                 RideId = "1",
                 location = "Nanyuki",
@@ -84,7 +84,7 @@ class TestDriverResponse(BaseTestCase):
 
     # get one offer
         response = self.client.get(
-            "api/v1/users/rides/1",
+            "api/v1/rides/1",
             headers = {"content-type": "application/json",
                        "Authorization":user_token}
             ) 
@@ -92,7 +92,7 @@ class TestDriverResponse(BaseTestCase):
 
     #    make a request to join a ride offer
         request = self.client.post(
-            "/api/v1/users/rides/1/requests",
+            "/api/v1/rides/1/requests",
             data = json.dumps(dict()),
             headers = {"content-type": "application/json",
                        "Authorization":user_token}
@@ -102,7 +102,7 @@ class TestDriverResponse(BaseTestCase):
   
     # driver respond to ride request 
         response = self.client.put(
-            "/api/v1/users/rides/1/requests/1",
+            "/api/v1/rides/1/requests/1",
             data = json.dumps(dict(
                 status = "True"
             )),
@@ -117,7 +117,7 @@ class TestDriverResponse(BaseTestCase):
     # def test_response_is_bool(self):
     #     """test status response is boolean"""
     #     response = self.client.put(
-    #         "/api/v1/users/rides/1/requests/1",
+    #         "/api/v1/rides/1/requests/1",
     #         data = json.dumps(dict(
     #             status = "12345"
     #         )),
