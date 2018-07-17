@@ -11,24 +11,25 @@ from models.user_model import User, Driver, login_required
 class UserSignUp(Resource):
     """user signup resource"""
     def post(self):
-    #     """
-    #    User signup
-    #    ---
-    #    description:User signup
-    #    parameters:
-    #      - in: body
-    #        name: User
-    #        type: string
-    #        required: true
-    #        schema:
-    #         $ref: '#/definitions/Passenger_sign_up'
-    #    responses:
-    #      201:successfully signed up
-    #        description: 
-    #      400:
-    #         description:Bad request
+        """
+        User signup
+        ---
+        description:User signup
 
-    #     """
+        parameters:
+            - name: User
+              in: path
+              type: string
+              required: true
+              schema:
+               $ref: '#/definitions/Passenger_sign_up'
+        responses:
+          201:successfully signed up
+            description: 
+          400:
+            description:Bad request
+
+        """
         signup_data = request.get_json()   
         data, errors = Userschema.load(signup_data)
         if errors:
