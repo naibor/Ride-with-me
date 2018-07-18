@@ -16,7 +16,7 @@ class RideOffer(Resource):
         create a ride offer
         ---
         tags:
-            - Ride offers
+            - Ride offer
         description: Drivers make Rides offers
         security:
             - access_token: []
@@ -53,7 +53,7 @@ class RideOffer(Resource):
         view all ride offers
         ---
         tags:
-            - Ride offers
+            - Ride offer
         description: Rides offers made by drivers
         security:
             - access_token: []
@@ -128,7 +128,7 @@ class RideRequest(Resource):
                 description: ride deleted
         
         """
-        return DriverOffer.delete_ride_offer(id), 200
+        return DriverOffer.delete_ride(id), 200
 
        
 class SpecificRequest(Resource):
@@ -139,7 +139,7 @@ class SpecificRequest(Resource):
         request to join a ride 
         ---
         tags:
-            - Request
+            - Ride requests
         security:
             - Access_token: []
         parameters:
@@ -193,6 +193,8 @@ class SpecificRequest(Resource):
         response = Rrequest.get_requests_for_offer(id)
         return response,201
 
+    # def delete(this_user,self,id):
+    #     return Rrequest.delete_ride(id), 200
 class AcceptRejectRequest(Resource):
     @login_required
     def put(this_user, self, offer_id, request_id):
@@ -200,7 +202,7 @@ class AcceptRejectRequest(Resource):
         Update ride request
         ---
         tags:
-            - Accept/Reject request
+            - Request status
         description: Update the status of a ride request
         security:
             - Access_token: []

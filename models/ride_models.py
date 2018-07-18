@@ -77,18 +77,37 @@ class DriverOffer:
         return the_offer
         
 
+    # @staticmethod
+    # def delete_ride(id):
+    #     """delete ride offer by id"""          
+    #     db.cursor.execute(
+    #         """
+    #         DELETE FROM ride_offers
+    #         where offer_id = (%s) 
+    #         OR DELETE FROM ride_requests
+    #         where request_id = (%s)
+    #         """,
+    #         (offer_id,request_id)
+    #     )
+    #     db.commit()
+    #     if offer_id:
+    #         return {"message": "ride deleted"}
+    #     return {"message":"request deleted"}
+
+
     @staticmethod
-    def delete_ride_offer(offer_id):
-        """gets ride by id"""          
+    def delete_ride(offer_id):
+        """delete ride offer by id"""          
         db.cursor.execute(
             """
             DELETE FROM ride_offers
-            where offer_id = (%s)
+            where offer_id = (%s) 
             """,
             (offer_id,)
         )
         db.commit()
         return {"message": "ride deleted"}
+
  
        
 class Rrequest(DriverOffer):
@@ -96,6 +115,7 @@ class Rrequest(DriverOffer):
     def __init__ (self, user_id, offer_id):
         self.user_id = user_id
         self.offer_id = offer_id
+    
     
 
     def save_request_ride(self):
@@ -109,6 +129,19 @@ class Rrequest(DriverOffer):
         )
         db.commit()
         return
+
+    # def delete_request(self,request_id):
+    #     """delete ride requests made"""
+    #     db.cursor.exeute(
+    #         """
+    #         DELETE FROM ride_requests
+    #         where request_id = (%s)
+    #         """,
+    #         (self.request_number,)
+    #     )
+    #     db,commit()
+    #     return {"message":"request deleted"}
+        
 
     @staticmethod   
     def get_requests_for_offer(id):

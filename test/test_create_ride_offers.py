@@ -15,7 +15,7 @@ class TestDriverRideOffer(BaseTestCase):
         """test driver can create ride offer"""
          # register driver
         register = self.client.post(
-            "/api/v1/auth/register",
+            "api/v1/auth/register",
             data = json.dumps(dict(
                 name = "kulikua",
                 username = "monday",
@@ -29,7 +29,7 @@ class TestDriverRideOffer(BaseTestCase):
         self.assertEqual(register.status_code,201)
         # login driver
         login = self.client.post(
-            "/api/v1/auth/login",
+            "api/v1/auth/login",
             data = json.dumps(dict(
                 username = "monday",
                 password = "A123456789a#"
@@ -42,7 +42,7 @@ class TestDriverRideOffer(BaseTestCase):
 
         # create offer
         create = self.client.post(
-            "/api/v1/users/rides",
+            "api/v1/rides",
             data = json.dumps(dict(
                 RideId = "1",
                 location = "Nanyuki",
