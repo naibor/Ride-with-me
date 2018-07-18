@@ -19,7 +19,7 @@ class RideOffer(Resource):
             - Ride offer
         description: Drivers make Rides offers
         security:
-            - access_token: []
+            - TokenHeader: []
         parameters:
             - name: Ride Offer
               in: body 
@@ -56,7 +56,7 @@ class RideOffer(Resource):
             - Ride offer
         description: Rides offers made by drivers
         security:
-            - access_token: []
+            - TokenHeader: []
         parameters:
             - name: Ride offer
               in: path
@@ -86,7 +86,7 @@ class RideRequest(Resource):
             - Ride offer
         description: A single rides offer
         security:
-            - access_token: []
+            - TokenHeader: []
         parameters:
             - name: A Ride
               in: path
@@ -115,7 +115,7 @@ class RideRequest(Resource):
         tags:
             - Ride offer
         security:
-            - Access_token: []
+            - TokenHeader: []
         parameters:
             - name: ride_id
               in: path
@@ -141,7 +141,7 @@ class SpecificRequest(Resource):
         tags:
             - Ride requests
         security:
-            - Access_token: []
+            - TokenHeader: []
         parameters:
             - name: Rides_request
               in: path
@@ -172,7 +172,7 @@ class SpecificRequest(Resource):
             - Ride requests
         description: ride requests to a ride offer
         security:
-            - access_token: []
+            - TokenHeader: []
         parameters:
             - name: ride offer_id
               in: path
@@ -205,7 +205,7 @@ class AcceptRejectRequest(Resource):
             - Request status
         description: Update the status of a ride request
         security:
-            - Access_token: []
+            - TokenHeader: []
         parameters:
             - name: ride_status
               in: path

@@ -12,8 +12,8 @@ TEMPLATE ={
 
     },
     "securityDefinitions":{
-        "Bearer":{
-            "type":"oauth2",
+        "TokenHeader":{
+            "type":"apiKey",
             "name":"Authorization",
             "in":"header"
 
