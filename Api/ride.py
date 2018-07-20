@@ -88,9 +88,11 @@ class RideRequest(Resource):
         security:
             - TokenHeader: []
         parameters:
-            - name: A Ride
+            - name: id
               in: path
-              type: int
+              type : integer
+              format: int64
+              minimum: 1
               description: ride offer id
         responses:
             200:
@@ -117,9 +119,11 @@ class RideRequest(Resource):
         security:
             - TokenHeader: []
         parameters:
-            - name: ride_id
+            - name: id
               in: path
-              type: int
+              type : integer
+              format: int64
+              minimum: 1
               description: ride offer id
         schema:
             $ref: '#/definitions/Ride_Offer'
@@ -143,7 +147,7 @@ class SpecificRequest(Resource):
         security:
             - TokenHeader: []
         parameters:
-            - name: Rides_request
+            - name: id
               in: path
               description: ride offer id
               schema:
@@ -174,9 +178,11 @@ class SpecificRequest(Resource):
         security:
             - TokenHeader: []
         parameters:
-            - name: ride offer_id
+            - name: id
               in: path
-              type: int
+              type : integer
+              format: int64
+              minimum: 1
               description: ride request to  ride offer id
         responses:
             200:
@@ -207,11 +213,19 @@ class AcceptRejectRequest(Resource):
         security:
             - TokenHeader: []
         parameters:
-            - name: ride_status
+            - name: offer_id
               in: path
-              type: Boolean
-              description: Status of ride to update
-            - name: ride
+              type : integer
+              format: int64
+              minimum: 1
+              description: Ride offer to update
+            - name: request_id
+              in: path
+              type : integer
+              format: int64
+              minimum: 1
+              description: Ride request id to the offer
+            - name: status
               in: body
               schema:
                 $ref: '#/definitions/Ride_Offer'

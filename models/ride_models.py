@@ -68,10 +68,10 @@ class DriverOffer:
             return {"message": "invalid offer id"}
         else:
                 offer_dict = {
-                    "offer_number":offer[0],
-                    "location":offer[1],
-                    "departure_time":offer[2],
-                    "destination":offer[3]
+                    "ride_offer_number":offer[0],
+                    "departure_time":offer[3],
+                    "destination":offer[2],
+                    "location":offer[4]
                 }
                 the_offer.append(offer_dict)
         return the_offer
@@ -155,12 +155,12 @@ class Rrequest(DriverOffer):
         )
         the_requests = db.cursor.fetchall()
         request_list = []
-        if not request_list:
-            return{"message":"no ride requests to this offer"}, 400
+        if request_list:
+            return{"message":"no ride requests to this offer"}
         for request in the_requests:
             request_dict = {
                "request_number":request[0],
-               "offer_number":request[1],
+               "ride_offer_number":request[1],
                "user_number":request[2],
                "status":request[3] 
             }
