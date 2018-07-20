@@ -47,7 +47,7 @@ class DriverSchema(Schema):
     """driver input schema"""
     name = fields.Str(validate=validate_name, required=True)
     username = fields.Str(validate=validate_name, required=True)
-    car = fields.Str(validate=validate_name, required=True)
+    car = fields.Bool(required=True)
     phone_number = fields.Str(validate=validate_phone, required=True)
     password = fields.Str(validate=validate_password, required=True) 
     confirmpassword = fields.Str(validate=validate_password, required=True)

@@ -10,10 +10,10 @@ from models.db import db
 DTime = datetime.now() + timedelta(minutes=20)
 
 class TestDriverResponse(BaseTestCase):
-    """test driver can offer rides"""
+    """test driver can respond to ride requests"""
 
     def test_driver_response_to_ride_request(self):
-        """test driver can create ride offer"""
+        """test driver can respond to request"""
     # register driver
         register = self.client.post(
             "/api/v1/auth/register",
@@ -44,7 +44,7 @@ class TestDriverResponse(BaseTestCase):
 
     # create offer
         create = self.client.post(
-            "/api/v1/users/rides",
+            "/api/v1/rides",
             data = json.dumps(dict(
                 RideId = "1",
                 location = "Nanyuki",
@@ -84,7 +84,7 @@ class TestDriverResponse(BaseTestCase):
 
     # get one offer
         response = self.client.get(
-            "api/v1/users/rides/1",
+            "api/v1/rides/1",
             headers = {"content-type": "application/json",
                        "Authorization":user_token}
             ) 
@@ -92,7 +92,7 @@ class TestDriverResponse(BaseTestCase):
 
     #    make a request to join a ride offer
         request = self.client.post(
-            "/api/v1/users/rides/1/requests",
+            "/api/v1/rides/1/requests",
             data = json.dumps(dict()),
             headers = {"content-type": "application/json",
                        "Authorization":user_token}
@@ -102,7 +102,7 @@ class TestDriverResponse(BaseTestCase):
   
     # driver respond to ride request 
         response = self.client.put(
-            "/api/v1/users/rides/1/requests/1",
+            "/api/v1/rides/1/requests/1",
             data = json.dumps(dict(
                 status = "True"
             )),
@@ -113,18 +113,6 @@ class TestDriverResponse(BaseTestCase):
         responses = json.loads(response.data.decode())
         self.assertEqual(responses["message"],"Request updated successfully")
         drop_tables()
-    # #validate response made by drive
-    # def test_response_is_bool(self):
-    #     """test status response is boolean"""
-    #     response = self.client.put(
-    #         "/api/v1/users/rides/1/requests/1",
-    #         data = json.dumps(dict(
-    #             status = "12345"
-    #         )),
-    #         headers = {"content-type": "application/json",
-    #                      "Authorization":driver_token}
-    #     )
-    #     self.assertEqual(response.status_code,400)
 
 
 if __name__== '__main__':

@@ -11,6 +11,25 @@ from models.user_model import User, Driver, login_required
 class UserSignUp(Resource):
     """user signup resource"""
     def post(self):
+        """
+        User signup
+        ---
+        description: User signup
+
+        parameters:
+            - name: User
+              in: body
+              type: string
+              required: true
+              schema:
+               $ref: '#/definitions/Passenger_sign_up'
+        responses:
+          201:
+            description: successfully signed up
+          400:
+            description: Bad request
+
+        """
         signup_data = request.get_json()   
         data, errors = Userschema.load(signup_data)
         if errors:
@@ -36,6 +55,24 @@ class UserSignUp(Resource):
 class DriverReg(Resource):
     """Driver registeration resource"""
     def post(self):
+        """
+       Driver registration
+       ---
+       description: Driver register
+       parameters:
+         - name: Driver
+           in: body
+           type: string
+           required: true
+           schema:
+            $ref: '#/definitions/Driver_register'
+       responses:
+         201:
+           description: successfully signup as a driver
+         400:
+            description: Bad request
+
+        """
         regData = request.get_json()
         data,errors =  driverschema.load(regData)
         if errors:
@@ -64,12 +101,30 @@ class UserLogIn(Resource):
     """userlogin resource"""
     
     def post(self):
+        """
+        Login
+        ---
+        description: User login
+
+        parameters:
+            - name: Login 
+              in: body
+              type: string
+              schema:
+                $ref: '#/definitions/User_login'
+        responses:
+            200:
+                description: successfully logged in
+            400:
+                description: Bad request
+            404:
+                description: Wrong password
+        """
+
+
         data = request.get_json()
         fetched = User.user_exist(data["username"])
         if not fetched:
             return  {"message": "signup first"}, 400
         response = User.checks_password(data["username"], data["password"])
-        return response,200
-
-
-
+        return response

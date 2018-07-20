@@ -1,9 +1,11 @@
 import psycopg2
 import os
+# from Api import app_config
 
 class Database:
     def __init__(self):
         self.connection = psycopg2.connect(
+            # app_config['testing']
             host="localhost",
             user=os.getenv("DATABASE_USER","naibor"),
             dbname=os.getenv("DATABASE_NAME","Ride_with_me"),

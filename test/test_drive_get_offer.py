@@ -42,7 +42,7 @@ class TestDriverRideOffer(BaseTestCase):
 
         # create offer
         create = self.client.post(
-            "/api/v1/users/rides",
+            "/api/v1/rides",
             data = json.dumps(dict(
                 RideId = "1",
                 location = "Nanyuki",
@@ -55,7 +55,7 @@ class TestDriverRideOffer(BaseTestCase):
         self.assertEqual(create.status_code,201) 
 
         response = self.client.get(
-            '/api/v1/users/rides',
+            '/api/v1/rides',
             headers = {"content-type": "application/json",
                           "Authorization":token}
         )

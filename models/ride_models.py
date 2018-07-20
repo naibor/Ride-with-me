@@ -35,7 +35,9 @@ class DriverOffer:
             "SELECT * FROM ride_offers;"
         )
         ride_offers = db.cursor.fetchall()
-        #convert data to dict
+        if not ride_offers:
+            return{"message":"no ride offers yet, sorry"}, 404
+        # else convert data to dict
         rides = []
         for item in ride_offers:
             ride_dict = {
@@ -46,7 +48,7 @@ class DriverOffer:
                 "destination":item[4]
             }
             rides.append(ride_dict)
-        return rides
+        return rides, 200
 
     
         
@@ -66,27 +68,46 @@ class DriverOffer:
             return {"message": "invalid offer id"}
         else:
                 offer_dict = {
-                    "offer_number":offer[0],
-                    "location":offer[1],
-                    "departure_time":offer[2],
-                    "destination":offer[3]
+                    "ride_offer_number":offer[0],
+                    "departure_time":offer[3],
+                    "destination":offer[2],
+                    "location":offer[4]
                 }
                 the_offer.append(offer_dict)
         return the_offer
         
 
+    # @staticmethod
+    # def delete_ride(id):
+    #     """delete ride offer by id"""          
+    #     db.cursor.execute(
+    #         """
+    #         DELETE FROM ride_offers
+    #         where offer_id = (%s) 
+    #         OR DELETE FROM ride_requests
+    #         where request_id = (%s)
+    #         """,
+    #         (offer_id,request_id)
+    #     )
+    #     db.commit()
+    #     if offer_id:
+    #         return {"message": "ride deleted"}
+    #     return {"message":"request deleted"}
+
+
     @staticmethod
-    def delete_ride_offer(offer_id):
-        """gets ride by id"""          
+    def delete_ride(offer_id):
+        """delete ride offer by id"""          
         db.cursor.execute(
             """
             DELETE FROM ride_offers
-            where offer_id = (%s)
+            where offer_id = (%s) 
             """,
             (offer_id,)
         )
         db.commit()
-        return {"message": "ride delete"}
+        return {"message": "ride deleted"}
+
  
        
 class Rrequest(DriverOffer):
@@ -94,6 +115,7 @@ class Rrequest(DriverOffer):
     def __init__ (self, user_id, offer_id):
         self.user_id = user_id
         self.offer_id = offer_id
+    
     
 
     def save_request_ride(self):
@@ -108,6 +130,19 @@ class Rrequest(DriverOffer):
         db.commit()
         return
 
+    # def delete_request(self,request_id):
+    #     """delete ride requests made"""
+    #     db.cursor.exeute(
+    #         """
+    #         DELETE FROM ride_requests
+    #         where request_id = (%s)
+    #         """,
+    #         (self.request_number,)
+    #     )
+    #     db,commit()
+    #     return {"message":"request deleted"}
+        
+
     @staticmethod   
     def get_requests_for_offer(id):
         """get all requests to a specific offer"""
@@ -120,10 +155,12 @@ class Rrequest(DriverOffer):
         )
         the_requests = db.cursor.fetchall()
         request_list = []
+        if request_list:
+            return{"message":"no ride requests to this offer"}
         for request in the_requests:
             request_dict = {
                "request_number":request[0],
-               "offer_number":request[1],
+               "ride_offer_number":request[1],
                "user_number":request[2],
                "status":request[3] 
             }

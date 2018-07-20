@@ -46,7 +46,7 @@ class TestValidateRideOffer(BaseTestCase):
 
         # create offer
         create = self.client.post(
-            "/api/v1/users/rides",
+            "/api/v1/rides",
             data = json.dumps(dict(
                 RideId = "1",
                 location = "Nanyuki",
@@ -63,7 +63,7 @@ class TestValidateRideOffer(BaseTestCase):
     def test_location_field_empty(self):
         """test ride offer fields are not empty"""
         response = self.client.post(
-            "/api/v1/users/rides",
+            "/api/v1/rides",
             data = json.dumps(dict(
                 RideId = "1",
                 location = "",
@@ -78,7 +78,7 @@ class TestValidateRideOffer(BaseTestCase):
     def test_destination_field_empty(self):
         """test destination field not empty"""
         response = self.client.post(
-            "/api/v1/users/rides",
+            "/api/v1/rides",
             data = json.dumps(dict(
                 RideId = "1",
                 location = "Naibor",
@@ -93,7 +93,7 @@ class TestValidateRideOffer(BaseTestCase):
     def test_location_field_string(self):
         """test input fields are strings"""
         response = self.client.post(
-            "/api/v1/users/rides",
+            "/api/v1/rides",
             data = json.dumps(dict(
                 RideId = "1",
                 location = "5",
@@ -108,7 +108,7 @@ class TestValidateRideOffer(BaseTestCase):
     def test_destination_field_string(self):
         """test destiantion fields are strings"""
         response = self.client.post(
-            "/api/v1/users/rides",
+            "/api/v1/rides",
             data = json.dumps(dict(
                 RideId = "1",
                 location = "Nairobi",
@@ -123,7 +123,7 @@ class TestValidateRideOffer(BaseTestCase):
     def test_location_field_with_space(self):
         """test location fields with spaces only"""
         response = self.client.post(
-            "/api/v1/users/rides",
+            "/api/v1/rides",
             data = json.dumps(dict(
                 RideId = "1",
                 location = "     ",
@@ -138,7 +138,7 @@ class TestValidateRideOffer(BaseTestCase):
     def test_destination_field_with_space(self):
         """test destination fields with spaces only"""
         response = self.client.post(
-            "/api/v1/users/rides",
+            "/api/v1/rides",
             data = json.dumps(dict(
                 RideId = "1",
                 location = "Nairobi",
@@ -153,7 +153,7 @@ class TestValidateRideOffer(BaseTestCase):
     def test_location_field_right_length(self):
         """test location field short """
         response = self.client.post(
-            "/api/v1/users/rides",
+            "/api/v1/rides",
             data = json.dumps(dict(
                 RideId = "1",
                 location = "Na",
