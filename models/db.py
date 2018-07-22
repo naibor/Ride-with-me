@@ -6,7 +6,7 @@ class Database:
     def __init__(self):
         self.connection = psycopg2.connect(
             # app_config['testing']
-            host="localhost",
+            host=os.getenv("DATABASE_HOST", "localhost"),
             user=os.getenv("DATABASE_USER","naibor"),
             dbname=os.getenv("DATABASE_NAME","Ride_with_me"),
             password=os.getenv("DATABASE_PASSWORD","lisanaibor")
