@@ -81,6 +81,23 @@ to use it:
 
 run ```$pip install -r requirements.txt``` to install libraries in requirements.txt
 
+Create 
+``` .env ``` file in the rot directory
+
+Copy ```.env.sample to your .env```
+
+Create 
+```a postgres database```
+
+On the terminal 
+```run source .env``` then 
+
+```python run.py``` to run the app
+
+### Documentation
+[Heroku](https://leona.herokuapp.com/apidocs)
+
+
 ## Acknowledge
 
 Leona Naibor
