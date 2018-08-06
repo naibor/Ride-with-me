@@ -91,7 +91,7 @@ function Closeride(){
 
 // open table requests
 function Openrequests(){
-    tablerequests.style.display="block"
+    tablerequests.style.display="block";
 }
 
 // close table requests
@@ -107,6 +107,23 @@ function OpenRides(){
 }
 // close available rides
 function CloseRides(){
-    availablerides.style.display="none"
+    availablerides.style.display="none";
     
 }
+
+// logo animation
+function whenImove(){
+    var car = document.getElementById("move");
+    var pos = 0;
+    var id = setInterval(frame,10);
+    function frame() {
+        if (pos == 1000){
+            clearInterval(id);
+        }else{
+            pos++;
+            // car.style.top = pos + 'px';
+            car.style.left = pos + 'px';
+        }
+    }
+}
+
