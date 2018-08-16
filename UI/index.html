@@ -15,39 +15,32 @@
         <img class="image" src="static/Images/carpool.jpeg" alt="a car" >
     </div> -->
     <!-- brand icon image -->
-    <div class="logo">
+    <div id="logo">
         <img class="car" id="move" src = "static/Images/ride.jpg" onload="whenImove()" alt="white car">
-        <!-- signup and login div -->
-            <!-- first row of flex -->
-            <div class="row-1">
-                <div class="smallbox">
-                    <button id="SignUp" class="Buttons">Sign Up</button>
-                </div>
-                <div class="smallbox" >
-                    <button id = "LogIn" class = "Buttons"> Log In</button>
-                </div>
+    </div>
+    <!-- signup and login div -->
+    <div class="Hola">
+        <!-- first row of flex -->
+        <div class="row-1">
+            <div class="smallbox">
+                <button id="SignUp" class="Buttons">Sign Up</button>
             </div>
-        <!-- /signup and login div -->
-    </div id="heading">
-    <h2>RIDE WITH ME.</h2>
-    <!-- driver registration prompt -->
-        <div id="Registered">
-            <p>Get <a href="register.html"> REGISTERED </a> as a driver.</p>
+            <div class="smallbox">
+                <button id = "LogIn" class = "Buttons"> Log In</button>
+            </div>
         </div>
+        <div class="row-2">
+            <div>
+                <p>Get <a href="register.html"> REGISTERED </a> as a driver.</p>
+            </div>
+        </div>
+    </div>
+    <h2>RIDE WITH ME.</h2>
     
         <div class="info">
             <div id="welcome">
                 <p>Welcome,<br><br>
                 You need a ride?
-                </p>
-            </div>
-            <div id="prompt">
-                <p>
-                    Sign up!<br><br><br>
-                    A ride is a click away.<br><br>
-                    Simply, Pick your destination.<br><br>
-                    Request a ride.<br><br>
-                    Get a driver.                
                 </p>
             </div>
         </div>
@@ -78,9 +71,9 @@
                 <h3>Sign up below.</h3>
                 Firstname<br>
                 <input type="text" name="Firstname" required> <br>
-                Lastname<br>
-                <input type="text" name="Lastname" required> <br>
-                Usesrname<br>
+                Email<br>
+                <input type="email" name="Email" required> <br>
+                Username<br>
                 <input type="text" name="username" required><br>
                 Password<br>
                 <input type="password" name="pwd" required><br>

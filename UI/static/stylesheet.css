@@ -1,5 +1,7 @@
 
 
+
+
 /* landing page */
 /* body */
 body{
@@ -22,10 +24,7 @@ h2{
     color:white;
 
 }
-#heading{
-    width:100px;
-}
-/* p and h2 */
+
 p,{
     color:white;
     text-align: center;
@@ -37,19 +36,21 @@ p,{
 }
 
 
-.logo{
+#logo{
     background-color: black;
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+    position:relative;
+    width: 100%;
+    /* left:12px; */
  
 } 
 
 #move{
     width:5%;
     height:5%;
-    position:relative;
-    left : 12px;
+    left : 0px;
     /* -webkit-animation-name:car;
     -webkit-animation-duration: 10s;
     -webkit-animation-iteration-count: infinite;
@@ -75,19 +76,60 @@ p,{
         right: 0%;
     } 
 }*/
-#Registered{
+.Hola{
+    display:flex;
+    position: absolute;
+    left: 65%;
+    top: 35%;
+    background-color: aqua;
+}
+ /* row-1 containing box sign up and login modals and buttons*/
+ .row-1{
+    height:20%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 10px 4px 0px 6px;
+
+}
+.smallbox{
+    width:30%;
+    background-color: white;
+}
+ /* row-1 containing box sign up and login modals and buttons*/
+ .Buttons{
+     width:139%;
+     height:100%;
+     cursor: pointer;
+     border-bottom-color: black;
+     background-color:  lightgrey;
+     border-radius: 10%;
+     margin: 0;
+     
+ }
+ .row-2{
+    width:30%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position:relative;
+    border-radius: 7%;
+    padding: 10px 4px 0px 6px;
+
+}
+/* #Registered{
     position: absolute;
     width: 25.55%;
     height: 11%;
     background-color: rgba(201, 195, 195, 0.932);
     left:73.55%;
     border-radius: 5%;
-}
-#Registered p{
+} */
+/* #Registered p{
     color:black;
     margin:0;
     font-size: 141%;
-}
+} */
 
 .info{
     position:absolute;;
@@ -147,36 +189,11 @@ div#prompt{
      color:white;
  }
 
- /* row-1 containing box sign up and login modals and buttons*/
-.row-1{
-    width:30%;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    position:relative;
-    border-radius: 7%;
-    padding: 10px 4px 0px 6px;
 
-}
 
 /* div containing the buttons */
 
-.smallbox{
-    width:30%;
-    background-color: white;
-}
-
 /* the sign up and login buttons */
-.Buttons{
-    width:139%;
-    height:100%;
-    cursor: pointer;
-    border-bottom-color: black;
-    background-color:  lightgrey;
-    border-radius: 10%;
-    margin: 0;
-    
-}
 /* introduction to sign up just below sign up &login buttons */
 .Intro{
     height:83%;

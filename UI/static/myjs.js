@@ -17,6 +17,8 @@ var ridedetails = document.getElementById("requestRide");
 // tables
 var tablerequests = document.getElementById("requestTable");
 var availablerides = document.getElementById("RidesTable")
+// car animation
+var car = document.getElementById("move");
 // Index page
 // signing up 
 signup.onclick = function() {
@@ -113,7 +115,6 @@ function CloseRides(){
 
 // logo animation
 function whenImove(){
-    var car = document.getElementById("move");
     var pos = 0;
     var id = setInterval(frame,10);
     function frame() {
@@ -121,7 +122,6 @@ function whenImove(){
             clearInterval(id);
         }else{
             pos++;
-            // car.style.top = pos + 'px';
             car.style.left = pos + 'px';
         }
     }
