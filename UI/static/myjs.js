@@ -1,3 +1,4 @@
+"use strict"
 // signup modal
 var signupmodal = document.getElementById("SignUpModal");
 // login modal
@@ -17,10 +18,9 @@ var ridedetails = document.getElementById("requestRide");
 // tables
 var tablerequests = document.getElementById("requestTable");
 var availablerides = document.getElementById("RidesTable")
-// car animation
-var car = document.getElementById("move");
+
 // Index page
-// signing up 
+// signing up
 signup.onclick = function() {
     signupmodal.style.display="block";
     loginmodal.style.display="none";
@@ -63,15 +63,15 @@ function Open(){
     // close request ride details
 function Close(){
     details.style.display="none";
-    
-} 
-// close side nav driver  
+
+}
+// close side nav driver
 function CloseMenu(){
     sidenav.style.display="none";
 }
 
 // user sidenav
-// open side nav 
+// open side nav
 function Openside(){
     UserSideNav.style.display="flex";
     ridedetails.style.display="none";
@@ -104,26 +104,69 @@ function Closetable(){
 // open available rides
 function OpenRides(){
     availablerides.style.display="block";
-    ridedetails.style.display="none";  
+    ridedetails.style.display="none";
 
 }
 // close available rides
 function CloseRides(){
     availablerides.style.display="none";
-    
+
 }
 
 // logo animation
-function whenImove(){
-    var pos = 0;
-    var id = setInterval(frame,10);
-    function frame() {
-        if (pos == 1000){
-            clearInterval(id);
-        }else{
-            pos++;
-            car.style.left = pos + 'px';
-        }
-    }
+// car animation
+// var car = document.getElementById("moving");
+// var pos = 0;
+// function whenImove(){
+//     var id = setInterval(frame,1000);
+//     function frame() {
+//         if (pos == 1000) {
+//             clearInterval(id);
+//         }else {
+//             pos++;
+//             car.style.left = pos + 'px';
+//         }
+//     }
+// }
+
+// sign up form validation
+// function validateSignupForm(){
+//     var firstName = document.forms["signupForm"]["Firstname"];
+//     if (firstName == null || firstName == ""){
+//         alert("Please provide a Firstname");
+//         return false;
+//     }
+// }
+
+
+// consume api
+
+// (post)signup
+// (post))register
+// (post))login
+// (post)make an offer
+// (get))view offers
+// (get 1))view an offer
+// (post)request an offer
+// (get)view all requests to an offer
+// (get1)view a request
+// (put)respond to a request
+
+
+var signup = '/api/v1/auth/signup';
+var data = {};
+function userSignUp(){
+    fetch(signup,{
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: new Headers({
+    'Content-Type':'application/json'
+})
+    .then(function(){
+        alert("you have successfully signed up");
+    })
+})
 }
 
+// function userRegister(){}
+// function userLogIn(){}

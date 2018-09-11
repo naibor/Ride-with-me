@@ -12,6 +12,7 @@ TABLES_SCHEMA = (
         user_id SERIAL PRIMARY KEY,
         user_name VARCHAR(255) NOT NULL,
         user_username VARCHAR(255) NOT NULL,
+        user_email VARCHAR(255)NOT NULL,
         user_car BOOLEAN,
         user_phone_number VARCHAR(255) NOT NULL,
         user_password VARCHAR(450) NOT NULL
@@ -62,7 +63,7 @@ def drop_tables():
 
 class BaseTestCase(unittest.TestCase):
     """class base test cases"""
-       
+
     def setUp(self):
         """initialize app and define variables"""
         self.app = create_app("testing")
@@ -71,7 +72,7 @@ class BaseTestCase(unittest.TestCase):
         self.client = self.app.test_client()
         create_tables()
 
-    
+
     def tearDown(self):
         """Tears down test context"""
         self.app = None

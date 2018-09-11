@@ -11,6 +11,14 @@ def validate_name(data):
     elif len(data) <= 2:
         raise ValidationError("name too short")
 
+def validate_email(email):
+    if not email or len(email) < 5:
+        raise ValidationError ("Email is too short")
+    email_re = re.compile(r"(^[.A-Za-z0-9_+-]+@[A-Za-z]+\.[.A-Za-z-]+$)")
+    your_email = re.fullmatch(email_re, email)
+    if not your_email:
+        raise ValidationError("Invalid email format")
+
 def validate_password(password):
     """validate password method"""
     if len(password) < 6:
@@ -38,8 +46,9 @@ class UserSchema(Schema):
     """user input schema """
     name = fields.Str(validate=validate_name, required=True)
     username = fields.Str(validate=validate_name, required=True)
+    email = fields.Str(validate=validate_email, required=True)
     phone_number = fields.Str(validate=validate_phone, required=True)
-    password = fields.Str(validate=validate_password, required=True) 
+    password = fields.Str(validate=validate_password, required=True)
     confirmpassword = fields.Str(validate=validate_password, required=True)
 Userschema = UserSchema()
 
@@ -47,9 +56,10 @@ class DriverSchema(Schema):
     """driver input schema"""
     name = fields.Str(validate=validate_name, required=True)
     username = fields.Str(validate=validate_name, required=True)
+    email = fields.Str(validate=validate_email, required=True)
     car = fields.Bool(required=True)
     phone_number = fields.Str(validate=validate_phone, required=True)
-    password = fields.Str(validate=validate_password, required=True) 
+    password = fields.Str(validate=validate_password, required=True)
     confirmpassword = fields.Str(validate=validate_password, required=True)
 driverschema = DriverSchema(Schema)
 

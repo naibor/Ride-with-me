@@ -29,6 +29,9 @@ TEMPLATE ={
                 "username":{
                     "type":"string"
                 },
+                "email":{
+                    "type":"string"
+                },
                 "phone_number":{
                     "type":"string"
                 },
@@ -36,7 +39,7 @@ TEMPLATE ={
                     "type":"string"
                 },
                 "confirmpassword":{
-                    "type":"string"  
+                    "type":"string"
                 }
             }
         },
@@ -49,6 +52,9 @@ TEMPLATE ={
                 "username":{
                     "type":"string"
                 },
+                "email":{
+                    "type":"string"
+                },
                 "phone_number":{
                     "type":"string"
                 },
@@ -59,7 +65,7 @@ TEMPLATE ={
                     "type":"string"
                 },
                 "confirmpassword":{
-                    "type":"string"  
+                    "type":"string"
                 }
             }
         },
@@ -72,14 +78,14 @@ TEMPLATE ={
                 "password":{
                     "type":"string"
                 }
-                
+
             }
         },
         "Ride_Offer":{
             "type":"object",
             "properties":{
                 "location":{
-                    "type":"string"                    
+                    "type":"string"
                 },
                 "destination":{
                     "type":"string"
@@ -87,7 +93,7 @@ TEMPLATE ={
                 "status":{
                     "type":"string"
                 }
-                
+
             }
         },
         "Ride_request":{

@@ -9,7 +9,7 @@ class Database:
             host=os.getenv("DATABASE_HOST", "localhost"),
             user=os.getenv("DATABASE_USER","naibor"),
             dbname=os.getenv("DATABASE_NAME","Ride_with_me"),
-            password=os.getenv("DATABASE_PASSWORD","lisanaibor")
+            password=os.getenv("DATABASE_PASSWORD","naibor")
         )
         self.cursor = self.connection.cursor()
 
@@ -24,7 +24,7 @@ class Database:
         self.commit()
 
     def drop_table(self,table_name):
-        self.cursor.execute("DROP TABLE IF EXISTS " + table_name + ";") 
+        self.cursor.execute("DROP TABLE IF EXISTS " + table_name + ";")
         self.commit()
 
     def close(self):

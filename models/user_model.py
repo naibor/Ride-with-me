@@ -3,13 +3,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 from flask import request
 from functools import wraps
-from models.db import db  
+from models.db import db
 
 class User():
     """User model class"""
-    def __init__(self, name, username, phone_number, password, confirmpassword):
+    def __init__(self, name, username, email, phone_number, password, confirmpassword):
         self.name = name
         self.username = username
+        self.email =email
         self.phone_number = phone_number
         self.password = password
         self.confirmpassword = confirmpassword
@@ -37,17 +38,17 @@ class User():
         """save user to user_info"""
         db.cursor.execute(
             """
-            INSERT INTO users(user_name, user_username, user_phone_number, user_password)
-            VALUES(%s, %s, %s, %s)
+            INSERT INTO users(user_name, user_username, user_email, user_phone_number, user_password)
+            VALUES(%s, %s, %s, %s, %s)
             """,
-            (self.name, self.username, self.phone_number, self.password)
+            (self.name, self.username, self.email, self.phone_number, self.password)
         )
         db.commit()
         return {"message":"successfully signed up"}
 
     @staticmethod
     def checks_password(username, password):
-        
+
         db.cursor.execute(
             """
             SELECT * FROM users
@@ -70,11 +71,11 @@ class User():
             "message":"successfully logged in"}, 200
         return{"message":"wrong password"},404
 
-    
+
 class Driver(User):
     """Driver model class"""
-    def __init__(self, name, username, phone_number, car, password, confirmpassword):
-        super().__init__(name, username, phone_number, password, confirmpassword)
+    def __init__(self, name, username, email, phone_number, car, password, confirmpassword):
+        super().__init__(name, username, email, phone_number, password, confirmpassword)
         self.car = car
 
     def save_driver(self):
@@ -99,7 +100,7 @@ def login_required(func):
             access_token = request.headers["Authorization"]
         if not access_token:
             return {"message" : "Please Log in or provide access token"},401
-        
+
         try:
             data = jwt.decode(access_token, "this is a secret")
             # get the user to whom the token belongs to
@@ -115,4 +116,4 @@ def login_required(func):
         )
         this_user = db.cursor.fetchone()
         return func(this_user, *args, **kwargs)
-    return decorated 
+    return decorated

@@ -30,14 +30,15 @@ class UserSignUp(Resource):
             description: Bad request
 
         """
-        signup_data = request.get_json()   
+        signup_data = request.get_json()
         data, errors = Userschema.load(signup_data)
         if errors:
-           return(errors),400 
+           return(errors),400
         else:
             new_user = User(
                 data["name"],
                 data["username"],
+                data["email"],
                 data["phone_number"],
                 data["password"],
                 data["confirmpassword"]
@@ -50,7 +51,7 @@ class UserSignUp(Resource):
                 return invalid_password, 400
             else:
                 A_user = new_user.save_user()
-                return A_user, 201 
+                return A_user, 201
 
 class DriverReg(Resource):
     """Driver registeration resource"""
@@ -76,11 +77,12 @@ class DriverReg(Resource):
         regData = request.get_json()
         data,errors =  driverschema.load(regData)
         if errors:
-            return(errors),400 
+            return(errors),400
         else:
             new_driver = Driver(
                 data["name"],
                 data["username"],
+                data["email"],
                 data["phone_number"],
                 data["car"],
                 data["password"],
@@ -96,10 +98,10 @@ class DriverReg(Resource):
                 A_driver = new_driver.save_driver()
                 return A_driver, 201
 
-        
+
 class UserLogIn(Resource):
     """userlogin resource"""
-    
+
     def post(self):
         """
         Login
@@ -107,7 +109,7 @@ class UserLogIn(Resource):
         description: User login
 
         parameters:
-            - name: Login 
+            - name: Login
               in: body
               type: string
               schema:

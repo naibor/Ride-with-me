@@ -1,29 +1,46 @@
-
-
-
-
 /* landing page */
 /* body */
 body{
     margin:0;
     background-color:black;
-    background: linear-gradient(to right, grey, black );
+    background: linear-gradient(to left,darkslategrey, black);
+    overflow: hidden;
 }
+
 /* h2 */
 h2{
     text-decoration-line: underline;
     font-family: 'Raleway', Helvetica, Arial, sans-serif;
     font-size: 50px;
     line-height: 70px;
-    /* font-size: 46px; */
-    /* line-height: 100px; */
     margin:0;
     position: absolute;
     top: 9%;
-    left: 15%;
+    left: 35%;
     color:white;
 
 }
+#R{
+    color:white;
+    margin:0;
+    padding:0;
+}
+#W{
+    position: absolute;
+    color:white;
+    margin:0;
+    padding:0;
+    right:50%;
+}
+#M{
+    position: absolute;
+    color:white;
+    margin:0;
+    padding:0;
+   right:0%;
+}
+
+
 
 p,{
     color:white;
@@ -35,101 +52,94 @@ p,{
     line-height: 25px;
 }
 
-
-#logo{
+.logo{
     background-color: black;
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
-    position:relative;
     width: 100%;
-    /* left:12px; */
- 
-} 
+}
 
 #move{
     width:5%;
     height:5%;
-    left : 0px;
-    /* -webkit-animation-name:car;
-    -webkit-animation-duration: 10s;
+    position: relative;
+    -webkit-animation-name:car;
+    -webkit-animation-duration: 6s;
     -webkit-animation-iteration-count: infinite;
     animation-name: car;
-    animation-duration: 10s;
-    animation-iteration-count: infinite; */
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
 }
-/* @-webkit-keyframes car{
+ @-webkit-keyframes car{
     0%{left:0%;
         right:0%;
     }
     100%{
-        left: 65%;
+        left: 100%;
         top:0%;
-    } 
-}*/
-/* @keyframes car{
+    }
+}
+ @keyframes car{
     0%{left:0%;
         right:0%;
     }
     100%{
-        left:65%;
+        left:100%;
         right: 0%;
-    } 
-}*/
+    }
+}
+
 .Hola{
     display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     position: absolute;
-    left: 65%;
-    top: 35%;
-    background-color: aqua;
+    left:10%;
+    top: 40%;
+    width:26%;
+    height:37%;
+    border-radius: 5%;
+    background-color: darkslategrey;
 }
  /* row-1 containing box sign up and login modals and buttons*/
- .row-1{
-    height:20%;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    padding: 10px 4px 0px 6px;
+ .welcome{
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    padding-left: 3%;
+    padding-top: 4%;
+    font-size: 18px;
+    height:6%;
+    color:whitesmoke;
 
+ }
+ .row{
+    height:20%;
+    width:49%;
+    flex-basis: auto;
 }
 .smallbox{
     width:30%;
     background-color: white;
 }
  /* row-1 containing box sign up and login modals and buttons*/
- .Buttons{
-     width:139%;
+ .buttons{
+     width:100%;
      height:100%;
      cursor: pointer;
      border-bottom-color: black;
      background-color:  lightgrey;
      border-radius: 10%;
      margin: 0;
-     
+
  }
  .row-2{
-    width:30%;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    position:relative;
+    width:100%;
+    background-color: darkgrey;
+    border-bottom-color: black;
+    flex-basis: auto;
     border-radius: 7%;
-    padding: 10px 4px 0px 6px;
-
 }
-/* #Registered{
-    position: absolute;
-    width: 25.55%;
-    height: 11%;
-    background-color: rgba(201, 195, 195, 0.932);
-    left:73.55%;
-    border-radius: 5%;
-} */
-/* #Registered p{
-    color:black;
-    margin:0;
-    font-size: 141%;
-} */
 
 .info{
     position:absolute;;
@@ -138,14 +148,23 @@ p,{
     top: 36%;
     left: 2%;
     justify-content: space-between;
-    width:70%;
+    width:50%;
 
 }
-#welcome p{    
+#intro{
+    position: absolute;
+    left: 10%;
+    top: 20%;
     font-size: 35px;
     line-height: 32px;
     color:white;
 }
+#into p{
+    padding: 0%;
+    margin:0;
+}
+
+
 div#prompt{
     height:89px;
 }
@@ -178,7 +197,8 @@ div#prompt{
  ul{
      display:flex;
      justify-content: space-around;
-     position:relative;
+     position:absolute;
+     left: 75%;
      width:21%;
      margin:0%;
      padding-top: 2%;
@@ -199,20 +219,19 @@ div#prompt{
     height:83%;
     position:absolute;
     top:17%;
-    /* border-radius: 5%; */
     background-color: rgb(48, 103, 105);
-    
+
 }
 
 /* signup modal id=SignUpModal */
 #SignUpModal{
     display:none;
     position:absolute;
-    top:60%;
-    left:50%;
+    top:64%;
+    left:45%;
     transform: translate(-50%, -50%);
-    background-color: rgb(228, 235, 235);
-    color:black;
+    background-color: darkslategrey;
+    color:white;
     padding:2% 3%;
     width: 33%;
     border-radius: 2%;
@@ -222,11 +241,11 @@ div#prompt{
 #LogInModal{
     display:none;
     position:absolute;
-    top:60%;
-    left:50%;
+    top:52%;
+    left:45%;
     transform: translate(-50%, -50%);
-    background-color: rgb(228, 235, 235);
-    color:black;
+    background-color: darkslategrey;
+    color:white;
     padding:2% 3%;
     width: 33%;
     border-radius: 3%;
@@ -236,8 +255,8 @@ div#prompt{
 /* close icon */
 .Closes{
     cursor: pointer;
-    border-radius:90%;
-    background-color:black;
+    border-radius:100%;
+    background-color:silver;
 }
 /* closing icon modal on hover */
 .Closes:hover{
@@ -269,7 +288,7 @@ div#prompt{
     left:80.5%;
     top:0%;
     padding:2%;
-    
+
 }
 .ClosesColumn:hover{
     background-color:rgb(34, 31, 31);
@@ -314,11 +333,9 @@ input[type=submit]{
     color: black;
     padding: 2% 8% 4% 26%;
     cursor: pointer;
-    
+
 }
-/* input[type=password]{
-    padding: 3% 3% 1% 18%;
-} */
+
 input[type=password]{
     padding: 1% 5% 1% 16%;
     border-radius:2%;
@@ -328,7 +345,7 @@ input[type=password]{
 input[type=submit]:hover{
     background-color: oldlace;
     border-radius: 2%
-    
+
 }
 fieldset#signingup{
     border-radius: 2%;
@@ -343,7 +360,7 @@ footer{
     position: absolute;
     width:100%;
     top:100%;
-    
+
 }
 #foot{
     top:113%;
@@ -352,10 +369,9 @@ footer{
 
 .image{
     background-size: cover;
-    /* position: fixed; */
     height: 100%;
     z-index: 0;
-    
+
 }
 #foo{
     top:105%;
@@ -377,16 +393,15 @@ div#requestDetails{
         left:50%;
         border-radius:3%;
         margin:0%;
-        
+
     }
-    
+
 #sidemodal{
     position: absolute;
     display:none;
     flex-direction: column;
-    background-color:rgb(228, 235, 235); 
+    background-color:rgb(228, 235, 235);
     width:18%;
-    /* color: black; */
     z-index: 4;
     top:6%;
 }
@@ -395,7 +410,7 @@ div#requestDetails{
     padding: -1% 2% 6% 2%;
     font-family: 'Droid Serif', Georgia, Times, serif;
     font-size: 136%;
-    
+
 }
 .CloseRequest{
     width:20%;
@@ -430,7 +445,7 @@ div#requestDetails{
     left:50%;
 }
     /* request tables */
-    
+
 #requestTable{
     display:none;
     width:535px;
@@ -462,7 +477,7 @@ p#available{
     padding-bottom: 3%;
 }
 
-    
+
 #Table td, #requestTable th {
     border: 1px solid #ddd;
     padding: 7px;
@@ -483,7 +498,7 @@ p#available{
     text-align: left;
     position: absolute;
     left: 0%;
-    
+
     background-color: rgba(0, 0, 0, 0.37);
     color:black;
     width:inherit;
@@ -505,11 +520,11 @@ input [type=submit]{
     color: black;
     padding: 5% 2%;
     cursor: pointer;
-        
+
 }
 input[type=submit]:hover{
     background-color: oldlace;
-    
+
 }
 fieldset{
     border-radius: 2%;
@@ -518,7 +533,7 @@ fieldset{
     margin-top: 3%;
 
 }
-h3{ 
+h3{
     align-content: center;
     padding: 0;
     margin:0;
@@ -529,18 +544,18 @@ footer{
     position: absolute;
     width:100%;
     top:100%;
-    
+
 }
 #foot{
     top:105%;
 }
-    
+
 td input[type=checkbox]{
         height: 0;
         width: 0;
         visibility: hidden;
     }
-    
+
 td label {
         cursor: pointer;
         text-indent: -9999px;
@@ -551,7 +566,7 @@ td label {
         border-radius: 100px;
         position: relative;
     }
-    
+
 td label:after {
     content: '';
     position: absolute;
@@ -572,7 +587,7 @@ td input:checked + label:after {
     left: calc(100% - 5px);
     transform: translateX(-90%);
 }
-    
+
 td label:active:after {
     width: 100px;
 }
@@ -604,17 +619,17 @@ div#requestRide{
     left:50%;
     border-radius:3%;
     margin:0%;
-    
+
 }
 
 #UsersideModal{
     display:none;
     flex-direction: column;
-    background-color:rgb(228, 235, 235); 
+    background-color:rgb(228, 235, 235);
     width:20%;
     position: relative;
     color: black;
- 
+
 }
 #UsersideModal .ClosesColumn{
     width:100%;
@@ -639,13 +654,10 @@ padding:7% 35% 4% 1%;
     width:769px;
     position: absolute;
     top:7%;
-    /* padding: 0% 1% 2% 0%; */
     left: 24%;
 }
 .CloseColumn{
-    /* width: 100%; */
     position: absolute;
-    /* text-align: center; */
     padding: 1% 9.5% 2% 9%;
     left: 89.9%;
     background-color: grey;
