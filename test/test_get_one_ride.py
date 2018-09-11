@@ -3,7 +3,7 @@
 import unittest
 import os
 import json
-from datetime import datetime, timedelta 
+from datetime import datetime, timedelta
 from models.ride_models import Rrequest, DriverOffer
 from test.test_base import BaseTestCase
 from models.db import db
@@ -11,7 +11,7 @@ DTime = datetime.now() + timedelta(minutes=20)
 
 class TestRideOffer(BaseTestCase):
     """test ride offers"""
-                
+
      # get one offer
     def test_get_one_offer(self):
         """tests user can get one ride offer"""
@@ -21,6 +21,7 @@ class TestRideOffer(BaseTestCase):
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjoo",
+                email="hello@gmail.com",
                 phone_number = "0707981133",
                 car = "True",
                 password = "A123456789a#",
@@ -53,17 +54,18 @@ class TestRideOffer(BaseTestCase):
             )),
             headers = {"content-type": "application/json",
                          "Authorization":driver_token}
-        )  
-        self.assertEqual(create.status_code,201) 
+        )
+        self.assertEqual(create.status_code,201)
         create_data = json.loads(create.data.decode())
         self.assertEqual(create_data["message"],"Successfully created a ride offer")
-       
+
         # signup a user
         signup = self.client.post(
             "/api/v1/auth/signup",
             data = json.dumps(dict(
                 name = "Naibor",
                 username = "Visa",
+                email="hello@gmail.com",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
@@ -90,9 +92,9 @@ class TestRideOffer(BaseTestCase):
             "api/v1/rides/1",
             headers = {"content-type": "application/json",
                        "Authorization":token}
-            ) 
-        self.assertEqual(response.status_code,200)  
+            )
+        self.assertEqual(response.status_code,200)
 
-      
+
 if __name__== '__main__':
     unittest.main()

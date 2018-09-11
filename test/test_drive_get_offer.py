@@ -2,7 +2,7 @@
 import unittest
 import os
 import json
-from datetime import datetime, timedelta 
+from datetime import datetime, timedelta
 from models import ride_models
 from test.test_base import BaseTestCase
 from models.db import db
@@ -19,6 +19,7 @@ class TestDriverRideOffer(BaseTestCase):
             data = json.dumps(dict(
                 name = "kulikua",
                 username = "monday",
+                email="hello@gmail.com",
                 phone_number = "0707981133",
                 car = "True",
                 password = "A123456789a#",
@@ -51,8 +52,8 @@ class TestDriverRideOffer(BaseTestCase):
             )),
             headers = {"content-type": "application/json",
                        "Authorization":token}
-        )  
-        self.assertEqual(create.status_code,201) 
+        )
+        self.assertEqual(create.status_code,201)
 
         response = self.client.get(
             '/api/v1/rides',
@@ -61,6 +62,6 @@ class TestDriverRideOffer(BaseTestCase):
         )
         self.assertEqual(response.status_code,200 )
 
-  
+
 if __name__== '__main__':
     unittest.main()

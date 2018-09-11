@@ -1,11 +1,8 @@
 """test user signup and login"""
-import unittest  
+import unittest
 import os
 import json
-from Api import User
-from Api import create_app
 from test.test_base import BaseTestCase
-from models.db import db
 
 
 class TestUserSignUp(BaseTestCase):
@@ -18,6 +15,7 @@ class TestUserSignUp(BaseTestCase):
             data = json.dumps(dict(
                 name = "Naibor",
                 username = "Aisa",
+                email="hello@gmail.com",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
@@ -28,7 +26,7 @@ class TestUserSignUp(BaseTestCase):
         signup_data = json.loads(signup.data.decode())
         self.assertEqual(signup_data["message"],"successfully signed up")
 
-    
+
     def test_user_name_empty(self):
         """test user name not empty"""
         signup = self.client.post(
@@ -36,6 +34,71 @@ class TestUserSignUp(BaseTestCase):
             data = json.dumps(dict(
                 name = "",
                 username = "Aisa",
+                email="hello@gmail.com",
+                phone_number = "0707900000",
+                password = "A123456789a#",
+                confirmpassword = "A123456789a#"
+            )),
+            headers = {"content-type": "application/json"}
+        )
+        self.assertEqual(signup.status_code,400)
+
+    def test_user_email_empty(self):
+        """test user email not empty"""
+        signup = self.client.post(
+            "/api/v1/auth/register",
+            data = json.dumps(dict(
+                name = "Naibor",
+                username = "Aisa",
+                email="",
+                phone_number = "0707900000",
+                password = "A123456789a#",
+                confirmpassword = "A123456789a#"
+            )),
+            headers = {"content-type": "application/json"}
+        )
+        self.assertEqual(signup.status_code,400)
+
+    def test_user_email_with_space(self):
+        """test user email with spaces"""
+        signup = self.client.post(
+            "/api/v1/auth/register",
+            data = json.dumps(dict(
+                name = "Naibor",
+                username = "Aisa",
+                email="      ",
+                phone_number = "0707900000",
+                password = "A123456789a#",
+                confirmpassword = "A123456789a#"
+            )),
+            headers = {"content-type": "application/json"}
+        )
+        self.assertEqual(signup.status_code,400)
+
+    def test_user_email_too_short(self):
+        """test user name not empty"""
+        signup = self.client.post(
+            "/api/v1/auth/register",
+            data = json.dumps(dict(
+                name = "Naibor",
+                username = "Aisa",
+                email="hello",
+                phone_number = "0707900000",
+                password = "A123456789a#",
+                confirmpassword = "A123456789a#"
+            )),
+            headers = {"content-type": "application/json"}
+        )
+        self.assertEqual(signup.status_code,400)
+
+    def test_user_email_wrong_format(self):
+        """test user name not empty"""
+        signup = self.client.post(
+            "/api/v1/auth/register",
+            data = json.dumps(dict(
+                name = "Naibor",
+                username = "Aisa",
+                email="hellogmailcom",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
@@ -51,6 +114,7 @@ class TestUserSignUp(BaseTestCase):
             data = json.dumps(dict(
                 name = "Naibor",
                 username = "",
+                email="hello@gmail.com",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
@@ -66,6 +130,7 @@ class TestUserSignUp(BaseTestCase):
             data = json.dumps(dict(
                 name = "Naibor",
                 username = "Aisa",
+                email="hello@gmail.com",
                 phone_number = "",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
@@ -82,6 +147,7 @@ class TestUserSignUp(BaseTestCase):
             data = json.dumps(dict(
                 name = "Naibor",
                 username = "Aisa",
+                email="hello@gmail.com",
                 phone_number = "0707900000",
                 password = "",
                 confirmpassword = "A123456789a#"
@@ -97,6 +163,7 @@ class TestUserSignUp(BaseTestCase):
             data = json.dumps(dict(
                 name = "Naibor",
                 username = "Aisa",
+                email="hello@gmail.com",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = ""
@@ -112,6 +179,7 @@ class TestUserSignUp(BaseTestCase):
             data = json.dumps(dict(
                 name = "     ",
                 username = "Aisa",
+                email="hello@gmail.com",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
@@ -127,6 +195,7 @@ class TestUserSignUp(BaseTestCase):
             data = json.dumps(dict(
                 name = "Naibor",
                 username = "     ",
+                email="hello@gmail.com",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
@@ -142,6 +211,7 @@ class TestUserSignUp(BaseTestCase):
             data = json.dumps(dict(
                 name = "Naibor",
                 username = "Aisa",
+                email="hello@gmail.com",
                 phone_number = "       ",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
@@ -158,6 +228,7 @@ class TestUserSignUp(BaseTestCase):
             data = json.dumps(dict(
                 name = "Naibor",
                 username = "Aisa",
+                email="hello@gmail.com",
                 phone_number = "0707900000",
                 password = "A9a#",
                 confirmpassword = "A123456789a#"
@@ -173,6 +244,7 @@ class TestUserSignUp(BaseTestCase):
             data = json.dumps(dict(
                 name = "Naibor",
                 username = "Aisa",
+                email="hello@gmail.com",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = "A39a#"
@@ -181,6 +253,6 @@ class TestUserSignUp(BaseTestCase):
         )
         self.assertEqual(signup.status_code,400)
 
-    
+
 if __name__== '__main__':
     unittest.main()

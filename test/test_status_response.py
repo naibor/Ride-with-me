@@ -2,7 +2,7 @@
 import unittest
 import os
 import json
-from datetime import datetime, timedelta 
+from datetime import datetime, timedelta
 from models import ride_models
 from Api import create_app
 from test.test_base import BaseTestCase, create_tables, drop_tables
@@ -20,6 +20,7 @@ class TestDriverResponse(BaseTestCase):
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kajoo",
+                email="hello@gmail.com",
                 phone_number = "0707981133",
                 car = "True",
                 password = "A123456789a#",
@@ -53,8 +54,8 @@ class TestDriverResponse(BaseTestCase):
             )),
             headers = {"content-type": "application/json",
                         "Authorization":driver_token}
-        )  
-        self.assertEqual(create.status_code,201) 
+        )
+        self.assertEqual(create.status_code,201)
 
     # signup user
         signup = self.client.post(
@@ -62,6 +63,7 @@ class TestDriverResponse(BaseTestCase):
                 data = json.dumps(dict(
                     name = "Naibor",
                     username = "Aisa",
+                    email="hello@gmail.com",
                     phone_number = "0707900000",
                     password = "A123456789a#",
                     confirmpassword = "A123456789a#"
@@ -87,8 +89,8 @@ class TestDriverResponse(BaseTestCase):
             "api/v1/rides/1",
             headers = {"content-type": "application/json",
                        "Authorization":user_token}
-            ) 
-        self.assertEqual(response.status_code,200) 
+            )
+        self.assertEqual(response.status_code,200)
 
     #    make a request to join a ride offer
         request = self.client.post(
@@ -99,8 +101,8 @@ class TestDriverResponse(BaseTestCase):
                     )
         # import pdb; pdb.set_trace()
         self.assertEqual(request.status_code,201)
-  
-    # driver respond to ride request 
+
+    # driver respond to ride request
         response = self.client.put(
             "/api/v1/rides/1/requests/1",
             data = json.dumps(dict(
@@ -117,6 +119,6 @@ class TestDriverResponse(BaseTestCase):
 
 if __name__== '__main__':
     unittest.main()
-            
+
 
 

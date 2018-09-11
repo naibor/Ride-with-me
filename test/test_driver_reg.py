@@ -15,17 +15,18 @@ class TestDriverReg(BaseTestCase):
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kazu",
+                email="hello@gmail.com",
                 phone_number = "0707981133",
                 car = "True",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#",
             )),
             headers = {"content-type": "application/json"}
-        )      
+        )
         self.assertEqual(registration.status_code,201)
         response_data = json.loads(registration.data.decode())
         self.assertEqual(response_data["message"],"successfully signup as a driver")
-   
+
     def test_driver_name_empty(self):
         """test driver name not empty"""
         registration = self.client.post(
@@ -33,6 +34,7 @@ class TestDriverReg(BaseTestCase):
             data = json.dumps(dict(
                 name = "",
                 username = "kanjo",
+                email="hello@gmail.com",
                 phone_number = "4654378540",
                 car = "True",
                 password = "A123456789a#",
@@ -49,6 +51,7 @@ class TestDriverReg(BaseTestCase):
             data = json.dumps(dict(
                 name = "kamau",
                 username = "",
+                email="hello@gmail.com",
                 phone_number = "4654378540",
                 car = "True",
                 password = "A123456789a#",
@@ -65,6 +68,7 @@ class TestDriverReg(BaseTestCase):
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
+                email="hello@gmail.com",
                 phone_number = "",
                 car = "True",
                 password = "A123456789a#",
@@ -81,6 +85,7 @@ class TestDriverReg(BaseTestCase):
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
+                email="hello@gmail.com",
                 phone_number = "4654378540",
                 car = "",
                 password = "A123456789a#",
@@ -97,6 +102,7 @@ class TestDriverReg(BaseTestCase):
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
+                email="hello@gmail.com",
                 phone_number = "4654378540",
                 car = "True",
                 password = "",
@@ -113,6 +119,7 @@ class TestDriverReg(BaseTestCase):
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
+                email="hello@gmail.com",
                 phone_number = "4654378540",
                 car = "True",
                 password = "A123456789a#",
@@ -129,6 +136,58 @@ class TestDriverReg(BaseTestCase):
             data = json.dumps(dict(
                 name = "     ",
                 username = "kanjo",
+                email="hello@gmail.com",
+                phone_number = "4654378540",
+                car = "True",
+                password = "A123456789a#",
+                confirmpassword = "A123456789a#"
+            )),
+            headers = {"content-type": "application/json"}
+        )
+        self.assertEqual(registration.status_code,400)
+
+    def test_driver_email_with_space(self):
+        """test driver email with spaces only"""
+        registration = self.client.post(
+            "/api/v1/auth/register",
+            data = json.dumps(dict(
+                name = "kamau",
+                username = "kanjo",
+                email="         ",
+                phone_number = "4654378540",
+                car = "True",
+                password = "A123456789a#",
+                confirmpassword = "A123456789a#"
+            )),
+            headers = {"content-type": "application/json"}
+        )
+        self.assertEqual(registration.status_code,400)
+
+    def test_driver_email_wrong_format(self):
+        """test driver email with wrong format"""
+        registration = self.client.post(
+            "/api/v1/auth/register",
+            data = json.dumps(dict(
+                name = "Kamau",
+                username = "kanjo",
+                email="hellogmailcom",
+                phone_number = "4654378540",
+                car = "True",
+                password = "A123456789a#",
+                confirmpassword = "A123456789a#"
+            )),
+            headers = {"content-type": "application/json"}
+        )
+        self.assertEqual(registration.status_code,400)
+
+    def test_driver_email_too_short(self):
+        """test driver email too short"""
+        registration = self.client.post(
+            "/api/v1/auth/register",
+            data = json.dumps(dict(
+                name = "     ",
+                username = "kanjo",
+                email="hello",
                 phone_number = "4654378540",
                 car = "True",
                 password = "A123456789a#",
@@ -145,6 +204,7 @@ class TestDriverReg(BaseTestCase):
             data = json.dumps(dict(
                 name = "kamau",
                 username = "     ",
+                email="hello@gmail.com",
                 phone_number = "4654378540",
                 car = "True",
                 password = "A123456789a#",
@@ -161,6 +221,7 @@ class TestDriverReg(BaseTestCase):
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
+                email="hello@gmail.com",
                 phone_number = "       ",
                 car = "True",
                 password = "A123456789a#",
@@ -177,6 +238,7 @@ class TestDriverReg(BaseTestCase):
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
+                email="hello@gmail.com",
                 phone_number = "4654378540",
                 car = "     ",
                 password = "A123456789a#",
@@ -193,6 +255,7 @@ class TestDriverReg(BaseTestCase):
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
+                email="hello@gmail.com",
                 phone_number = "4654378540",
                 car = "True",
                 password = "A9a#",
@@ -209,6 +272,7 @@ class TestDriverReg(BaseTestCase):
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjo",
+                email="hello@gmail.com",
                 phone_number = "4654378540",
                 car = "True",
                 password = "A123456789a#",

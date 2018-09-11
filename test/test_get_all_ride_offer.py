@@ -3,7 +3,7 @@
 import unittest
 import os
 import json
-from datetime import datetime, timedelta 
+from datetime import datetime, timedelta
 from models.ride_models import Rrequest, DriverOffer
 from test.test_base import BaseTestCase, create_tables,drop_tables
 from models.db import db
@@ -11,7 +11,7 @@ DTime = datetime.now() + timedelta(minutes=20)
 
 class TestRideOffer(BaseTestCase):
     """test ride offers"""
-                
+
     def test_get_ride_offers(self):
         create_tables()
         """test user can view all ride offers"""
@@ -21,6 +21,7 @@ class TestRideOffer(BaseTestCase):
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjoo",
+                email="hello@gmail.com",
                 phone_number = "0707981133",
                 car = "True",
                 password = "A123456789a#",
@@ -53,17 +54,18 @@ class TestRideOffer(BaseTestCase):
             )),
             headers = {"content-type": "application/json",
                          "Authorization":driver_token}
-        )  
-        self.assertEqual(create.status_code,201) 
+        )
+        self.assertEqual(create.status_code,201)
         create_data = json.loads(create.data.decode())
         self.assertEqual(create_data["message"],"Successfully created a ride offer")
-       
+
         # signup a user
         signup = self.client.post(
             "/api/v1/auth/signup",
             data = json.dumps(dict(
                 name = "Naibor",
                 username = "Visa",
+                email="hello@gmail.com",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
@@ -93,12 +95,12 @@ class TestRideOffer(BaseTestCase):
         )
         self.assertEqual(response.status_code,200 )
 
-    
+
     # def tearDown(self):
     #     """Tears down test context"""
     #     self.app = None
     #     drop_tables()
-        
-  
+
+
 if __name__== '__main__':
     unittest.main()

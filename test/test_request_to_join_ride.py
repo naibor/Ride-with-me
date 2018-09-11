@@ -3,7 +3,7 @@
 import unittest
 import os
 import json
-from datetime import datetime, timedelta 
+from datetime import datetime, timedelta
 from models.ride_models import Rrequest, DriverOffer
 from test.test_base import BaseTestCase
 from models.db import db
@@ -11,7 +11,7 @@ DTime = datetime.now() + timedelta(minutes=20)
 
 class TestRideOffer(BaseTestCase):
     """test ride offers"""
-                
+
     def test_request_to_join_offer(self):
         """test user can request to join ride offer"""
         # register driver
@@ -20,6 +20,7 @@ class TestRideOffer(BaseTestCase):
             data = json.dumps(dict(
                 name = "kamau",
                 username = "kanjoo",
+                email="hello@gmail.com",
                 phone_number = "0707981133",
                 car = "True",
                 password = "A123456789a#",
@@ -52,17 +53,18 @@ class TestRideOffer(BaseTestCase):
             )),
             headers = {"content-type": "application/json",
                          "Authorization":driver_token}
-        )  
-        self.assertEqual(create.status_code,201) 
+        )
+        self.assertEqual(create.status_code,201)
         create_data = json.loads(create.data.decode())
         # self.assertEqual(create_data["message"],"Successfully created a ride offer")
-       
+
         # signup a user
         signup = self.client.post(
             "/api/v1/auth/signup",
             data = json.dumps(dict(
                 name = "Naibor",
                 username = "Visa",
+                email="hello@gmail.com",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
@@ -83,16 +85,16 @@ class TestRideOffer(BaseTestCase):
         self.assertEqual(user_login.status_code,200)
         user_login_data = json.loads(user_login.data.decode())
         token = user_login_data['access_token']
-        
+
         #user get one ride
         response = self.client.get(
             "api/v1/rides/1",
             headers = {"content-type": "application/json",
                        "Authorization":token}
-            ) 
-        self.assertEqual(response.status_code,200)   
-        
-    
+            )
+        self.assertEqual(response.status_code,200)
+
+
     #    make a request to join a ride offer
         request = self.client.post(
             "/api/v1/rides/1/requests",
@@ -104,7 +106,6 @@ class TestRideOffer(BaseTestCase):
         self.assertEqual(request.status_code,201)
         response = json.loads(request.data.decode())
         self.assertEqual(response["message"],"Request to join ride has been processed")
-       
+
 if __name__== '__main__':
     unittest.main()
-        

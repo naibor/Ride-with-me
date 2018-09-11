@@ -1,8 +1,8 @@
 """test user signup and login"""
-import unittest  
+import unittest
 import os
 import json
-from Api import User
+# from Api import User
 from Api import create_app
 from test.test_base import BaseTestCase
 from models.db import db
@@ -10,7 +10,7 @@ from models.db import db
 
 class TestUserLogin(BaseTestCase):
     """class for user sign up test case"""
-    
+
     def test_user_login(self):
         """test user can successfuly login"""
         # sign up user
@@ -19,6 +19,7 @@ class TestUserLogin(BaseTestCase):
             data = json.dumps(dict(
                 name = "Naibor",
                 username = "Bisa",
+                email="hello@gmail.com",
                 phone_number = "0707900000",
                 password = "A123456789a#",
                 confirmpassword = "A123456789a#"
@@ -39,6 +40,6 @@ class TestUserLogin(BaseTestCase):
         login_data = json.loads(login.data.decode())
         self.assertEqual(login_data["message"],"successfully logged in")
 
-    
+
 if __name__== '__main__':
     unittest.main()

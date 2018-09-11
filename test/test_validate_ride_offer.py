@@ -3,7 +3,7 @@ import unittest
 import os
 import json
 from Api import create_app
-from datetime import datetime, timedelta 
+from datetime import datetime, timedelta
 from models import ride_models
 from test.test_base import BaseTestCase, create_tables
 from models.db import db
@@ -23,6 +23,7 @@ class TestValidateRideOffer(BaseTestCase):
             data = json.dumps(dict(
                 name = "kulikua",
                 username = "monday",
+                email="hello@gmail.com",
                 phone_number = "0707981133",
                 car = "True",
                 password = "A123456789a#",
@@ -55,9 +56,9 @@ class TestValidateRideOffer(BaseTestCase):
             )),
             headers = {"content-type": "application/json",
                        "Authorization":self.token}
-        )  
-        self.assertEqual(create.status_code,201) 
-     
+        )
+        self.assertEqual(create.status_code,201)
+
 
     # test field validations
     def test_location_field_empty(self):
@@ -72,9 +73,9 @@ class TestValidateRideOffer(BaseTestCase):
             )),
             headers = {"content-type": "application/json",
                        "Authorization":self.token}
-        )  
+        )
         self.assertEqual(response.status_code,400)
-        
+
     def test_destination_field_empty(self):
         """test destination field not empty"""
         response = self.client.post(
@@ -89,7 +90,7 @@ class TestValidateRideOffer(BaseTestCase):
                        "Authorization":self.token}
         )
         self.assertEqual(response.status_code,400)
-         
+
     def test_location_field_string(self):
         """test input fields are strings"""
         response = self.client.post(
@@ -104,7 +105,7 @@ class TestValidateRideOffer(BaseTestCase):
                        "Authorization":self.token}
         )
         self.assertEqual(response.status_code, 400)
-    
+
     def test_destination_field_string(self):
         """test destiantion fields are strings"""
         response = self.client.post(
@@ -168,4 +169,4 @@ class TestValidateRideOffer(BaseTestCase):
 if __name__== '__main__':
     unittest.main()
 
-    
+
